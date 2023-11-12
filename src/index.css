@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    #root{
+        display: flex;
+        flex-direction: column;
+        min-height: 100dvh;
+    }
+}
+
+@layer components {
+    .textarea.textaerea-fixed{
+        resize: none;
+    }
+}
