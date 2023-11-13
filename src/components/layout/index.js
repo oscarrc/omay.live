@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Header />
-            <main className="flex flex-1 bg-base-200 p-6">
+            <main className="flex flex-1 bg-base-200 p-6 pb-0">
                 { children ?? <Outlet /> }
             </main>
             <Footer />
