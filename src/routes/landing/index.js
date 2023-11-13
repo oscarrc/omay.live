@@ -1,7 +1,7 @@
 import { AiFillWarning } from "react-icons/ai";
 import { BRAND } from "../../constants/strings";
 import { Link } from "react-router-dom";
-import Terms from "../../components/modals";
+import { Terms } from "../../components/modals";
 import { useChat } from "../../hooks/useChat";
 import { useEffect } from "react";
 
