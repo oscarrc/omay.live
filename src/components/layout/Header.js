@@ -1,11 +1,12 @@
 import { BRAND } from "../../constants/strings";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
         <header className="sticky top-0 bg-base-100">
             <nav className="navbar shadow-lg">
                 <div className="flex gap-8 flex-1">
-                    <a href="/" className="btn btn-ghost text-xl uppercase">{ BRAND }</a>
+                    <Link to="/" className="btn btn-ghost text-xl uppercase">{ BRAND }</Link>
                     <span className="-rotate-6 text-primary text-xl font-bold">Connect with strangers!</span>
                 </div>
                 <div class="flex gap-8 flex-none px-4">
