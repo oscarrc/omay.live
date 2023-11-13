@@ -1,8 +1,15 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const ChatContetx =  createContext(null);
 
 const ChatProvider = ({ children }) => {
+    const [ textOnly, setTextOnly ] = useState(false);
+    const [ withInterest, setWithInterests ] = useState(false);
+    const [ interest, setInterests ] = useState([]);
+    const [ language, setLanguage ] = useState("");
+    const [ messages, setMessages ] = useState("");
+    const [ state, setState ] = useState(-1);
+
     return (
         <ChatContetx.Provider>
             { children }        
