@@ -1,6 +1,6 @@
 const VideoBox = ({ source, className }) => {
     return (
-        <div className={`bg-neutral rounded-lg shadow-inner aspect-4/3 ${className}`}>
+        <div className={`bg-neutral sm:rounded-lg shadow-inner aspect-4/3 ${className}`}>
 
         </div>
     )

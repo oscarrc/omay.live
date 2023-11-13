@@ -1,6 +1,6 @@
 const ChatBox = ({ messages, className }) => {
     return (
-        <div className={`bg-base-100 rounded-lg shadow-inner ${className}`}>
+        <div className={`bg-base-100 sm:rounded-lg shadow-inner ${className}`}>
 
         </div>
     )
