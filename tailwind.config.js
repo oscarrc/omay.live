@@ -31,6 +31,9 @@ module.exports = {
   daisyui:{
     themes:["cmyk"]
   },
-  plugins: [require("daisyui")]
+  plugins: [
+    require('@tailwindcss/typography'),
+    require("daisyui")
+  ]
 }
 

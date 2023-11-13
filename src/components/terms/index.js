@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { BRAND } from "../../constants/strings";
 
-const Terms = () => {    
+const Terms = ({ show }) => {    
     const navigate = useNavigate();
     const [ tac, setTac ] = useState(false);
     const [ age, setAge ] = useState(false);
@@ -14,7 +14,7 @@ const Terms = () => {
         navigate("/video" )
     }
 
-    useEffect(() => dialog?.current.showModal(), [dialog])
+    useEffect(() => show ? dialog?.current.showModal() : dialog.current.close(), [show])
 
     return (
         <dialog ref={dialog} id="terms" className="modal modal-bottom sm:modal-middle">
