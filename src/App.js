@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import Chat from "./routes/chat";
+import { ChatProvider } from "./hooks/useChat";
 import Error from "./components/error";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
@@ -32,7 +33,9 @@ const App = () => {
   ])
 
   return (
-    <RouterProvider router={router} />
+    <ChatProvider>      
+      <RouterProvider router={router} />
+    </ChatProvider>
   );
 }
 
