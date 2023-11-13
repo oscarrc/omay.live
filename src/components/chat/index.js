@@ -1,9 +1,9 @@
 import ChatBox from "./ChatBox";
-import MessageBox from "./MessageBox";
+import ChatControls from "./ChatControls";
 import VideoBox from "./VideoBox";
 
 export {
     ChatBox,
-    MessageBox,
+    ChatControls,
     VideoBox
 }
