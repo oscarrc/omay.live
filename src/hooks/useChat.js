@@ -9,9 +9,14 @@ const ChatProvider = ({ children }) => {
     const [ language, setLanguage ] = useState("");
     const [ messages, setMessages ] = useState("");
     const [ state, setState ] = useState(-1);
+    const [ tacAccepted, setTacAccepted ] = useState(false);
 
     return (
-        <ChatContetx.Provider>
+        <ChatContetx.Provider
+            value={{
+                tacAccepted
+            }}
+        >
             { children }        
         </ChatContetx.Provider>
     )

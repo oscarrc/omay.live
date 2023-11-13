@@ -1,8 +1,18 @@
-import { ChatBox, VideoBox } from "../../components/chat";
+import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 
 import { MdReport } from "react-icons/md"
+import { useChat } from "../../hooks/useChat";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Chat = ({textOnly}) => {
+    const { tacAccepted } = useChat();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        !tacAccepted && navigate("/")
+    }, [navigate, tacAccepted])
+
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
             <div className="flex flex-col md:flex-row gap-4 flex-1">
@@ -22,11 +32,7 @@ const Chat = ({textOnly}) => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">Report</span></button>
                     </div>
                 }
-                <div className="join w-full h-16">                   
-                    <button className="join-item btn h-full flex flex-col gap-1 btn-primary w-24 rounded-none sm:rounded-lg">Start <span className="text-base-100 text-xs">Esc</span></button>
-                    <textarea className="join-item flex-1 h-full textarea textarea-bordered textaerea-fixed rounded-none shadow-inner"/>
-                    <button className="join-item btn h-full flex flex-col gap-1 bg-base-100 w-24 rounded-none sm:rounded-lg">Send <span className="text-primary text-xs">Enter</span></button>
-                </div>
+                <ChatControls />
             </div>
         </section>
     )
