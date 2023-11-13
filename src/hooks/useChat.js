@@ -12,7 +12,7 @@ const ChatReducer = (state, action) => {
             if(!MODES.includes(payload)) return state;
             return { ...state, mode: payload}
         case "INTEREST":            
-            return { ...state, interest: !!payload}
+            return { ...state, interest: !!payload}   
         case "LANG":            
             return { ...state, lang: payload}
         case "RESET":
@@ -23,7 +23,7 @@ const ChatReducer = (state, action) => {
 }
 
 const ChatProvider = ({ children }) => {     
-    const [ interest, setInterests ] = useState([]); 
+    const [ interests, setInterests ] = useState([]); 
     const [ messages, setMessages ] = useState([]);
     const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
@@ -32,7 +32,9 @@ const ChatProvider = ({ children }) => {
         <ChatContext.Provider
             value={{
                 state,
-                dispatch
+                dispatch,
+                interests,
+                setInterests,
             }}
         >
             { children }        
