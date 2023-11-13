@@ -22,10 +22,10 @@ const Chat = ({textOnly}) => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">Report</span></button>
                     </div>
                 }
-                <div className="flex gap-1 w-full h-16">                   
-                    <button className="btn h-full flex flex-col gap-1 btn-primary w-24 rounded-none md:rounded-lg md:rounded-r-none">Start <span className="text-base-100 text-xs">Esc</span></button>
-                    <textarea className="flex-1 h-full textarea textarea-bordered textaerea-fixed rounded-none shadow-inner"/>
-                    <button className="btn h-full flex flex-col gap-1 bg-base-100 w-24 rounded-none md:rounded-lg md:rounded-l-none">Send <span className="text-primary text-xs">Enter</span></button>
+                <div className="join w-full h-16">                   
+                    <button className="join-item btn h-full flex flex-col gap-1 btn-primary w-24 rounded-none sm:rounded-lg">Start <span className="text-base-100 text-xs">Esc</span></button>
+                    <textarea className="join-item flex-1 h-full textarea textarea-bordered textaerea-fixed rounded-none shadow-inner"/>
+                    <button className="join-item btn h-full flex flex-col gap-1 bg-base-100 w-24 rounded-none sm:rounded-lg">Send <span className="text-primary text-xs">Enter</span></button>
                 </div>
             </div>
         </section>
