@@ -23,9 +23,9 @@ const Chat = ({textOnly}) => {
                     </div>
                 }
                 <div className="flex gap-1 w-full h-16">                   
-                    <button className="btn h-full flex flex-col gap-1 btn-primary w-24 rounded-none md:rounded-lg rounded-r-none">Start <span className="text-base-100 text-xs">Esc</span></button>
+                    <button className="btn h-full flex flex-col gap-1 btn-primary w-24 rounded-none md:rounded-lg md:rounded-r-none">Start <span className="text-base-100 text-xs">Esc</span></button>
                     <textarea className="flex-1 h-full textarea textarea-bordered textaerea-fixed rounded-none shadow-inner"/>
-                    <button className="btn h-full flex flex-col gap-1 bg-base-100 w-24 rounded-none md:rounded-lg rounded-l-none">Send <span className="text-primary text-xs">Enter</span></button>
+                    <button className="btn h-full flex flex-col gap-1 bg-base-100 w-24 rounded-none md:rounded-lg md:rounded-l-none">Send <span className="text-primary text-xs">Enter</span></button>
                 </div>
             </div>
         </section>
