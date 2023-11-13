@@ -4,11 +4,11 @@ import { MdReport } from "react-icons/md"
 
 const Chat = ({textOnly}) => {
     return (
-        <section className="flex flex-col flex-1 w-full gap-4 relative"> 
+        <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
             <div className="flex flex-col md:flex-row gap-4 flex-1">
                 {
                     !textOnly && 
-                    <div className="flex flex-col gap-4 min-w-1/4 relative">
+                    <div className="flex flex-col gap-4 max-h-content lg:max-h-full md:max-w-1/4 w-full relative">
                         <VideoBox />
                         <VideoBox className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
