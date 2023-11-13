@@ -6,7 +6,7 @@ import Error from "./routes/error";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
 import Policies from "./routes/policies";
-import Terms from "./components/terms";
+import Terms from "./components/modals/Terms";
 
 const App = () => {
   const router = createBrowserRouter([
