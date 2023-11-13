@@ -6,6 +6,7 @@ import Error from "./routes/error";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
 import Policies from "./routes/policies";
+import Terms from "./components/terms";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -24,9 +25,14 @@ const App = () => {
           element: <Chat />,
         },
         {   
+          id: "unmoderated",
+          path: "/unmoderated",
+          element: <Chat />,
+        },
+        {   
           id: "text",
           path: "/text",
-          element: <Chat textOnly={true} />,
+          element: <Chat />,
         },
         {   
           id: "policies",

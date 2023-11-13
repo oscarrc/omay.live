@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { BRAND } from "../../constants/strings";
 
-const Terms = ({ show }) => {    
+const Terms = ({ show, mode, onSubmit }) => {    
     const navigate = useNavigate();
     const [ tac, setTac ] = useState(false);
     const [ age, setAge ] = useState(false);
@@ -11,7 +11,8 @@ const Terms = ({ show }) => {
     
     const acceptAndContinue = (e) => {
         e.preventDefault();
-        navigate("/video" )
+        onSubmit();
+        navigate(`/${mode}`)
     }
 
     useEffect(() => show ? dialog?.current.showModal() : dialog.current.close(), [show])

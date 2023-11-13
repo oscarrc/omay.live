@@ -2,8 +2,15 @@ import { AiFillWarning } from "react-icons/ai";
 import { BRAND } from "../../constants/strings";
 import { Link } from "react-router-dom";
 import Terms from "../../components/terms";
+import { useChat } from "../../hooks/useChat";
+import { useEffect } from "react";
 
-const Landing = () => {
+const Landing = () => {     
+    const { state: { tac, mode }, dispatch } = useChat();
+    useEffect(()=> {
+        dispatch({type: "RESET"})
+    }, [dispatch]);
+
     return (
         <>
             <section className="flex gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded shadow-inner p-8">
@@ -29,16 +36,16 @@ const Landing = () => {
                         <div className="flex flex-col gap-2 items-center">
                             <h3 className="text-lg font-bold">Start chatting</h3>
                             <div className="flex flex-col sm:flex-row w-full sm:w-auto">
-                                <button className="btn btn-lg btn-primary w-full sm:w-40">Text</button>
+                                <button onClick={()=>dispatch({type: "MODE", payload: "text"})} className="btn btn-lg btn-primary w-full sm:w-40">Text</button>
                                 <div class="divider sm:divider-horizontal">OR</div>
-                                <button className="btn btn-lg btn-primary w-full sm:w-40">Video</button>
+                                <button onClick={()=>dispatch({type: "MODE", payload: "video"})} className="btn btn-lg btn-primary w-full sm:w-40">Video</button>
                             </div>                    
-                            <button className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">Unmoderated section</button>
+                            <button onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">Unmoderated section</button>
                         </div>
                     </div>
                 </div>
             </section>
-            <Terms show={true} />
+            <Terms show={ mode && !tac} mode={mode} onSubmit={()=>dispatch({type: "TAC", payload: true})}/>
         </>
     )
 }
