@@ -2,21 +2,21 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import Chat from "./routes/chat";
 import { ChatProvider } from "./hooks/useChat";
-import Error from "./components/error";
+import Error from "./routes/error";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
+import Policies from "./routes/policies";
 
 const App = () => {
-
   const router = createBrowserRouter([
     {
       element: <Layout />,
-      errorElement: <Error />,
+      errorElement: <Layout><Error /></Layout>,
       children: [
         {   
           id: "landing",
           path: "/",
-          element: <Landing />,
+          element: <Landing />
         },
         {   
           id: "video",
@@ -27,6 +27,11 @@ const App = () => {
           id: "text",
           path: "/text",
           element: <Chat textOnly={true} />,
+        },
+        {   
+          id: "policies",
+          path: "/policies/:id",
+          element: <Policies />,
         }
       ]
     }
