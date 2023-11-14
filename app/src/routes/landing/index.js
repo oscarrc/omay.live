@@ -40,9 +40,11 @@ const Landing = () => {
                             <div className="flex flex-col sm:flex-row w-full sm:w-auto">
                                 <button onClick={()=>dispatch({type: "MODE", payload: "text"})} className="btn btn-lg btn-primary w-full sm:w-40">Text</button>
                                 <div className="divider sm:divider-horizontal">OR</div>
-                                <button onClick={()=>dispatch({type: "MODE", payload: "video"})} className="btn btn-lg btn-primary w-full sm:w-40">Video</button>
-                            </div>                    
-                            <button onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">Unmoderated section</button>
+                                <div className="flex flex-col gap-2">
+                                    <button onClick={()=>dispatch({type: "MODE", payload: "video"})} className="btn btn-lg btn-primary w-full sm:w-40">Video</button>
+                                    <button onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">Unmoderated section</button>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
