@@ -4,9 +4,12 @@ import { useEffect, useMemo } from "react";
 import { MdReport } from "react-icons/md"
 import { useChat } from "../../hooks/useChat";
 import { useNavigate } from "react-router-dom";
+import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
     const { state: { tac, mode } } = useChat();
+    const { cam } = useWebcam();
+
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
 
@@ -21,7 +24,7 @@ const Chat = () => {
                     !isTextOnly && 
                     <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
                         <VideoBox />
-                        <VideoBox className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
+                        <VideoBox source={cam} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
                 <ChatBox className="flex-1" />

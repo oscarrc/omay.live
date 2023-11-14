@@ -26,7 +26,7 @@ const Landing = () => {
                         <AiFillWarning className="text-warning h-8 w-8 hidden sm:block" />  
                         <div>
                             <h2 className="font-bold">Video is monitored</h2>
-                            <div className="text-xs">Keep it clean</div>
+                            <div className="text-xs">Keep it clean and help by reporting NSFW behaviour</div>
                         </div>                     
                     </div>
                     <div className="flex flex-col md:flex-row gap-8 justify-between">
