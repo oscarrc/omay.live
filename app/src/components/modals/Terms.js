@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { BRAND } from "../../constants/strings";
 
-const Terms = ({ show, mode, onSubmit }) => {    
+const Terms = ({ show, mode, onSubmit, onClose }) => {    
     const navigate = useNavigate();
     const [ tac, setTac ] = useState(false);
     const [ age, setAge ] = useState(false);
@@ -15,13 +15,15 @@ const Terms = ({ show, mode, onSubmit }) => {
         navigate(`/${mode}`)
     }
 
-    useEffect(() => show ? dialog?.current.showModal() : dialog.current.close(), [show])
+    useEffect(() => {
+        show ? dialog?.current.showModal() : dialog.current.close()
+    }, [show])
 
     return (
         <dialog ref={dialog} id="terms" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box min-w-3/4">
                 <form method="dialog">
-                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    <button onClick={onClose} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
                 <form onSubmit={acceptAndContinue}>
                     <div className="form-control">

@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 const Landing = () => {     
     const { state: { tac, mode }, dispatch, interests, setInterests } = useChat();
+    
     useEffect(()=> {
         dispatch({type: "RESET"})
     }, [dispatch]);
@@ -46,7 +47,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
-            <Terms show={ mode && !tac} mode={mode} onSubmit={()=>dispatch({type: "TAC", payload: true})}/>
+            <Terms show={ mode && !tac } mode={mode} onClose={()=>dispatch({type: "RESET"})} onSubmit={()=>dispatch({type: "TAC", payload: true})} />
         </>
     )
 }
