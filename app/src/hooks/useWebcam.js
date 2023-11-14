@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const opts = {
     video: {
@@ -9,26 +9,25 @@ const opts = {
 
 const useWebcam = () => {
     const [cam, setCam] = useState(null);
+    const unmounting = useRef(false);
 
     const init = async () => {
         try{
-             const stream = await navigator.mediaDevices.getUserMedia(opts);
-             setCam(stream);
+            const stream = await navigator.mediaDevices.getUserMedia(opts);
+            setCam(stream);
         }catch(e){
             console.log(e)
         }       
-     }
+    }
 
-     const stop = () => {
+    const stop = () => {
         cam?.getTracks().forEach(track => track.stop());
         setCam(null);
-     }
+    }
 
-    useEffect(() => { 
-        init() 
-        return () => { stop() };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    useEffect(() => init(), [])
+    useEffect(() => () => (unmounting.current = true), [])
+    useEffect(() => () => (unmounting.current && stop()), [cam])
 
     return { cam }
 }

@@ -7,7 +7,7 @@ const Header = () => {
             <nav className="navbar shadow-lg">
                 <div className="flex gap-8 flex-1">
                     <Link to="/" className="btn btn-ghost text-xl uppercase">{ BRAND }</Link>
-                    <span className="hidden md:inline -rotate-6 text-primary text-xl font-bold">Connect with strangers!</span>
+                    <span className="hidden md:inline -rotate-6 text-primary lg:text-xl font-bold">Connect with strangers!</span>
                 </div>
                 <div className="flex gap-8 flex-none px-4">
                     <div className="whitespace-nowrap text-primary text-lg font-bold hidden sm:inline">
