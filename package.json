@@ -1,9 +1,9 @@
 {
   "name": "videochat",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Random video chat",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm --prefix ./app start & npm --prefix ./server run dev"
   },
   "repository": {
     "type": "git",
