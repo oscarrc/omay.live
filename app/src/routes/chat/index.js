@@ -8,7 +8,7 @@ import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
     const { state: { tac, mode } } = useChat();
-    const { cam } = useWebcam();
+    const { cam, startCam } = useWebcam();
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
@@ -16,6 +16,9 @@ const Chat = () => {
     useEffect(()=>{
         !tac && navigate("/")
     }, [navigate, tac])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => { mode !== "text" && startCam() }, [])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 

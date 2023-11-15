@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const opts = {
     video: {
@@ -8,25 +8,27 @@ const opts = {
 }
 
 const useWebcam = () => {
-    const [cam, setCam] = useState(null);
-    
-    const init = async () => {
+    const stream = useRef(null);
+    const [cam, setCam ] = useState(null);
+
+    const startCam = async () => {
         try{
-            const stream = await navigator.mediaDevices.getUserMedia(opts);
-            setCam(stream);
+            stream.current = await navigator.mediaDevices.getUserMedia(opts);
+            setCam(stream.current)
         }catch(e){
             console.log(e)
         }       
     }
 
-    const stop = () => {        
-        cam?.getTracks().forEach(track => track.stop());
-        setCam(null);
+    const stopCam = () => {
+        stream.current?.getTracks().forEach(track => track.stop());
+        stream.current = null
+        setCam(null)
     }
 
-    useEffect(() => { init() }, [])
+    useEffect(() => () => stopCam(), [])
 
-    return { cam }
+    return { cam, startCam, stopCam }
 }
 
 export default useWebcam;
