@@ -1,4 +1,4 @@
-import { BRAND } from "../../constants/strings";
+import { BRAND } from "../../constants/brand";
 import { Link } from "react-router-dom";
 
 const Header = () => {

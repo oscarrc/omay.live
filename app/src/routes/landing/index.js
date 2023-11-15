@@ -1,5 +1,5 @@
 import { Alert, InterestInput } from "../../components/partials";
-import { BRAND, TRANSLITERATION } from "../../constants/strings";
+import { BRAND, TRANSLITERATION } from "../../constants/brand";
 
 import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";

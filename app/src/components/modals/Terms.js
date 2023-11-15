@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-import { BRAND } from "../../constants/strings";
+import { BRAND } from "../../constants/brand";
 
 const Terms = ({ show, mode, onSubmit, onClose }) => {    
     const navigate = useNavigate();
