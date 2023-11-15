@@ -29,7 +29,7 @@ const InterestInput = ({ values, onChange, className }) => {
 
     return (
         <div className="group w-full">
-            <div className="flex flex-wrap items-center gap-2 border rounded input-lg group-focus:outline outline-2 outline-base-content/20 outline-offset-2 md:max-w-1/4 min-w-1/4 overflow-auto py-2">
+            <div className="flex flex-wrap items-center gap-2 border rounded input-lg group-focus:outline outline-2 outline-base-content/20 outline-offset-2 md:max-w-1/4 min-w-1/4 overflow-y-auto overflow-x-hidden py-2">
                 {
                     values.map((v,i) => <span key={i} className="badge badge-primary badge-lg">{v} <button onClick={()=>handleRemove(i)}><AiOutlineClose className="ml-1 h-3 w-3" /></button></span> )
                 }
