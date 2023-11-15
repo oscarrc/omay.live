@@ -28,7 +28,7 @@ const useWebcam = () => {
 
     useEffect(() => () => stopCam(), [])
 
-    return { cam, startCam, stopCam }
+    return { cam, startCam }
 }
 
 export default useWebcam;
