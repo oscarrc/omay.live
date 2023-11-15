@@ -10,7 +10,7 @@ const Header = () => {
                         <img src="./logo.svg" alt={BRAND} className="h-full"/>
                         { BRAND }
                     </Link>
-                    <span className="hidden md:inline -rotate-6 text-primary lg:text-xl font-bold">Connect with strangers!</span>
+                    <span className="hidden md:inline -rotate-6 text-primary text-sm lg:text-xl font-bold">Connect with strangers!</span>
                 </div>
                 <div className="flex gap-8 flex-none px-4">
                     <div className="whitespace-nowrap text-primary text-lg font-bold hidden sm:inline">
