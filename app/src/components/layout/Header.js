@@ -1,4 +1,5 @@
 import { BRAND } from "../../constants/brand";
+import LanguageSelector from "../partials/LanguageSelector";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -16,9 +17,7 @@ const Header = () => {
                     <div className="whitespace-nowrap text-primary text-lg font-bold hidden sm:inline">
                         <span className="text-2xl">10000+</span> Online now
                     </div>   
-                    <select className="select select-bordered select-sm w-full max-w-xs">
-                        <option disabled selected>Select language</option>
-                    </select>                                  
+                    <LanguageSelector />                                
                 </div>
             </nav>
         </header>

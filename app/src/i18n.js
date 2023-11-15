@@ -7,9 +7,14 @@ i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        fallbackLng: 'en',
+        fallbackLng: (code) => {
+            const fallbacks = [];
+            const langPart = code.split('-')[0];
+            if (langPart !== code) fallbacks.push(langPart);
+            return fallbacks;
+        },
+        
         debug: true,
-
         interpolation: {
             escapeValue: false
         }
