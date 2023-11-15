@@ -79,7 +79,7 @@ const LOCALES = {
     "mt": "Maltese",
     "mi": "Maori",
     "mr": "Marathi",
-    "mni-Mtei": "Meiteilon (Manipuri")
+    "mni-Mtei": "Meiteilon (Manipuri)",
     "lus": "Mizo",
     "mn": "Mongolian",
     "my": "Myanmar (Burmese)",
