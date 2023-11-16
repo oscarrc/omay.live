@@ -1,0 +1,53 @@
+{
+    "landing":{
+        "noapp": "",
+        "intro": "",
+        "disclaimer": "",
+        "pleaseleave": "",
+        "termscheck": "",
+        "agecheck": "",
+        "acceptandcontinue": ""
+},
+    "chat":{
+        "connecting": "",
+        "error": "",
+        "nocam": "",
+        "banned": "",
+        "searching": "",
+        "connected": "",
+        "language": "",
+        "interest": "",
+        "simulated": "",
+        "typing": "",
+        "disconnected": "",
+        "interests": "",
+        "great": "",
+        "save": "",
+        "download": "",
+        "selectall": "",
+        "start": "",
+        "stop": "",
+        "really": "",
+        "send": "",
+        "report": ""
+    },
+    "common":{
+        "startchatting": "",
+        "talkabout": "",
+        "addinterests": "",
+        "video": "",
+        "text": "",
+        "unmoderated": "",
+        "or": "",
+        "allrightsreserved": "",
+        "terms": "",
+        "privacy": "",
+        "guidelines": "",
+        "alerts": {
+          "monitored":"",
+          "keepclean": "",
+          "banned":"",
+          "banreason":"",
+        }
+    }
+}

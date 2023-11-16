@@ -44,10 +44,10 @@
         "privacy": "Privacy policy",
         "guidelines": "Community guidelines",
         "alerts": {
-          "monitored":"Video is monitored",
+          "monitored": "Video is monitored",
           "keepclean": "Keep it clean and help by reporting NSFW behaviour",
-          "banned":"Your computer/network has been banned",
-          "banreason":"Due to bad behiavior. Don't worry, ban won't last forever."
+          "banned": "Your computer/network has been banned",
+          "banreason": "Due to bad behiavior. Don't worry, ban won't last forever."
         }
 
     }

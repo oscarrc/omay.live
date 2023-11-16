@@ -1,0 +1,53 @@
+{
+    "landing":{
+        "noapp": "¡No necesitas una aplicación para usar {{ BRAND }} en tu teléfono o tableta! El sitio web funciona muy bien en dispositivos móviles.",
+        "intro": "{{BRAND}} ({{TRANSLITERATION}}) es una excelente manera de conocer nuevos amigos. Cuando usas {{ BRAND }}, elegimos a otra persona al azar y te permitimos hablar uno a uno. Para ayudarte mantente seguro, los chats son anónimos a menos que le digas a alguien quién eres (¡no recomendado!) y puedes detener un chat en cualquier momento. Consulta nuestros <6>Términos y condiciones</6> y las <8>Pautas de la comunidad</8> para obtener información sobre lo que se debe y no se debe hacer al usar {{ BRAND }}. El chat de video de {{ BRAND }} está moderado por IA, pero ninguna moderación es perfecta. Los usuarios son los únicos responsables de su comportamiento mientras usan {{ BRAND }}",
+        "disclaimer": "<0>Debes tener 18 años (o la mayoría legal en tu jurisdicción) o más para usar {{BRAND}}</0>. Consulta {{BRAND}} <4>Términos y condiciones</4> para obtener más información. Las protecciones de control parental que pueden ayudar a los padres están disponibles comercialmente y puede encontrar más información en <6>https://www.connectsafely.org/controls</6>, así como en otros sitios",
+        "pleaseleave": "Deje Lamdazle y visite un sitio para adultos si eso es lo que está buscando y tiene 18 años (o la mayoría legal en su jurisdicción) o más.",
+        "termscheck": "Al marcar la casilla, reconoce que ha revisado y acepta estar sujeto a {{BRAND}} <3>Términos y condiciones</3>, <5>Política de privacidad</5> y <7>Pautas de la comunidad</ 7>.",
+        "agecheck": "No puede utilizar este servicio si es menor de 18 años o la mayoría de edad legal en su jurisdicción. Consulte nuestros <1>Términos y condiciones</1> para obtener más información. <3>Al marcar la casilla, reconoce y declara que tiene 18 años (o la mayoría legal en su jurisdicción) o más.</3>",
+        "acceptandcontinue": "Aceptar y continuar"
+    },
+    "chat":{
+        "connecting": "Conectando al servidor",
+        "error": "Error al conectarse al servidor: inténtelo de nuevo",
+        "nocam": "Error con la cámara: Dispositivo solicitado no encontrado",
+        "banned": "Prohibido",
+        "searching": "Buscando un extraño al azar con quien puedas chatear...",
+        "connected": "Estás charlando con un extraño al azar. Di hola...",
+        "language": "Ambos hablan el mismo idioma. Seleccione <strong>Cualquier</strong> en el menú de idioma para desactivarlo.",
+        "interest": "A ambos les gusta",
+        "simulated": "Es extraño que esté usando una cámara web simulada",
+        "typing": "El extraño está escribiendo",
+        "disconnected": "El extraño esta desconectado",
+        "interests": "Encontrar extraños con intereses comunes",
+        "great": "¿Gran charla?",
+        "save": "Guardar el registro",
+        "download": "Descargar",
+        "selectall": "Seleccionar todo",
+        "start": "Iniciar",
+        "stop": "Detener",
+        "really": "En realidad",
+        "send": "Enviar",
+        "report": "Informe"
+    },
+    "common":{
+        "startchatting": "Empieza a chatear",
+        "talkabout": "¿De qué quieres hablar?",
+        "addinterests": "Agrega tus intereses (Opcional)",
+        "video": "Video",
+        "text": "Texto",
+        "unmoderated": "Sin moderar",
+        "or": "o",
+        "allrightsreserved": "Todos los derechos reservados",
+        "terms": "Términos y condiciones",
+        "privacy": "Política de privacidad",
+        "guidelines": "Pautas de la Comunidad",
+        "alerts": {
+          "monitored":"El vídeo está monitoreado",
+          "keepclean": "Manténgalo limpio y ayude informando sobre el comportamiento NSFW",
+          "banned":"Su computadora/red ha sido baneada",
+          "banreason":"Debido al mal comportamiento. No te preocupes, la prohibición no durará para siempre"
+        }
+    }
+}
