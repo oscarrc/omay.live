@@ -47,7 +47,7 @@
           "monitored":"El vídeo está monitoreado",
           "keepclean": "Manténgalo limpio y ayude informando sobre el comportamiento NSFW",
           "banned":"Su computadora/red ha sido baneada",
-          "banreason":"Debido al mal comportamiento. No te preocupes, la prohibición no durará para siempre"
+          "banreason":"Debido al mal comportamiento. No te preocupes, el baneo no durará para siempre"
         }
     }
 }
