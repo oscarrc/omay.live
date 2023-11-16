@@ -30,20 +30,31 @@ const ChatProvider = ({ children }) => {
     const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     const socket = useRef(null);
-    
+
+    const connect = (mode) => socket.current.connect({ query: mode });
+    const disconnect = () => socket.current.disconnect();
+
     useEffect(() => {
-       if(!socket.current) socket.current = io("localhost:8080");
-    }, [])
+       if(!socket.current) socket.current = io("localhost:8080", { autoConnect: false });
+    }, []) 
 
     useEffect(() => {
         const onConnect = () => console.log("connected");
+        const onDisconnect = () => console.log("disconnected");
         socket.current.on('connect', onConnect);
-        return () => { socket.current.off('connect', onConnect) }
-    })
+        socket.current.on('disconnect', onDisconnect);
+
+        return () => { 
+            socket.current.off('connect', onConnect);
+            socket.current.off('disconnect', onDisconnect);
+        }
+    }, [])
 
     return (
         <ChatContext.Provider
             value={{
+                connect,
+                disconnect,
                 state,
                 dispatch,
                 interests,

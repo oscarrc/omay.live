@@ -8,16 +8,20 @@ import { useTranslation } from "react-i18next";
 import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
-    const { state: { tac, mode } } = useChat();
-    const { cam, startCam } = useWebcam();
+    const { state: { tac, mode }, connect, disconnect } = useChat();
+    const { cam, camError, startCam } = useWebcam();
     const { t } = useTranslation();
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
 
     useEffect(()=>{
-        !tac && navigate("/")
-    }, [navigate, tac])
+        if(!tac) navigate("/");
+        else if(!camError) connect(mode);
+        return () => { disconnect() }
+    }, [camError, connect, disconnect, mode, navigate, tac])
+
+    // useEffect(() => () => { disconnect() }, [disconnect])
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { mode !== "text" && tac && startCam() }, [])
