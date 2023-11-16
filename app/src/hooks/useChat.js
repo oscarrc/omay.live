@@ -35,6 +35,12 @@ const ChatProvider = ({ children }) => {
        if(!socket.current) socket.current = io("localhost:8080");
     }, [])
 
+    useEffect(() => {
+        const onConnect = () => console.log("connected");
+        socket.current.on('connect', onConnect);
+        return () => { socket.current.off('connect', onConnect) }
+    })
+
     return (
         <ChatContext.Provider
             value={{
