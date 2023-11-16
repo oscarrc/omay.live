@@ -34,7 +34,7 @@ const Landing = () => {
                         </p>
                         <p>
                             <Trans i18nKey="landing.disclaimer">
-                                <strong>You must be 18 (or the legal majority in your jurisdiction) or older to use {{BRAND}}</strong>. See {{BRAND}} <Link className="btn-link" to={"policies/terms-and-conditions"}>Terms and conditions</Link> for more info. Parental control protections that may assists parents are commercially available and you can find more info at <a className="btn-link" href="https://www.connectsafely.org/controls" target="_blank" rel="noopener noreferrer" >https://www.connectsafely.org/controls</a> as well are other sites.
+                                <strong>You must be 18 (or the legal majority in your jurisdiction) or older to use {{BRAND}}</strong>. See {{BRAND}}&apos; <Link className="btn-link" to={"policies/terms-and-conditions"}>Terms and conditions</Link> for more info. Parental control protections that may assists parents are commercially available and you can find more info at <a className="btn-link" href="https://www.connectsafely.org/controls" target="_blank" rel="noopener noreferrer" >https://www.connectsafely.org/controls</a> as well are other sites.
                             </Trans>
                         </p>
                         <p>
