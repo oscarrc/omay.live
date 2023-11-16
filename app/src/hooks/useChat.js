@@ -31,11 +31,14 @@ const ChatProvider = ({ children }) => {
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     const socket = useRef(null);
 
-    const connect = (mode) => socket.current.connect({ query: mode });
+    const connect = (mode) => {
+        socket.current.io.opts.query = { mode }
+        socket.current.connect("localhost:8080")
+    };
     const disconnect = () => socket.current.disconnect();
 
     useEffect(() => {
-       if(!socket.current) socket.current = io("localhost:8080", { autoConnect: false });
+       if(!socket.current) socket.current = io("localhost:8080", { query:{}, autoConnect: false });
     }, []) 
 
     useEffect(() => {
