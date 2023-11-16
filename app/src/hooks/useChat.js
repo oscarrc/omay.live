@@ -1,5 +1,7 @@
 import { DEFAULTS, MODES } from "../constants/chat";
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
+
+import { io } from 'socket.io-client';
 
 const ChatContext =  createContext(null);
 
@@ -27,6 +29,11 @@ const ChatProvider = ({ children }) => {
     const [ messages, setMessages ] = useState([]);
     const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
+    const socket = useRef(null);
+    
+    useEffect(() => {
+        if(!socket.current) socket.current = io("localhost:8080");
+    }, [])
 
     return (
         <ChatContext.Provider

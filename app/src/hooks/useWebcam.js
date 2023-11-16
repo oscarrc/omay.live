@@ -10,13 +10,15 @@ const opts = {
 const useWebcam = () => {
     const stream = useRef(null);
     const [cam, setCam ] = useState(null);
+    const [camError, setCamError] = useState(false)
 
     const startCam = async () => {
         try{
             stream.current = await navigator.mediaDevices.getUserMedia(opts);
-            setCam(stream.current)
+            setCam(stream.current);
+            setCamError(false)
         }catch(e){
-            console.log(e)
+            setCamError(true);
         }       
     }
 
@@ -28,7 +30,7 @@ const useWebcam = () => {
 
     useEffect(() => () => stopCam(), [])
 
-    return { cam, startCam }
+    return { cam, camError, startCam }
 }
 
 export default useWebcam;
