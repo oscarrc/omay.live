@@ -28,8 +28,8 @@ const io = socket(server, {
 if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', (socket) => {
-    console.log('an user connected');
+    console.log(`${socket.handshake.address} connected`);
     socket.on('disconnect', () => {
-      console.log('user disconnected');
+      console.log(`${socket.handshake.address} diconnected`);
     });
-  });
+});

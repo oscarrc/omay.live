@@ -32,7 +32,7 @@ const ChatProvider = ({ children }) => {
     const socket = useRef(null);
     
     useEffect(() => {
-        if(!socket.current) socket.current = io("localhost:8080");
+       if(!socket.current) socket.current = io("localhost:8080");
     }, [])
 
     return (
