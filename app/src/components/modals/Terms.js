@@ -33,7 +33,7 @@ const Terms = ({ show, mode, onSubmit, onClose }) => {
                             <input type="checkbox" checked={tac} onChange={() => setTac(!tac)} className="checkbox" />
                             <span className="label-text text-lg">
                                 <Trans i18nKey={"landing.termscheck"}>
-                                    By checking the box you acknowledge that you have reviewed an agree to be bound by {{BRAND}}&apos;s <Link target="_blank" rel="noopener noreferrer" className="btn-link" to={"policies/terms-and-conditions"}>Terms and conditions</Link>, <Link target="_blank" rel="noopener noreferrer" className="btn-link" to={"policies/privacy-policy"}>Privacy policy</Link> and <Link target="_blank" rel="noopener noreferrer" className="btn-link" to={"policies/community-guidelines"}>Community guidelines</Link>.
+                                    By checking the box you acknowledge that you have reviewed an agree to be bound by {{BRAND}} <Link target="_blank" rel="noopener noreferrer" className="btn-link" to={"policies/terms-and-conditions"}>Terms and conditions</Link>, <Link target="_blank" rel="noopener noreferrer" className="btn-link" to={"policies/privacy-policy"}>Privacy policy</Link> and <Link target="_blank" rel="noopener noreferrer" className="btn-link" to={"policies/community-guidelines"}>Community guidelines</Link>.
                                 </Trans>
                             </span> 
                         </label>
