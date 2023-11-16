@@ -18,7 +18,7 @@ const Chat = () => {
     }, [navigate, tac])
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { mode !== "text" && startCam() }, [])
+    useEffect(() => { mode !== "text" && tac && startCam() }, [])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
