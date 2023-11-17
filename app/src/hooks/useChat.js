@@ -1,5 +1,4 @@
 import * as nsfwjs from 'nsfwjs'
-import * as tf from '@tensorflow/tfjs'
 
 import { DEFAULTS, MODES } from "../constants/chat";
 import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
