@@ -1,11 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const opts = {
-    video: {
-        facingMode: 'user'
-    },
-    audio: true
-}
+import { CAMERA_OPTIONS } from "../constants/chat";
 
 const useWebcam = () => {
     const stream = useRef(null);
@@ -14,7 +9,7 @@ const useWebcam = () => {
 
     const startCam = async () => {
         try{
-            stream.current = await navigator.mediaDevices.getUserMedia(opts);
+            stream.current = await navigator.mediaDevices.getUserMedia(CAMERA_OPTIONS);
             setCam(stream.current);
             setCamError(false)
         }catch(e){

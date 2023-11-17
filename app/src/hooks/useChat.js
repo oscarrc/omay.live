@@ -1,6 +1,6 @@
 import * as nsfwjs from 'nsfwjs'
 
-import { DEFAULTS, MODES } from "../constants/chat";
+import { DEFAULTS, MODES, RTC_SERVERS } from "../constants/chat";
 import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
 
 import { io } from 'socket.io-client';
@@ -30,11 +30,17 @@ const ChatProvider = ({ children }) => {
     const [ interests, setInterests ] = useState([]); 
     const [ messages, setMessages ] = useState([]);
     const [ status, setStatus ] = useState(-1);
+    const [ peer, setPeer ] = useState(null);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
+    
     const socket = useRef(null);
     const connection = useRef(null);
     const nsfw = useRef(null);
-
+    const stream = useRef({
+        remote: null,
+        local: null
+    })
+    
     const connect = (mode) => {
         socket.current.io.opts.query = { mode, interests }
         socket.current.connect("localhost:8080")
@@ -42,9 +48,7 @@ const ChatProvider = ({ children }) => {
 
     const disconnect = () => socket.current.disconnect();
 
-    const loadNSFW = async () => {
-        nsfw.current = await nsfwjs.load();
-    }
+    const loadNSFW = async () => await nsfwjs.load();
 
     const checkNSFW = async (img) => {
         if(!nsfw.current) return;
@@ -52,67 +56,81 @@ const ChatProvider = ({ children }) => {
         console.log(predictions)
     }
 
-    const createOffer = async () => {
-        connection.current = new RTCPeerConnection({
-            iceServers: [{
-                urls: [
-                    "stun:stun1.1.google.com:19302",
-                    "stun:stun2.1.google.com:19302"
-                ]
-            }]
-        });
+    const createConnection = async () => {        
+        connection.current = new RTCPeerConnection(RTC_SERVERS);
+        stream.current.remote = new MediaStream();
         
-        const offer = await connection.current.createOffer();
+        stream.current.local.getTracks().forEach( t => connection.current.addTrack(t))
+        connection.current.ontrack = async (e) => e.streams[0].getTracks().forEach( t => stream.current.remote.addTrack(t))
 
+        stream.current.remote.oninactive = () => {
+            stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
+            connection.current.close();
+        }
+
+        connection.current.onicecandidate = async (e) => {
+            if(!e.candidate) return;
+            socket.emit("candidatesent", {
+                id: socket.current.id,
+                remoteId: peer,
+                iceCandidate: e.candidate
+            })
+        }
+    }
+
+    const createOffer = async () => {
+        await createConnection();
+
+        const offer = await connection.current.createOffer();                
         await connection.current.setLocalDescription(offer);
-
+        
         socket.emit("offercreated", {
             id: socket.current.id,
-            remoteId: "",
-            offer: connection.current.offer
+            remoteId: peer,
+            offer
         })
     }
 
-    const createAnswer = async (offer) => {
-        connection.current = new RTCPeerConnection({
-            iceServers: [{
-                urls: [
-                    "stun:stun1.1.google.com:19302",
-                    "stun:stun2.1.google.com:19302"
-                ]
-            }]
-        });
-
-        await connection.current.setRemoteDescription(offer.description);        
+    const onReciveOffer = async (data) => { //Create answer       
+        await createConnection();                
+        await connection.current.setRemoteDescription(data.offer); 
+        
         const answer = await connection.current.createAnswer();
+        await connection.current.setLocalDescription(answer);
 
         socket.emit("answercreated", {
+            id: socket.current.id,
+            remoteId: data.peer,
             answer,
-            sender: offer.peer,
-            receiver: socket.current.id
         })
     }
 
-    const endConnection = async () => {
-        await connection.current.close();
-        connection.current = null;
+    const onReceiveAnswer = async (data) => { //Set remote description
+        if(this.connection.current.currentRemoteDescription) return;
+        this.connection.current.setRemoteDescription(data.answer);
     }
 
     useEffect(() => {
        if(!socket.current) socket.current = io("localhost:8080", { query:{}, autoConnect: false });
-       if(!nsfw.current) loadNSFW();
+       if(!nsfw.current) nsfw.current = loadNSFW();
     }, []) 
 
     useEffect(() => {
         const onConnect = () => console.log("connected");
         const onDisconnect = () => console.log("disconnected");
+
         socket.current.on('connect', onConnect);
         socket.current.on('disconnect', onDisconnect);
+        socket.current.on('receiveoffer', onReciveOffer);        
+        socket.current.on('receiveanswer', onReceiveAnswer)
 
         return () => { 
             socket.current.off('connect', onConnect);
             socket.current.off('disconnect', onDisconnect);
+            socket.current.off('receiveoffer', onReciveOffer);        
+            socket.current.off('receiveanswer', onReceiveAnswer)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

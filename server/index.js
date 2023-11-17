@@ -31,14 +31,16 @@ if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', (socket) => {   
   console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
-  ChatService.peerConnected({
-    peer: socket.id,
-    ip: socket.handshake.address,
-    mode: socket.handshake.query.mode,    
-    interest: socket.handshake.query.interests || []
-  })
+
+  // ChatService.peerConnected({
+  //   peer: socket.id,
+  //   ip: socket.handshake.address,
+  //   mode: socket.handshake.query.mode
+  //   interests: socket.handshake.query.interests
+  // })
 
   socket.on('disconnect', () => {
     console.log(`${socket.handshake.address} disconnected`);
+    // ChatService.peerDisconnected({ peer: socket.id })
   });
 });

@@ -14,8 +14,8 @@ class ChatService{
     }
 
     async getPeer(peer){
-        let peer = await this.peer.findOne({ peer })
-        return peer;
+        let found = await this.peer.findOne({ peer })
+        return found;
     }
 
     async peerConnected(peer){
