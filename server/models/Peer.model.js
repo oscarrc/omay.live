@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+const { Schema, model } = require("mongoose");
 
 const PeerModel = new Schema({
     peer: {
@@ -27,4 +27,4 @@ const PeerModel = new Schema({
     }
 })
 
-export default model('Peer', PeerModel);
+module.exports = model('Peer', PeerModel);

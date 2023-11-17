@@ -1,6 +1,5 @@
-import { Schema, model } from "mongoose";
-
-import { BAN_DURATION } from "../config";
+const { Schema, model } = require("mongoose");
+const { BAN_DURATION } = require("../config");
 
 const BanSchema = new Schema({
     ip: {
@@ -34,5 +33,5 @@ BanSchema.virtual("isBanned").get(function() {
     return now < target;
 })
 
-export default model('Ban', BancSchema);
+module.exports = model('Ban', BanSchema);
 

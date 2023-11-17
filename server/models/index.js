@@ -1,4 +1,4 @@
 module.exports = {
-    Ban: require("./Ban.model"),
-    Peer: require("./Peer.model")
+    BanModel: require("./Ban.model"),
+    PeerModel: require("./Peer.model")
 }

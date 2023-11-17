@@ -1,3 +1,5 @@
+const { BanModel } = require("../models");
+
 class BanService{
     constructor(Ban){
         this.ban = Ban;
@@ -21,3 +23,4 @@ class BanService{
     }
 }
 
+module.exports = new BanService(BanModel)

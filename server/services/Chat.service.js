@@ -1,3 +1,5 @@
+const { PeerModel } = require("../models");
+
 class ChatService{
     constructor(Peer){
         this.peer = Peer;
@@ -28,3 +30,4 @@ class ChatService{
     }
 }
 
+module.exports = new ChatService(PeerModel)
