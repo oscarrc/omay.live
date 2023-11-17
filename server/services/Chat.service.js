@@ -13,6 +13,11 @@ class ChatService{
 
     }
 
+    async getPeer(peer){
+        let peer = await this.peer.findOne({ peer })
+        return peer;
+    }
+
     async peerConnected(peer){
         await this.peer.create({ peer });
     }

@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 8080;
 const BASE_URL = process.env.BASE_URL || "localhost";
 const app = express();
 
+const { ChatService } = require("./services")
+
 app.use(bodyparser.urlencoded({extended: true}))
     .use(bodyparser.json())
     .use(cors())
@@ -29,6 +31,13 @@ if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', (socket) => {   
   console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
+  ChatService.peerConnected({
+    peer: socket.id,
+    ip: socket.handshake.address,
+    mode: socket.handshake.query.mode,    
+    interest: socket.handshake.query.interests || []
+  })
+
   socket.on('disconnect', () => {
     console.log(`${socket.handshake.address} disconnected`);
   });

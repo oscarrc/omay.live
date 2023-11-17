@@ -32,10 +32,11 @@ const ChatProvider = ({ children }) => {
     const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     const socket = useRef(null);
+    const connection = useRef(null);
     const nsfw = useRef(null);
 
     const connect = (mode) => {
-        socket.current.io.opts.query = { mode }
+        socket.current.io.opts.query = { mode, interests }
         socket.current.connect("localhost:8080")
     };
 
@@ -49,6 +50,52 @@ const ChatProvider = ({ children }) => {
         if(!nsfw.current) return;
         const predictions = await nsfw.current.classify(img);
         console.log(predictions)
+    }
+
+    const createOffer = async () => {
+        connection.current = new RTCPeerConnection({
+            iceServers: [{
+                urls: [
+                    "stun:stun1.1.google.com:19302",
+                    "stun:stun2.1.google.com:19302"
+                ]
+            }]
+        });
+        
+        const offer = await connection.current.createOffer();
+
+        await connection.current.setLocalDescription(offer);
+
+        socket.emit("offercreated", {
+            id: socket.current.id,
+            remoteId: "",
+            offer: connection.current.offer
+        })
+    }
+
+    const createAnswer = async (offer) => {
+        connection.current = new RTCPeerConnection({
+            iceServers: [{
+                urls: [
+                    "stun:stun1.1.google.com:19302",
+                    "stun:stun2.1.google.com:19302"
+                ]
+            }]
+        });
+
+        await connection.current.setRemoteDescription(offer.description);        
+        const answer = await connection.current.createAnswer();
+
+        socket.emit("answercreated", {
+            answer,
+            sender: offer.peer,
+            receiver: socket.current.id
+        })
+    }
+
+    const endConnection = async () => {
+        await connection.current.close();
+        connection.current = null;
     }
 
     useEffect(() => {
