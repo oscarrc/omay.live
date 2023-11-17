@@ -7,6 +7,10 @@ const PeerModel = new Schema({
         unique: true,
         index: true
     },
+    ip: {
+        type: String,
+        required: true
+    },
     mode: {
         type: String,
         enum : ["text","video","unmoderated"],
