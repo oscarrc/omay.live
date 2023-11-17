@@ -1,3 +1,3 @@
 const BAN_DURATION = 7;
 
-export { BAN_DURATION }
+module.exports = { BAN_DURATION }
