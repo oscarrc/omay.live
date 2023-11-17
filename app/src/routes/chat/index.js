@@ -8,12 +8,18 @@ import { useTranslation } from "react-i18next";
 import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
-    const { state: { tac, mode }, connect, disconnect } = useChat();
-    const { cam, camError, startCam } = useWebcam();
+    const { state: { tac, mode }, connect, disconnect, checkNSFW } = useChat();
+    const { cam, camError, startCam, getImg } = useWebcam();
     const { t } = useTranslation();
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
+
+    const onSearch = async () => {
+        const img = getImg();
+        const result = await checkNSFW(img);
+        console.log(result)
+    }
 
     useEffect(()=>{
         if(!tac) navigate("/");
@@ -45,7 +51,7 @@ const Chat = () => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
                 }
-                <ChatControls />
+                <ChatControls onClick={onSearch} />
             </div>
         </section>
     )

@@ -1,3 +1,6 @@
+import * as nsfwjs from 'nsfwjs'
+import * as tf from '@tensorflow/tfjs'
+
 import { DEFAULTS, MODES } from "../constants/chat";
 import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
 
@@ -30,15 +33,28 @@ const ChatProvider = ({ children }) => {
     const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     const socket = useRef(null);
+    const nsfw = useRef(null);
 
     const connect = (mode) => {
         socket.current.io.opts.query = { mode }
         socket.current.connect("localhost:8080")
     };
+
     const disconnect = () => socket.current.disconnect();
+
+    const loadNSFW = async () => {
+        nsfw.current = await nsfwjs.load();
+    }
+
+    const checkNSFW = async (img) => {
+        if(!nsfw.current) return;
+        const predictions = await nsfw.current.classify(img);
+        console.log(predictions)
+    }
 
     useEffect(() => {
        if(!socket.current) socket.current = io("localhost:8080", { query:{}, autoConnect: false });
+       if(!nsfw.current) loadNSFW();
     }, []) 
 
     useEffect(() => {
@@ -56,6 +72,7 @@ const ChatProvider = ({ children }) => {
     return (
         <ChatContext.Provider
             value={{
+                checkNSFW,
                 connect,
                 disconnect,
                 state,
