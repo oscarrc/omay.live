@@ -64,6 +64,18 @@ const ChatProvider = ({ children }) => {
         console.log(predictions)
     }
 
+    const findPeer = async () => {
+        const res = await fetch(`${process.env.SERVER_URL}/chat`, {
+            method: "POST",
+            body: {
+                peer: socket.id,
+                query: {}
+            }
+        })
+
+        setPeer(res.peer);
+    }
+
     const createConnection = async () => {        
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         stream.current.remote = new MediaStream();
