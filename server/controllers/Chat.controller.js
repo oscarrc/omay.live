@@ -9,6 +9,8 @@ class ChatController {
     } 
 
     async find(req, res){
+        const peer = await ChatService.findPeer(req.query);
+        return res.status(200).send({ peer });
     }
 }
 
