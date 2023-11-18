@@ -12,7 +12,7 @@ class BanController {
         return res.status(200).send({ isBanned });
     }
 
-    async post(req, res){        
+    async ban(req, res){        
         const { ip } = req.body;
         const isBanned = await this.service.warn(ip);
 

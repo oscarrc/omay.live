@@ -43,12 +43,20 @@ const ChatProvider = ({ children }) => {
     
     const connect = (mode) => {
         socket.current.io.opts.query = { mode, interests }
-        socket.current.connect("localhost:8080")
+        socket.current.connect(process.env.SERVER_URL)
     };
 
     const disconnect = () => socket.current.disconnect();
 
-    const loadNSFW = async () => await nsfwjs.load();
+    const loadNSFW = async () => {
+        try{
+            return await nsfwjs.load('indexeddb://model')
+        }catch{            
+            const load = await nsfwjs.load();
+            await load.model.save('indexeddb://model');
+            return load;
+        }
+    }
 
     const checkNSFW = async (img) => {
         if(!nsfw.current) return;

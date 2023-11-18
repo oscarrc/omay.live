@@ -6,6 +6,9 @@ class ChatController {
     }
 
     async get(req, res){
+    } 
+
+    async find(req, res){
     }
 }
 

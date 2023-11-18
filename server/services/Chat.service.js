@@ -10,7 +10,8 @@ class ChatService{
     }
 
     async findPeer(options){
-
+        let found = await this.peer.findOne({ peer })
+        return found.peer;
     }
 
     async getPeer(peer){
@@ -19,11 +20,15 @@ class ChatService{
     }
 
     async peerConnected(peer){
-        await this.peer.create({ peer });
+        await this.peer.create(peer);
     }
 
     async peerDisconnected(peer){
-        await this.peer.deleteOne({ peer })
+        try{
+            await this.peer.deleteOne({ peer })
+        }catch(e){
+            console.log(e)
+        }
     }
 
     async peerUnavailable(peer){
