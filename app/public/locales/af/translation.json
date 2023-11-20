@@ -47,7 +47,7 @@
           "monitored":"",
           "keepclean": "",
           "banned":"",
-          "banreason":"",
+          "banreason":""
         }
     }
 }
