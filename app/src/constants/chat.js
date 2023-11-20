@@ -33,6 +33,8 @@ const VIRTUAL_CAMS = [
     "XSplit VCam",
     "Snap Camera",
     "SplitCam Video Driver",
+    "AlterCam Virtual Webcam",
+    "vMix Video",
     "CamTwist",
     "Virtual",
     "HP Truevision HD"
