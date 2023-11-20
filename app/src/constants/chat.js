@@ -27,4 +27,15 @@ const  CAMERA_OPTIONS = {
     audio: true
 }
 
-export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS }
+const VIRTUAL_CAMS = [
+    "OBS Virtual Cam",
+    "ManyCam Virtual Webcam",
+    "XSplit VCam",
+    "Snap Camera",
+    "SplitCam Video Driver",
+    "CamTwist",
+    "Virtual",
+    "HP Truevision HD"
+]
+
+export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS, VIRTUAL_CAMS }

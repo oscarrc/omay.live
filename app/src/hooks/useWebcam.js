@@ -1,11 +1,10 @@
+import { CAMERA_OPTIONS, VIRTUAL_CAMS } from "../constants/chat";
 import { useEffect, useRef, useState } from "react";
-
-import { CAMERA_OPTIONS } from "../constants/chat";
 
 const useWebcam = () => {
     const stream = useRef(null);
     const [cam, setCam ] = useState(null);
-    const [camError, setCamError] = useState(false)
+    const [camError, setCamError] = useState(false);
 
     const startCam = async () => {
         try{
@@ -20,7 +19,12 @@ const useWebcam = () => {
     const stopCam = () => {
         stream.current?.getTracks().forEach(track => track.stop());
         stream.current = null
-        setCam(null)
+        setCam(null);
+    }
+
+    const checkVirtual = () => {
+        const label = stream.current.getVideoTracks()[0].label
+        return VIRTUAL_CAMS.find( v => new RegExp(v, 'i').test(label))
     }
 
     const getImg = () => {
