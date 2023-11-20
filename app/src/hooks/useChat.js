@@ -36,10 +36,8 @@ const ChatProvider = ({ children }) => {
     const socket = useRef(null);
     const connection = useRef(null);
     const nsfw = useRef(null);
-    const stream = useRef({
-        remote: null,
-        local: null
-    })
+    const stream = useRef({ remote: null, local: null });
+    const data = useRef(null);
     
     const connect = (mode) => {
         socket.current.io.opts.query = { mode, interests }
@@ -76,15 +74,17 @@ const ChatProvider = ({ children }) => {
         setPeer(res.peer);
     }
 
-    const createConnection = async () => {        
+    const createConnection = async (stream) => {        
         connection.current = new RTCPeerConnection(RTC_SERVERS);
-        stream.current.remote = new MediaStream();
         
-        stream.current.local.getTracks().forEach( t => connection.current.addTrack(t))
-        connection.current.ontrack = async (e) => e.streams[0].getTracks().forEach( t => stream.current.remote.addTrack(t))
+        if(state.mode !== "text"){
+            stream.current.remote = new MediaStream();        
+            stream.current.local.getTracks().forEach( t => connection.current.addTrack(t))
+            connection.current.ontrack = async (e) => e.streams[0].getTracks().forEach( t => stream.current.remote.addTrack(t))
+        }
 
         stream.current.remote.oninactive = () => {
-            stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
+            state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
             connection.current.close();
         }
 
@@ -96,6 +96,11 @@ const ChatProvider = ({ children }) => {
                 iceCandidate: e.candidate
             })
         }
+
+        connection.current.ondatachannel = (e) => data.current = e.channel;
+
+        data.current = connection.current.createDataChannel("data");
+        data.current.onMessage = (e) => setMessages(m => [...m, { me: false, msg: e.data}]);
     }
 
     const createOffer = async () => {
@@ -130,6 +135,11 @@ const ChatProvider = ({ children }) => {
         this.connection.current.setRemoteDescription(data.answer);
     }
 
+    const sendMessage = (msg) => {
+        data.current.send(msg);
+        setMessages(m => [...m, { me: true, msg } ])
+    };
+
     useEffect(() => {
        if(!socket.current) socket.current = io("localhost:8080", { query:{}, autoConnect: false });
        if(!nsfw.current) nsfw.current = loadNSFW();
@@ -163,6 +173,8 @@ const ChatProvider = ({ children }) => {
                 dispatch,
                 interests,
                 setInterests,
+                messages,
+                sendMessage
             }}
         >
             { children }        
