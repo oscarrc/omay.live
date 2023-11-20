@@ -39,16 +39,18 @@ const ChatProvider = ({ children }) => {
     const stream = useRef({ remote: null, local: null });
     const data = useRef(null);
     
-    const connect = (mode) => {
+    const connect = (mode, cam) => {
         socket.current.io.opts.query = { mode, interests }
         socket.current.connect(process.env.SERVER_URL)
+        stream.current.local = cam
     };
 
     const disconnect = () => socket.current.disconnect();
 
     const loadNSFW = async () => {
         try{
-            return await nsfwjs.load('indexeddb://model')
+            let nsfw = await nsfwjs.load('indexeddb://model')
+            return nsfw;
         }catch{            
             const load = await nsfwjs.load();
             await load.model.save('indexeddb://model');
@@ -74,7 +76,9 @@ const ChatProvider = ({ children }) => {
         setPeer(res.peer);
     }
 
-    const createConnection = async (stream) => {        
+    const createConnection = async () => {      
+        const peer = await findPeer();
+          
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         
         if(state.mode !== "text"){
@@ -90,7 +94,7 @@ const ChatProvider = ({ children }) => {
 
         connection.current.onicecandidate = async (e) => {
             if(!e.candidate) return;
-            socket.emit("candidatesent", {
+            socket.current.emit("candidatesent", {
                 id: socket.current.id,
                 remoteId: peer,
                 iceCandidate: e.candidate
@@ -105,11 +109,11 @@ const ChatProvider = ({ children }) => {
 
     const createOffer = async () => {
         await createConnection();
-
+        
         const offer = await connection.current.createOffer();                
         await connection.current.setLocalDescription(offer);
         
-        socket.emit("offercreated", {
+        socket.current.emit("offercreated", {
             id: socket.current.id,
             remoteId: peer,
             offer
@@ -123,7 +127,9 @@ const ChatProvider = ({ children }) => {
         const answer = await connection.current.createAnswer();
         await connection.current.setLocalDescription(answer);
 
-        socket.emit("answercreated", {
+        setPeer(data.peer);
+        
+        socket.current.emit("answercreated", {
             id: socket.current.id,
             remoteId: data.peer,
             answer,
@@ -132,13 +138,17 @@ const ChatProvider = ({ children }) => {
 
     const onReceiveAnswer = async (data) => { //Set remote description
         if(this.connection.current.currentRemoteDescription) return;
-        this.connection.current.setRemoteDescription(data.answer);
+        this.connection.current.setRemoteDescription(data.answer); 
+
+        socket.current.emit("offerAccepted", {
+            peers: [ socket.current.id, data.peer]
+        })
     }
 
     const sendMessage = (msg) => {
         data.current.send(msg);
         setMessages(m => [...m, { me: true, msg } ])
-    };
+    };    
 
     useEffect(() => {
        if(!socket.current) socket.current = io("localhost:8080", { query:{}, autoConnect: false });
@@ -168,6 +178,7 @@ const ChatProvider = ({ children }) => {
             value={{
                 checkNSFW,
                 connect,
+                createOffer,
                 disconnect,
                 state,
                 dispatch,

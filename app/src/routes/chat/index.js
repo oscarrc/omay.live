@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
-    const { state: { tac, mode }, connect, disconnect, checkNSFW } = useChat();
+    const { state: { tac, mode }, createOffer, connect, disconnect, checkNSFW } = useChat();
     const { cam, camError, startCam, getImg } = useWebcam();
     const { t } = useTranslation();
 
@@ -16,16 +16,17 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
 
     const onSearch = async () => {
-        const img = getImg();
-        const result = await checkNSFW(img);
-        console.log(result)
+        // const img = getImg();
+        // const result = await checkNSFW(img);
+
+        createOffer();
     }
 
     useEffect(()=>{
         if(!tac) navigate("/");
-        else if(!camError) connect(mode);
+        else if(!camError) connect(mode, cam);
         return () => { disconnect() }
-    }, [camError, connect, disconnect, mode, navigate, tac])
+    }, [cam, camError, connect, disconnect, mode, navigate, tac])
 
     // useEffect(() => () => { disconnect() }, [disconnect])
 
