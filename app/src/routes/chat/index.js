@@ -19,7 +19,7 @@ const Chat = () => {
         // const img = getImg();
         // const result = await checkNSFW(img);
 
-        // createOffer();
+        createOffer();
     }
 
     useEffect(()=>{

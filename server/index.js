@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
     interests: socket.handshake.query.interests
   })
 
-  soceket.on('candidatesent', (data) => {
+  socket.on('candidatesent', (data) => {
     socket.to(data.remoteId).emit("receivecandidate", data)
   })
 

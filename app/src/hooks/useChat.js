@@ -30,7 +30,6 @@ const ChatProvider = ({ children }) => {
     const [ interests, setInterests ] = useState([]); 
     const [ messages, setMessages ] = useState([]);
     const [ status, setStatus ] = useState(-1);
-    const [ peer, setPeer ] = useState(null);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     
     const socket = useRef(null);
@@ -38,10 +37,11 @@ const ChatProvider = ({ children }) => {
     const nsfw = useRef(null);
     const stream = useRef({ remote: null, local: null });
     const data = useRef(null);
+    const peer = useRef(null);
     
     const connect = (mode, cam) => {
         socket.current.io.opts.query = { mode, interests }
-        socket.current.connect(process.env.SERVER_URL)
+        socket.current.connect()
         stream.current.local = cam
     };
 
@@ -65,42 +65,48 @@ const ChatProvider = ({ children }) => {
     }
 
     const findPeer = async () => {
-        const res = await fetch(`${process.env.SERVER_URL}/chat`, {
+        const res = await fetch(`http://localhost:8080/chat`, {
             method: "POST",
-            body: {
-                peer: socket.id,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                peer: socket.current.id,
                 query: {}
-            }
-        })
+            })
+        }).then( async res => await res.json() )
+        
+        console.log(res)
 
-        setPeer(res.peer);
+        return res.peer;
     }
 
     const createConnection = async () => {      
-        const peer = await findPeer();
-          
+        peer.current = await findPeer();          
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         
         if(state.mode !== "text"){
             stream.current.remote = new MediaStream();        
             stream.current.local.getTracks().forEach( t => connection.current.addTrack(t))
             connection.current.ontrack = async (e) => e.streams[0].getTracks().forEach( t => stream.current.remote.addTrack(t))
-        }
 
-        stream.current.remote.oninactive = () => {
-            state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
-            connection.current.close();
-            socket.current.emit("connectionended", {
-                id: socket.current.id,
-                remoteId: peer
-            })
+            stream.current.remote.oninactive = () => {
+                state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
+                connection.current.close();
+                
+                socket.current.emit("connectionended", {
+                    id: socket.current.id,
+                    remoteId: peer.current
+                })
+            }
         }
 
         connection.current.onicecandidate = async (e) => {
             if(!e.candidate) return;
             socket.current.emit("candidatesent", {
                 id: socket.current.id,
-                remoteId: peer,
+                remoteId: peer.current,
                 iceCandidate: e.candidate
             })
         }
@@ -119,7 +125,7 @@ const ChatProvider = ({ children }) => {
         
         socket.current.emit("offercreated", {
             id: socket.current.id,
-            remoteId: peer,
+            remoteId: peer.current,
             offer
         })
     }
@@ -131,7 +137,7 @@ const ChatProvider = ({ children }) => {
         const answer = await connection.current.createAnswer();
         await connection.current.setLocalDescription(answer);
 
-        setPeer(data.peer);
+        peer.current = data.peer;
         
         socket.current.emit("answercreated", {
             id: socket.current.id,
@@ -143,7 +149,7 @@ const ChatProvider = ({ children }) => {
     const onReceiveAnswer = async (data) => { //Set remote description
         if(connection.current.currentRemoteDescription) return;
         connection.current.setRemoteDescription(data.answer); 
-
+        
         socket.current.emit("answerreceived", {
             id: socket.current.id,
             remoteid: data.peer
@@ -160,7 +166,7 @@ const ChatProvider = ({ children }) => {
     };    
 
     useEffect(() => {
-       if(!socket.current) socket.current = io("localhost:8080", { query:{}, autoConnect: false });
+       if(!socket.current) socket.current = io("http://localhost:8080", { query:{}, autoConnect: false });
        if(!nsfw.current) nsfw.current = loadNSFW();
     }, []) 
 

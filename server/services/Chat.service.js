@@ -34,11 +34,11 @@ class ChatService{
     }
 
     async peerUnavailable(peer){
-        await this.peer.upddateOne({ peer }, { available: false });
+        await this.peer.ateOne({ peer }, { available: false });
     }
 
     async peerAvailable(peer){
-        await this.peer.upddateOne({ peer }, { available: true });
+        await this.peer.updateOne({ peer }, { available: true });
     }
 }
 
