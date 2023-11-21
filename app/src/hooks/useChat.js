@@ -113,6 +113,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const createOffer = async () => {
+        console.log("offercreated")
         await createConnection();
         
         const offer = await connection.current.createOffer();                
@@ -125,8 +126,9 @@ const ChatProvider = ({ children }) => {
         })
     }
 
-    const onReciveOffer = async (data) => { //Create answer       
-        await createConnection();                
+    const onReciveOffer = async (data) => { //Create answer  
+        console.log("answercreated")     
+                      
         await connection.current.setRemoteDescription(data.offer); 
         
         const answer = await connection.current.createAnswer();
@@ -142,6 +144,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const onReceiveAnswer = async (data) => { //Set remote description
+        console.log("answerreceived")
         if(connection.current.currentRemoteDescription) return;
         connection.current.setRemoteDescription(data.answer); 
         
@@ -152,6 +155,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const onReceiveCandidate = async (data) => {
+        console.log("icecandidatereceived")
         await connection.current.addIceCandidate(data.iceCandidate)
     }
 

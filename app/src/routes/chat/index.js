@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
-    const { state: { tac, mode }, createOffer, connect, disconnect, checkNSFW } = useChat();
+    const { state: { tac, mode }, createOffer, connect, disconnect, messages, sendMessage, checkNSFW } = useChat();
     const { cam, camError, startCam, getImg } = useWebcam();
     const { t } = useTranslation();
 
@@ -43,7 +43,7 @@ const Chat = () => {
                         <VideoBox source={cam} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
-                <ChatBox className="flex-1" />
+                <ChatBox className="flex-1" messages={messages} />
             </div>
             <div className="flex gap-4">
                 {
@@ -52,7 +52,7 @@ const Chat = () => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
                 }
-                <ChatControls onClick={onSearch} />
+                <ChatControls onClick={onSearch} onSubmit={sendMessage} />
             </div>
         </section>
     )

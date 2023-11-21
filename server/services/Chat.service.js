@@ -16,9 +16,12 @@ class ChatService{
             available: true,
             ...query
         }
+
+        console.log(q)
         
-        let found = await this.peer.findOne(q)
-        return found.peer;
+        let found = await this.peer.findOne(q);
+        
+        return found?.peer; 
     }
 
     async getPeer(peer){
@@ -31,15 +34,11 @@ class ChatService{
     }
 
     async peerDisconnected(peer){
-        try{
-            await this.peer.deleteOne({ peer })
-        }catch(e){
-            console.log(e)
-        }
+        await this.peer.deleteOne({ peer })
     }
 
     async peerUnavailable(peer){
-        await this.peer.ateOne({ peer }, { available: false });
+        await this.peer.updateOne({ peer }, { available: false });
     }
 
     async peerAvailable(peer){
