@@ -44,6 +44,14 @@ io.on('connection', (socket) => {
     interests: socket.handshake.query.interests
   })
 
+  socket.on('connectionstarted', (data) => {
+    ChatService.chatStarted(data.peers)
+  })
+
+  socket.on('connectionended', (data) => {
+    ChatService.chatEnded(data.peers)
+  })
+
   socket.on('disconnect', () => {
     console.log(`${socket.handshake.address} disconnected`);
     ChatService.peerDisconnected(socket.id)

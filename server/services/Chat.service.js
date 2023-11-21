@@ -33,12 +33,12 @@ class ChatService{
         }
     }
 
-    async peerUnavailable(peer){
-        await this.peer.upddateOne({ peer }, { available: false });
+    async chatStarted(peers){
+        await this.peer.upddate({ peer: { $in: peers  } }, { available: false });
     }
 
-    async peerAvailable(peer){
-        await this.peer.upddateOne({ peer }, { available: true });
+    async chatEnded(peers){
+        await this.peer.upddateOne({ peer: { $in: peers  } }, { available: true });
     }
 }
 

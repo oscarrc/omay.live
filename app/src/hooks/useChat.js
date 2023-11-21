@@ -90,6 +90,9 @@ const ChatProvider = ({ children }) => {
         stream.current.remote.oninactive = () => {
             state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
             connection.current.close();
+            socket.current.emit("connectionended", {
+                peers: [ socket.current.id, peer]
+            })
         }
 
         connection.current.onicecandidate = async (e) => {
@@ -140,7 +143,7 @@ const ChatProvider = ({ children }) => {
         if(this.connection.current.currentRemoteDescription) return;
         this.connection.current.setRemoteDescription(data.answer); 
 
-        socket.current.emit("offerAccepted", {
+        socket.current.emit("connectionstarted", {
             peers: [ socket.current.id, data.peer]
         })
     }
