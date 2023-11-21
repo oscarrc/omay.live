@@ -22,8 +22,8 @@ const PeerModel = new Schema({
     },
     available: {
         type: Boolean,
-        default: true,
-        index: false
+        default: false,
+        index: true
     }
 })
 

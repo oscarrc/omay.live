@@ -4,7 +4,6 @@ const { ChatController, BanController } = require("./controllers/");
 
 router.get("/", (req,res) => res.send("test"));
 
-router.get("/peer", ChatController.get.bind(ChatController))
 router.post("/chat", ChatController.find.bind(ChatController))
 
 router.get("/ban", BanController.get.bind(BanController))

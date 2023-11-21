@@ -49,7 +49,8 @@ io.on('connection', (socket) => {
   })
 
   socket.on('offercreated', (data) => {
-    socket.to(data.remoteId).emit("receiveoffer", data)
+    socket.to(data.remoteId).emit("receiveoffer", data);
+    ChatService.peerAvailable(data.id);
   })
 
   socket.on('answercreated', (data) => {    
@@ -59,10 +60,6 @@ io.on('connection', (socket) => {
 
   socket.on('answerreceived', (data) => {
     ChatService.peerUnavailable(data.id);
-  })
-
-  socket.on('connectionended', (data) => {
-    ChatService.peerAvailable(data.id)
   })
 
   socket.on('disconnect', () => {

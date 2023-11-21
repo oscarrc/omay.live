@@ -94,11 +94,6 @@ const ChatProvider = ({ children }) => {
             stream.current.remote.oninactive = () => {
                 state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
                 connection.current.close();
-                
-                socket.current.emit("connectionended", {
-                    id: socket.current.id,
-                    remoteId: peer.current
-                })
             }
         }
 

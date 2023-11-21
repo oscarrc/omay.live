@@ -10,9 +10,14 @@ class ChatService{
     }
 
     async findPeer(options){
-        let { peer, query } = options;
+        const { peer, query } = options;
+        const q = {
+            peer: { $ne: peer },
+            available: true,
+            ...query
+        }
         
-        let found = await this.peer.findOne({ peer: {$ne: peer }, available:true })
+        let found = await this.peer.findOne(q)
         return found.peer;
     }
 
