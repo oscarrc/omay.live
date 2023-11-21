@@ -44,12 +44,25 @@ io.on('connection', (socket) => {
     interests: socket.handshake.query.interests
   })
 
-  socket.on('connectionstarted', (data) => {
-    ChatService.chatStarted(data.peers)
+  soceket.on('candidatesent', (data) => {
+    socket.to(data.remoteId).emit("receivecandidate", data)
+  })
+
+  socket.on('offercreated', (data) => {
+    socket.to(data.remoteId).emit("receiveoffer", data)
+  })
+
+  socket.on('answercreated', (data) => {    
+    socket.to(data.remoteId).emit("answerreceived", data)
+    ChatService.peerUnavailable(data.id);
+  })
+
+  socket.on('answerreceived', (data) => {
+    ChatService.peerUnavailable(data.id);
   })
 
   socket.on('connectionended', (data) => {
-    ChatService.chatEnded(data.peers)
+    ChatService.peerAvailable(data.id)
   })
 
   socket.on('disconnect', () => {

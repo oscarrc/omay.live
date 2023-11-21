@@ -91,7 +91,8 @@ const ChatProvider = ({ children }) => {
             state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
             connection.current.close();
             socket.current.emit("connectionended", {
-                peers: [ socket.current.id, peer]
+                id: socket.current.id,
+                remoteId: peer
             })
         }
 
@@ -140,12 +141,17 @@ const ChatProvider = ({ children }) => {
     }
 
     const onReceiveAnswer = async (data) => { //Set remote description
-        if(this.connection.current.currentRemoteDescription) return;
-        this.connection.current.setRemoteDescription(data.answer); 
+        if(connection.current.currentRemoteDescription) return;
+        connection.current.setRemoteDescription(data.answer); 
 
-        socket.current.emit("connectionstarted", {
-            peers: [ socket.current.id, data.peer]
+        socket.current.emit("answerreceived", {
+            id: socket.current.id,
+            remoteid: data.peer
         })
+    }
+
+    const onReceiveCandidate = async (data) => {
+        await connection.current.addIceCandidate(data.iceCandidate)
     }
 
     const sendMessage = (msg) => {
@@ -165,13 +171,15 @@ const ChatProvider = ({ children }) => {
         socket.current.on('connect', onConnect);
         socket.current.on('disconnect', onDisconnect);
         socket.current.on('receiveoffer', onReciveOffer);        
-        socket.current.on('receiveanswer', onReceiveAnswer)
+        socket.current.on('receiveanswer', onReceiveAnswer);        
+        socket.current.on('receivecandidate', onReceiveCandidate)
 
         return () => { 
             socket.current.off('connect', onConnect);
             socket.current.off('disconnect', onDisconnect);
             socket.current.off('receiveoffer', onReciveOffer);        
-            socket.current.off('receiveanswer', onReceiveAnswer)
+            socket.current.off('receiveanswer', onReceiveAnswer);        
+            socket.current.off('receivecandidate', onReceiveCandidate)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
