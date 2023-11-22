@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('answercreated', (data) => {    
-    socket.to(data.remoteId).emit("answerreceived", data)
+    socket.to(data.remoteId).emit("receiveanswer", data)
     ChatService.peerUnavailable(data.id);
   })
 

@@ -112,6 +112,7 @@ const ChatProvider = ({ children }) => {
         connection.current.ondatachannel = (e) => data.current = e.channel;
 
         data.current = connection.current.createDataChannel("data");
+        data.current.onreadystatechange = (e) => console.log(e)
         data.current.onMessage = (e) => setMessages(m => [...m, { me: false, msg: e.data}]);
     }
 
@@ -131,7 +132,8 @@ const ChatProvider = ({ children }) => {
 
     const onReciveOffer = async (data) => { //Create answer  
         console.log("answercreated")     
-                      
+        
+        // await createConnection();            
         await connection.current.setRemoteDescription(data.offer); 
         
         const answer = await connection.current.createAnswer();
@@ -148,8 +150,7 @@ const ChatProvider = ({ children }) => {
 
     const onReceiveAnswer = async (data) => { //Set remote description
         console.log("answerreceived")
-        if(connection.current.currentRemoteDescription) return;
-        connection.current.setRemoteDescription(data.answer); 
+        await connection.current.setRemoteDescription(data.answer); 
         
         socket.current.emit("answerreceived", {
             id: socket.current.id,
