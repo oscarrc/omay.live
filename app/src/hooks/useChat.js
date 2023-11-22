@@ -36,7 +36,7 @@ const ChatProvider = ({ children }) => {
     const connection = useRef(null);
     const nsfw = useRef(null);
     const stream = useRef({ remote: null, local: null });
-    const data = useRef(null);
+    const data = useRef({ send: null, receive: null });
     const peer = useRef(null);
     
     const connect = (mode, cam) => {
@@ -102,6 +102,7 @@ const ChatProvider = ({ children }) => {
 
         connection.current.onicecandidate = async (e) => {
             if(!e.candidate) return;
+
             socket.current.emit("candidatesent", {
                 id: socket.current.id,
                 remoteId: peer.current,
@@ -109,11 +110,15 @@ const ChatProvider = ({ children }) => {
             })
         }
 
-        connection.current.ondatachannel = (e) => data.current = e.channel;
+        connection.current.ondatachannel = (e) => {
+            data.current.receive = e.channel;
+            data.current.receive.onmessage = (e) => {
+                setMessages(m => [...m, { me: false, msg: e.data}]) 
+                console.log(e)
+            }
+        }
 
-        data.current = connection.current.createDataChannel("data");
-        data.current.onreadystatechange = (e) => console.log(e)
-        data.current.onMessage = (e) => setMessages(m => [...m, { me: false, msg: e.data}]);
+        data.current.send = connection.current.createDataChannel("data");
     }
 
     const createOffer = async () => {
@@ -139,11 +144,11 @@ const ChatProvider = ({ children }) => {
         const answer = await connection.current.createAnswer();
         await connection.current.setLocalDescription(answer);
 
-        peer.current = data.peer;
+        peer.current = data.id;
         
         socket.current.emit("answercreated", {
             id: socket.current.id,
-            remoteId: data.peer,
+            remoteId: data.id,
             answer,
         })
     }
@@ -164,9 +169,9 @@ const ChatProvider = ({ children }) => {
     }
 
     const sendMessage = (msg) => {
-        data.current.send(msg);
-        setMessages(m => [...m, { me: true, msg } ])
-    };    
+        setMessages(m => [...m, { me: true, msg: msg}])
+        data.current.send.send(msg);
+    }   
 
     useEffect(() => {
        if(!socket.current) socket.current = io("http://localhost:8080", { query:{}, autoConnect: false });
