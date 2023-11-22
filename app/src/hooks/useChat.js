@@ -64,6 +64,7 @@ const ChatProvider = ({ children }) => {
     
     const stopStream = async () => {
         localStream?.getTracks().forEach(track => track.stop());
+        remoteStream?.getTracks().forEach(track => track.stop());
         setLocalStream(null);
         setRemoteStream(null);
     }
