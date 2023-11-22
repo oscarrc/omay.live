@@ -45,7 +45,9 @@ const ChatProvider = ({ children }) => {
         stream.current.local = cam
     };
 
-    const disconnect = () => socket.current.disconnect();
+    const disconnect = () => {
+        socket.current.disconnect();
+    }
 
     const loadNSFW = async () => {
         try{
@@ -166,7 +168,7 @@ const ChatProvider = ({ children }) => {
     const sendMessage = (msg) => {
         setMessages(m => [...m, { me: true, msg: msg}])
         data.current.send.send(msg);
-    }   
+    }
 
     useEffect(() => {
        if(!socket.current) socket.current = io("http://localhost:8080", { query:{}, autoConnect: false });
