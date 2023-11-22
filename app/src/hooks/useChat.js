@@ -76,8 +76,6 @@ const ChatProvider = ({ children }) => {
                 query: {}
             })
         }).then( async res => await res.json() )
-        
-        console.log(res)
 
         return res.peer;
     }
@@ -112,10 +110,7 @@ const ChatProvider = ({ children }) => {
 
         connection.current.ondatachannel = (e) => {
             data.current.receive = e.channel;
-            data.current.receive.onmessage = (e) => {
-                setMessages(m => [...m, { me: false, msg: e.data}]) 
-                console.log(e)
-            }
+            data.current.receive.onmessage = (e) => setMessages(m => [...m, { me: false, msg: e.data}]) 
         }
 
         data.current.send = connection.current.createDataChannel("data");
