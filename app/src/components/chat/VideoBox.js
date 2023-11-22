@@ -6,7 +6,6 @@ const VideoBox = ({ source, muted, className }) => {
     useEffect(() => {
         if(!source) return;
         player.current.srcObject = source;
-        source.getTracks((t) => console.log(t))
     }, [source])
 
     return (
