@@ -48,6 +48,7 @@ const ChatProvider = ({ children }) => {
 
     const disconnect = () => {
         socket.current.disconnect();
+        connection.current = null;
     }
 
     const startStream = async () => {
@@ -60,10 +61,11 @@ const ChatProvider = ({ children }) => {
             setStreamError(true);
         }    
     }
-
-    const stopStream = () => {
+    
+    const stopStream = async () => {
         localStream?.getTracks().forEach(track => track.stop());
         setLocalStream(null);
+        setRemoteStream(null);
     }
 
     const isVirtual = () => {
@@ -178,11 +180,6 @@ const ChatProvider = ({ children }) => {
     const onReceiveCandidate = async (data) => {
         console.log("icecandidatereceived")
         await connection.current.addIceCandidate(data.iceCandidate)
-    }
-
-    const onNext = async () => {
-        setRemoteStream(null);
-        setLocalStream(null);
     }
 
     const sendMessage = (msg) => {
