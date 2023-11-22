@@ -4,7 +4,8 @@ const DEFAULTS = {
     tac: false,
     mode: undefined,
     interest: false,
-    lang: "en"
+    lang: "en",
+    status: 0
 }
 
 const RTC_SERVERS = {

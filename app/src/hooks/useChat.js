@@ -1,7 +1,6 @@
-import * as nsfwjs from 'nsfwjs'
-
 import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, VIRTUAL_CAMS } from "../constants/chat";
 import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
+import { getImage, loadNSFW } from "../components/lib/nsfw";
 
 import { io } from 'socket.io-client';
 
@@ -21,6 +20,8 @@ const ChatReducer = (state, action) => {
             return { ...state, lang: payload}
         case "RESET":
             return { ...DEFAULTS, lang: state.lang }
+        case "STATUS":
+            return { ...state, status: payload }
         default:
             break;
     }
@@ -32,7 +33,6 @@ const ChatProvider = ({ children }) => {
     const [ localStream, setLocalStream ] = useState(null);
     const [ remoteStream, setRemoteStream ] = useState(null);
     const [ streamError, setStreamError ] = useState(false);
-    const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     
     const socket = useRef(null);
@@ -61,7 +61,7 @@ const ChatProvider = ({ children }) => {
         }    
     }
 
-    const stopStream = () => {
+    const stopStream = (stream) => {
         localStream?.getTracks().forEach(track => track.stop());
         setLocalStream(null);
     }
@@ -71,36 +71,9 @@ const ChatProvider = ({ children }) => {
         return VIRTUAL_CAMS.find( v => new RegExp(v, 'i').test(label))
     }
 
-    const loadNSFW = async () => {
-        try{
-            let nsfw = await nsfwjs.load('indexeddb://model')
-            return nsfw;
-        }catch{            
-            const load = await nsfwjs.load();
-            await load.model.save('indexeddb://model');
-            return load;
-        }
-    }
-
     const checkNSFW = async () => {
-        if(!nsfw.current) return;
-
-        const { width, height } = localStream.getVideoTracks()[0].getSettings();
-        const canvas = document.createElement("canvas"); 
-        canvas.width = width;
-        canvas.height = height;
-
-        const video = document.createElement("video");
-        video.srcObject = localStream;
-      
-        const context = canvas.getContext("2d");
-        context.drawImage(video, 0, 0, width, height);
-
-        const data = canvas.toDataURL("image/png");
-        const img = document.createElement("img");
-
-        img.src = data;
-
+        if(!nsfw || !localStream) return;
+        const img = await getImage(localStream);
         const predictions = await nsfw.current.classify(img);
         console.log(predictions)
 
@@ -240,21 +213,20 @@ const ChatProvider = ({ children }) => {
     return (
         <ChatContext.Provider
             value={{
-                checkNSFW,
                 connect,
                 createOffer,
                 disconnect,
-                state,
                 dispatch,
-                interests,
-                setInterests,
-                messages,
                 sendMessage,
-                localStream,                
+                setInterests,               
                 startStream,
                 stopStream,
-                streamError,
-                remoteStream
+                interests,
+                localStream, 
+                messages,
+                remoteStream,
+                state,
+                streamError
             }}
         >
             { children }        
