@@ -5,11 +5,9 @@ import { MdReport } from "react-icons/md"
 import { useChat } from "../../hooks/useChat";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
-    const { state: { tac, mode }, createOffer, connect, disconnect, messages, sendMessage, stream } = useChat();
-    const { cam, camError, startCam, getImg } = useWebcam();
+    const { state: { tac, mode }, createOffer, connect, disconnect, messages, sendMessage, stopStream, startStream, localStream, streamError, remoteStream } = useChat();
     const { t } = useTranslation();
 
     const navigate = useNavigate();
@@ -24,13 +22,16 @@ const Chat = () => {
 
     useEffect(()=>{
         if(!tac) navigate("/");
-        else if(!camError) connect(mode, cam);
-        return () => { disconnect() }
+        else if(!streamError) connect(mode);
+        return () => { 
+            stopStream();
+            disconnect();
+         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { mode !== "text" && tac && startCam() }, [])
+    useEffect(() => { mode !== "text" && tac && startStream() }, [])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
@@ -38,8 +39,8 @@ const Chat = () => {
                 {
                     !isTextOnly && 
                     <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
-                        <VideoBox source={stream.current.remote} />
-                        <VideoBox source={stream.current.local} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
+                        <VideoBox source={remoteStream} />
+                        <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
                 <ChatBox className="flex-1" messages={messages} />

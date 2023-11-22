@@ -1,6 +1,6 @@
 import * as nsfwjs from 'nsfwjs'
 
-import { DEFAULTS, MODES, RTC_SERVERS } from "../constants/chat";
+import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, VIRTUAL_CAMS } from "../constants/chat";
 import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
 
 import { io } from 'socket.io-client';
@@ -29,24 +29,46 @@ const ChatReducer = (state, action) => {
 const ChatProvider = ({ children }) => {     
     const [ interests, setInterests ] = useState([]); 
     const [ messages, setMessages ] = useState([]);
+    const [ localStream, setLocalStream ] = useState(null);
+    const [ remoteStream, setRemoteStream ] = useState(null);
+    const [ streamError, setStreamError ] = useState(false);
     const [ status, setStatus ] = useState(-1);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     
     const socket = useRef(null);
     const connection = useRef(null);
     const nsfw = useRef(null);
-    const stream = useRef({ remote: null, local: null });
     const data = useRef({ send: null, receive: null });
     const peer = useRef(null);
     
-    const connect = (mode, cam) => {
+    const connect = (mode) => {
         socket.current.io.opts.query = { mode, interests }
         socket.current.connect()
-        stream.current.local = cam
     };
 
     const disconnect = () => {
         socket.current.disconnect();
+    }
+
+    const startStream = async () => {
+        setStreamError(false);
+        
+        try{
+            let stream = await navigator.mediaDevices.getUserMedia(CAMERA_OPTIONS);
+            setLocalStream(stream);
+        }catch(e){
+            setStreamError(true);
+        }    
+    }
+
+    const stopStream = () => {
+        localStream?.getTracks().forEach(track => track.stop());
+        setLocalStream(null);
+    }
+
+    const isVirtual = () => {
+        const label = localStream.getVideoTracks()[0].label
+        return VIRTUAL_CAMS.find( v => new RegExp(v, 'i').test(label))
     }
 
     const loadNSFW = async () => {
@@ -60,10 +82,29 @@ const ChatProvider = ({ children }) => {
         }
     }
 
-    const checkNSFW = async (img) => {
+    const checkNSFW = async () => {
         if(!nsfw.current) return;
+
+        const { width, height } = localStream.getVideoTracks()[0].getSettings();
+        const canvas = document.createElement("canvas"); 
+        canvas.width = width;
+        canvas.height = height;
+
+        const video = document.createElement("video");
+        video.srcObject = localStream;
+      
+        const context = canvas.getContext("2d");
+        context.drawImage(video, 0, 0, width, height);
+
+        const data = canvas.toDataURL("image/png");
+        const img = document.createElement("img");
+
+        img.src = data;
+
         const predictions = await nsfw.current.classify(img);
         console.log(predictions)
+
+        return predictions;
     }
 
     const findPeer = async () => {
@@ -87,16 +128,17 @@ const ChatProvider = ({ children }) => {
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         
         if(state.mode !== "text"){
-            stream.current.remote = new MediaStream();       
-            
-            stream.current.local.getTracks().forEach( t => connection.current.addTrack(t))
-            connection.current.ontrack = async (e) => {
-                stream.current.remote.addTrack(e.track)
-            }
+            const remote = new MediaStream();            
 
-            stream.current.remote.oninactive = () => {
-                state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
+            remote.oninactive = () => {
+                state.mode !== "text" && remoteStream.getTracks().forEach(t => t.enabled = !t.enabled);
                 connection.current.close();
+            }
+            
+            localStream.getTracks().forEach( t => connection.current.addTrack(t))
+            connection.current.ontrack = async (e) => {
+                remote.addTrack(e.track)
+                setRemoteStream(remote)
             }
         }
 
@@ -183,14 +225,14 @@ const ChatProvider = ({ children }) => {
         socket.current.on('disconnect', onDisconnect);
         socket.current.on('receiveoffer', onReciveOffer);        
         socket.current.on('receiveanswer', onReceiveAnswer);        
-        socket.current.on('receivecandidate', onReceiveCandidate)
+        socket.current.on('receivecandidate', onReceiveCandidate);
 
         return () => { 
             socket.current.off('connect', onConnect);
             socket.current.off('disconnect', onDisconnect);
             socket.current.off('receiveoffer', onReciveOffer);        
             socket.current.off('receiveanswer', onReceiveAnswer);        
-            socket.current.off('receivecandidate', onReceiveCandidate)
+            socket.current.off('receivecandidate', onReceiveCandidate);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -208,7 +250,11 @@ const ChatProvider = ({ children }) => {
                 setInterests,
                 messages,
                 sendMessage,
-                stream
+                localStream,                
+                startStream,
+                stopStream,
+                streamError,
+                remoteStream
             }}
         >
             { children }        
