@@ -61,7 +61,7 @@ const ChatProvider = ({ children }) => {
         }    
     }
 
-    const stopStream = (stream) => {
+    const stopStream = () => {
         localStream?.getTracks().forEach(track => track.stop());
         setLocalStream(null);
     }
@@ -178,6 +178,11 @@ const ChatProvider = ({ children }) => {
     const onReceiveCandidate = async (data) => {
         console.log("icecandidatereceived")
         await connection.current.addIceCandidate(data.iceCandidate)
+    }
+
+    const onNext = async () => {
+        setRemoteStream(null);
+        setLocalStream(null);
     }
 
     const sendMessage = (msg) => {
