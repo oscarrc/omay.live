@@ -26,9 +26,8 @@ const Chat = () => {
         if(!tac) navigate("/");
         else if(!camError) connect(mode, cam);
         return () => { disconnect() }
-    }, [cam, camError, connect, disconnect, mode, navigate, tac])
-
-    // useEffect(() => () => { disconnect() }, [disconnect])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { mode !== "text" && tac && startCam() }, [])
