@@ -87,9 +87,12 @@ const ChatProvider = ({ children }) => {
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         
         if(state.mode !== "text"){
-            stream.current.remote = new MediaStream();        
+            stream.current.remote = new MediaStream();       
+            
             stream.current.local.getTracks().forEach( t => connection.current.addTrack(t))
-            connection.current.ontrack = async (e) => e.streams[0].getTracks().forEach( t => stream.current.remote.addTrack(t))
+            connection.current.ontrack = async (e) => {
+                stream.current.remote.addTrack(e.track)
+            }
 
             stream.current.remote.oninactive = () => {
                 state.mode !== "text" && stream.current.remote.getTracks().forEach(t => t.enabled = !t.enabled);
@@ -201,7 +204,8 @@ const ChatProvider = ({ children }) => {
                 interests,
                 setInterests,
                 messages,
-                sendMessage
+                sendMessage,
+                stream
             }}
         >
             { children }        

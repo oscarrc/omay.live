@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import useWebcam from "../../hooks/useWebcam";
 
 const Chat = () => {
-    const { state: { tac, mode }, createOffer, connect, disconnect, messages, sendMessage, checkNSFW } = useChat();
+    const { state: { tac, mode }, createOffer, connect, disconnect, messages, sendMessage, stream } = useChat();
     const { cam, camError, startCam, getImg } = useWebcam();
     const { t } = useTranslation();
 
@@ -39,7 +39,7 @@ const Chat = () => {
                 {
                     !isTextOnly && 
                     <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
-                        <VideoBox />
+                        <VideoBox source={stream.current.remote} />
                         <VideoBox source={cam} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
