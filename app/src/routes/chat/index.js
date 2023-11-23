@@ -11,6 +11,7 @@ const Chat = () => {
         state: { tac, mode, status }, 
         createOffer, 
         connect, 
+        checkNSFW,
         disconnect, 
         messages, 
         sendMessage, 
@@ -27,9 +28,8 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
 
     const startSearch = async () => {
-        // const img = getImg();
-        // const result = await checkNSFW(img);
-
+        const result = await checkNSFW();
+        console.log(result)
         createOffer();
     }
 

@@ -77,7 +77,6 @@ const ChatProvider = ({ children }) => {
         if(!nsfw || !localStream) return;
         const img = await getImage(localStream);
         const predictions = await nsfw.current.classify(img);
-        console.log(predictions)
 
         return predictions;
     }
@@ -197,7 +196,7 @@ const ChatProvider = ({ children }) => {
 
     useEffect(() => {
        if(!socket.current) socket.current = io("http://localhost:8080", { query:{}, autoConnect: false });
-       if(!nsfw.current) nsfw.current = loadNSFW();
+       if(!nsfw.current) loadNSFW().then(l => nsfw.current = l);
     }, []) 
 
     useEffect(() => {
@@ -223,6 +222,7 @@ const ChatProvider = ({ children }) => {
     return (
         <ChatContext.Provider
             value={{
+                checkNSFW,
                 connect,
                 createOffer,
                 closeConnection,
