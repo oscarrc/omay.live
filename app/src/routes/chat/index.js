@@ -7,7 +7,20 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Chat = () => {
-    const { state: { tac, mode }, createOffer, connect, disconnect, messages, sendMessage, stopStream, startStream, localStream, streamError, remoteStream } = useChat();
+    const { 
+        state: { tac, mode }, 
+        createOffer, 
+        connect, 
+        disconnect, 
+        messages, 
+        sendMessage, 
+        stopStream, 
+        startStream, 
+        localStream, 
+        streamError, 
+        remoteStream,
+        closeConnection
+    } = useChat();
     const { t } = useTranslation();
 
     const navigate = useNavigate();
@@ -25,6 +38,7 @@ const Chat = () => {
         else if(!streamError) connect(mode);
         return () => { 
             stopStream();
+            closeConnection();
             disconnect();
          }
     // eslint-disable-next-line react-hooks/exhaustive-deps

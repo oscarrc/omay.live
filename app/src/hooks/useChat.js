@@ -49,6 +49,7 @@ const ChatProvider = ({ children }) => {
     const disconnect = () => {
         socket.current.disconnect();
         connection.current = null;
+        setMessages([]);
     }
 
     const startStream = async () => {
@@ -64,9 +65,7 @@ const ChatProvider = ({ children }) => {
     
     const stopStream = async () => {
         localStream?.getTracks().forEach(track => track.stop());
-        remoteStream?.getTracks().forEach(track => track.stop());
         setLocalStream(null);
-        setRemoteStream(null);
     }
 
     const isVirtual = () => {
@@ -102,14 +101,10 @@ const ChatProvider = ({ children }) => {
     const createConnection = async () => {      
         peer.current = await findPeer();          
         connection.current = new RTCPeerConnection(RTC_SERVERS);
+        setMessages([]);
         
         if(state.mode !== "text"){
-            const remote = new MediaStream();            
-
-            remote.oninactive = () => {
-                state.mode !== "text" && remoteStream.getTracks().forEach(t => t.enabled = !t.enabled);
-                connection.current.close();
-            }
+            const remote = new MediaStream();
             
             localStream.getTracks().forEach( t => connection.current.addTrack(t))
             connection.current.ontrack = async (e) => {
@@ -133,11 +128,23 @@ const ChatProvider = ({ children }) => {
             data.current.receive.onmessage = (e) => setMessages(m => [...m, { me: false, msg: e.data}]) 
         }
 
+        connection.current.onconnectionstatechange = (e) => {
+            connection.current.connectionState === "disconnected" && closeConnection()
+        }
+
         data.current.send = connection.current.createDataChannel("data");
+    }
+    
+    const closeConnection = () => {
+        peer.current = null;
+        data.current = { send: null, receive: null };
+        remoteStream && remoteStream?.getTracks().forEach(track => track.stop()) && setRemoteStream(null);
+        connection.current && connection.current.close();
     }
 
     const createOffer = async () => {
-        console.log("offercreated")
+        console.log("offercreated");
+        await closeConnection();
         await createConnection();
         
         const offer = await connection.current.createOffer();                
@@ -218,6 +225,7 @@ const ChatProvider = ({ children }) => {
             value={{
                 connect,
                 createOffer,
+                closeConnection,
                 disconnect,
                 dispatch,
                 sendMessage,
