@@ -1,8 +1,11 @@
 import { BRAND } from "../../constants/brand";
 import LanguageSelector from "../partials/LanguageSelector";
 import { Link } from "react-router-dom";
+import { useChat } from "../../hooks/useChat";
 
 const Header = () => {
+    const { state: { lang } } = useChat();
+    
     return (
         <header className="sticky top-0 bg-base-100 z-40">
             <nav className="navbar shadow-lg">
@@ -17,7 +20,7 @@ const Header = () => {
                     <div className="whitespace-nowrap text-primary text-lg font-bold hidden sm:inline">
                         <span className="text-2xl">10000+</span> Online now
                     </div>   
-                    <LanguageSelector />                                
+                    <LanguageSelector lang={lang} />                                
                 </div>
             </nav>
         </header>

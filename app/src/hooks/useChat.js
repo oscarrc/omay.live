@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useReducer, useRef, useState } fr
 import { getImage, loadNSFW } from "../components/lib/nsfw";
 
 import { io } from 'socket.io-client';
+import { useTranslation } from "react-i18next";
 
 const ChatContext =  createContext(null);
 
@@ -34,7 +35,8 @@ const ChatProvider = ({ children }) => {
     const [ remoteStream, setRemoteStream ] = useState(null);
     const [ streamError, setStreamError ] = useState(false);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
-    
+    const { i18n } = useTranslation();
+
     const socket = useRef(null);
     const connection = useRef(null);
     const nsfw = useRef(null);
@@ -198,6 +200,8 @@ const ChatProvider = ({ children }) => {
        if(!socket.current) socket.current = io("http://localhost:8080", { query:{}, autoConnect: false });
        if(!nsfw.current) loadNSFW().then(l => nsfw.current = l);
     }, []) 
+
+    useEffect(() => dispatch({type:"LANG", payload: i18n.language }), [i18n.language])
 
     useEffect(() => {
         const onConnect = () => console.log("connected");
