@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 
 const Chat = () => {
     const { 
-        state: { tac, mode }, 
+        state: { tac, mode, status }, 
         createOffer, 
         connect, 
         disconnect, 
@@ -26,7 +26,7 @@ const Chat = () => {
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
 
-    const onSearch = async () => {
+    const startSearch = async () => {
         // const img = getImg();
         // const result = await checkNSFW(img);
 
@@ -66,7 +66,7 @@ const Chat = () => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
                 }
-                <ChatControls onClick={onSearch} onSubmit={sendMessage} />
+                <ChatControls onStart={startSearch} onStop={closeConnection} onSubmit={sendMessage} status={status} />
             </div>
         </section>
     )
