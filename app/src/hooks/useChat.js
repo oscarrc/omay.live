@@ -16,11 +16,17 @@ const ChatReducer = (state, action) => {
             if(!MODES.includes(payload)) return state;
             return { ...state, mode: payload}
         case "INTEREST":            
-            return { ...state, interest: !!payload}   
+            return { ...state, interest: !!payload}        
+        case "ADD_INTEREST":          
+            state.interests.add(payload)
+            return { ...state, interests: new Set(state.interests)}
+        case "DEL_INTEREST":          
+            state.interests.delete(payload)
+            return { ...state, interests: new Set(state.interests)}
         case "LANG":            
             return { ...state, lang: payload}
         case "RESET":
-            return { ...DEFAULTS, lang: state.lang }
+            return { ...DEFAULTS, lang: state.lang, interests: state.interests }
         case "STATUS":
             return { ...state, status: payload }
         default:
@@ -29,7 +35,6 @@ const ChatReducer = (state, action) => {
 }
 
 const ChatProvider = ({ children }) => {     
-    const [ interests, setInterests ] = useState([]); 
     const [ messages, setMessages ] = useState([]);
     const [ localStream, setLocalStream ] = useState(null);
     const [ remoteStream, setRemoteStream ] = useState(null);
@@ -44,7 +49,7 @@ const ChatProvider = ({ children }) => {
     const peer = useRef(null);
     
     const connect = (mode) => {
-        socket.current.io.opts.query = { mode, interests }
+        socket.current.io.opts.query = { mode, interests: Array.from(state.interests), lang: state.lang }
         socket.current.connect()
     };
 
@@ -233,10 +238,8 @@ const ChatProvider = ({ children }) => {
                 disconnect,
                 dispatch,
                 sendMessage,
-                setInterests,               
                 startStream,
                 stopStream,
-                interests,
                 localStream, 
                 messages,
                 remoteStream,

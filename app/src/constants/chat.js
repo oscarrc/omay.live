@@ -4,6 +4,7 @@ const DEFAULTS = {
     tac: false,
     mode: undefined,
     interest: false,
+    interests: new Set(),
     lang: "en",
     status: 0
 }

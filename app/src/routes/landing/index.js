@@ -10,7 +10,7 @@ import { useChat } from "../../hooks/useChat";
 import { useEffect } from "react";
 
 const Landing = () => {     
-    const { state: { tac, mode }, dispatch, interests, setInterests } = useChat();
+    const { state: { tac, mode, interests }, dispatch } = useChat();
     const { t } = useTranslation();
     
     useEffect(()=> {
@@ -58,7 +58,11 @@ const Landing = () => {
                     <div className="flex flex-col md:flex-row gap-8 justify-between">
                         <div className="flex flex-col gap-3 items-center">
                             <h4>{ t("common.talkabout") }</h4>
-                            <InterestInput values={interests} onChange={setInterests} />
+                            <InterestInput
+                                values={interests} 
+                                onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                            />
                         </div>
                         <div className="flex flex-col gap-2 items-center">
                             <h3 className="text-lg font-bold">{ t("common.startchatting") }</h3>
