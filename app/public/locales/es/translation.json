@@ -15,11 +15,13 @@
         "banned": "Prohibido",
         "searching": "Buscando un extraño al azar con quien puedas chatear...",
         "connected": "Estás charlando con un extraño al azar. Di hola...",
+        "stopped": "Haz clic en Iniciar para chatear con un extraño",
         "language": "Ambos hablan el mismo idioma. Seleccione <strong>Any</strong> en el menú de idioma para desactivarlo.",
         "interest": "A ambos les gusta",
-        "simulated": "Es extraño que esté usando una cámara web simulada",
+        "simulated": "El extraño puede que esté usando una cámara web simulada",
         "typing": "El extraño está escribiendo",
-        "disconnected": "El extraño esta desconectado",
+        "strangerdisconnected": "El extraño se ha desconectado",
+        "youdisconnected": "Te has desconectado",
         "interests": "Encontrar extraños con intereses comunes",
         "great": "¿Gran charla?",
         "save": "Guardar el registro",
@@ -29,7 +31,9 @@
         "stop": "Detener",
         "really": "Seguro",
         "send": "Enviar",
-        "report": "Informe"
+        "report": "Informe",
+        "you": "Tu",
+        "stranger": "Extraño"
     },
     "common":{
         "startchatting": "Empieza a chatear",

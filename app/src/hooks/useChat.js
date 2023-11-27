@@ -89,6 +89,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const findPeer = async () => {
+        dispatch({ type: "STATUS", payload: 2 });
         const res = await fetch(`http://localhost:8080/chat`, {
             method: "POST",
             headers: {
@@ -112,7 +113,7 @@ const ChatProvider = ({ children }) => {
         if(state.mode !== "text"){
             const remote = new MediaStream();
             
-            localStream.getTracks().forEach( t => connection.current.addTrack(t))
+            localStream?.getTracks().forEach( t => connection.current.addTrack(t))
             connection.current.ontrack = async (e) => {
                 remote.addTrack(e.track)
                 setRemoteStream(remote)
@@ -135,21 +136,24 @@ const ChatProvider = ({ children }) => {
         }
 
         connection.current.onconnectionstatechange = (e) => {
-            connection.current.connectionState === "disconnected" && closeConnection()
+            connection.current.connectionState === "disconnected" && closeConnection(true)
         }
 
         data.current.send = connection.current.createDataChannel("data");
     }
     
-    const closeConnection = () => {
+    const closeConnection = (remote) => {
         peer.current = null;
         data.current = { send: null, receive: null };
         remoteStream && remoteStream?.getTracks().forEach(track => track.stop()) && setRemoteStream(null);
         connection.current && connection.current.close();
+        dispatch({ type: "STATUS", payload: remote ? 4 : 5 });
     }
 
     const createOffer = async () => {
         console.log("offercreated");
+        dispatch({ type: "STATUS", payload: 1 });
+        
         await closeConnection();
         await createConnection();
         
@@ -192,6 +196,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const onReceiveCandidate = async (data) => {
+        dispatch({ type: "STATUS", payload: 3 });
         console.log("icecandidatereceived")
         await connection.current.addIceCandidate(data.iceCandidate)
     }

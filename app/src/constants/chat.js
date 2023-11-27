@@ -42,4 +42,13 @@ const VIRTUAL_CAMS = [
     "HP Truevision HD"
 ]
 
-export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS, VIRTUAL_CAMS }
+const STATUS = [
+    "stopped",
+    "connecting",
+    "searching",
+    "connected",    
+    "strangerdisconnected",
+    "youdisconnected"
+]
+
+export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS, VIRTUAL_CAMS, STATUS }

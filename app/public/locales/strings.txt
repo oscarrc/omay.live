@@ -12,11 +12,13 @@
 "Banned",
 "Looking for a random stranger you can chat with...",
 "You're chatting with a random stranger. Say Hi...",
+"Clic Start to chat with a stranger",
 "You both speak the same language. Select <strong>Any</strong> on the language menu to disable.",
 "You both like",
 "Stranger my be using a simulated webcam",
 "Stranger is typing",
 "Stranger has disconnected",
+"You have disconnected",
 "Find strangers with common interests",
 "Great chat?",
 "Save the log",
@@ -26,7 +28,9 @@
 "Stop",
 "Really",
 "Send",
-"Report"
+"Report",
+"You",
+"Stranger"
 
 "Start chatting",
 "What do you want to talk about?",

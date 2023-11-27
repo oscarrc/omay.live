@@ -15,11 +15,13 @@
         "banned": "Banned",
         "searching": "Looking for a random stranger you can chat with...",
         "connected": "You're chatting with a random stranger. Say Hi...",
+        "stopped": "Clic Start to chat with a stranger",
         "language": "You both speak the same language. Select <strong>Any</strong> on the language menu to disable.",
         "interest": "You both like",
         "simulated": "Stranger my be using a simulated webcam",
         "typing": "Stranger is typing",
-        "disconnected": "Stranger has disconnected",
+        "strangerdisconnected": "Stranger has disconnected",
+        "youdisconnected": "You have disconnected",
         "interests": "Find strangers with common interests",
         "great": "Great chat?",
         "save": "Save the log",
@@ -29,7 +31,9 @@
         "stop": "Stop",
         "really": "Really",
         "send": "Send",
-        "report": "Report"
+        "report": "Report",
+        "you": "You",
+        "stranger": "Stranger"
     },
     "common":{
         "startchatting": "Start chatting",

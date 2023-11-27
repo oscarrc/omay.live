@@ -57,7 +57,7 @@ const Chat = () => {
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
-                <ChatBox className="flex-1" messages={messages} />
+                <ChatBox className="flex-1" messages={messages} status={status} />
             </div>
             <div className="flex gap-4">
                 {
@@ -66,7 +66,7 @@ const Chat = () => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
                 }
-                <ChatControls onStart={startSearch} onStop={closeConnection} onSubmit={sendMessage} status={status} />
+                <ChatControls onStart={startSearch} onStop={closeConnection} onSubmit={sendMessage} />
             </div>
         </section>
     )

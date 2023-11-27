@@ -1,13 +1,16 @@
 import { useRef } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const ChatControls = ({ onChange, onSubmit, onStart, onStop, status }) => {
+const ChatControls = ({ onChange, onSubmit, onStart, onStop }) => {
     const { t } = useTranslation();
     const textRef = useRef(null);
+    const [status, setStatus] = useState(0);
 
     const onClick = () => {
-        status === 2 && onStop()
-        status === 0 && onStart()        
+        setStatus(s => s < 2 ? s+1 : 0)
+        status === 0 && onStart();
+        status === 2 && onStop();
     }
 
     const send = () => {
