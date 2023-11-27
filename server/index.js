@@ -62,6 +62,10 @@ io.on('connection', (socket) => {
     ChatService.peerUnavailable(data.id);
   })
 
+  socket.on('connectionclosed', (data) => {
+    socket.to(data.remoteId).emit('peerdisconnected')
+  })
+
   socket.on('disconnect', () => {
     console.log(`${socket.handshake.address} disconnected`);
     ChatService.peerDisconnected(socket.id)

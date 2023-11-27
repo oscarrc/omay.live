@@ -143,10 +143,17 @@ const ChatProvider = ({ children }) => {
     }
     
     const closeConnection = (remote) => {
+        !remote && socket.current.emit("connectionclosed", {
+            id: socket.current.id,
+            remoteId: peer.current
+        })
+
         peer.current = null;
         data.current = { send: null, receive: null };
         remoteStream && remoteStream?.getTracks().forEach(track => track.stop()) && setRemoteStream(null);
         connection.current && connection.current.close();
+
+        setRemoteStream(null);
         dispatch({ type: "STATUS", payload: remote ? 4 : 5 });
     }
 
@@ -201,6 +208,11 @@ const ChatProvider = ({ children }) => {
         await connection.current.addIceCandidate(data.iceCandidate)
     }
 
+    const onPeerDisconnected = async () => {
+        console.log('peerdisconnected')
+        closeConnection(true);
+    }
+
     const sendMessage = (msg) => {
         setMessages(m => [...m, { me: true, msg: msg}])
         data.current.send.send(msg);
@@ -222,6 +234,7 @@ const ChatProvider = ({ children }) => {
         socket.current.on('receiveoffer', onReciveOffer);        
         socket.current.on('receiveanswer', onReceiveAnswer);        
         socket.current.on('receivecandidate', onReceiveCandidate);
+        socket.current.on('peerdisconnected', onPeerDisconnected);
 
         return () => { 
             socket.current.off('connect', onConnect);
@@ -229,6 +242,7 @@ const ChatProvider = ({ children }) => {
             socket.current.off('receiveoffer', onReciveOffer);        
             socket.current.off('receiveanswer', onReceiveAnswer);        
             socket.current.off('receivecandidate', onReceiveCandidate);
+            socket.current.off('peerdisconnected', onPeerDisconnected);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
