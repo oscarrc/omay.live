@@ -23,12 +23,16 @@ const ChatReducer = (state, action) => {
         case "DEL_INTEREST":          
             state.interests.delete(payload)
             return { ...state, interests: new Set(state.interests)}
+        case "TOGGLE_AUTO":
+            return { ...state, auto: !state.auto }
         case "LANG":            
             return { ...state, lang: payload}
         case "RESET":
             return { ...DEFAULTS, lang: state.lang, interests: state.interests }
         case "STATUS":
             return { ...state, status: payload }
+        case "CONFIRMATION":
+            return { ...state, confirmation: payload < 2 && payload > -1 ? payload : 0 }
         default:
             break;
     }
@@ -40,6 +44,7 @@ const ChatProvider = ({ children }) => {
     const [ remoteStream, setRemoteStream ] = useState(null);
     const [ streamError, setStreamError ] = useState(false);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
+    
     const { i18n } = useTranslation();
 
     const socket = useRef(null);
@@ -155,6 +160,7 @@ const ChatProvider = ({ children }) => {
 
         setRemoteStream(null);
         dispatch({ type: "STATUS", payload: remote ? 4 : 5 });
+        dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 
     const createOffer = async () => {

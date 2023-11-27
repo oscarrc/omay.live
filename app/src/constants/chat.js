@@ -6,7 +6,9 @@ const DEFAULTS = {
     interest: false,
     interests: new Set(),
     lang: "en",
-    status: 0
+    status: 0,
+    auto: true,
+    confirmation: 0
 }
 
 const RTC_SERVERS = {

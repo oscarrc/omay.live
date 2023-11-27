@@ -8,7 +8,8 @@ import { useTranslation } from "react-i18next";
 
 const Chat = () => {
     const { 
-        state: { tac, mode, status }, 
+        state: { tac, mode, status, confirmation }, 
+        dispatch,
         createOffer, 
         connect, 
         checkNSFW,
@@ -66,7 +67,13 @@ const Chat = () => {
                         <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
                 }
-                <ChatControls onStart={startSearch} onStop={closeConnection} onSubmit={sendMessage} />
+                <ChatControls 
+                    onClick={(v) => dispatch({ type: "CONFIRMATION", payload: v})} 
+                    onStart={startSearch} 
+                    onStop={closeConnection} 
+                    onSubmit={sendMessage} 
+                    confirmation={confirmation} 
+                />
             </div>
         </section>
     )
