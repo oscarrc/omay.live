@@ -1,5 +1,5 @@
 import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, VIRTUAL_CAMS } from "../constants/chat";
-import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { getImage, loadNSFW } from "../components/lib/nsfw";
 
 import { io } from 'socket.io-client';
@@ -53,6 +53,14 @@ const ChatProvider = ({ children }) => {
     const nsfw = useRef(null);
     const data = useRef({ send: null, receive: null });
     const peer = useRef(null);
+
+    const isSimulated = useMemo(() => {
+        if(!remoteStream) return false;
+        
+        const label = remoteStream.getVideoTracks()[0].label
+        console.log(label)
+        return VIRTUAL_CAMS.findIndex( v => new RegExp(v, 'i').test(label)) >= 0
+    }, [remoteStream])
     
     const connect = (mode) => {
         socket.current.io.opts.query = { mode, interests: Array.from(state.interests), lang: state.lang }
@@ -79,11 +87,6 @@ const ChatProvider = ({ children }) => {
     const stopStream = async () => {
         localStream?.getTracks().forEach(track => track.stop());
         setLocalStream(null);
-    }
-
-    const isVirtual = () => {
-        const label = localStream.getVideoTracks()[0].label
-        return VIRTUAL_CAMS.find( v => new RegExp(v, 'i').test(label))
     }
 
     const checkNSFW = async () => {
@@ -120,7 +123,8 @@ const ChatProvider = ({ children }) => {
             const remote = new MediaStream();
             
             localStream?.getTracks().forEach( t => connection.current.addTrack(t))
-            connection.current.ontrack = async (e) => {
+            
+            connection.current.ontrack = async (e) => {                
                 remote.addTrack(e.track)
                 setRemoteStream(remote)
             }
@@ -270,7 +274,8 @@ const ChatProvider = ({ children }) => {
                 messages,
                 remoteStream,
                 state,
-                streamError
+                streamError,
+                isSimulated
             }}
         >
             { children }        

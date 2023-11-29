@@ -21,7 +21,8 @@ const Chat = () => {
         localStream, 
         streamError, 
         remoteStream,
-        closeConnection
+        closeConnection,
+        isSimulated
     } = useChat();
     const { t } = useTranslation();
 
@@ -58,7 +59,7 @@ const Chat = () => {
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
-                <ChatBox className="flex-1" messages={messages} status={status} />
+                <ChatBox className="flex-1" messages={messages} status={status} isSimulated={isSimulated} />
             </div>
             <div className="flex gap-4">
                 {
