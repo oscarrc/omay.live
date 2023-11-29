@@ -1,24 +1,39 @@
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+
 import { useTranslation } from "react-i18next";
 
 const ChatControls = ({ onClick, onChange, onSubmit, onStart, onStop, confirmation }) => {
     const { t } = useTranslation();
     const textRef = useRef(null);
 
-    const handleClick = () => {
+    const skip = useCallback(() => {
         confirmation === 0 && onStart();
         confirmation === 2 && onStop();
         onClick(confirmation < 3 ? confirmation + 1 : 0)
-    }
+    }, [confirmation, onClick, onStart, onStop])
 
-    const send = () => {
+    const send = useCallback(() => {
+        if(textRef.current.value === "") return;
         onSubmit(textRef.current.value);
         textRef.current.value = "";
-    }
+    }, [onSubmit])
 
+    useEffect(() => {
+        const handleKey = (e) => {
+            if (e.key !== "Escape" && e.key !== "Enter") return;
+            
+            e.preventDefault();
+            e.key === "Escape" && skip();
+            e.key === "Enter" && send();
+        }
+    
+        document.addEventListener("keydown", handleKey);
+        return () => {document.removeEventListener("keydown", handleKey)}        
+    }, [send, skip])
+   
     return (
         <div className="join w-full h-16">                   
-            <button onClick={handleClick} className={`join-item btn ${ confirmation === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 w-24 rounded-none sm:rounded-lg`}>
+            <button onClick={skip} className={`join-item btn ${ confirmation === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 w-24 rounded-none sm:rounded-lg`}>
                 { confirmation === 0 && t("chat.start") } 
                 { confirmation === 1 && t("chat.stop") } 
                 { confirmation === 2 && t("chat.really") } 

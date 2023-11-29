@@ -11,7 +11,7 @@ const ChatBox = ({ messages, className, status }) => {
                 messages.map( (m, i) => 
                     <p key={i}>
                         <strong className={`${ m.me ? "text-primary" : "text-error"} mr-1`}>
-                            {m.me ? t("you") : t("stranger") }: 
+                            {m.me ? t("chat.you") : t("chat.stranger") }: 
                         </strong>
                         {m.msg}
                     </p>
