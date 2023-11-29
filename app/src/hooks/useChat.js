@@ -9,6 +9,7 @@ const ChatContext =  createContext(null);
 
 const ChatReducer = (state, action) => {
     const { type, payload } = action;
+    
     switch(type){
         case "TAC":
             return { ...state, tac: !!payload}
@@ -32,7 +33,7 @@ const ChatReducer = (state, action) => {
         case "STATUS":
             return { ...state, status: payload }
         case "CONFIRMATION":
-            return { ...state, confirmation: payload < 2 && payload > -1 ? payload : 0 }
+            return { ...state, confirmation: payload < 3 && payload > -1 ? payload : 0 }
         default:
             break;
     }
@@ -160,7 +161,7 @@ const ChatProvider = ({ children }) => {
 
         setRemoteStream(null);
         dispatch({ type: "STATUS", payload: remote ? 4 : 5 });
-        dispatch({ type: "CONFIRMATION", payload: 0 });
+        (state.confirmation > 1 || remote) && dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 
     const createOffer = async () => {

@@ -6,9 +6,9 @@ const ChatControls = ({ onClick, onChange, onSubmit, onStart, onStop, confirmati
     const textRef = useRef(null);
 
     const handleClick = () => {
-        onClick(confirmation < 2 ? confirmation + 1 : 0)
         confirmation === 0 && onStart();
         confirmation === 2 && onStop();
+        onClick(confirmation < 3 ? confirmation + 1 : 0)
     }
 
     const send = () => {
