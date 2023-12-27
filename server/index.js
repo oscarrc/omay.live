@@ -37,7 +37,7 @@ if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 io.on('connection', async (socket) => {   
   console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
 
-  BanService.isBanned(socket.handshake.address),then( banned => {
+  BanService.isBanned(socket.handshake.address).then( banned => {
     if(banned) return socket.to(socket.id).emit("banned");
 
     ChatService.peerConnected({
