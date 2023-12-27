@@ -6,7 +6,7 @@ const router = require("./router");
 const socket = { Server } = require("socket.io");
 const mongoose = require("mongoose");
 
-const { ChatService } = require("./services");
+const { ChatService, BanService } = require("./services");
 
 const PORT = process.env.PORT || 8080;
 const BASE_URL = process.env.BASE_URL || "localhost";
@@ -34,18 +34,31 @@ const io = socket(server, {
 
 if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 
-io.on('connection', (socket) => {   
+io.on('connection', async (socket) => {   
   console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
 
-  ChatService.peerConnected({
-    peer: socket.id,
-    ip: socket.handshake.address,
-    mode: socket.handshake.query.mode,
-    interests: socket.handshake.query.interests,
-    lang: socket.handshake.query.lang,
-    simulated: socket.handshake.query.simulated || false
-  })
+  BanService.isBanned(socket.handshake.address),then( banned => {
+    if(banned) return socket.to(socket.id).emit("banned");
 
+    ChatService.peerConnected({
+      peer: socket.id,
+      ip: socket.handshake.address,
+      mode: socket.handshake.query.mode,
+      interests: socket.handshake.query.interests,
+      lang: socket.handshake.query.lang,
+      simulated: socket.handshake.query.simulated || false
+    })
+  });
+
+  socket.on('warned', () => {
+    BanService.warn(socket.handshake.ip).then( banned => {
+      if(!banned) return 
+      
+      socket.to(socket.id).emit("banned");
+      ChatService.peerDisconnected(socket.id)
+    })
+  })
+ 
   socket.on('candidatesent', (data) => {
     socket.to(data.remoteId).emit("receivecandidate", data)
   })
