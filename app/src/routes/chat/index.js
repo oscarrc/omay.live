@@ -70,7 +70,7 @@ const Chat = () => {
                         <div className="flex flex-row gap-4 items-start">
                             <div className="flex flex-col gap-2">
                                 <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
-                                    Find strangers with common interests
+                                    { t("chat.interests") }
                                 </Toggle>
                                 <InterestInput
                                     values={interests} 
@@ -81,7 +81,7 @@ const Chat = () => {
                             </div>
                             <div className="flex flex-col gap-2 items-start">
                                 <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                    Auto-reconnect
+                                    {t("chat.reconnect")}
                                 </Toggle>
                                 <div className="flex flex-col gap-2">
                                     <button 
@@ -91,13 +91,13 @@ const Chat = () => {
                                         }} 
                                         className="btn btn-lg btn-primary w-full sm:w-40"
                                     >
-                                        New chat
+                                        {t("chat.newchat")}
                                     </button>
                                     <button 
-                                        onClick={()=>dispatch({type: "MODE", payload: "text"})} 
+                                        onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
                                         className="btn btn-xs text-xs w-full sm:w-40 sm:self-end"
                                     >
-                                        Switch to text
+                                        { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
                                     </button>
                                 </div>
                             </div>
