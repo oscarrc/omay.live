@@ -247,11 +247,15 @@ const ChatProvider = ({ children }) => {
     useEffect(() => dispatch({type:"LANG", payload: i18n.language }), [i18n.language])
 
     useEffect(() => {
+        if(!state.mode) return;
+
         socket.current.emit('peerupdated', {
             lang: state.lang,
-            interests: Array.from(state.interests)
+            interests: Array.from(state.interests),
+            mode: state.mode,
+            simulated: isSimulated
         })
-    }, [state.lang, state.interests])
+    }, [state.lang, state.interests, state.mode, isSimulated])
 
     useEffect(() => {
         const onConnect = () => console.log("connected");

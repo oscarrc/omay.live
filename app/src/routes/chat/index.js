@@ -52,7 +52,10 @@ const Chat = () => {
     }, [mode, navigate])
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => { mode !== "text" && tac && startStream() }, [])
+    useEffect(() => { 
+        mode !== "text" && tac && !localStream && startStream()
+        mode === "text" && stopStream();
+     }, [localStream, mode, startStream, stopStream, tac])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
