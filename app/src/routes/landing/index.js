@@ -10,7 +10,7 @@ import { useChat } from "../../hooks/useChat";
 import { useEffect } from "react";
 
 const Landing = () => {     
-    const { state: { tac, mode, interests }, dispatch } = useChat();
+    const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
     
     useEffect(()=> {
@@ -43,27 +43,29 @@ const Landing = () => {
                             </Trans>
                         </p>
                     </div>
-                    <Alert 
-                        title={t("common.alerts.monitored")}
-                        text={t("common.alerts.keepclean")}
-                        icon={<AiFillWarning className="text-warning" />  }
-                        color="primary"
-                    />
-                    {/* <Alert 
-                        title={t("common.alerts.banned")}
-                        text={t("common.alerts.banreason")}
-                        icon={<FaBan className="text-error h-8 w-8 hidden sm:block" />  }
-                        color=""
-                    /> */}
+                    
+                    {
+                        isBanned ?
+                            <Alert 
+                                title={t("common.alerts.banned")}
+                                text={t("common.alerts.banreason")}
+                                icon={<FaBan className="text-error h-8 w-8 hidden sm:block" />  }
+                                color=""
+                            /> :
+                            <Alert 
+                                title={t("common.alerts.monitored")}
+                                text={t("common.alerts.keepclean")}
+                                icon={<AiFillWarning className="text-warning" />  }
+                                color="primary"
+                            />
+                    }
+
                     <div className="flex flex-col md:flex-row gap-8 justify-between">
                         <div className="flex flex-col gap-3 items-center">
                             <h4>{ t("common.talkabout") }</h4>
                             <InterestInput
                                 values={interests} 
-                                onAdd={(i) => {
-                                    dispatch({type: "ADD_INTEREST", payload: i})
-                                    dispatch({type: "INTEREST", payload: true})
-                                }}
+                                onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
                                 onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
                                 className="md:max-w-1/4 min-w-1/4"
                             />
@@ -71,11 +73,11 @@ const Landing = () => {
                         <div className="flex flex-col gap-2 items-center">
                             <h3 className="text-lg font-bold">{ t("common.startchatting") }</h3>
                             <div className="flex flex-col sm:flex-row w-full sm:w-auto">
-                                <button onClick={()=>dispatch({type: "MODE", payload: "text"})} className="btn btn-lg btn-primary w-full sm:w-40">{ t("common.text") }</button>
+                                <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "text"})} className="btn btn-lg btn-primary w-full sm:w-40">{ t("common.text") }</button>
                                 <div className="divider sm:divider-horizontal uppercase">{ t("common.or") }</div>
                                 <div className="flex flex-col gap-2">
-                                    <button onClick={()=>dispatch({type: "MODE", payload: "video"})} className="btn btn-lg btn-primary w-full sm:w-40">{ t("common.video") }</button>
-                                    <button onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">{ t("common.unmoderated") }</button>
+                                    <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "video"})} className="btn btn-lg btn-primary w-full sm:w-40">{ t("common.video") }</button>
+                                    <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">{ t("common.unmoderated") }</button>
                                 </div>
                             </div> 
                         </div>

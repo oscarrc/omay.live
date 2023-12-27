@@ -31,9 +31,9 @@ const ChatReducer = (state, action) => {
             let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
             return { ...state, lang }
         case "RESET":
-            return { ...DEFAULTS, lang: state.lang, interests: state.interests }
+            return { ...DEFAULTS, ...(state.status === 7 ? {status: 7} : {}), lang: state.lang, interests: state.interests }
         case "STATUS":
-            return { ...state, status: payload }
+            return { ...state, status: state.status === 7 ? 7 : payload }
         case "CONFIRMATION":
             return { ...state, confirmation: payload < 3 && payload > -1 ? payload : 0 }
         default:
@@ -61,6 +61,8 @@ const ChatProvider = ({ children }) => {
         const label = localStream.getVideoTracks()[0].label
         return VIRTUAL_CAMS.findIndex( v => new RegExp(v, 'i').test(label)) >= 0
     }, [localStream])
+
+    const isBanned = useMemo(() => state.status === 7, [state.status])
     
     const connect = (mode) => {
         socket.current.io.opts.query = { 
@@ -95,12 +97,19 @@ const ChatProvider = ({ children }) => {
         setLocalStream(null);
     }
 
+    const reportPeer = () => {
+        socket.current.emit("report", { id: peer.current });
+        closeConnection();
+    }
+
     const checkNSFW = async () => {
         if(!nsfw || !localStream) return;
         const img = await getImage(localStream);
         const predictions = await nsfw.current.classify(img);
-
-        return predictions;
+        
+        if(predictions[0].className === "Porn" && predictions[0].probability >= 0.25){
+            socket.current.emit("report", { id: socket.current.id })
+        }
     }
 
     const findPeer = async () => {
@@ -234,6 +243,8 @@ const ChatProvider = ({ children }) => {
         closeConnection(true);
     }
 
+    const onBanned = () => dispatch({ type: "STATUS", payload: 7 })
+
     const sendMessage = (msg) => {
         setMessages(m => [...m, { me: true, msg: msg}])
         data.current.send.send(msg);
@@ -262,6 +273,7 @@ const ChatProvider = ({ children }) => {
         const onDisconnect = () => console.log("disconnected");
 
         socket.current.on('connect', onConnect);
+        socket.current.on('banned', onBanned);
         socket.current.on('disconnect', onDisconnect);
         socket.current.on('receiveoffer', onReciveOffer);        
         socket.current.on('receiveanswer', onReceiveAnswer);        
@@ -291,11 +303,13 @@ const ChatProvider = ({ children }) => {
                 sendMessage,
                 startStream,
                 stopStream,
+                reportPeer,
                 localStream, 
                 messages,
                 remoteStream,
                 state,
                 streamError,
+                isBanned,
                 isSimulated
             }}
         >

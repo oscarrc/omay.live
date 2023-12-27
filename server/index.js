@@ -50,7 +50,7 @@ io.on('connection', async (socket) => {
     })
   });
 
-  socket.on('warned', () => {
+  socket.on('report', () => {
     BanService.warn(socket.handshake.ip).then( banned => {
       if(!banned) return 
       

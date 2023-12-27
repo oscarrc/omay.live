@@ -14,6 +14,7 @@ const Chat = () => {
         createOffer, 
         connect, 
         checkNSFW,
+        reportPeer,
         disconnect, 
         messages, 
         sendMessage, 
@@ -23,7 +24,8 @@ const Chat = () => {
         streamError, 
         remoteStream,
         closeConnection,
-        isSimulated
+        isSimulated,
+        isBanned
     } = useChat();
     const { t } = useTranslation();
 
@@ -31,19 +33,20 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
 
     const startSearch = async () => {
-        const result = await checkNSFW();
-        console.log(result)
-        createOffer();
+        if(isBanned) return;
+        await checkNSFW();
+        await createOffer();
     }
 
     useEffect(()=>{
+        if(isBanned) return;
         if(!tac) navigate("/");
         else if(!streamError) connect(mode);
         return () => { 
             stopStream();
             closeConnection();
             disconnect();
-         }
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -51,7 +54,6 @@ const Chat = () => {
         navigate(`/${mode}`)
     }, [mode, navigate])
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { 
         mode !== "text" && tac && !localStream && startStream()
         mode === "text" && stopStream();
@@ -113,7 +115,7 @@ const Chat = () => {
                 {
                     !isTextOnly &&                        
                     <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
-                        <button className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
+                        <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
                 }
                 <ChatControls 
@@ -122,6 +124,7 @@ const Chat = () => {
                     onStop={closeConnection} 
                     onSubmit={sendMessage} 
                     confirmation={confirmation} 
+                    disabled={isBanned}
                 />
             </div>
         </section>

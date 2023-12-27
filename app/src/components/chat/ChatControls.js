@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 import { useTranslation } from "react-i18next";
 
-const ChatControls = ({ onClick, onChange, onSubmit, onStart, onStop, confirmation }) => {
+const ChatControls = ({ onClick, onChange, onSubmit, onStart, onStop, confirmation, disabled }) => {
     const { t } = useTranslation();
     const textRef = useRef(null);
 
@@ -33,7 +33,7 @@ const ChatControls = ({ onClick, onChange, onSubmit, onStart, onStop, confirmati
    
     return (
         <div className="join w-full h-16">                   
-            <button onClick={skip} className={`join-item btn ${ confirmation === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 w-24 rounded-none sm:rounded-lg`}>
+            <button disabled={disabled} onClick={skip} className={`join-item btn ${ confirmation === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 w-24 rounded-none sm:rounded-lg`}>
                 { confirmation === 0 && t("chat.start") } 
                 { confirmation === 1 && t("chat.stop") } 
                 { confirmation === 2 && t("chat.really") } 
