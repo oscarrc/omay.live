@@ -10,6 +10,7 @@ i18n.use(Backend)
         fallbackLng: (code) => {
             const fallbacks = [];
             const langPart = code.split('-')[0];
+            if(code === "any") return ['en']
             if (langPart !== code) fallbacks.push(langPart);
             return fallbacks;
         },
