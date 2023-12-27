@@ -11,6 +11,10 @@ const PeerModel = new Schema({
         type: String,
         required: true
     },
+    simulated: {
+        type: Boolean,
+        default: false
+    },
     mode: {
         type: String,
         enum : ["text","video","unmoderated"],
@@ -24,6 +28,10 @@ const PeerModel = new Schema({
         type: Boolean,
         default: false,
         index: true
+    },
+    lang: {
+        type: String,
+        default: "any"
     }
 })
 

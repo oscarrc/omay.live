@@ -41,7 +41,9 @@ io.on('connection', (socket) => {
     peer: socket.id,
     ip: socket.handshake.address,
     mode: socket.handshake.query.mode,
-    interests: socket.handshake.query.interests
+    interests: socket.handshake.query.interests,
+    lang: socket.handshake.query.lang,
+    simulated: socket.handshake.query.simulated || false
   })
 
   socket.on('candidatesent', (data) => {
@@ -70,4 +72,8 @@ io.on('connection', (socket) => {
     console.log(`${socket.handshake.address} disconnected`);
     ChatService.peerDisconnected(socket.id)
   });
+
+  socket.on('peerupdated', (data) => {
+    ChatService.updatePeer(socket.id, data)
+  })
 });

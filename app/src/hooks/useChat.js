@@ -55,15 +55,19 @@ const ChatProvider = ({ children }) => {
     const peer = useRef(null);
 
     const isSimulated = useMemo(() => {
-        if(!remoteStream) return false;
-        
-        const label = remoteStream.getVideoTracks()[0].label
-        console.log(label)
+        if(!localStream) return false;
+        const label = localStream.getVideoTracks()[0].label
         return VIRTUAL_CAMS.findIndex( v => new RegExp(v, 'i').test(label)) >= 0
-    }, [remoteStream])
+    }, [localStream])
     
     const connect = (mode) => {
-        socket.current.io.opts.query = { mode, interests: Array.from(state.interests), lang: state.lang }
+        socket.current.io.opts.query = { 
+            mode, 
+            interests: Array.from(state.interests), 
+            lang: state.lang,
+            simulated: isSimulated
+        }
+        
         socket.current.connect()
     };
 
@@ -107,7 +111,11 @@ const ChatProvider = ({ children }) => {
             },
             body: JSON.stringify({
                 peer: socket.current.id,
-                query: {}
+                mode: state.mode,
+                query: {
+                    interests: Array.from(state.interests), 
+                    lang: state.lang
+                }
             })
         }).then( async res => await res.json() )
 
@@ -235,6 +243,13 @@ const ChatProvider = ({ children }) => {
     }, []) 
 
     useEffect(() => dispatch({type:"LANG", payload: i18n.language }), [i18n.language])
+
+    useEffect(() => {
+        socket.current.emit('peerupdated', {
+            lang: state.lang,
+            interests: Array.from(state.interests)
+        })
+    }, [state.lang, state.interests])
 
     useEffect(() => {
         const onConnect = () => console.log("connected");
