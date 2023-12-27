@@ -50,13 +50,15 @@ io.on('connection', async (socket) => {
     })
   });
 
-  socket.on('report', () => {
-    BanService.warn(socket.handshake.ip).then( banned => {
-      if(!banned) return 
-      
-      socket.to(socket.id).emit("banned");
-      ChatService.peerDisconnected(socket.id)
-    })
+  socket.on('report', (data) => {
+    ChatService.getPeer(data.id).then( (peer) => { 
+      BanService.warn(peer.ip).then( banned => {
+        if(!banned) return 
+        
+        socket.to(peer.id).emit("banned");
+        ChatService.peerDisconnected(socket.id)
+      })
+    });
   })
  
   socket.on('candidatesent', (data) => {
