@@ -96,7 +96,7 @@ const Chat = () => {
                                     <div className="divider divider-horizontal uppercase sm:hidden">{ t("common.or") }</div>
                                     <button 
                                         onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                        className="btn btn-lg sm:w-full sm:btn-xs sm:text-xs sm:self-end"
+                                        className="btn btn-lg text-sm sm:w-full sm:btn-xs sm:text-xs sm:self-end"
                                     >
                                         { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
                                     </button>
