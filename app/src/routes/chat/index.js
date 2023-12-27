@@ -67,8 +67,8 @@ const Chat = () => {
                 <ChatBox className="flex flex-col flex-1 gap-4" messages={messages} status={status} isSimulated={isSimulated}>
                     { 
                         [4,5].includes(status) &&                          
-                        <div className="flex flex-row gap-4 items-start">
-                            <div className="flex flex-col gap-2">
+                        <div className="flex flex-col sm:flex-row gap-4 items-start">
+                            <div className="flex flex-col gap-2 flex-1 w-full sm:max-w-md">
                                 <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
                                     { t("chat.interests") }
                                 </Toggle>
@@ -76,26 +76,27 @@ const Chat = () => {
                                     values={interests} 
                                     onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
                                     onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
-                                    className="md:max-w-md"
+                                    className="w-full "
                                 />
                             </div>
                             <div className="flex flex-col gap-2 items-start">
                                 <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
                                     {t("chat.reconnect")}
                                 </Toggle>
-                                <div className="flex flex-col gap-2">
+                                <div className="flex flex-row sm:flex-col gap-2">
                                     <button 
                                         onClick={() => {
                                             dispatch({ type: "CONFIRMATION", payload: confirmation + 1 })
                                             startSearch()
                                         }} 
-                                        className="btn btn-lg btn-primary w-full sm:w-40"
+                                        className="btn sm:w-full btn-lg btn-primary "
                                     >
                                         {t("chat.newchat")}
                                     </button>
+                                    <div className="divider divider-horizontal uppercase sm:hidden">{ t("common.or") }</div>
                                     <button 
                                         onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                        className="btn btn-xs text-xs w-full sm:w-40 sm:self-end"
+                                        className="btn btn-lg sm:w-full sm:btn-xs sm:text-xs sm:self-end"
                                     >
                                         { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
                                     </button>
