@@ -18,13 +18,13 @@ const ChatReducer = (state, action) => {
             if(!MODES.includes(payload)) return state;
             return { ...state, mode: payload}
         case "INTEREST":            
-            return { ...state, interest: !!payload}        
-        case "ADD_INTEREST":          
+            return { ...state, interest: payload}        
+        case "ADD_INTEREST":  
             state.interests.add(payload)
-            return { ...state, interests: new Set(state.interests)}
+            return { ...state, interests: new Set(state.interests), interest: state.interests.size === 1 ? true : state.interest}
         case "DEL_INTEREST":          
             state.interests.delete(payload)
-            return { ...state, interests: new Set(state.interests)}
+            return { ...state, interests: new Set(state.interests), interest: state.interests.size !== 0 }
         case "TOGGLE_AUTO":
             return { ...state, auto: !state.auto }
         case "LANG":          

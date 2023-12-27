@@ -11,7 +11,8 @@ const InterestInput = ({ values, onAdd, onDelete, className }) => {
         if(e.keyCode !== 13 && e.keyCode !== 188) return;
         else e.preventDefault()
         
-        onAdd(inputRef.current.value.replace(",",""))
+        let v = inputRef.current.value.replace(",","");
+        v !== "" && onAdd(v)
         inputRef.current.value = "";
     },[onAdd])
 
