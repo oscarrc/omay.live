@@ -45,7 +45,6 @@ const ChatProvider = ({ children }) => {
     const [ messages, setMessages ] = useState([]);
     const [ localStream, setLocalStream ] = useState(null);
     const [ remoteStream, setRemoteStream ] = useState(null);
-    const [ streamError, setStreamError ] = useState(false);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
     
     const { i18n } = useTranslation();
@@ -81,14 +80,13 @@ const ChatProvider = ({ children }) => {
         setMessages([]);
     }
 
-    const startStream = async () => {
-        setStreamError(false);
-        
+    const startStream = async () => {     
+        console.log(1)   
         try{
             let stream = await navigator.mediaDevices.getUserMedia(CAMERA_OPTIONS);
             setLocalStream(stream);
         }catch(e){
-            setStreamError(true);
+            dispatch({type: "STATUS", payload: 6 })
         }    
     }
     
@@ -308,7 +306,6 @@ const ChatProvider = ({ children }) => {
                 messages,
                 remoteStream,
                 state,
-                streamError,
                 isBanned,
                 isSimulated
             }}

@@ -21,7 +21,6 @@ const Chat = () => {
         stopStream, 
         startStream, 
         localStream, 
-        streamError, 
         remoteStream,
         closeConnection,
         isSimulated,
@@ -41,7 +40,7 @@ const Chat = () => {
     useEffect(()=>{
         if(isBanned) return;
         if(!tac) navigate("/");
-        else if(!streamError) connect(mode);
+        else if(status !== 6) connect(mode);
         return () => { 
             stopStream();
             closeConnection();
