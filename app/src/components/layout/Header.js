@@ -1,5 +1,5 @@
 import { BRAND } from "../../constants/brand";
-import LanguageSelector from "../partials/LanguageSelector";
+import { LanguageSelector } from "../partials";
 import { Link } from "react-router-dom";
 import { useChat } from "../../hooks/useChat";
 

@@ -1,4 +1,5 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
+import { InterestInput, Toggle } from "../../components/partials";
 import { useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
@@ -8,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const Chat = () => {
     const { 
-        state: { tac, mode, status, confirmation }, 
+        state: { tac, mode, status, confirmation, interests, interest, auto }, 
         dispatch,
         createOffer, 
         connect, 
@@ -46,6 +47,10 @@ const Chat = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        navigate(`/${mode}`)
+    }, [mode, navigate])
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => { mode !== "text" && tac && startStream() }, [])
 
@@ -59,7 +64,46 @@ const Chat = () => {
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
-                <ChatBox className="flex-1" messages={messages} status={status} isSimulated={isSimulated} />
+                <ChatBox className="flex flex-col flex-1 gap-4" messages={messages} status={status} isSimulated={isSimulated}>
+                    { 
+                        [4,5].includes(status) &&                          
+                        <div className="flex flex-row gap-4 items-start">
+                            <div className="flex flex-col gap-2">
+                                <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
+                                    Find strangers with common interests
+                                </Toggle>
+                                <InterestInput
+                                    values={interests} 
+                                    onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                    onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                    className="md:max-w-md"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-2 items-start">
+                                <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                    Auto-reconnect
+                                </Toggle>
+                                <div className="flex flex-col gap-2">
+                                    <button 
+                                        onClick={() => {
+                                            dispatch({ type: "CONFIRMATION", payload: confirmation + 1 })
+                                            startSearch()
+                                        }} 
+                                        className="btn btn-lg btn-primary w-full sm:w-40"
+                                    >
+                                        New chat
+                                    </button>
+                                    <button 
+                                        onClick={()=>dispatch({type: "MODE", payload: "text"})} 
+                                        className="btn btn-xs text-xs w-full sm:w-40 sm:self-end"
+                                    >
+                                        Switch to text
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </ChatBox>
             </div>
             <div className="flex gap-4">
                 {

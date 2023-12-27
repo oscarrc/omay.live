@@ -65,7 +65,7 @@ const ChatProvider = ({ children }) => {
     const connect = (mode) => {
         socket.current.io.opts.query = { 
             mode, 
-            interests: Array.from(state.interests), 
+            interests: state.interest ? Array.from(state.interests) : [], 
             lang: state.lang,
             simulated: isSimulated
         }
@@ -115,8 +115,8 @@ const ChatProvider = ({ children }) => {
                 peer: socket.current.id,
                 mode: state.mode,
                 query: {
-                    interests: Array.from(state.interests), 
-                    lang: state.lang
+                    ...(state.lang !== "any" ? { lang: state.lang} : {}),
+                    ...(state.interest ? { interests: state.interests } : {})
                 }
             })
         }).then( async res => await res.json() )

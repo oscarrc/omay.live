@@ -60,8 +60,12 @@ const Landing = () => {
                             <h4>{ t("common.talkabout") }</h4>
                             <InterestInput
                                 values={interests} 
-                                onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                onAdd={(i) => {
+                                    dispatch({type: "ADD_INTEREST", payload: i})
+                                    dispatch({type: "INTEREST", payload: true})
+                                }}
                                 onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                className="md:max-w-1/4 min-w-1/4"
                             />
                         </div>
                         <div className="flex flex-col gap-2 items-center">
