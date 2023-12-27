@@ -116,7 +116,7 @@ const ChatProvider = ({ children }) => {
                 mode: state.mode,
                 query: {
                     ...(state.lang !== "any" ? { lang: state.lang} : {}),
-                    ...(state.interest ? { interests: state.interests } : {})
+                    ...(state.interest ? { interests: Array.from(state.interests) } : {})
                 }
             })
         }).then( async res => await res.json() )
