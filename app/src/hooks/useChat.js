@@ -2,6 +2,7 @@ import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, VIRTUAL_CAMS } from "../c
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { getImage, loadNSFW } from "../components/lib/nsfw";
 
+import { LOCALES } from "../constants/locales";
 import { io } from 'socket.io-client';
 import { useTranslation } from "react-i18next";
 
@@ -26,8 +27,9 @@ const ChatReducer = (state, action) => {
             return { ...state, interests: new Set(state.interests)}
         case "TOGGLE_AUTO":
             return { ...state, auto: !state.auto }
-        case "LANG":            
-            return { ...state, lang: payload}
+        case "LANG":          
+            let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
+            return { ...state, lang }
         case "RESET":
             return { ...DEFAULTS, lang: state.lang, interests: state.interests }
         case "STATUS":

@@ -5,7 +5,7 @@ const DEFAULTS = {
     mode: undefined,
     interest: false,
     interests: new Set(),
-    lang: "en",
+    lang: "any",
     status: 0,
     auto: true,
     confirmation: 0
