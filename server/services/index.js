@@ -1,4 +1,7 @@
-module.exports = {
-    BanService: require("./Ban.service"),
-    ChatService: require("./Chat.service")
+import BanService from "./Ban.service.js";
+import ChatService from "./Chat.service.js";
+
+export {
+    BanService,
+    ChatService
 }

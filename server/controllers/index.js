@@ -1,4 +1,7 @@
-module.exports = {
-    ChatController: require("./Chat.controller"),
-    BanController: require("./Ban.controller")
+import BanController from "./Ban.controller.js";
+import ChatController from "./Chat.controller.js";
+
+export {
+    ChatController,
+    BanController
 }

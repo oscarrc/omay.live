@@ -1,4 +1,7 @@
-module.exports = {
-    BanModel: require("./Ban.model"),
-    PeerModel: require("./Peer.model")
+import BanModel from "./Ban.model.js";
+import PeerModel from "./Peer.model.js";
+
+export {
+    BanModel,
+    PeerModel
 }

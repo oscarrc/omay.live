@@ -1,4 +1,4 @@
-const { PeerModel } = require("../models");
+import { PeerModel } from "../models/index.js";
 
 class ChatService{
     constructor(Peer){
@@ -59,4 +59,4 @@ class ChatService{
     }
 }
 
-module.exports = new ChatService(PeerModel)
+export default new ChatService(PeerModel)

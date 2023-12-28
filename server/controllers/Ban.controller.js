@@ -1,4 +1,4 @@
-const { BanService } = require("../services");
+import { BanService } from "../services/index.js";
 
 class BanController {
     constructor (service){
@@ -20,4 +20,4 @@ class BanController {
     }
 }
 
-module.exports = new BanController(BanService)
+export default new BanController(BanService)

@@ -1,19 +1,22 @@
-const dontenv = require("dotenv").config();
-const express = require("express");
-const bodyparser = require("body-parser");
-const cors = require("cors");
-const router = require("./router");
-const socket = { Server } = require("socket.io");
-const mongoose = require("mongoose");
+import { BanService, ChatService } from "./services/index.js";
 
-const { ChatService, BanService } = require("./services");
+import bodyparser from "body-parser";
+import chalk from 'chalk';
+import cors from "cors";
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
+import router from "./router.js";
+import { Server as socket } from "socket.io";
 
 const PORT = process.env.PORT || 8080;
 const BASE_URL = process.env.BASE_URL || "localhost";
 const app = express(); 
 
+dotenv.config();
+
 mongoose.connect(process.env.MONGO_URL).then(() => {
-  console.log(`> [DB] Connection ready`)
+  console.log(`${chalk.green.bold("> [DB]")} Connection ready`)
 })
 
 app.use(bodyparser.urlencoded({extended: true}))
@@ -22,17 +25,17 @@ app.use(bodyparser.urlencoded({extended: true}))
     .use(router)
 
 const server = app.listen(PORT, () => {
-    console.log(`> [HTTP] Ready on ${BASE_URL}:${PORT}`)
+    console.log(`${chalk.green.bold("> [HTTP]")} Ready on ${BASE_URL}:${PORT}`)
 })
 
-const io = socket(server, {
+const io = new socket(server, {
     cors: {
       origin: "*",
       credentials: true
     },
 });
 
-if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
+if(io) console.log(`${chalk.green.bold("> [SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', (socket) => {   
   console.log(`${socket.id} connected from ${socket.handshake.address} in ${socket.handshake.query.mode} mode`);
@@ -61,7 +64,7 @@ io.on('connection', (socket) => {
       BanService.warn(peer.ip).then( banned => {
         if(!banned) return 
         
-        socket.to(peer.id).emit("banned");
+        socket.emit("banned");
         ChatService.peerDisconnected(socket.id)
       })
     });
