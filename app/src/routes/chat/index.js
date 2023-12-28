@@ -30,10 +30,11 @@ const Chat = () => {
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
+    const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
 
     const startSearch = async () => {
         if(isDisabled) return;
-        await checkNSFW();
+        if(!isUnmoderated) await checkNSFW();
         await createOffer();
     }
 

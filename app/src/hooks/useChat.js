@@ -32,9 +32,11 @@ const ChatReducer = (state, action) => {
             return { ...state, lang }
         case "RESET":
             return { ...DEFAULTS, ...(state.status === 7 ? {status: 7} : {}), lang: state.lang, interests: state.interests }
-        case "STATUS":
-            return { ...state, status: state.status === 7 ? 7 : payload }
+        case "STATUS":            
+            if(state.status === 7) return state;
+            return { ...state, status: payload }
         case "CONFIRMATION":
+            if(state.status === 7) return state;
             return { ...state, confirmation: payload < 3 && payload > -1 ? payload : 0 }
         default:
             break;
@@ -81,8 +83,7 @@ const ChatProvider = ({ children }) => {
         setMessages([]);
     }
 
-    const startStream = async () => {     
-        console.log(1)   
+    const startStream = async () => {
         try{
             let stream = await navigator.mediaDevices.getUserMedia(CAMERA_OPTIONS);
             setLocalStream(stream);
@@ -246,6 +247,7 @@ const ChatProvider = ({ children }) => {
     const onBanned = () => {
         console.log("banned")
         dispatch({ type: "STATUS", payload: 7 });
+        dispatch({ type: "CONFIRMATION", payload: 0 });
         closeConnection();
     }
 
