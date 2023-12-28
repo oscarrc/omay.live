@@ -16,7 +16,7 @@ const app = express();
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
-  console.log(`${chalk.green.bold("> [DB]")} Connection ready`)
+  console.log(`${chalk.green.bold("[DB]")} Connection ready`)
 })
 
 app.use(bodyparser.urlencoded({extended: true}))
@@ -25,7 +25,7 @@ app.use(bodyparser.urlencoded({extended: true}))
     .use(router)
 
 const server = app.listen(PORT, () => {
-    console.log(`${chalk.green.bold("> [HTTP]")} Ready on ${BASE_URL}:${PORT}`)
+    console.log(`${chalk.green.bold("[HTTP]")} Ready on ${BASE_URL}:${PORT}`)
 })
 
 const io = new socket(server, {
@@ -35,14 +35,14 @@ const io = new socket(server, {
     },
 });
 
-if(io) console.log(`${chalk.green.bold("> [SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
+if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
 
-io.on('connection', (socket) => {   
-  console.log(`${socket.id} connected from ${socket.handshake.address} in ${socket.handshake.query.mode} mode`);
+io.on('connection', (socket) => { 
+  console.log(`${chalk.green.bold("> [connected]")} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${socket.handshake.address})`)}`)
 
   BanService.isBanned(socket.handshake.address).then( banned => {    
     if(banned) {      
-      console.log(`${socket.id} from network ${socket.handshake.address} is banned`)
+      console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${socket.handshake.address})`)}`)
       socket.emit("banned");
     }
 
@@ -58,12 +58,13 @@ io.on('connection', (socket) => {
 
   socket.on('report', (data) => {
     if(!data.id) return;
-    console.log(`${data.id} reported`);
+    console.log(`${chalk.yellow.bold("> [reported]")} ${chalk.bgYellow.black.bold(' nsfw ')} ${chalk.yellow(data.id)}`)
 
     ChatService.getPeer(data.id).then( (peer) => {
       BanService.warn(peer.ip).then( banned => {
         if(!banned) return 
-        
+
+        console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${data.id} (${peer.ip})`)}`)
         socket.emit("banned");
         ChatService.peerDisconnected(socket.id)
       })
@@ -93,7 +94,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    console.log(`${socket.id} was connected from ${socket.handshake.address} and now disconnected`);
+    console.log(`${chalk.blue.bold("> [disconnected]")} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${socket.handshake.address})`)}`)
     ChatService.peerDisconnected(socket.id)
   });
 
