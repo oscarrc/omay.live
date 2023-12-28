@@ -37,6 +37,14 @@ const Chat = () => {
         await createOffer();
     }
 
+    const stopSearch = async () => {
+        await closeConnection();
+        if(auto) {
+            await startSearch()
+            dispatch({ type: "CONFIRMATION", payload: 1})
+        }
+    }
+
     useEffect(()=>{
         if(isDisabled) return;
         if(!tac) navigate("/");
@@ -120,7 +128,7 @@ const Chat = () => {
                 <ChatControls 
                     onClick={(v) => dispatch({ type: "CONFIRMATION", payload: v})} 
                     onStart={startSearch} 
-                    onStop={closeConnection} 
+                    onStop={stopSearch} 
                     onSubmit={sendMessage} 
                     confirmation={confirmation} 
                     disabled={isDisabled}
