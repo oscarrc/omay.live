@@ -6,20 +6,21 @@ class BanService{
     }
 
     async isBanned(ip){
-        const found = this.ban.findOne({ ip })
-        return found && found.isBanned;
+        const found = await this.ban.findOne({ ip })
+        return found?.isBanned;
     }
 
     async warn(ip){
-        const warned = this.ban.findOneAndUpdate({ ip }, {$inc : {count : 1}}, { upsert:true, new:true });
-        
-        if(warned.count >= 3){
+        const warned = await this.ban.findOneAndUpdate({ ip }, {$inc : {warns : 1} }, { upsert:true, new:true });
+       
+        if(warned.warns >= 3){
             warned.date = new Date();
+            warned.bans = warned.bans + 1
             await warned.save();
-            return { banned: true }
+            return true
         }
 
-        return { banned: false }
+        return false
     }
 }
 

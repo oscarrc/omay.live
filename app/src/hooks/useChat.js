@@ -96,6 +96,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const reportPeer = () => {
+        if(!peer.current) return;
         socket.current.emit("report", { id: peer.current });
         closeConnection();
     }
@@ -241,7 +242,11 @@ const ChatProvider = ({ children }) => {
         closeConnection(true);
     }
 
-    const onBanned = () => dispatch({ type: "STATUS", payload: 7 })
+    const onBanned = () => {
+        console.log("banned")
+        dispatch({ type: "STATUS", payload: 7 });
+        closeConnection();
+    }
 
     const sendMessage = (msg) => {
         setMessages(m => [...m, { me: true, msg: msg}])
@@ -280,6 +285,7 @@ const ChatProvider = ({ children }) => {
 
         return () => { 
             socket.current.off('connect', onConnect);
+            socket.current.off('banned', onBanned);
             socket.current.off('disconnect', onDisconnect);
             socket.current.off('receiveoffer', onReciveOffer);        
             socket.current.off('receiveanswer', onReceiveAnswer);        

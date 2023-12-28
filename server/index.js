@@ -38,7 +38,7 @@ io.on('connection', async (socket) => {
   console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
 
   BanService.isBanned(socket.handshake.address).then( banned => {
-    if(banned) return socket.to(socket.id).emit("banned");
+    if(banned) socket.to(socket.id).emit("banned");
 
     ChatService.peerConnected({
       peer: socket.id,
@@ -51,10 +51,10 @@ io.on('connection', async (socket) => {
   });
 
   socket.on('report', (data) => {
+    if(!data.id) return;
     console.log(`${data.id} reported`);
 
-    ChatService.getPeer(data.id).then( (peer) => { 
-      if(!peer) return;
+    ChatService.getPeer(data.id).then( (peer) => {
       BanService.warn(peer.ip).then( banned => {
         if(!banned) return 
         

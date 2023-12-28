@@ -10,11 +10,11 @@ const BanSchema = new Schema({
     },
     warns:{
         type: Number,
-        default: 1
+        default: 0
     },
     bans: {
         type: Number,
-        default: 1
+        default: 0
     },
     date: {
         type: Date

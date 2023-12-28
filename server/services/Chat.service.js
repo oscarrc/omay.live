@@ -19,7 +19,7 @@ class ChatService{
             ...(query.lang && query?.lang !== "any" ? { lang: query.lang } : {}),            
             ...(query.interests && query.interests.length ? { interests: { "$in": query.interests } } : {})
         }
-        console.log(q)
+        
         let found = await this.peer.findOne(q);
         
         let f = found ? 
