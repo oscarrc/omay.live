@@ -11,7 +11,8 @@ const loadNSFW = async () => {
     }
 }
 
-const getImage = async (stream) => {
+
+const getImage = (stream) => new Promise( (resolve, reject) => {
     const { width, height } = stream.getVideoTracks()[0].getSettings();
     const canvas = document.createElement("canvas"); 
     canvas.width = width;
@@ -19,16 +20,17 @@ const getImage = async (stream) => {
 
     const video = document.createElement("video");
     video.srcObject = stream;
-    
-    const context = canvas.getContext("2d");
-    context.drawImage(video, 0, 0, width, height);
+    video.autoplay = true;
 
-    const data = canvas.toDataURL("image/png");
-    const img = document.createElement("img");
-
-    img.src = data;
-
-    return img
-}
+    try{
+        video.onloadeddata = () => {
+            const context = canvas.getContext("2d");
+            context.drawImage(video, 0, 0, width, height);    
+            resolve(canvas)
+        }
+    }catch(e){
+        reject(e)
+    }
+})
 
 export { loadNSFW, getImage }

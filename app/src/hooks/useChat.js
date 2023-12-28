@@ -104,7 +104,7 @@ const ChatProvider = ({ children }) => {
         if(!nsfw || !localStream) return;
         const img = await getImage(localStream);
         const predictions = await nsfw.current.classify(img);
-        
+        console.log(predictions)
         if(predictions[0].className === "Porn" && predictions[0].probability >= 0.25){
             socket.current.emit("report", { id: socket.current.id })
         }
