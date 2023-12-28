@@ -24,7 +24,8 @@ const Chat = () => {
         remoteStream,
         closeConnection,
         isSimulated,
-        isDisabled
+        isDisabled,
+        isBanned
     } = useChat();
     const { t } = useTranslation();
 
@@ -40,7 +41,7 @@ const Chat = () => {
 
     const stopSearch = async () => {
         await closeConnection();
-        if(auto) {
+        if(auto && !isBanned) {
             await startSearch()
             dispatch({ type: "CONFIRMATION", payload: 1})
         }
