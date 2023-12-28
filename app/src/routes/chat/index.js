@@ -23,13 +23,13 @@ const Chat = () => {
         localStream, 
         remoteStream,
         closeConnection,
-        isSimulated
+        isSimulated,
+        isDisabled
     } = useChat();
     const { t } = useTranslation();
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
-    const isDisabled = useMemo(() => [6,7].includes(status), [status])
 
     const startSearch = async () => {
         if(isDisabled) return;

@@ -62,7 +62,8 @@ const ChatProvider = ({ children }) => {
     }, [localStream])
 
     const isBanned = useMemo(() => state.status === 7, [state.status])
-    
+    const isDisabled = useMemo(() => state.status === 7 || state.status === 6, [state.status])
+
     const connect = (mode) => {
         socket.current.io.opts.query = { 
             mode, 
@@ -313,7 +314,8 @@ const ChatProvider = ({ children }) => {
                 remoteStream,
                 state,
                 isBanned,
-                isSimulated
+                isSimulated,
+                isDisabled
             }}
         >
             { children }        
