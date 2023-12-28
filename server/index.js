@@ -35,12 +35,13 @@ const io = socket(server, {
 if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', (socket) => {   
-  console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
+  console.log(`${socket.id} connected from ${socket.handshake.address} in ${socket.handshake.query.mode} mode`);
 
-  BanService.isBanned(socket.handshake.address).then( banned => {
-    console.log(socket.id, banned)
-    
-    if(banned) socket.to(socket.id).emit("banned");
+  BanService.isBanned(socket.handshake.address).then( banned => {    
+    if(banned) {      
+      console.log(`${socket.id} from network ${socket.handshake.address} is banned`)
+      socket.emit("banned");
+    }
 
     ChatService.peerConnected({
       peer: socket.id,
@@ -89,7 +90,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    console.log(`${socket.handshake.address} disconnected`);
+    console.log(`${socket.id} was connected from ${socket.handshake.address} and now disconnected`);
     ChatService.peerDisconnected(socket.id)
   });
 

@@ -7,7 +7,7 @@ class BanService{
 
     async isBanned(ip){
         const found = await this.ban.findOne({ ip })
-        return found?.isBanned;
+        return found?.isBanned || false;
     }
 
     async warn(ip){
