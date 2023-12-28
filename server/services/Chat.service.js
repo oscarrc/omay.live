@@ -29,8 +29,6 @@ class ChatService{
                         common: query.interests ? found.interests.filter( i => query.interests.includes(i) ) : []
                     } : {}
         
-        console.log(f)
-
         return found?.peer; 
     }
     

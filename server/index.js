@@ -51,7 +51,10 @@ io.on('connection', async (socket) => {
   });
 
   socket.on('report', (data) => {
+    console.log(`${data.id} reported`);
+
     ChatService.getPeer(data.id).then( (peer) => { 
+      if(!peer) return;
       BanService.warn(peer.ip).then( banned => {
         if(!banned) return 
         
