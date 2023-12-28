@@ -24,8 +24,7 @@ const Chat = () => {
         remoteStream,
         closeConnection,
         isSimulated,
-        isDisabled,
-        isBanned
+        isDisabled
     } = useChat();
     const { t } = useTranslation();
 
@@ -41,10 +40,12 @@ const Chat = () => {
 
     const stopSearch = async () => {
         await closeConnection();
-        if(auto && !isBanned) {
-            await startSearch()
-            dispatch({ type: "CONFIRMATION", payload: 1})
-        }
+    }
+
+    const onClick = async () => {
+        confirmation === 0 && await startSearch();
+        confirmation === 2 && await stopSearch();
+        dispatch({ type: "CONFIRMATION", payload: confirmation < 3 ? confirmation + 1 : 0})
     }
 
     useEffect(()=>{
@@ -128,11 +129,9 @@ const Chat = () => {
                     </div>
                 }
                 <ChatControls 
-                    onClick={(v) => dispatch({ type: "CONFIRMATION", payload: v})} 
-                    onStart={startSearch} 
-                    onStop={stopSearch} 
+                    onClick={onClick} 
                     onSubmit={sendMessage} 
-                    confirmation={confirmation} 
+                    state={confirmation} 
                     disabled={isDisabled}
                 />
             </div>
