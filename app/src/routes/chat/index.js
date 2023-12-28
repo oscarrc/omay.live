@@ -23,24 +23,24 @@ const Chat = () => {
         localStream, 
         remoteStream,
         closeConnection,
-        isSimulated,
-        isBanned
+        isSimulated
     } = useChat();
     const { t } = useTranslation();
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
+    const isDisabled = useMemo(() => [6,7].includes(status), [status])
 
     const startSearch = async () => {
-        if(isBanned) return;
+        if(isDisabled) return;
         await checkNSFW();
         await createOffer();
     }
 
     useEffect(()=>{
-        if(isBanned) return;
+        if(isDisabled) return;
         if(!tac) navigate("/");
-        else if(status !== 6) connect(mode);
+        else connect(mode);
         return () => { 
             stopStream();
             closeConnection();
@@ -54,9 +54,9 @@ const Chat = () => {
     }, [mode, navigate])
 
     useEffect(() => { 
-        mode !== "text" && tac && !localStream && startStream()
+        mode !== "text" && tac && !localStream && status !== 6 && startStream()
         mode === "text" && stopStream();
-     }, [localStream, mode, startStream, stopStream, tac])
+     }, [localStream, mode, startStream, status, stopStream, tac])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
@@ -123,7 +123,7 @@ const Chat = () => {
                     onStop={closeConnection} 
                     onSubmit={sendMessage} 
                     confirmation={confirmation} 
-                    disabled={isBanned}
+                    disabled={isDisabled}
                 />
             </div>
         </section>
