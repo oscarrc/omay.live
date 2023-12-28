@@ -274,9 +274,9 @@ const ChatProvider = ({ children }) => {
     useEffect(() => {
         const onConnect = () => console.log("connected");
         const onDisconnect = () => console.log("disconnected");
-
-        socket.current.on('connect', onConnect);
+        
         socket.current.on('banned', onBanned);
+        socket.current.on('connect', onConnect);
         socket.current.on('disconnect', onDisconnect);
         socket.current.on('receiveoffer', onReciveOffer);        
         socket.current.on('receiveanswer', onReceiveAnswer);        
@@ -284,8 +284,8 @@ const ChatProvider = ({ children }) => {
         socket.current.on('peerdisconnected', onPeerDisconnected);
 
         return () => { 
-            socket.current.off('connect', onConnect);
             socket.current.off('banned', onBanned);
+            socket.current.off('connect', onConnect);
             socket.current.off('disconnect', onDisconnect);
             socket.current.off('receiveoffer', onReciveOffer);        
             socket.current.off('receiveanswer', onReceiveAnswer);        

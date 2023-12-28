@@ -34,10 +34,12 @@ const io = socket(server, {
 
 if(io) console.log(`> [SOCKET] Ready on ${BASE_URL}:${PORT}`)
 
-io.on('connection', async (socket) => {   
+io.on('connection', (socket) => {   
   console.log(`${socket.handshake.address} connected in ${socket.handshake.query.mode} mode`);
 
   BanService.isBanned(socket.handshake.address).then( banned => {
+    console.log(socket.id, banned)
+    
     if(banned) socket.to(socket.id).emit("banned");
 
     ChatService.peerConnected({
