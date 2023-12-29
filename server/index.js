@@ -38,11 +38,11 @@ const io = new socket(server, {
 if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', async (socket) => {
-  let ip =  socket.request.headers.referer;
+  let ip =  socket.request.client._peername;
   let banned = await BanService.isBanned(ip);
      
   if(banned) {      
-    console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${ip})`)}`)
+    console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${ip.adress}:${ip.port})`)}`)
     socket.emit("banned");
   }
 
@@ -95,8 +95,8 @@ io.on('connection', async (socket) => {
     socket.to(data.remoteId).emit('peerdisconnected')
   })
 
-  socket.on('disconnect', async () => {    
-    let ip =  socket.request.headers.referer;
+  socket.on('disconnect', async () => {     
+    let ip =  socket.request.client._peername;
     await ChatService.peerDisconnected(socket.id)
     console.log(`${chalk.blue.bold("> [disconnected]")} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${ip})`)}`)
   });
