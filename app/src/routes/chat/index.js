@@ -23,7 +23,6 @@ const Chat = () => {
         localStream, 
         remoteStream,
         closeConnection,
-        isSimulated,
         isDisabled,
         peer
     } = useChat();
@@ -62,7 +61,7 @@ const Chat = () => {
     }, [])
 
     useEffect(() => {
-        navigate(`/${mode}`)
+        mode && navigate(`/${mode}`)
     }, [mode, navigate])
 
     useEffect(() => { 
@@ -84,8 +83,8 @@ const Chat = () => {
                     className="flex flex-col flex-1 gap-4" 
                     messages={messages} 
                     status={status} 
-                    isSimulated={isSimulated} 
-                    common={peer.current?.interests?.filter( i => interests.has(i)) || []} 
+                    isSimulated={peer.current.simulated} 
+                    common={peer.current.interests?.filter( i => interests.has(i)) || []} 
                     lang={peer.current.lang === lang && lang !== "any"}
                 >
                     { 
