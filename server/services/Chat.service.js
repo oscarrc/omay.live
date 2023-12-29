@@ -26,12 +26,14 @@ class ChatService{
                     {
                         id: found.peer,
                         lang: found.lang,
-                        interests: found.interests
+                        interests: found.interests,
+                        simulated: found.simulated
                     } : 
                     {
                         id: null,
                         lang: null,
-                        interests: []
+                        interests: [],
+                        simulated: null
                     }
         
         return f; 
