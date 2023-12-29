@@ -45,7 +45,7 @@ class ChatService{
     }
 
     async updatePeer(peer, data){
-        let updated = await this.peer.findOneAndUpdate({id: peer}, data)
+        let updated = await this.peer.findOneAndUpdate({ peer }, data, {new: true})
         return updated;
     }
 

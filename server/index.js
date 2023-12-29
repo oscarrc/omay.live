@@ -49,10 +49,10 @@ io.on('connection', (socket) => {
     ChatService.peerConnected({
       peer: socket.id,
       ip: socket.handshake.address,
-      mode: socket.handshake.query.mode,
-      interests: socket.handshake.query.interests,
-      lang: socket.handshake.query.lang,
-      simulated: socket.handshake.query.simulated || false
+      // mode: socket.handshake.query.mode,
+      // interests: socket.handshake.query.interests,
+      // lang: socket.handshake.query.lang,
+      // simulated: socket.handshake.query.simulated || false
     })
   });
 
