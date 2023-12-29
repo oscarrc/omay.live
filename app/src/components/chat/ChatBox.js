@@ -13,8 +13,7 @@ const ChatBox = ({ messages, className, status, simulated, children, lang, commo
                     common.length > 0 && 
                     <p>
                         { t(`chat.interest`) }
-                        &nbsp;
-                        { common.map((c,i) => <span key={i}>{c}</span> )}
+                        { common.map((c,i) => <span key={i} className="badge bg-base-200 mx-2">{c}</span> )}
                     </p>
                 }
                 {simulated && <p><strong>{ t(`chat.simulated`) }</strong></p>}

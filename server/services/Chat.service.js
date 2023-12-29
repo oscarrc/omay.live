@@ -26,12 +26,12 @@ class ChatService{
                     {
                         id: found.peer,
                         lang: found.lang,
-                        common: query.interests ? found.interests.filter( i => query.interests.includes(i) ) : []
+                        interests: found.interests
                     } : 
                     {
                         id: null,
                         lang: null,
-                        common: []
+                        interests: []
                     }
         
         return f; 

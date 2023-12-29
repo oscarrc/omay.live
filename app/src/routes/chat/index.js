@@ -80,7 +80,14 @@ const Chat = () => {
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
-                <ChatBox className="flex flex-col flex-1 gap-4" messages={messages} status={status} isSimulated={isSimulated} common={peer.current.common} lang={peer.current.lang === lang && lang !== "any"}>
+                <ChatBox 
+                    className="flex flex-col flex-1 gap-4" 
+                    messages={messages} 
+                    status={status} 
+                    isSimulated={isSimulated} 
+                    common={peer.current?.interests?.filter( i => interests.has(i)) || []} 
+                    lang={peer.current.lang === lang && lang !== "any"}
+                >
                     { 
                         [4,5].includes(status) &&                          
                         <div className="flex flex-col sm:flex-row gap-4 items-start">

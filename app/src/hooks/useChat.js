@@ -56,7 +56,7 @@ const ChatProvider = ({ children }) => {
     const connection = useRef(null);
     const nsfw = useRef(null);
     const data = useRef({ send: null, receive: null });
-    const peer = useRef({ id: null, lang: null, common: [] });
+    const peer = useRef({ id: null, lang: null, interests: [] });
 
     const isSimulated = useMemo(() => {
         if(!localStream) return false;
@@ -179,7 +179,7 @@ const ChatProvider = ({ children }) => {
             remoteId: peer.current.id
         })
 
-        peer.current = { id: null, lang: null, common: [] };
+        peer.current = { id: null, lang: null, interests: [] };
         data.current = { send: null, receive: null };
         remoteStream && remoteStream?.getTracks().forEach(track => track.stop()) && setRemoteStream(null);
         connection.current && connection.current.close();
@@ -203,7 +203,7 @@ const ChatProvider = ({ children }) => {
             id: socket.current.id,
             remoteId: peer.current.id,
             lang: peer.current.lang,
-            common: peer.current.common,
+            interests: peer.current.interests,
             offer
         })
     }
@@ -217,7 +217,7 @@ const ChatProvider = ({ children }) => {
         const answer = await connection.current.createAnswer();
         await connection.current.setLocalDescription(answer);
 
-        peer.current = { id: data.id, lang: data.lang, common: data.common };
+        peer.current = { id: data.id, lang: data.lang, interests: data.interests };
         
         socket.current.emit("answercreated", {
             id: socket.current.id,
