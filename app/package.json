@@ -63,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@tailwindcss/typography": "^0.5.10",
     "daisyui": "^3.9.4",
     "react-app-rewired": "^2.2.1",
