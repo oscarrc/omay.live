@@ -131,7 +131,7 @@ const ChatProvider = ({ children }) => {
                 }
             })
         }).then( async res => await res.json() )
-
+        
         return res.peer;
     }
 
@@ -271,7 +271,7 @@ const ChatProvider = ({ children }) => {
 
     useEffect(() => {
         if(!state.mode) return;
-
+        
         socket.current.emit('peerupdated', {
             lang: state.lang,
             interests: Array.from(state.interests),
