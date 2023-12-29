@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useChat } from "../../hooks/useChat";
 
 const Header = () => {
-    const { state: { lang } } = useChat();
+    const { state: { lang }, count } = useChat();
     
     return (
         <header className="sticky top-0 bg-base-100 z-40">
@@ -18,7 +18,7 @@ const Header = () => {
                 </div>
                 <div className="flex gap-8 flex-shrink px-4">
                     <div className="whitespace-nowrap text-primary text-lg font-bold hidden sm:inline">
-                        <span className="text-2xl">10000+</span> Online now
+                        <span className="text-2xl">{count}+</span> Online now
                     </div>   
                     <LanguageSelector lang={lang} />                                
                 </div>

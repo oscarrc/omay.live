@@ -6,9 +6,13 @@ class ChatController {
     }
 
     async find(req, res){
-        console.log(req.body)
         const peer = await ChatService.findPeer(req.body);        
         return res.status(200).send({ peer });
+    }
+
+    async count(req, res){
+        const count = await ChatService.peerCount();        
+        return res.status(200).send({ count });
     }
 }
 

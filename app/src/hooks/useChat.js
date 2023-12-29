@@ -48,14 +48,15 @@ const ChatProvider = ({ children }) => {
     const [ localStream, setLocalStream ] = useState(null);
     const [ remoteStream, setRemoteStream ] = useState(null);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
-    
+    const [ count, setCount ] = useState(0);
+
     const { i18n } = useTranslation();
 
     const socket = useRef(null);
     const connection = useRef(null);
     const nsfw = useRef(null);
     const data = useRef({ send: null, receive: null });
-    const peer = useRef(null);
+    const peer = useRef({ id: null, lang: null, common: [] });
 
     const isSimulated = useMemo(() => {
         if(!localStream) return false;
@@ -99,7 +100,7 @@ const ChatProvider = ({ children }) => {
 
     const reportPeer = () => {
         if(!peer.current) return;
-        socket.current.emit("report", { id: peer.current });
+        socket.current.emit("report", { id: peer.current.id });
         closeConnection();
     }
 
@@ -155,7 +156,7 @@ const ChatProvider = ({ children }) => {
 
             socket.current.emit("candidatesent", {
                 id: socket.current.id,
-                remoteId: peer.current,
+                remoteId: peer.current.id,
                 iceCandidate: e.candidate
             })
         }
@@ -175,10 +176,10 @@ const ChatProvider = ({ children }) => {
     const closeConnection = (remote) => {
         !remote && socket.current.emit("connectionclosed", {
             id: socket.current.id,
-            remoteId: peer.current
+            remoteId: peer.current.id
         })
 
-        peer.current = null;
+        peer.current = { id: null, lang: null, common: [] };
         data.current = { send: null, receive: null };
         remoteStream && remoteStream?.getTracks().forEach(track => track.stop()) && setRemoteStream(null);
         connection.current && connection.current.close();
@@ -200,7 +201,9 @@ const ChatProvider = ({ children }) => {
         
         socket.current.emit("offercreated", {
             id: socket.current.id,
-            remoteId: peer.current,
+            remoteId: peer.current.id,
+            lang: peer.current.lang,
+            common: peer.current.common,
             offer
         })
     }
@@ -214,7 +217,7 @@ const ChatProvider = ({ children }) => {
         const answer = await connection.current.createAnswer();
         await connection.current.setLocalDescription(answer);
 
-        peer.current = data.id;
+        peer.current = { id: data.id, lang: data.lang, common: data.common };
         
         socket.current.emit("answercreated", {
             id: socket.current.id,
@@ -229,7 +232,7 @@ const ChatProvider = ({ children }) => {
         
         socket.current.emit("answerreceived", {
             id: socket.current.id,
-            remoteid: data.peer
+            remoteid: data.id
         })
     }
 
@@ -298,6 +301,15 @@ const ChatProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        fetch(`http://localhost:8080/chat`, {
+            method: "GET"
+        }).then( async (res) => {
+            let json = await res.json()
+            setCount(json.count)
+        });
+    }, [])
+
     return (
         <ChatContext.Provider
             value={{
@@ -311,6 +323,8 @@ const ChatProvider = ({ children }) => {
                 startStream,
                 stopStream,
                 reportPeer,
+                count,
+                peer,
                 localStream, 
                 messages,
                 remoteStream,

@@ -6,7 +6,7 @@ class ChatService{
     }
     
     get peerCount(){
-        return ( async () => this.Peer.estimatedDocumentCount() )
+        return ( async () => this.peer.estimatedDocumentCount() )
     }
 
     async findPeer(options){
@@ -24,12 +24,17 @@ class ChatService{
         
         let f = found ? 
                     {
-                        peer: found.peer,
+                        id: found.peer,
                         lang: found.lang,
                         common: query.interests ? found.interests.filter( i => query.interests.includes(i) ) : []
-                    } : {}
+                    } : 
+                    {
+                        id: null,
+                        lang: null,
+                        common: []
+                    }
         
-        return found?.peer; 
+        return f; 
     }
     
     async getPeer(peer){
