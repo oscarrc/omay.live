@@ -99,7 +99,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const reportPeer = () => {
-        if(!peer.current) return;
+        if(!peer.current.id) return;
         socket.current.emit("report", { id: peer.current.id });
         closeConnection();
     }
@@ -174,6 +174,8 @@ const ChatProvider = ({ children }) => {
     }
     
     const closeConnection = (remote) => {
+        if(!connection.current) return;
+        
         !remote && socket.current.emit("connectionclosed", {
             id: socket.current.id,
             remoteId: peer.current.id
