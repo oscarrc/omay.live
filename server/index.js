@@ -37,24 +37,25 @@ const io = new socket(server, {
 
 if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
 
-io.on('connection', async (socket) => {   
-  let banned = await BanService.isBanned(socket.handshake.address);
+io.on('connection', async (socket) => {
+  let ip =  socket.request.headers.referer;
+  let banned = await BanService.isBanned(ip);
      
   if(banned) {      
-    console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${socket.handshake.address})`)}`)
+    console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${ip})`)}`)
     socket.emit("banned");
   }
 
   await ChatService.peerConnected({
     peer: socket.id,
-    ip: socket.handshake.address,
+    ip: ip,
     mode: socket.handshake.query.mode,
     interests: socket.handshake.query.interests,
     lang: socket.handshake.query.lang,
     simulated: socket.handshake.query.simulated || false
   })
 
-  console.log(`${chalk.green.bold("> [connected]")} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${socket.handshake.address})`)}`)
+  console.log(`${chalk.green.bold("> [connected]")} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${ip})`)}`)
 
   socket.on('report', async (data) => {
     if(!data.id) return;
@@ -94,9 +95,10 @@ io.on('connection', async (socket) => {
     socket.to(data.remoteId).emit('peerdisconnected')
   })
 
-  socket.on('disconnect', async () => {
+  socket.on('disconnect', async () => {    
+    let ip =  socket.request.headers.referer;
     await ChatService.peerDisconnected(socket.id)
-    console.log(`${chalk.blue.bold("> [disconnected]")} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${socket.handshake.address})`)}`)
+    console.log(`${chalk.blue.bold("> [disconnected]")} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${ip})`)}`)
   });
 
   socket.on('peerupdated', async (data) => {
