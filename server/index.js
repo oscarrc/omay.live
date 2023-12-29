@@ -40,19 +40,19 @@ if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}
 io.on('connection', (socket) => { 
   console.log(`${chalk.green.bold("> [connected]")} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${socket.handshake.address})`)}`)
 
-  BanService.isBanned(socket.handshake.address).then( banned => {    
+  BanService.isBanned(socket.handshake.address).then( async (banned) => {    
     if(banned) {      
       console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${socket.handshake.address})`)}`)
       socket.emit("banned");
     }
 
-    ChatService.peerConnected({
+    await ChatService.peerConnected({
       peer: socket.id,
       ip: socket.handshake.address,
-      // mode: socket.handshake.query.mode,
-      // interests: socket.handshake.query.interests,
-      // lang: socket.handshake.query.lang,
-      // simulated: socket.handshake.query.simulated || false
+      mode: socket.handshake.query.mode,
+      interests: socket.handshake.query.interests,
+      lang: socket.handshake.query.lang,
+      simulated: socket.handshake.query.simulated || false
     })
   });
 
