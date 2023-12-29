@@ -3,7 +3,7 @@ import { BanController, ChatController } from "./controllers/index.js";
 import express from "express";
 
 const router = express.Router();
-router.get("/", (req,res) => res.send("test"));
+router.get("/", (req,res) => res.send("OK"));
 
 router.post("/chat", ChatController.find.bind(ChatController))
 router.get("/chat", ChatController.count.bind(ChatController))

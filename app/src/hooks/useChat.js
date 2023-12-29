@@ -116,7 +116,7 @@ const ChatProvider = ({ children }) => {
 
     const findPeer = async () => {
         dispatch({ type: "STATUS", payload: 2 });
-        const res = await fetch(`http://localhost:8080/chat`, {
+        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/chat`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -263,7 +263,7 @@ const ChatProvider = ({ children }) => {
     }
 
     useEffect(() => {
-       if(!socket.current) socket.current = io("http://localhost:8080", { query:{}, autoConnect: false });
+       if(!socket.current) socket.current = io(process.env.REACT_APP_SERVER_URL, { query:{}, autoConnect: false });
        if(!nsfw.current) loadNSFW().then(l => nsfw.current = l);
     }, []) 
 
@@ -305,7 +305,7 @@ const ChatProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:8080/chat`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/chat`, {
             method: "GET"
         }).then( async (res) => {
             let json = await res.json()
