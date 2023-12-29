@@ -48,7 +48,7 @@ io.on('connection', async (socket) => {
 
   await ChatService.peerConnected({
     peer: socket.id,
-    ip: ip,
+    ip: `${ip.address}:${ip.port}`,
     mode: socket.handshake.query.mode,
     interests: socket.handshake.query.interests,
     lang: socket.handshake.query.lang,
