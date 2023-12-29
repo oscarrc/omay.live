@@ -33,7 +33,7 @@ class ChatService{
                         id: null,
                         lang: null,
                         interests: [],
-                        simulated: null
+                        simulated: false
                     }
         
         return f; 

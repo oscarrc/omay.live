@@ -83,7 +83,7 @@ const Chat = () => {
                     className="flex flex-col flex-1 gap-4" 
                     messages={messages} 
                     status={status} 
-                    isSimulated={peer.current.simulated} 
+                    simulated={peer.current.simulated} 
                     common={peer.current.interests?.filter( i => interests.has(i)) || []} 
                     lang={peer.current.lang === lang && lang !== "any"}
                 >
