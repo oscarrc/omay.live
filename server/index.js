@@ -37,8 +37,8 @@ const io = new socket(server, {
 
 if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
 
-io.on('connection', async (socket) => {
-  let ip =  socket.handshake.address;
+io.on('connection', async (socket) => { 
+  let ip =  socket.client.conn.remoteAddress;
   let banned = await BanService.isBanned(ip);
      
   if(banned) {      
@@ -48,7 +48,7 @@ io.on('connection', async (socket) => {
 
   await ChatService.peerConnected({
     peer: socket.id,
-    ip: `${ip.address}:${ip.port}`,
+    ip: ip,
     mode: socket.handshake.query.mode,
     interests: socket.handshake.query.interests,
     lang: socket.handshake.query.lang,
@@ -95,8 +95,8 @@ io.on('connection', async (socket) => {
     socket.to(data.remoteId).emit('peerdisconnected')
   })
 
-  socket.on('disconnect', async () => {     
-    let ip =  socket.handshake.address
+  socket.on('disconnect', async () => { 
+    let ip = socket.handshake.headers['x-forwarded-for'];
     await ChatService.peerDisconnected(socket.id)
     console.log(`${chalk.blue.bold("> [disconnected]")} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${ip})`)}`)
   });
