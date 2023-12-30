@@ -38,6 +38,7 @@ const io = new socket(server, {
 if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}`)
 
 io.on('connection', async (socket) => { 
+  console.log(socket.handshake)
   let ip =  socket.client.conn.remoteAddress;
   let banned = await BanService.isBanned(ip);
      
