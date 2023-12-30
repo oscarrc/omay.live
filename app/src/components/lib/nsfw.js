@@ -25,7 +25,9 @@ const getImage = (stream) => new Promise( (resolve, reject) => {
     try{
         video.onloadeddata = () => {
             const context = canvas.getContext("2d");
-            context.drawImage(video, 0, 0, width, height);    
+            context.drawImage(video, 0, 0, width, height); 
+            video.muted = true;
+            console.log(canvas.toDataURL("image/jpeg"))   
             resolve(canvas)
         }
     }catch(e){
