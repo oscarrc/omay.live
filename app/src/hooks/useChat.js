@@ -192,7 +192,6 @@ const ChatProvider = ({ children }) => {
     }
 
     const createOffer = async () => {
-        console.log("offercreated");
         dispatch({ type: "STATUS", payload: 1 });
         
         await closeConnection();
@@ -200,7 +199,8 @@ const ChatProvider = ({ children }) => {
         
         const offer = await connection.current.createOffer();                
         await connection.current.setLocalDescription(offer);
-        
+                
+        console.log("offercreated");
         socket.current.emit("offercreated", {
             id: socket.current.id,
             remoteId: peer.current.id,
@@ -211,9 +211,7 @@ const ChatProvider = ({ children }) => {
         })
     }
 
-    const onReciveOffer = async (data) => { //Create answer  
-        console.log("answercreated")     
-        
+    const onReciveOffer = async (data) => { //Create answer
         // await createConnection();            
         await connection.current.setRemoteDescription(data.offer); 
         
@@ -221,7 +219,8 @@ const ChatProvider = ({ children }) => {
         await connection.current.setLocalDescription(answer);
 
         peer.current = { id: data.id, lang: data.lang, interests: data.interests, simulated: data.simulated };
-        
+          
+        console.log("answercreated");
         socket.current.emit("answercreated", {
             id: socket.current.id,
             remoteId: data.id,
@@ -230,9 +229,9 @@ const ChatProvider = ({ children }) => {
     }
 
     const onReceiveAnswer = async (data) => { //Set remote description
-        console.log("answerreceived")
         await connection.current.setRemoteDescription(data.answer); 
         
+        console.log("answerreceived");
         socket.current.emit("answerreceived", {
             id: socket.current.id,
             remoteid: data.id
@@ -240,8 +239,8 @@ const ChatProvider = ({ children }) => {
     }
 
     const onReceiveCandidate = async (data) => {
-        dispatch({ type: "STATUS", payload: 3 });
         console.log("icecandidatereceived")
+        dispatch({ type: "STATUS", payload: 3 });
         await connection.current.addIceCandidate(data.iceCandidate)
     }
 
