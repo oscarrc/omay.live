@@ -39,7 +39,7 @@ if(io) console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${PORT}
 
 io.on('connection', async (socket) => {
   let ip =  socket.handshake.headers["true-client-ip"] || 
-            socket.handshake.headers["x-forwarded-for"].split(",")[0] || 
+            socket.handshake.headers["x-forwarded-for"]?.split(",")[0] || 
             socket.client.conn.remoteAddress;
 
   let banned = await BanService.isBanned(ip);
@@ -100,7 +100,7 @@ io.on('connection', async (socket) => {
 
   socket.on('disconnect', async () => {     
     let ip =  socket.handshake.headers["true-client-ip"] || 
-              socket.handshake.headers["x-forwarded-for"].split(",")[0] || 
+              socket.handshake.headers["x-forwarded-for"]?.split(",")[0] || 
               socket.client.conn.remoteAddress;
               
     await ChatService.peerDisconnected(socket.id)
