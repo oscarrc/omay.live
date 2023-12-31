@@ -28,7 +28,7 @@ BanSchema.virtual("isBanned").get(function() {
     const target = new Date(this.date);
    
     target.setDate(target.getDate() + this.bans * process.env.BAN_DURATION)
-
+    
     return now < target;
 })
 

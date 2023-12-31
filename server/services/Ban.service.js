@@ -7,6 +7,12 @@ class BanService{
 
     async isBanned(ip){
         const found = await this.ban.findOne({ ip })
+        
+        if(!found.isBanned && found.warns >= 3){
+            found.warns = 0;
+            await found.save();
+        } 
+
         return found?.isBanned || false;
     }
 
