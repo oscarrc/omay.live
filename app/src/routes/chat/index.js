@@ -5,10 +5,11 @@ import { useCallback, useEffect, useMemo } from "react";
 import { MdReport } from "react-icons/md"
 import { useChat } from "../../hooks/useChat";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
+import useMouseMoving from "../../hooks/useMouseMoving";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const Chat = () => {
+const Chat = () => { 
     const { 
         state: { tac, mode, status, confirmation, interests, interest, auto, lang }, 
         dispatch,
@@ -30,10 +31,11 @@ const Chat = () => {
     const { t } = useTranslation();
     const { isMobile } = useDeviceDetection();
 
+    const isMouseMoving = useMouseMoving();
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
-
+ 
     const startSearch = useCallback(async () => {
         if(isDisabled) return;
         if(!isUnmoderated) await checkNSFW();
@@ -72,8 +74,8 @@ const Chat = () => {
      }, [localStream, mode, startStream, status, stopStream, tac])
      
     useEffect(() => {
-        [4,5].includes(status) && !isMobile && onClick();
-    }, [isMobile, onClick, status])
+        [4,5].includes(status) && auto && !isMobile && !isMouseMoving && onClick();
+    }, [auto, isMobile, isMouseMoving, onClick, status])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
@@ -95,39 +97,42 @@ const Chat = () => {
                 >
                     { 
                         [1,4,5].includes(status) &&                          
-                        <div className="flex flex-col sm:flex-row gap-4 items-start">
-                            <div className="flex flex-col gap-2 flex-1 w-full sm:max-w-md">
-                                <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
-                                    { t("chat.interests") }
-                                </Toggle>
-                                <InterestInput
-                                    values={interests} 
-                                    onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
-                                    onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
-                                    className="w-full "
-                                />
-                            </div>
-                            <div className="flex flex-col gap-2 items-start">
-                                <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                    {t("chat.reconnect")}
-                                </Toggle>
-                                <div className="flex flex-row sm:flex-col gap-2">
-                                    <button 
-                                        onClick={() => {
-                                            dispatch({ type: "CONFIRMATION", payload: confirmation + 1 })
-                                            startSearch()
-                                        }} 
-                                        className="btn sm:w-full btn-lg btn-primary "
-                                    >
-                                        {t("chat.newchat")}
-                                    </button>
-                                    <div className="divider divider-horizontal uppercase sm:hidden">{ t("common.or") }</div>
-                                    <button 
-                                        onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                        className="btn btn-lg text-sm sm:w-full sm:btn-xs sm:text-xs sm:self-end"
-                                    >
-                                        { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
-                                    </button>
+                        <div className="flex flex-col gap-2">
+                            { [4,5].includes(status) && auto && isMouseMoving && <p>{t("chat.mousemoving")} </p>}
+                            <div className="flex flex-col sm:flex-row gap-4 items-start">
+                                <div className="flex flex-col gap-2 flex-1 w-full sm:max-w-md">
+                                    <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
+                                        { t("chat.interests") }
+                                    </Toggle>
+                                    <InterestInput
+                                        values={interests} 
+                                        onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                        onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                        className="w-full "
+                                    />
+                                </div>
+                                <div className="flex flex-col gap-2 items-start">
+                                    <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                        {t("chat.reconnect")}
+                                    </Toggle>
+                                    <div className="flex flex-row sm:flex-col gap-2">
+                                        <button 
+                                            onClick={() => {
+                                                dispatch({ type: "CONFIRMATION", payload: confirmation + 1 })
+                                                startSearch()
+                                            }} 
+                                            className="btn sm:w-full btn-lg btn-primary "
+                                        >
+                                            {t("chat.newchat")}
+                                        </button>
+                                        <div className="divider divider-horizontal uppercase sm:hidden">{ t("common.or") }</div>
+                                        <button 
+                                            onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
+                                            className="btn btn-lg text-sm sm:w-full sm:btn-xs sm:text-xs sm:self-end"
+                                        >
+                                            { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

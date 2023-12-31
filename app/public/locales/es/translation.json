@@ -35,7 +35,8 @@
         "send": "Enviar",
         "report": "Informe",
         "you": "Tu",
-        "stranger": "Extraño"
+        "stranger": "Extraño",
+        "mousemoving": "Ratón moviendose. Esperando..."
     },
     "common":{
         "startchatting": "Empieza a chatear",

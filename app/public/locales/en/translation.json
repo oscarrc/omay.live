@@ -35,7 +35,8 @@
         "send": "Send",
         "report": "Report",
         "you": "You",
-        "stranger": "Stranger"
+        "stranger": "Stranger",
+        "mousemoving": "Mouse is moving. Waiting..."
     },
     "common":{
         "startchatting": "Start chatting",

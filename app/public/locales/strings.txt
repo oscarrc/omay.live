@@ -32,7 +32,8 @@
 "Send",
 "Report",
 "You",
-"Stranger"
+"Stranger",
+"Mouse is moving. Waiting..."
 
 "Start chatting",
 "What do you want to talk about?",
