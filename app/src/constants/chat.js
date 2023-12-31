@@ -45,8 +45,8 @@ const VIRTUAL_CAMS = [
 ]
 
 const STATUS = [
-    "stopped",
     "connecting",
+    "stopped",
     "searching",
     "connected",    
     "strangerdisconnected",

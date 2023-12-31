@@ -88,7 +88,7 @@ const Chat = () => {
                     lang={peer.current.lang === lang && lang !== "any"}
                 >
                     { 
-                        [0,4,5].includes(status) &&                          
+                        [1,4,5].includes(status) &&                          
                         <div className="flex flex-col sm:flex-row gap-4 items-start">
                             <div className="flex flex-col gap-2 flex-1 w-full sm:max-w-md">
                                 <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>

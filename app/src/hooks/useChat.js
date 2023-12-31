@@ -65,7 +65,7 @@ const ChatProvider = ({ children }) => {
     }, [localStream])
 
     const isBanned = useMemo(() => state.status === 7, [state.status])
-    const isDisabled = useMemo(() => state.status === 7 || state.status === 6, [state.status])
+    const isDisabled = useMemo(() => [0,6,7].includes(state.status), [state.status])
 
     const connect = (mode) => {
         socket.current.io.opts.query = { 
@@ -108,14 +108,13 @@ const ChatProvider = ({ children }) => {
         if(!nsfw || !localStream) return;
         const img = await getImage(localStream);
         const predictions = await nsfw.current.classify(img);
-        console.log(predictions)
+        
         if(predictions[0].className === "Porn" && predictions[0].probability >= 0.25){
             socket.current.emit("report", { id: socket.current.id })
         }
     }
 
     const findPeer = async () => {
-        dispatch({ type: "STATUS", payload: 2 });
         const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/chat`, {
             method: "POST",
             headers: {
@@ -192,7 +191,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const createOffer = async () => {
-        dispatch({ type: "STATUS", payload: 1 });
+        dispatch({ type: "STATUS", payload: 2 });
         
         await closeConnection();
         await createConnection();
@@ -255,6 +254,12 @@ const ChatProvider = ({ children }) => {
         dispatch({ type: "CONFIRMATION", payload: 0 });
         closeConnection();
     }
+    
+    const onConnect = () => {
+        console.log("connected");
+        dispatch({ type: "STATUS", payload: 1 });
+    };
+    const onDisconnect = () => console.log("disconnected");
 
     const sendMessage = (msg) => {
         setMessages(m => [...m, { me: true, msg: msg}])
@@ -279,10 +284,7 @@ const ChatProvider = ({ children }) => {
         })
     }, [state.lang, state.interests, state.mode, isSimulated])
 
-    useEffect(() => {
-        const onConnect = () => console.log("connected");
-        const onDisconnect = () => console.log("disconnected");
-        
+    useEffect(() => {        
         socket.current.on('banned', onBanned);
         socket.current.on('connect', onConnect);
         socket.current.on('disconnect', onDisconnect);
