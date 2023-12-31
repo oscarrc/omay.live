@@ -38,15 +38,15 @@ const Chat = () => {
         await createOffer();
     }, [checkNSFW, createOffer, isDisabled, isUnmoderated])
 
-    const stopSearch = async () => {
+    const stopSearch = useCallback(async () => {
         await closeConnection();
-    }
+    }, [closeConnection])
 
-    const onClick = async () => {
+    const onClick = useCallback(async () => {
         confirmation === 0 && await startSearch();
         confirmation === 2 && await stopSearch();
         dispatch({ type: "CONFIRMATION", payload: confirmation < 3 ? confirmation + 1 : 0})
-    }
+    }, [confirmation, dispatch, startSearch, stopSearch])
 
     useEffect(()=>{
         if(isDisabled) return;
@@ -67,8 +67,12 @@ const Chat = () => {
     useEffect(() => { 
         mode !== "text" && tac && !localStream && status !== 6 && startStream()
         mode === "text" && stopStream();
-    }, [localStream, mode, startStream, status, stopStream, tac])
+     }, [localStream, mode, startStream, status, stopStream, tac])
      
+    useEffect(() => {
+        [4,5].includes(status) && onClick();
+    }, [onClick, status])
+
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
             <div className="flex flex-col md:flex-row gap-4 flex-1">
