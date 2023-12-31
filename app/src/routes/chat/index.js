@@ -1,6 +1,6 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 import { InterestInput, Toggle } from "../../components/partials";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
 import { useChat } from "../../hooks/useChat";
@@ -32,11 +32,11 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
 
-    const startSearch = async () => {
+    const startSearch = useCallback(async () => {
         if(isDisabled) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
-    }
+    }, [checkNSFW, createOffer, isDisabled, isUnmoderated])
 
     const stopSearch = async () => {
         await closeConnection();
@@ -67,8 +67,8 @@ const Chat = () => {
     useEffect(() => { 
         mode !== "text" && tac && !localStream && status !== 6 && startStream()
         mode === "text" && stopStream();
-     }, [localStream, mode, startStream, status, stopStream, tac])
-
+    }, [localStream, mode, startStream, status, stopStream, tac])
+     
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
             <div className="flex flex-col md:flex-row gap-4 flex-1">

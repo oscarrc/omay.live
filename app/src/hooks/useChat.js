@@ -143,7 +143,8 @@ const ChatProvider = ({ children }) => {
         return res.peer;
     }
 
-    const createConnection = async () => {      
+    const createConnection = async () => {         
+        dispatch({ type: "STATUS", payload: 2 });    
         peer.current = await findPeer();          
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         setMessages([]);
@@ -199,9 +200,7 @@ const ChatProvider = ({ children }) => {
         (state.confirmation > 1 || remote) && dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 
-    const createOffer = async () => {
-        dispatch({ type: "STATUS", payload: 2 });
-        
+    const createOffer = async () => {        
         await closeConnection();
         await createConnection();
         
@@ -219,8 +218,7 @@ const ChatProvider = ({ children }) => {
         })
     }
 
-    const onReciveOffer = async (data) => { //Create answer
-        // await createConnection();            
+    const onReciveOffer = async (data) => { //Create answer           
         await connection.current.setRemoteDescription(data.offer); 
         
         const answer = await connection.current.createAnswer();
