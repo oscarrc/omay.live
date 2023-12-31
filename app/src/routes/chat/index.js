@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
 import { useChat } from "../../hooks/useChat";
+import useDeviceDetection from "../../hooks/useDeviceDetection";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -27,6 +28,7 @@ const Chat = () => {
         peer
     } = useChat();
     const { t } = useTranslation();
+    const { isMobile } = useDeviceDetection();
 
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
@@ -70,8 +72,8 @@ const Chat = () => {
      }, [localStream, mode, startStream, status, stopStream, tac])
      
     useEffect(() => {
-        [4,5].includes(status) && onClick();
-    }, [onClick, status])
+        [4,5].includes(status) && !isMobile && onClick();
+    }, [isMobile, onClick, status])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
