@@ -74,7 +74,7 @@ const Chat = () => {
      }, [localStream, mode, startStream, status, stopStream, tac])
      
     useEffect(() => {
-        [4,5].includes(status) && auto && !isMobile && !isMouseMoving && onClick();
+        if([4,5].includes(status) && auto && !isMobile && !isMouseMoving) setTimeout(onClick, 1000);
     }, [auto, isMobile, isMouseMoving, onClick, status])
 
     return (
@@ -112,9 +112,12 @@ const Chat = () => {
                                     />
                                 </div>
                                 <div className="flex flex-col gap-2 items-start">
-                                    <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                        {t("chat.reconnect")}
-                                    </Toggle>
+                                    {
+                                        !isMobile &&
+                                            <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                                {t("chat.reconnect")}
+                                            </Toggle>
+                                    }
                                     <div className="flex flex-row sm:flex-col gap-2">
                                         <button 
                                             onClick={() => {
