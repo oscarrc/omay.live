@@ -75,15 +75,8 @@ const ChatProvider = ({ children }) => {
             simulated: isSimulated
         }
         
-        try{
-            socket.current.connect()
-            dispatch({type: "STATUS", payload: 1 })
-        }catch(e){
-            console.log(e)
-            dispatch({type: "STATUS", payload: 9 })
-        }
+        socket.current.connect()
     };
-
     const disconnect = () => {
         socket.current.disconnect();
         connection.current = null;
@@ -266,6 +259,12 @@ const ChatProvider = ({ children }) => {
         console.log("connected");
         dispatch({ type: "STATUS", payload: 1 });
     };
+
+    const onError = () => {
+        console.log("error");
+        dispatch({ type: "STATUS", payload: 8 });
+    }
+
     const onDisconnect = () => console.log("disconnected");
 
     const sendMessage = (msg) => {
@@ -294,6 +293,7 @@ const ChatProvider = ({ children }) => {
     useEffect(() => {        
         socket.current.on('banned', onBanned);
         socket.current.on('connect', onConnect);
+        socket.current.on('connect_error', onError);
         socket.current.on('disconnect', onDisconnect);
         socket.current.on('receiveoffer', onReciveOffer);        
         socket.current.on('receiveanswer', onReceiveAnswer);        
@@ -303,6 +303,7 @@ const ChatProvider = ({ children }) => {
         return () => { 
             socket.current.off('banned', onBanned);
             socket.current.off('connect', onConnect);
+            socket.current.off('connect_error', onError);
             socket.current.off('disconnect', onDisconnect);
             socket.current.off('receiveoffer', onReciveOffer);        
             socket.current.off('receiveanswer', onReceiveAnswer);        
@@ -318,7 +319,7 @@ const ChatProvider = ({ children }) => {
         }).then( async (res) => {
             let json = await res.json()
             setCount(json.count)
-        });
+        }).catch(() => setCount(0) );
     }, [])
 
     return (
