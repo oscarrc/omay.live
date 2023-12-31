@@ -52,7 +52,8 @@ const STATUS = [
     "strangerdisconnected",
     "youdisconnected",
     "nocam",
-    "banned"
+    "banned",
+    "error"
 ]
 
 export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS, VIRTUAL_CAMS, STATUS }
