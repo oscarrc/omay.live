@@ -37,10 +37,10 @@ const Chat = () => {
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
  
     const startSearch = useCallback(async () => {
-        if(isDisabled) return;
+        if(isDisabled || status === 0) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
-    }, [checkNSFW, createOffer, isDisabled, isUnmoderated])
+    }, [checkNSFW, createOffer, isDisabled, isUnmoderated, status])
 
     const stopSearch = useCallback(async () => {
         await closeConnection();
