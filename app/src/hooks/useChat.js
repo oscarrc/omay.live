@@ -65,7 +65,7 @@ const ChatProvider = ({ children }) => {
     }, [localStream])
 
     const isBanned = useMemo(() => state.status === 7, [state.status])
-    const isDisabled = useMemo(() => [0,6,7,9].includes(state.status), [state.status])
+    const isDisabled = useMemo(() => [6,7,9].includes(state.status), [state.status])
 
     const connect = (mode) => {
         socket.current.io.opts.query = { 
@@ -77,7 +77,9 @@ const ChatProvider = ({ children }) => {
         
         try{
             socket.current.connect()
+            dispatch({type: "STATUS", payload: 1 })
         }catch(e){
+            console.log(e)
             dispatch({type: "STATUS", payload: 9 })
         }
     };
