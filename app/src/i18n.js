@@ -13,9 +13,8 @@ i18n.use(Backend)
             if(code === "any") return ['en']
             if (langPart !== code) fallbacks.push(langPart);
             return fallbacks;
-        },
-        
-        debug: true,
+        },        
+        debug: false,
         interpolation: {
             escapeValue: false
         }
