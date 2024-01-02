@@ -1,54 +1,59 @@
-"You don't need an app to use {{ BRAND }} on your phone or tablet! The web site works great on mobile.",
-"{{BRAND}} ({{TRANSLITERATION}}) is a great way to meet new friends. When you use {{ BRAND }}, we pick someone else at random and let you talk one-to-one. To help you stay safe, chats are anonymous unless you tell someone who you are (not recommended!), and you can stop a chat any time. See our  <6>Terms and conditions</6>, and <8>Community guidelines</8> for info about de do's and don'ts in using {{ BRAND }}. {{ BRAND }} video chat is AI moderated but no moderation is perfects. Users are solely responsible for their behaviour while using {{ BRAND }}",
-"<0>You must be 18 (or the legal majority in your jurisdiction) or older to use {{BRAND}}</0>. See {{BRAND}} <4>Terms and conditions</4> for more info. Parental control protections that may assists parents are commercially available and you can find more info at <6>https://www.connectsafely.org/controls</6> as well are other sites.",
-"Please leave Lamdazle and visit an adult site instead if that's what you are looking for and you are 18 (or the legal majority in your jurisdiction) or older.",
-"By checking the box you acknowledge that you have reviewed an agree to be bound by {{BRAND}} <3>Terms and conditions</3>, <5>Privacy policy</5> and <7>Community guidelines</7>.",
-"You may not use this service if you are under the age of 18 or the age of legal majority in your jurisdiction. See our <1>Terms and conditions</1> for more info. <3>By checking the box you acknowledge and represent that you are 18 years (or the legal majority in your jurisdiction) or older.</3>",
+"You don't need an app to use {{ BRAND }} on your phone or tablet! The web site works great on mobile."
+"{{BRAND}} ({{TRANSLITERATION}}) is a great way to meet new friends. When you use {{ BRAND }}, we pick someone else at random and let you talk one-to-one. To help you stay safe, chats are anonymous unless you tell someone who you are (not recommended!), and you can stop a chat any time. See our  <6>Terms and conditions</6>, and <8>Community guidelines</8> for info about de do's and don'ts in using {{ BRAND }}. {{ BRAND }} video chat is AI moderated but no moderation is perfects. Users are solely responsible for their behaviour while using {{ BRAND }}"
+"<0>You must be 18 (or the legal majority in your jurisdiction) or older to use {{BRAND}}</0>. See {{BRAND}}'s <4>Terms and conditions</4> for more info. Parental control protections that may assists parents are commercially available and you can find more info at <6>https://www.connectsafely.org/controls</6> as well are other sites."
+"Please leave Lamdazle and visit an adult site instead if that's what you are looking for and you are 18 (or the legal majority in your jurisdiction) or older."
+"By checking the box you acknowledge that you have reviewed an agree to be bound by {{BRAND}}'s <3>Terms and conditions</3>, <5>Privacy policy</5> and <7>Community guidelines</7>."
+"You may not use this service if you are under the age of 18 or the age of legal majority in your jurisdiction. See our <1>Terms and conditions</1> for more info. <3>By checking the box you acknowledge and represent that you are 18 years (or the legal majority in your jurisdiction) or older.</3>"
 "Accept and continue"
 
-"Connecting to the server",
-"Error connecting to the server: Please try again",
-"Error with camera: Requested device not found",
-"Banned",
-"Looking for a random stranger you can chat with...",
-"You're chatting with a random stranger. Say Hi...",
-"Clic Start to chat with a stranger",
-"You both speak the same language. Select \"Any\" on the language menu to disable.",
-"You both like",
-"Stranger my be using a simulated webcam",
-"Stranger is typing",
-"Stranger has disconnected",
-"You have disconnected",
-"Find strangers with common interests",
-"Great chat?",
-"Save the log",
-"Download",
-"Select all",
-"New chat",
-"Start",
-"Stop",
-"Really",
-"Auto-reconnect",
-"Send",
-"Report",
-"You",
-"Stranger",
+"Connecting to the server"
+"Error connecting to the server: Please try again"
+"Error with camera: Requested device not found"
+"Banned"
+
+"Looking for a random stranger you can chat with..."
+"Looking for a stranger with common interests..."
+"This is taking to long, looking for a random stranger instead..."
+  
+"Looking for a random stranger you can chat with..."
+"You're chatting with a random stranger. Say Hi..."
+"Clic Start to chat with a stranger"
+"You both speak the same language. Select \"Any\" on the language menu to disable."
+"You both like"
+"Stranger may be using a simulated webcam"
+"Stranger is typing"
+"Stranger has disconnected"
+"You have disconnected"
+"Find strangers with common interests"
+"Great chat?"
+"Save the log"
+"Download"
+"Select all"
+"New chat"
+"Start"
+"Stop"
+"Really"
+"Auto-reconnect"
+"Send"
+"Report"
+"You"
+"Stranger"
 "Mouse is moving. Waiting..."
 
-"Start chatting",
-"What do you want to talk about?",
-"Add your interests (Optional)",
-"Video",
-"Text",
-"Switch to",
-"Unmoderated section",
-"or",
-"All right reserved",
-"Terms and conditions",
-"Privacy policy",
-"Community guidelines",
+"Start chatting"
+"What do you want to talk about?"
+"Add your interests (Optional)"
+"Video"
+"Text"
+"Switch to"
+"Unmoderated section"
+"or"
+"All right reserved"
+"Terms and conditions"
+"Privacy policy"
+"Community guidelines"
 
-"Video is monitored",
-"Keep it clean and help by reporting NSFW behaviour",
-"Your computer/network has been banned",
+"Video is monitored"
+"Keep it clean and help by reporting NSFW behaviour"
+"Your computer/network has been banned"
 "Due to bad behiavior. Don't worry, ban won't last forever."
