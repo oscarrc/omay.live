@@ -153,7 +153,7 @@ const Chat = () => {
                     onClick={onClick} 
                     onSubmit={sendMessage} 
                     state={confirmation} 
-                    disabled={isDisabled}
+                    disabled={isDisabled || status === 0}
                 />
             </div>
         </section>
