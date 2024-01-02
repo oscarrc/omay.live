@@ -7,19 +7,26 @@
         "termscheck": "",
         "agecheck": "",
         "acceptandcontinue": ""
-},
+    },
     "chat":{
         "connecting": "",
         "error": "",
         "nocam": "",
         "banned": "",
+        "search": {
+            "random": "",
+            "common": "",
+            "long": ""
+        },  
         "searching": "",
         "connected": "",
+        "stopped": "",
         "language": "",
         "interest": "",
         "simulated": "",
         "typing": "",
-        "disconnected": "",
+        "strangerdisconnected": "",
+        "youdisconnected": "",
         "interests": "",
         "great": "",
         "save": "",
@@ -50,10 +57,10 @@
         "privacy": "",
         "guidelines": "",
         "alerts": {
-          "monitored":"",
+          "monitored": "",
           "keepclean": "",
-          "banned":"",
-          "banreason":""
+          "banned": "",
+          "banreason": ""
         }
     }
 }
