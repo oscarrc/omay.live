@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const Policies = () => {
     const { id } = useParams();
-    const Policy = lazy(() => import(`./${id}.mdx`));
+    const Policy = lazy(() => import(`./policy_${id}.mdx`));
 
     return ( 
         <MDXProvider>
