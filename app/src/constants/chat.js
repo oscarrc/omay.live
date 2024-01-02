@@ -40,8 +40,7 @@ const VIRTUAL_CAMS = [
     "AlterCam Virtual Webcam",
     "vMix Video",
     "CamTwist",
-    "Virtual",
-    "HP Truevision HD"
+    "Virtual"
 ]
 
 const STATUS = [
