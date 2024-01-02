@@ -1,5 +1,5 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
-import { InterestInput, Toggle } from "../../components/partials";
+import { InterestInput, Loader, Toggle } from "../../components/partials";
 import { useCallback, useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
@@ -83,7 +83,10 @@ const Chat = () => {
                 {
                     !isTextOnly && 
                     <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
-                        <VideoBox source={remoteStream} loading={status == 2} />
+                        <div className="relative">                           
+                            <VideoBox source={remoteStream} />
+                            { !remoteStream && status === 2 && <Loader className="absolute h-full top-0 left-0" /> } 
+                        </div>
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
