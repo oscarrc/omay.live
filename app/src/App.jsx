@@ -1,9 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Suspense, lazy } from "react";
 
 import { ChatProvider } from "./hooks/useChat";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
+import { lazy } from "react";
 
 const App = () => {  
   const Chat = lazy(() => import('./routes/chat'));
@@ -45,10 +45,8 @@ const App = () => {
   ])
 
   return (
-    <ChatProvider>      
-      <Suspense>
-        <RouterProvider router={router} />
-      </Suspense>
+    <ChatProvider>
+      <RouterProvider router={router} />
     </ChatProvider>
   );
 }

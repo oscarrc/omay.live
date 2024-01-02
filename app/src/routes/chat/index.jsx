@@ -83,7 +83,7 @@ const Chat = () => {
                 {
                     !isTextOnly && 
                     <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
-                        <VideoBox source={remoteStream} />
+                        <VideoBox source={remoteStream} loading={status == 2} />
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
