@@ -15,6 +15,22 @@
       "sizes": "any"
     }
   ],
+  "screenshots" : [
+    {
+      "src": "screenshot_wide.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Lamdazle! Connect with strangers"
+    },
+    {
+      "src": "screenshot_wide.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Lamdazle! Connect with strangers"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

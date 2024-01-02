@@ -9,7 +9,7 @@ const VideoBox = ({ source, muted, className }) => {
     }, [source])
 
     return (
-        <div className={`relative flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner aspect-4/3 overflow-hidden ${className}`}>            
+        <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner aspect-4/3 overflow-hidden ${className}`}>            
             <video ref={player} autoPlay={true} playsInline={true} muted={muted} className="w-full"/>
         </div>
     )
