@@ -22,11 +22,11 @@ const Landing = () => {
             <section className="flex gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded shadow-inner p-8">
                 <div className="flex flex-col gap-8">
                     <div className="prose md:prose-lg min-w-fit">
-                        <h4 className="text-center">
+                        <h2 className="text-center">
                             <Trans i18nKey="landing.noapp">
                                 You don't need an app to use {{ BRAND }} on your phone or tablet! The web site works great on mobile.
                             </Trans>
-                        </h4>
+                        </h2>
                         <p>
                             <Trans i18nKey="landing.intro">
                                 {{BRAND}} ({{TRANSLITERATION}}) is a great way to meet new friends. When you use {{ BRAND }}, we pick someone else at random and let you talk one-to-one. To help you stay safe, chats are anonymous unless you tell someone who you are (not recommended!), and you can stop a chat any time. See our  <Link className="btn-link" to={"policies/terms-and-conditions"}>Terms and conditions</Link>, and <Link className="btn-link" to={"policies/community-guidelines"}>Community guidelines</Link> for info about de do's and don'ts in using { BRAND }. { BRAND } video chat is AI moderated but no moderation is perfects. Users are solely responsible for their behaviour while using {{ BRAND }}
@@ -62,7 +62,7 @@ const Landing = () => {
 
                     <div className="flex flex-col md:flex-row gap-8 justify-between">
                         <div className="flex flex-col gap-3 items-center">
-                            <h4>{ t("common.talkabout") }</h4>
+                            <span>{ t("common.talkabout") }</span>
                             <InterestInput
                                 values={interests} 
                                 onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
@@ -71,7 +71,7 @@ const Landing = () => {
                             />
                         </div>
                         <div className="flex flex-col gap-2 items-center">
-                            <h3 className="text-lg font-bold">{ t("common.startchatting") }</h3>
+                            <h4 className="text-lg font-bold">{ t("common.startchatting") }</h4>
                             <div className="flex flex-col sm:flex-row w-full sm:w-auto">
                                 <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "text"})} className="btn btn-lg btn-primary w-full sm:w-40">{ t("common.text") }</button>
                                 <div className="divider sm:divider-horizontal uppercase">{ t("common.or") }</div>

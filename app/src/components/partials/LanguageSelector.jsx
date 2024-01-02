@@ -9,7 +9,7 @@ const LanguageSelector = ({ lang }) => {
     }
 
     return (
-        <select value={lang} onChange={handleLanguageChange} className="select select-bordered select-sm w-full max-w-xs">
+        <select value={lang} aria-label="language" onChange={handleLanguageChange} className="select select-bordered select-sm w-full max-w-xs">
             <option value="any" key="any">Any</option>
             {
                 Object.keys(LOCALES).map( l => <option key={l} value={l}>{LOCALES[l]}</option>)

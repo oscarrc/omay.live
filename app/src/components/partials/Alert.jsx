@@ -19,7 +19,7 @@ const Alert = ({color, title, icon, text}) => {
                 })
             }
             <div>
-                <h2 className="font-bold">{title}</h2>
+                <h3 className="font-bold">{title}</h3>
                 <div className="text-xs">{text}</div>
             </div>                     
         </div>
