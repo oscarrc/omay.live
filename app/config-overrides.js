@@ -20,5 +20,12 @@ module.exports = function override(config, env) {
         })
     ])
 
+    config.module.rules = [
+        {
+          test: /\.mdx?$/,
+          use: [ { loader: '@mdx-js/loader' } ]
+        }
+    ]
+
     return config;
 }

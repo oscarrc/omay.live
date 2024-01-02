@@ -1,6 +1,18 @@
+import { Suspense, lazy } from 'react';
+
+import { MDXProvider } from '@mdx-js/react'
+import { useParams } from "react-router-dom";
+
 const Policies = () => {
+    const { id } = useParams();
+    const Policy = lazy(() => import(`./${id}.mdx`));
+
     return ( 
-       <div></div>
+        <MDXProvider>
+            <Suspense>
+                <Policy />
+            </Suspense>
+        </MDXProvider>
     )
 }
 
