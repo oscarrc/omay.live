@@ -1,17 +1,19 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Suspense, lazy } from "react";
 
-import Chat from "./routes/chat";
 import { ChatProvider } from "./hooks/useChat";
-import Error from "./routes/error";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
-import Policies from "./routes/policies";
 
-const App = () => {
+const App = () => {  
+  const Chat = lazy(() => import('./routes/chat'));
+  const Error = lazy(() => import('./routes/error'));
+  const Policies = lazy(() => import('./routes/policies'));
+  
   const router = createBrowserRouter([
     {
       element: <Layout />,
-      errorElement: <Layout><Error /></Layout>,
+      errorElement: <Error />,
       children: [
         {   
           id: "landing",
@@ -36,7 +38,7 @@ const App = () => {
         {   
           id: "policies",
           path: "/policies/:id",
-          element: <Policies />,
+          element: <Policies />
         }
       ]
     }
@@ -44,7 +46,9 @@ const App = () => {
 
   return (
     <ChatProvider>      
-      <RouterProvider router={router} />
+      <Suspense>
+        <RouterProvider router={router} />
+      </Suspense>
     </ChatProvider>
   );
 }

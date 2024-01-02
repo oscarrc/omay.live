@@ -117,7 +117,13 @@ const ChatProvider = ({ children }) => {
         }
     }
 
-    const findPeer = async () => {
+    const findPeer = async (common, lang, interests) => {
+        const query = {
+            common: common || state.interest,
+            lang: lang || state.lang,
+            interests: interests || Array.from(state.interests)
+        }
+
         const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, {
             method: "POST",
             headers: {
@@ -127,11 +133,7 @@ const ChatProvider = ({ children }) => {
             body: JSON.stringify({
                 peer: socket.current.id,
                 mode: state.mode,
-                query: {
-                    common: state.interest,
-                    lang: state.lang,
-                    interests: Array.from(state.interests)
-                }
+                query
             })
         }).then( async res => await res.json() )
         

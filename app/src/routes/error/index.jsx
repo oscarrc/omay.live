@@ -1,8 +1,10 @@
+import Layout from "../../components/layout";
+
 const Error = () => {
     return (
-        <div>
+        <Layout>
             404
-        </div>
+        </Layout>
     )
 }
 
