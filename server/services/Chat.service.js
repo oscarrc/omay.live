@@ -12,13 +12,26 @@ class ChatService{
     async findPeer(options){
         const { peer, mode, query } = options;
         
+        const interests = query.common && query.interests?.length ? 
+                            { interests: { "$in": query.interests } } : 
+                            {
+                                $or: [
+                                    { common: true, interests: { $in: query.interests } },
+                                    { common: false }
+                                ]
+                            }
+
+        const lang = query.lang && query?.lang !== "any" ? { lang: query.lang } : {}
+
         const q = {
             peer: { $ne: peer },
             available: true,
             mode: mode,
-            ...(query.lang && query?.lang !== "any" ? { lang: query.lang } : {}),            
-            ...(query.interests && query.interests.length ? { interests: { "$in": query.interests } } : {})
+            ...interests,
+            ...lang
         }
+
+        console.log(q)
         
         let found = await this.peer.findOne(q);
         

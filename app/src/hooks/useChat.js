@@ -70,7 +70,8 @@ const ChatProvider = ({ children }) => {
     const connect = (mode) => {
         socket.current.io.opts.query = { 
             mode, 
-            interests: state.interest ? Array.from(state.interests) : [], 
+            interests: Array.from(state.interests),
+            common: state.interest,
             lang: state.lang,
             simulated: isSimulated
         }
@@ -127,8 +128,9 @@ const ChatProvider = ({ children }) => {
                 peer: socket.current.id,
                 mode: state.mode,
                 query: {
-                    ...(state.lang !== "any" ? { lang: state.lang} : {}),
-                    ...(state.interest ? { interests: Array.from(state.interests) } : {})
+                    common: state.interest,
+                    lang: state.lang,
+                    interests: Array.from(state.interests)
                 }
             })
         }).then( async res => await res.json() )
@@ -284,11 +286,12 @@ const ChatProvider = ({ children }) => {
         
         socket.current.emit('peerupdated', {
             lang: state.lang,
+            common: state.interest,
             interests: Array.from(state.interests),
             mode: state.mode,
             simulated: isSimulated
         })
-    }, [state.lang, state.interests, state.mode, isSimulated])
+    }, [state.lang, state.interests, state.mode, isSimulated, state.interest])
 
     useEffect(() => {        
         socket.current.on('banned', onBanned);

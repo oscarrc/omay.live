@@ -20,6 +20,10 @@ const PeerModel = new Schema({
         enum : ["text","video","unmoderated"],
         index: true
     },
+    common: {
+        type: Boolean,
+        default: false
+    },
     interests: {
         type: [String],
         default: []
