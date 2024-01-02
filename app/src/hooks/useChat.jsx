@@ -1,6 +1,6 @@
 import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, VIRTUAL_CAMS } from "../constants/chat";
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
-import { getImage, loadNSFW } from "../components/lib/nsfw";
+import { getImage, loadNSFW } from "../lib/nsfw";
 
 import { LOCALES } from "../constants/locales";
 import { io } from 'socket.io-client';
@@ -118,7 +118,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const findPeer = async () => {
-        const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/chat`, {
+        const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -275,7 +275,7 @@ const ChatProvider = ({ children }) => {
     }
 
     useEffect(() => {
-       if(!socket.current) socket.current = io(process.env.REACT_APP_SERVER_URL, { query:{}, autoConnect: false });
+       if(!socket.current) socket.current = io(import.meta.env.VITE_SERVER_URL, { query:{}, autoConnect: false });
        if(!nsfw.current) loadNSFW().then(l => nsfw.current = l);
     }, []) 
 
@@ -317,7 +317,7 @@ const ChatProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/chat`, {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, {
             method: "GET"
         }).then( async (res) => {
             let json = await res.json()
