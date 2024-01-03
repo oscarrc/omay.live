@@ -8,6 +8,7 @@ import { lazy } from "react";
 const App = () => {  
   const Chat = lazy(() => import('./routes/chat'));
   const Error = lazy(() => import('./routes/error'));
+  const NotFound = lazy(() => import('./routes/error/404'));
   const Policies = lazy(() => import('./routes/policies'));
   
   const router = createBrowserRouter([
@@ -39,6 +40,11 @@ const App = () => {
           id: "policies",
           path: "/policies/:id",
           element: <Policies />
+        },        
+        {   
+          id: "404",
+          path: "*",
+          element: <NotFound />
         }
       ]
     }
