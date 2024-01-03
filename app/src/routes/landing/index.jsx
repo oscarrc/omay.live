@@ -21,7 +21,7 @@ const Landing = () => {
         <>
             <section className="flex gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded shadow-inner p-8">
                 <div className="flex flex-col gap-8">
-                    <div className="prose md:prose-lg min-w-fit">
+                    <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">
                         <h2 className="text-center">
                             <Trans i18nKey="landing.noapp">
                                 You don't need an app to use {{ BRAND }} on your phone or tablet! The web site works great on mobile.
