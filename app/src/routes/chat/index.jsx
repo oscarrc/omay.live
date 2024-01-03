@@ -80,16 +80,22 @@ const Chat = () => {
      }, [localStream, mode, startStream, status, stopStream, tac])
      
     useEffect(() => {
-        if(isDisconnected && auto && !isMobile && !isMouseMoving) setTimeout(onClick, 1000);
+        let timeout;
+        if(isDisconnected && auto && !isMobile && !isMouseMoving) timeout = setTimeout(onClick, 1000);
+
+        return () => { clearTimeout(timeout) }
     }, [auto, isDisconnected, isMobile, isMouseMoving, onClick])
     
     useEffect(() => {
+        let timeout;
+
         if (status !== STATUS.COMMON) return
-        timeout.current = setTimeout(async () => {
+
+        timeout = setTimeout(async () => {
             status === STATUS.COMMON && await createOffer(true)
         }, 30000)
 
-        return () => { clearTimeout(timeout.current) }
+        return () => { clearTimeout(timeout) }
     }, [status])
 
     return (
