@@ -34,6 +34,7 @@ const VIRTUAL_CAMS = [
 
 const STATUS = {
     CONNECTING: "connecting",
+    CONNECTED: "connected",
     STOPPED: "stopped",
     RANDOM: "search.random",
     COMMON: "search.common",
