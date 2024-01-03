@@ -1,16 +1,5 @@
 const MODES = ["text","video","unmoderated"]
 
-const DEFAULTS = {
-    tac: false,
-    mode: undefined,
-    interest: false,
-    interests: new Set(),
-    lang: "any",
-    status: 0,
-    auto: true,
-    confirmation: 0
-}
-
 const RTC_SERVERS = {
     iceServers: [{
         urls: [
@@ -43,7 +32,31 @@ const VIRTUAL_CAMS = [
     "Virtual"
 ]
 
-const STATUS = [
+const STATUS = {
+    CONNECTING: "connecting",
+    STOPPED: "stopped",
+    RANDOM: "search.random",
+    COMMON: "search.common",
+    LONG: "search.long",
+    STRANGERDISCONNECTED: "strangerdisconnected",
+    YOUDISCONNECTED: "youdisconnected",
+    BANNED: "banned",
+    NOCAM: "nocam",
+    ERROR: "error"
+}
+
+const DEFAULTS = {
+    tac: false,
+    mode: undefined,
+    interest: false,
+    interests: new Set(),
+    lang: "any",
+    status: STATUS.STOPPED,
+    auto: true,
+    confirmation: 0
+}
+
+const STATUS_old = [
     "connecting",
     "stopped",
     "searching",

@@ -3,6 +3,7 @@ import { InterestInput, Loader, Toggle } from "../../components/partials";
 import { useCallback, useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
+import { STATUS } from "../../constants/chat";
 import { useChat } from "../../hooks/useChat";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
 import useMouseMoving from "../../hooks/useMouseMoving";
@@ -26,6 +27,7 @@ const Chat = () => {
         remoteStream,
         closeConnection,
         isDisabled,
+        isDisconnected,
         peer
     } = useChat();
     const { t } = useTranslation();
@@ -37,7 +39,7 @@ const Chat = () => {
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
  
     const startSearch = useCallback(async () => {
-        if(isDisabled || status === 0) return;
+        if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
     }, [checkNSFW, createOffer, isDisabled, isUnmoderated, status])
@@ -69,13 +71,13 @@ const Chat = () => {
     }, [mode, navigate])
 
     useEffect(() => { 
-        mode !== "text" && tac && !localStream && status !== 6 && startStream()
+        mode !== "text" && tac && !localStream && status !== STATUS.NOCAM && startStream()
         mode === "text" && stopStream();
      }, [localStream, mode, startStream, status, stopStream, tac])
      
     useEffect(() => {
-        if([4,5].includes(status) && auto && !isMobile && !isMouseMoving) setTimeout(onClick, 1000);
-    }, [auto, isMobile, isMouseMoving, onClick, status])
+        if(isDisconnected && auto && !isMobile && !isMouseMoving) setTimeout(onClick, 1000);
+    }, [auto, isDisconnected, isMobile, isMouseMoving, onClick])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
@@ -85,7 +87,7 @@ const Chat = () => {
                     <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
                         <div className="relative">                           
                             <VideoBox source={remoteStream} />
-                            { !remoteStream && status === 2 && <Loader className="absolute h-full top-0 left-0" /> } 
+                            { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
                         </div>
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
@@ -99,9 +101,9 @@ const Chat = () => {
                     lang={peer.current.lang === lang && lang !== "any"}
                 >
                     { 
-                        [1,4,5].includes(status) &&                          
+                        (isDisconnected || status === STATUS.CONNECTING) &&                          
                         <div className="flex flex-col gap-2">
-                            { [4,5].includes(status) && auto && isMouseMoving && <p>{t("chat.mousemoving")} </p>}
+                            { isDisconnected && auto && isMouseMoving && <p>{t("chat.mousemoving")} </p>}
                             <div className="flex flex-col sm:flex-row gap-4 items-start">
                                 <div className="flex flex-col gap-2 flex-1 w-full sm:max-w-md">
                                     <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
@@ -156,7 +158,7 @@ const Chat = () => {
                     onClick={onClick} 
                     onSubmit={sendMessage} 
                     state={confirmation} 
-                    disabled={isDisabled || status === 0}
+                    disabled={isDisabled || status === STATUS.CONNECTING}
                 />
             </div>
         </section>

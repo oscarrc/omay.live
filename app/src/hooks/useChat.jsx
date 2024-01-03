@@ -1,4 +1,4 @@
-import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, VIRTUAL_CAMS } from "../constants/chat";
+import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, STATUS, VIRTUAL_CAMS } from "../constants/chat";
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
 import { getImage, loadNSFW } from "../lib/nsfw";
 
@@ -31,9 +31,10 @@ const ChatReducer = (state, action) => {
             let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
             return { ...state, lang }
         case "RESET":
-            return { ...DEFAULTS, ...(state.status === 7 ? {status: 7} : {}), lang: state.lang, interests: state.interests }
+            return { ...DEFAULTS, ...(state.status === STATUS.BANNED ? {status: STATUS.BANNED} : {}), lang: state.lang, interests: state.interests }
         case "STATUS":            
-            if(state.status === 7) return state;
+            if(state.status === STATUS.BANNED) return state;
+            if(!Object.values(STATUS).includes(payload)) return state;
             return { ...state, status: payload }
         case "CONFIRMATION":
             if(state.status === 7) return state;
@@ -64,8 +65,9 @@ const ChatProvider = ({ children }) => {
         return VIRTUAL_CAMS.findIndex( v => new RegExp(v, 'i').test(label)) >= 0
     }, [localStream])
 
-    const isBanned = useMemo(() => state.status === 7, [state.status])
-    const isDisabled = useMemo(() => [6,7,8].includes(state.status), [state.status])
+    const isBanned = useMemo(() => state.status === STATUS.BANNED, [state.status])
+    const isDisabled = useMemo(() => [STATUS.BANNED, STATUS.NOCAM, STATUS.ERROR].includes(state.status), [state.status])    
+    const isDisconnected = useMemo(() => [STATUS.STRANGERDISCONNECTED, STATUS.YOUDISCONNECTED].includes(state.status), [state.status])
 
     const connect = (mode) => {
         socket.current.io.opts.query = { 
@@ -89,7 +91,7 @@ const ChatProvider = ({ children }) => {
             let stream = await navigator.mediaDevices.getUserMedia(CAMERA_OPTIONS);
             setLocalStream(stream);
         }catch(e){
-            dispatch({type: "STATUS", payload: 6 })
+            dispatch({type: "STATUS", payload: STATUS.NOCAM })
         }    
     }
     
@@ -141,7 +143,7 @@ const ChatProvider = ({ children }) => {
     }
 
     const createConnection = async () => {         
-        dispatch({ type: "STATUS", payload: 2 });    
+        dispatch({ type: "STATUS", payload: state.interest ? STATUS.COMMON : STATUS.RANDOM });    
         peer.current = await findPeer();          
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         setMessages([]);
@@ -193,7 +195,7 @@ const ChatProvider = ({ children }) => {
         connection.current && connection.current.close();
 
         setRemoteStream(null);
-        dispatch({ type: "STATUS", payload: remote ? 4 : 5 });
+        dispatch({ type: "STATUS", payload: remote ? STATUS.STRANGERDISCONNECTED : STATUS.YOUDISCONNECTED });
         (state.confirmation > 1 || remote) && dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 
@@ -243,7 +245,7 @@ const ChatProvider = ({ children }) => {
 
     const onReceiveCandidate = async (data) => {
         console.log("icecandidatereceived")
-        dispatch({ type: "STATUS", payload: 3 });
+        dispatch({ type: "STATUS", payload: STATUS.CONNECTED });
         await connection.current.addIceCandidate(data.iceCandidate)
     }
 
@@ -254,19 +256,19 @@ const ChatProvider = ({ children }) => {
 
     const onBanned = () => {
         console.log("banned")
-        dispatch({ type: "STATUS", payload: 7 });
+        dispatch({ type: "STATUS", payload: STATUS.BANNED });
         dispatch({ type: "CONFIRMATION", payload: 0 });
         closeConnection();
     }
     
     const onConnect = () => {
         console.log("connected");
-        dispatch({ type: "STATUS", payload: 1 });
+        dispatch({ type: "STATUS", payload: STATUS.STOPPED });
     };
 
     const onError = () => {
         console.log("error");
-        dispatch({ type: "STATUS", payload: 8 });
+        dispatch({ type: "STATUS", payload: STATUS.ERROR });
     }
 
     const onDisconnect = () => console.log("disconnected");
@@ -348,7 +350,8 @@ const ChatProvider = ({ children }) => {
                 state,
                 isBanned,
                 isSimulated,
-                isDisabled
+                isDisabled,
+                isDisconnected
             }}
         >
             { children }        
