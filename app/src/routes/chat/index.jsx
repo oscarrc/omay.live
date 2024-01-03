@@ -53,9 +53,10 @@ const Chat = () => {
 
     const onClick = useCallback(async () => {
         isMobile && requestFullscreen();
+        dispatch({ type: "CONFIRMATION", payload: confirmation < 3 ? confirmation + 1 : 0})
+        
         confirmation === 0 && await startSearch();
         confirmation === 2 && await stopSearch();
-        dispatch({ type: "CONFIRMATION", payload: confirmation < 3 ? confirmation + 1 : 0})
     }, [confirmation, dispatch, startSearch, stopSearch])
 
     useEffect(()=>{
@@ -149,8 +150,7 @@ const Chat = () => {
                                     <div className="flex flex-row sm:flex-col gap-2">
                                         <button 
                                             onClick={() => {
-                                                dispatch({ type: "CONFIRMATION", payload: confirmation + 1 })
-                                                startSearch()
+                                                onClick()
                                             }} 
                                             className="btn sm:w-full btn-lg btn-primary "
                                         >
