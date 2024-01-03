@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
+import { requestFullscreen } from "../../lib/fullscreen";
 import { useChat } from "../../hooks/useChat";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
 import useMouseMoving from "../../hooks/useMouseMoving";
@@ -49,6 +50,7 @@ const Chat = () => {
     }, [closeConnection])
 
     const onClick = useCallback(async () => {
+        isMobile && requestFullscreen();
         confirmation === 0 && await startSearch();
         confirmation === 2 && await stopSearch();
         dispatch({ type: "CONFIRMATION", payload: confirmation < 3 ? confirmation + 1 : 0})
@@ -122,7 +124,7 @@ const Chat = () => {
                                             onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
                                             className="w-full "
                                         />
-                                        { isDisconnected && auto && isMouseMoving && 
+                                        { isDisconnected && auto && isMouseMoving && !isMobile &&
                                             <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
                                         }
                                     </div>
