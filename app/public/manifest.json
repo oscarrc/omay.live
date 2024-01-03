@@ -30,8 +30,8 @@
       "label": "Lamdazle! Connect with strangers"
     },
     {
-      "src": "screenshots/screenshot_wide.webp",
-      "sizes": "1280x720",
+      "src": "screenshots/screenshot_narrow.webp",
+      "sizes": "1080x2264",
       "type": "image/webp",
       "form_factor": "narrow",
       "label": "Lamdazle! Connect with strangers"
