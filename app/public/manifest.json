@@ -13,6 +13,12 @@
       "type": "image/svg+xml",
       "purpose": "any",
       "sizes": "any"
+    },    
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "purpose": "maskable",
+      "sizes": "512x512"
     }
   ],
   "screenshots" : [
