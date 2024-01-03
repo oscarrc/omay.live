@@ -142,8 +142,10 @@ const ChatProvider = ({ children }) => {
         return res.peer;
     }
 
-    const createConnection = async () => {         
-        dispatch({ type: "STATUS", payload: state.interest ? STATUS.COMMON : STATUS.RANDOM });    
+    const createConnection = async (retry) => {         
+        if(retry) dispatch({ type: "STATUS", payload: STATUS.RETRY }); 
+        else dispatch({ type: "STATUS", payload: state.interest ? STATUS.COMMON : STATUS.RANDOM });    
+        
         peer.current = await findPeer();          
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         setMessages([]);

@@ -16,7 +16,7 @@
         "search": {
             "random": "Looking for a random stranger you can chat with...",
             "common": "Looking for a stranger with common interests...",
-            "long": "This is taking to long, looking for a random stranger instead..."
+            "retry": "This is taking to long, looking for a random stranger instead..."
         },     
         "searching":  "Looking for a random stranger you can chat with...",
         "connected": "You're chatting with a random stranger. Say Hi...",

@@ -37,7 +37,7 @@ const STATUS = {
     STOPPED: "stopped",
     RANDOM: "search.random",
     COMMON: "search.common",
-    LONG: "search.long",
+    RETRY: "search.retry",
     STRANGERDISCONNECTED: "strangerdisconnected",
     YOUDISCONNECTED: "youdisconnected",
     BANNED: "banned",

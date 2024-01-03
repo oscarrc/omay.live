@@ -16,7 +16,7 @@
         "search": {
             "random": "Buscando un extraño al azar con quien puedas chatear...",
             "common": "Buscando un extraño con intereses comunes...",
-            "long": "Esto está tardando demasiado, buscando un extraño al azar..."
+            "retry": "Esto está tardando demasiado, buscando un extraño al azar..."
         },  
         "searching": "Buscando un extraño al azar con quien puedas chatear...",
         "connected": "Estás charlando con un extraño al azar. Di hola...",
