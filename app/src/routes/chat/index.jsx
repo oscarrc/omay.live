@@ -78,6 +78,13 @@ const Chat = () => {
     useEffect(() => {
         if(isDisconnected && auto && !isMobile && !isMouseMoving) setTimeout(onClick, 1000);
     }, [auto, isDisconnected, isMobile, isMouseMoving, onClick])
+    
+    useEffect(() => {
+        status === STATUS.COMMON && 
+        setTimeout(async () => {
+            status === STATUS.COMMON && await createOffer(true)
+        }, 30000)
+    }, [status])
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 

@@ -119,11 +119,11 @@ const ChatProvider = ({ children }) => {
         }
     }
 
-    const findPeer = async (common, lang, interests) => {
+    const findPeer = async (retry) => {
         const query = {
-            common: common || state.interest,
-            lang: lang || state.lang,
-            interests: interests || Array.from(state.interests)
+            common: retry ? false : state.interest,
+            lang: retry ? "any" : state.lang,
+            interests: Array.from(state.interests)
         }
 
         const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, {
@@ -146,7 +146,7 @@ const ChatProvider = ({ children }) => {
         if(retry) dispatch({ type: "STATUS", payload: STATUS.RETRY }); 
         else dispatch({ type: "STATUS", payload: state.interest ? STATUS.COMMON : STATUS.RANDOM });    
         
-        peer.current = await findPeer()
+        peer.current = await findPeer(retry)
         connection.current = new RTCPeerConnection(RTC_SERVERS);
         setMessages([]);
         
@@ -201,9 +201,9 @@ const ChatProvider = ({ children }) => {
         (state.confirmation > 1 || remote) && dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 
-    const createOffer = async () => {        
+    const createOffer = async (retry) => {        
         await closeConnection();
-        await createConnection();
+        await createConnection(retry);
         
         const offer = await connection.current.createOffer();                
         await connection.current.setLocalDescription(offer);
