@@ -38,7 +38,9 @@ const Chat = () => {
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
- 
+    
+    const timeout = useRef(null);
+
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
@@ -82,10 +84,12 @@ const Chat = () => {
     }, [auto, isDisconnected, isMobile, isMouseMoving, onClick])
     
     useEffect(() => {
-        status === STATUS.COMMON && 
-        setTimeout(async () => {
+        if (status !== STATUS.COMMON) return
+        timeout.current = setTimeout(async () => {
             status === STATUS.COMMON && await createOffer(true)
         }, 30000)
+
+        return () => { clearTimeout(timeout.current) }
     }, [status])
 
     return (
