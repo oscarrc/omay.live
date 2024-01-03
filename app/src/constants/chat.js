@@ -56,16 +56,4 @@ const DEFAULTS = {
     confirmation: 0
 }
 
-const STATUS_old = [
-    "connecting",
-    "stopped",
-    "searching",
-    "connected",    
-    "strangerdisconnected",
-    "youdisconnected",
-    "nocam",
-    "banned",
-    "error"
-]
-
 export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS, VIRTUAL_CAMS, STATUS }
