@@ -101,20 +101,24 @@ const Chat = () => {
                     lang={peer.current.lang === lang && lang !== "any"}
                 >
                     { 
-                        (isDisconnected || status === STATUS.CONNECTING) &&                          
+                        (isDisconnected || status === STATUS.STOPPED) &&                          
                         <div className="flex flex-col gap-2">
-                            { isDisconnected && auto && isMouseMoving && <p>{t("chat.mousemoving")} </p>}
                             <div className="flex flex-col sm:flex-row gap-4 items-start">
-                                <div className="flex flex-col gap-2 flex-1 w-full sm:max-w-md">
-                                    <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
-                                        { t("chat.interests") }
-                                    </Toggle>
-                                    <InterestInput
-                                        values={interests} 
-                                        onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
-                                        onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
-                                        className="w-full "
-                                    />
+                                <div className="flex flex-row flex-1 w-full sm:max-w-md">
+                                    <div className="flex flex-col gap-2 w-full">
+                                        <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
+                                            { t("chat.interests") }
+                                        </Toggle>
+                                        <InterestInput
+                                            values={interests} 
+                                            onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                            onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                            className="w-full "
+                                        />
+                                        { isDisconnected && auto && isMouseMoving && 
+                                            <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
+                                        }
+                                    </div>
                                 </div>
                                 <div className="flex flex-col gap-2 items-start">
                                     {
