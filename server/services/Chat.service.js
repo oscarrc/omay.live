@@ -30,7 +30,7 @@ class ChatService{
             ...interests,
             ...lang
         }
-        console.log(q)
+        
         let found = await this.peer.findOne(q);
         
         let f = found ? 
@@ -46,7 +46,7 @@ class ChatService{
                         interests: [],
                         simulated: false
                     }
-        
+        console.log(f)
         return f; 
     }
     
