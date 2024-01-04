@@ -4,7 +4,6 @@ const VideoBox = ({ source, muted, className }) => {
     const player = useRef(null);
 
     useEffect(() => {
-        if(!source) return;
         player.current.srcObject = source;
     }, [source])
 
