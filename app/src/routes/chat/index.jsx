@@ -1,6 +1,6 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 import { InterestInput, Loader, Toggle } from "../../components/partials";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
