@@ -102,7 +102,7 @@ const Chat = () => {
             <div className="flex flex-col md:flex-row gap-4 flex-1">
                 {
                     !isTextOnly && 
-                    <div className="flex flex-col gap-4 max-h-content md:max-w-1/4 w-full relative">
+                    <div className="flex flex-col gap-4 md:max-h-content md:max-w-1/4 w-full relative">
                         <div className="relative">                           
                             <VideoBox source={remoteStream} />
                             { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
