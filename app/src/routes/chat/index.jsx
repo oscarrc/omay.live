@@ -138,26 +138,25 @@ const Chat = () => {
                                         }
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-2 items-start">
+                                <div className={`flex flex-col gap-2 items-start w-full sm:w-auto ${isMobile && "sm:mt-11"}`}>
                                     {
                                         !isMobile &&
                                             <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
                                                 {t("chat.reconnect")}
                                             </Toggle>
                                     }
-                                    <div className="flex flex-row sm:flex-col gap-2">
+                                    <div className="flex flex-col gap-2 w-full">
                                         <button 
                                             onClick={() => {
                                                 onClick()
                                             }} 
-                                            className="btn sm:w-full btn-lg btn-primary "
+                                            className="btn w-full btn-lg btn-primary "
                                         >
                                             {t("chat.newchat")}
                                         </button>
-                                        <div className="divider divider-horizontal uppercase sm:hidden">{ t("common.or") }</div>
                                         <button 
                                             onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                            className="btn btn-lg text-sm sm:w-full sm:btn-xs sm:text-xs sm:self-end"
+                                            className="btn text-sm w-full btn-xs text-xs self-end"
                                         >
                                             { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
                                         </button>
