@@ -39,8 +39,6 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
     
-    const timeout = useRef(null);
-
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
@@ -109,7 +107,7 @@ const Chat = () => {
                             <VideoBox source={remoteStream} />
                             { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
                         </div>
-                        <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 aspect-auto max-h-[33%] max-w-[25%] md:max-h-full md:max-w-full md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
+                        <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 aspect-auto md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>
                 }
                 <ChatBox 
