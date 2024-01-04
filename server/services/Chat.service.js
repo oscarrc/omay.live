@@ -46,7 +46,7 @@ class ChatService{
                         interests: [],
                         simulated: false
                     }
-        console.log(f)
+        
         return f; 
     }
     
