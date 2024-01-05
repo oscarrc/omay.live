@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/oscarrc/videochat/issues"
   },
-  "homepage": "https://github.com/oscarrc/videochat#readme"
+  "homepage": "https://github.com/oscarrc/videochat#readme",
+  "devDependencies": {
+    "@parvineyvazov/json-translator": "^2.2.1"
+  }
 }
