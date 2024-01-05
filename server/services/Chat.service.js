@@ -21,7 +21,10 @@ class ChatService{
                                 ]
                             }
 
-        const lang = query.lang && query?.lang !== "any" ? { lang: query.lang } : {}
+       const lang = query.lang && query?.lang !== "any" ? { $or: [
+        { lang: query.lang },
+        { lang: "any" },
+       ] } : {}
 
         const q = {
             peer: { $ne: peer },
