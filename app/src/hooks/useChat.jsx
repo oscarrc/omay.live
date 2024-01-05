@@ -271,6 +271,7 @@ const ChatProvider = ({ children }) => {
     const onError = () => {
         console.log("error");
         dispatch({ type: "STATUS", payload: STATUS.ERROR });
+        dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 
     const onDisconnect = () => console.log("disconnected");
