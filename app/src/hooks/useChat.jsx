@@ -17,13 +17,15 @@ const ChatReducer = (state, action) => {
         case "MODE":
             if(!MODES.includes(payload)) return state;
             return { ...state, mode: payload}
-        case "INTEREST":            
+        case "INTEREST":  
             return { ...state, interest: payload}        
         case "ADD_INTEREST":  
-            state.interests.add(payload)
-            return { ...state, interests: new Set(state.interests), interest: state.interests.size === 1 ? true : state.interest}
+            state.interests.add(payload);
+            localStorage.setItem("interests", JSON.stringify(Array.from(state.interests)));
+            return { ...state, interests: new Set(state.interests), interest: state.interests.size > 0 ? true : state.interest}
         case "DEL_INTEREST":          
             state.interests.delete(payload)
+            localStorage.setItem("interests", JSON.stringify(Array.from(state.interests)));
             return { ...state, interests: new Set(state.interests), interest: state.interests.size !== 0 }
         case "TOGGLE_AUTO":
             return { ...state, auto: !state.auto }
@@ -31,7 +33,14 @@ const ChatReducer = (state, action) => {
             let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
             return { ...state, lang }
         case "RESET":
-            return { ...DEFAULTS, ...(state.status === STATUS.BANNED ? {status: STATUS.BANNED} : {}), lang: state.lang, interests: state.interests }
+            console.log(DEFAULTS)
+            return { 
+                ...DEFAULTS, 
+                ...(state.status === STATUS.BANNED ? {status: STATUS.BANNED} : {}), 
+                lang: state.lang, 
+                auto: state.auto,
+                interest: state.interest
+            }
         case "STATUS":            
             if(state.status === STATUS.BANNED) return state;
             if(!Object.values(STATUS).includes(payload)) return state;
@@ -290,7 +299,7 @@ const ChatProvider = ({ children }) => {
 
     useEffect(() => {
         if(!state.mode) return;
-        
+
         socket.current.emit('peerupdated', {
             lang: state.lang,
             common: state.interest,

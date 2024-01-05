@@ -49,8 +49,8 @@ const STATUS = {
 const DEFAULTS = {
     tac: false,
     mode: undefined,
-    interest: false,
-    interests: new Set(),
+    interest: (JSON.parse(localStorage.getItem("interests")) || []).length > 0,
+    interests: new Set(JSON.parse(localStorage.getItem("interests")) || []),
     lang: "any",
     status: STATUS.STOPPED,
     auto: true,
