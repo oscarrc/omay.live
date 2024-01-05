@@ -9,9 +9,9 @@ const LanguageSelector = ({ lang }) => {
         i18n.changeLanguage(e.target.value)
     }
 
-    useEffect(() => {
-        document.body.dir = i18n.dir();
-    }, [i18n.language])
+    // useEffect(() => {
+    //     document.body.dir = i18n.dir();
+    // }, [i18n.language])
 
     return (
         <select value={lang} aria-label="language" onChange={handleLanguageChange} className="select select-bordered select-sm w-full max-w-xs">
