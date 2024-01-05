@@ -18,7 +18,7 @@
 "Looking for a random stranger you can chat with..."
 "You're chatting with a random stranger. Say Hi..."
 "Clic Start to chat with a stranger"
-"You both speak the same language. Select {\"Any\"} on the language menu to disable."
+"You both speak the same language. Select {\"4ny\"} on the language menu to disable."
 "You both like"
 "Stranger may be using a simulated webcam"
 "Stranger is typing"
