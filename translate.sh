@@ -6,7 +6,7 @@ while IFS= read -r name; do
         continue
     fi
     
-    jsontt "$LOCALES_FOLDER/en/translation.json" --module google --from en --to $name --name translation -cl 1 -fb yes &&
+    node_modules/@parvineyvazov/json-translator/bin/jsontt "$LOCALES_FOLDER/en/translation.json" --module google --from en --to $name --name translation -cl 1 -fb yes &&
     mkdir -p "$LOCALES_FOLDER/$name" &&
     mv "$LOCALES_FOLDER/en/translation.$name.json" "$LOCALES_FOLDER/$name/translation.json" ||
     touch $MISSING_FILE $name >> $MISSING_FILE
