@@ -12,7 +12,7 @@ while IFS= read -r name; do
         mkdir -p "$LOCALES_FOLDER/$name"
         mv "$LOCALES_FOLDER/en/translation.$name.json" "$LOCALES_FOLDER/$name/translation.json"
     else
-        touch $MISSING_FILE &&
+        touch $MISSING_FILE
         grep -qxF $name $MISSING_FILE || echo $name >> $MISSING_FILE
     fi
 
