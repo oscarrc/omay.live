@@ -4,7 +4,8 @@
   "description": "Random video chat",
   "scripts": {
     "start": "npm --prefix ./app start & npm --prefix ./server run dev",
-    "build": "npm --prefix ./app run build"
+    "build": "npm --prefix ./app run build",
+    "translate": "./translate.sh"
   },
   "repository": {
     "type": "git",
