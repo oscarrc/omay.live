@@ -16,7 +16,8 @@ const app = express();
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL).then(() => {
-  console.log(`${chalk.green.bold("[DB]")} Connection ready`)
+  console.log(`${chalk.green.bold("[DB]")} Connection ready`);
+  mongoose.connection.db.dropCollection("peers");
 })
 
 app.use(bodyparser.urlencoded({extended: true}))

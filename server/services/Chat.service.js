@@ -30,15 +30,18 @@ class ChatService{
             ...interests,
             ...lang
         }
+
+        let found = await this.peer.aggregate([
+            { $match: q },
+            { $sample: { size: 1} }
+        ])
         
-        let found = await this.peer.findOne(q);
-        
-        let f = found ? 
+        let f = found.length ? 
                     {
-                        id: found.peer,
-                        lang: found.lang,
-                        interests: found.interests,
-                        simulated: found.simulated
+                        id: found[0].peer,
+                        lang: found[0].lang,
+                        interests: found[0].interests,
+                        simulated: found[0].simulated
                     } : 
                     {
                         id: null,
