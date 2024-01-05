@@ -6,7 +6,7 @@ const loadNSFW = async () => {
         return nsfw;
     }catch{            
         const load = await nsfwjs.load();
-        await load.model.save('indexeddb://model');
+        load.model.save('indexeddb://model');
         return load;
     }
 }
