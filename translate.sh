@@ -1,4 +1,4 @@
-LOCALES_FOLDER=./app/public/locales
+LOCALES_FOLDER=app/public/locales
 MISSING_FILE="$LOCALES_FOLDER/missing.txt"
 
 while IFS= read -r name; do 

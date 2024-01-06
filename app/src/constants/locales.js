@@ -29,7 +29,6 @@ const LOCALES = {
     "eo": "Esperanto",
     "et": "Estonian",
     "ee": "Ewe",
-    "fil": "Filipino (Tagalog)",
     "fi": "Finnish",
     "fr": "French",
     "fy": "Frisian",

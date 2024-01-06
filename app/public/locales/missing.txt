@@ -5,7 +5,6 @@ bho
 dv
 doi
 ee
-fil
 gn
 he
 ilo
@@ -24,3 +23,9 @@ om
 qu
 sa
 nso
+e
+ti
+ts
+tk
+ak
+ug
