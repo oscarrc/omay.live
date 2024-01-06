@@ -286,6 +286,7 @@ const ChatProvider = ({ children }) => {
     const onDisconnect = () => console.log("disconnected");
 
     const sendMessage = (msg) => {
+        if(state.status !== STATUS.CONNECTED) return;
         setMessages(m => [...m, { me: true, msg: msg}])
         data.current.send.send(msg);
     }
