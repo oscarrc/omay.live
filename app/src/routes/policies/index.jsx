@@ -10,7 +10,7 @@ const Policies = () => {
     return ( 
         <MDXProvider>
             <Suspense>
-                <section className="prose mx-auto max-w-full p-8 sm:rounded-lg shadow-inner bg-base-100">
+                <section dir="ltr" className="prose mx-auto max-w-full p-8 sm:rounded-lg shadow-inner bg-base-100">
                     <Policy />
                 </section>
             </Suspense>

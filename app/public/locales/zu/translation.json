@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Awudingi uhlelo lokusebenza ukuze ulusebenzise {{ BRAND }} efonini noma kuthebhulethi yakho! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) kuyindlela enhle yokuhlangana nabangane abasha.  {{ BRAND }}, sikhetha omunye umuntu ngokungahleliwe futhi sikuvumela ukuthi ukhulume ubuso nobuso.   <6>Imibandela</6>, futhi <8>Iziqondiso zomphakathi</8> ukuze uthole ulwazi mayelana nokwenza nokungafanele uyisebenzise {{ BRAND }}. {{ BRAND }} ingxoxo yevidiyo ilinganiswe nge-AI kodwa akukho ukulinganiswa okuhle.  {{ BRAND }}",
+    "disclaimer": "<0>Kufanele ube neminyaka engu-18 (noma iningi elisemthethweni endaweni yakho) noma ngaphezulu ukuze usebenzise {{BRAND}}</0>.  {{BRAND}}'s <4>Imibandela</4> ukuze uthole ulwazi olwengeziwe.  <6>https://www.connectsafely.org/controls</6> kanye namanye amasayithi.",
+    "pleaseleave": "Sicela ushiye i-Lamdazle futhi uvakashele isayithi yabantu abadala uma kuyilokho okufunayo futhi uneminyaka engu-18 (noma iningi elisemthethweni endaweni yakho) noma ngaphezulu.",
+    "termscheck": "Ngokuqoka ibhokisi uyavuma ukuthi ubuyekeze isivumelwano esizoboshwa {{BRAND}}'s <3>Imibandela</3>, <5>Inqubomgomo yobumfihlo</5> futhi <7>Iziqondiso zomphakathi</7>.",
+    "agecheck": "Akumele usebenzise le sevisi uma ungaphansi kweminyaka engu-18 noma uneminyaka yobudala yeningi elisemthethweni endaweni yakho.  <1>Imibandela</1> ukuze uthole ulwazi olwengeziwe. <3>Ngokuqoka ibhokisi uyavuma futhi umela ukuthi uneminyaka engu-18 (noma iningi elisemthethweni endaweni yakho) noma ngaphezulu.</3>",
+    "acceptandcontinue": "Yamukela futhi uqhubeke"
+  },
+  "chat": {
+    "connecting": "Ixhuma kuseva",
+    "error": "Iphutha ekuxhumekeni kuseva: Sicela uzame futhi",
+    "nocam": "Iphutha ngekhamera: Idivayisi eceliwe ayitholakali",
+    "banned": "Kuvinjelwe",
+    "search": {
+      "random": "Ufuna umuntu ongamazi ongaxoxa naye...",
+      "common": "Ifuna umuntu ongamazi onezintshisekelo ezifanayo...",
+      "retry": "Lokhu kuthatha isikhathi eside, ukufuna umuntu ongamazi esikhundleni..."
+    },
+    "searching": "Ufuna umuntu ongamazi ongaxoxa naye...",
+    "connected": "Uxoxa nomuntu ongamazi nje. ",
+    "stopped": "Chofoza Qala ukuze uxoxe nomuntu ongamazi",
+    "language": "Nobabili nikhuluma ulimi olufanayo.  {{\"Any\"}} kumenyu yolimi ukuze ukhubaze.",
+    "interest": "Nobabili niyathanda",
+    "simulated": "Umuntu ongamazi kungenzeka usebenzisa ikhamera yewebhu elingisiwe",
+    "typing": "Ongaziwa uyathayipha",
+    "strangerdisconnected": "Ongaziwa unqamukile",
+    "youdisconnected": "Unqamule",
+    "interests": "Thola abantu ongabazi abanezintshisekelo ezifanayo",
+    "great": "Ingxoxo enhle?",
+    "save": "Londoloza ilogi",
+    "download": "Landa",
+    "selectall": "Khetha konke",
+    "newchat": "Ingxoxo entsha",
+    "start": "Qala",
+    "stop": "Ima",
+    "really": "Ngempela",
+    "reconnect": "Xhuma kabusha ngokuzenzakalelayo",
+    "send": "Thumela",
+    "report": "Bika",
+    "you": "Wena",
+    "stranger": "Ongaziwa",
+    "mousemoving": "Igundane liyahamba. "
+  },
+  "common": {
+    "startchatting": "Qala ukuxoxa",
+    "talkabout": "Ufuna ukukhuluma ngani?",
+    "addinterests": "Engeza izintshisekelo zakho (Ongakukhetha)",
+    "video": "Ividiyo",
+    "text": "Umbhalo",
+    "switchto": "Shintshela ku",
+    "unmoderated": "Isigaba esingalinganiselwe",
+    "or": "noma",
+    "allrightsreserved": "Konke kugodliwe",
+    "terms": "Imibandela",
+    "privacy": "Inqubomgomo yobumfihlo",
+    "guidelines": "Iziqondiso zomphakathi",
+    "alerts": {
+      "monitored": "Ividiyo igadiwe",
+      "keepclean": "Kugcine kuhlanzekile futhi usize ngokubika ukuziphatha kwe-NSFW",
+      "banned": "Ikhompyutha/inethiwekhi yakho ivinjelwe",
+      "banreason": "Ngenxa yokuziphatha okubi. "
+    }
+  }
+}
