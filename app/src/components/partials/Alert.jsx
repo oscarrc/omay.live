@@ -18,7 +18,7 @@ const Alert = ({color, title, icon, text}) => {
                     className: `${icon.props.className} h-8 w-8 hidden sm:block`
                 })
             }
-            <div>
+            <div className="rtl:sm:text-right">
                 <h3 className="font-bold">{title}</h3>
                 <div className="text-xs">{text}</div>
             </div>                     
