@@ -77,7 +77,7 @@ const Landing = () => {
                                 <div className="divider sm:divider-horizontal uppercase">{ t("common.or") }</div>
                                 <div className="flex flex-col gap-2">
                                     <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "video"})} className="btn btn-lg btn-primary w-full sm:w-40">{ t("common.video") }</button>
-                                    <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end">{ t("common.unmoderated") }</button>
+                                    <button disabled={isBanned} onClick={()=>dispatch({type: "MODE", payload: "unmoderated"})} className="btn btn-xs text-xs w-full sm:w-40 sm:self-end h-fit">{ t("common.unmoderated") }</button>
                                 </div>
                             </div> 
                         </div>
