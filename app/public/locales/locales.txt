@@ -28,6 +28,7 @@ en
 eo
 et
 ee
+fil
 fi
 fr
 fy

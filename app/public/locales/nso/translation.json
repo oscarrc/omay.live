@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Ga o hloke tirišo gore o e diriše {{ BRAND }} mo founong ya gago goba theboleteng! ",
+    "intro": "{{BRAND}} ( ) .{{TRANSLITERATION}}) ke tsela e botse ya go kopana le bagwera ba bafsa.  {{ BRAND }}, re kgetha motho yo mongwe ka go se kgethe gomme re go dumelela go bolela ka o tee ka o tee.   <6>Melawana le dipehelo</6>, le <8>Ditlhahlo tša setšhaba</8> bakeng sa info ka de do's le don'ts ka ho sebelisa {{ BRAND }}. {{ BRAND }} video chat ke AI modereded empa ha ho tekanyetso e phethahetseng.  {{ BRAND }}",
+    "disclaimer": "<0>O swanetše go ba le mengwaga ye 18 (goba bontši bja molao ka taolo ya gago) goba go feta moo gore o e šomiše {{BRAND}}</0>.  {{BRAND}}'s <4>Melawana le dipehelo</4> bakeng sa info e eketsehileng.  <6>https://www.kgokagano ka polokego.org/ditaolo</6> gotee le mafelo a mangwe.",
+    "pleaseleave": "Hle tlogela Lamdazle gomme o etele lefelo la batho ba bagolo go e na le moo ge e ba seo e le seo o se nyakago gomme o na le mengwaga ye 18 (goba bontši bja molao ka taolo ya gago) goba go feta.",
+    "termscheck": "Ka go swaya lepokisi o dumela gore o sekaseketše tumelelo ya go tlama ka {{BRAND}}'s <3>Melawana le dipehelo</3>, . <5>Pholisi ya sephiri</5> le <7>Ditlhahlo tša setšhaba</7>.",
+    "agecheck": "O ka se šomiše tirelo ye ge o le ka fase ga mengwaga ye 18 goba o na le mengwaga ya bontši bja molao ka taolo ya gago.  <1>Melawana le dipehelo</1> bakeng sa info e eketsehileng. <3>Ka go swaya lepokisi o amogela le go emela gore o na le mengwaga ye 18 (goba bontši bja molao ka taolo ya gago) goba go feta.</3>",
+    "acceptandcontinue": "Amogela gomme o tšwele pele"
+  },
+  "chat": {
+    "connecting": "Go kgokagana le seva",
+    "error": "Phošo ya go kgokagana le seva: Hle leka gape",
+    "nocam": "Phošo ka khamera: Sedirišwa se se kgopetšwego ga se sa hwetšwa",
+    "banned": "E thibetšwe",
+    "search": {
+      "random": "O nyaka motho yo o sa mo tsebego ka go se kgethe wo o ka boledišanago le yena...",
+      "common": "O nyaka motho yo o sa mo tsebego yo a nago le dikgahlego tše di swanago...",
+      "retry": "Se se tšea nako ye telele, go nyaka motho yo a sa mo tsebego ka go se kgethe go e na le moo..."
+    },
+    "searching": "O nyaka motho yo o sa mo tsebego ka go se kgethe wo o ka boledišanago le yena...",
+    "connected": "O boledišana le motho yo o sa mo tsebego ka go se kgethe. ",
+    "stopped": "Klika Thoma go boledišana le motho yo o sa mo tsebego",
+    "language": "Bobedi bja lena le bolela leleme le tee.  {{\"Any\"}} ka thepo ya polelo go šitiša.",
+    "interest": "Bobedi bja lena le rata",
+    "simulated": "Stranger a ka ba a diriša webcam yeo e ekišitšwego",
+    "typing": "Motho yo a sa mo tsebego o a thaepa",
+    "strangerdisconnected": "Stranger o kgaotše kgokagano",
+    "youdisconnected": "O kgaogile kgokagano",
+    "interests": "Hwetša batho bao o sa ba tsebego bao ba nago le dikgahlego tše di swanago",
+    "great": "Poledišano e kgolo?",
+    "save": "Boloka log",
+    "download": "Taonelouta",
+    "selectall": "Kgetha ka moka",
+    "newchat": "Poledišano ye mpsha",
+    "start": "Thomiša",
+    "stop": "Ema",
+    "really": "Ka kgonthe",
+    "reconnect": "Auto-kgokagano gape",
+    "send": "Romela",
+    "report": "Pego",
+    "you": "Wena",
+    "stranger": "Moeng",
+    "mousemoving": "Toeba e a sepela. "
+  },
+  "common": {
+    "startchatting": "Thoma go boledišana",
+    "talkabout": "O nyaka go bolela ka eng?",
+    "addinterests": "Oketša dikgahlego tša gago (Ke boikgethelo) .",
+    "video": "Bitio",
+    "text": "Sengwalwa",
+    "switchto": "Fetogela go",
+    "unmoderated": "Karolo yeo e sa lekanywego",
+    "or": "goba",
+    "allrightsreserved": "Ditokelo ka moka di bolokilwe",
+    "terms": "Melawana le dipehelo",
+    "privacy": "Pholisi ya sephiri",
+    "guidelines": "Ditlhahlo tša setšhaba",
+    "alerts": {
+      "monitored": "Video e behiloe leihlo",
+      "keepclean": "E boloke e hlwekile gomme o thuše ka go bega boitshwaro bja NSFW",
+      "banned": "Khomphuthara/netweke ya gago e thibetšwe",
+      "banreason": "Ka lebaka la boitshwaro bjo bobe. "
+    }
+  }
+}

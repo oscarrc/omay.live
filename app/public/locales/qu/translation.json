@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Manam necesitankichu huk app llamk'achinaykipaq {{ BRAND }} telefonoykipi otaq tabletaykipi! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) nisqapiqa ancha allinmi musuq amistadkunawan tupanapaq.  {{ BRAND }}, huk runata akllaspayku hukmanta hukmanta rimanaykipaq saqiyku.   <6>Términos y condiciones nisqakuna</6>, chaymanta <8>Ayllullaktapak kamachiykuna</8> para info sobre de do's y don'ts en utilización {{ BRAND }}. {{ BRAND }} video chat AI moderado ichaqa mana moderación perfectos.  {{ BRAND }}",
+    "disclaimer": "<0>18 watayuq kanayki tiyan (utaq jurisdicciónniykipi mayoría legal) utaq aswan kuraq kanayki tiyan llamk’achinaykipaq {{BRAND}}</0>.  {{BRAND}}'s <4>Términos y condiciones nisqakuna</4> astawan infopaq.  <6>https://www.conectarseguro.org/kamachiykuna</6> chaynallataqmi huk sitiokunapas.",
+    "pleaseleave": "Ama hina kaspa, Lamdazlemanta lluqsiy chaymanta huk kuraq runakunap sitionta watukuy chaypa rantinpi sichus chayta maskachkanki chaymanta 18 watayuq kanki (utaq jurisdicciónniykipi mayoría legal) utaq aswan kuraq.",
+    "termscheck": "Chay cuadrota marcaspaykiqa reqsikunkim huk acuerdota qawasqaykita, chayman watasqa kanaykipaq {{BRAND}}'s <3>Términos y condiciones nisqakuna</3>, . <5>Sapanchasqa willakuy</5> chaymanta <7>Ayllullaktapak kamachiykuna</7>.",
+    "agecheck": "Kay serviciota mana llamk'achiy atikunkichu sichus manaraq 18 watayuqchu kanki utaq jurisdicciónniykipi mayoría legal edadniyuq kanki.  <1>Términos y condiciones nisqakuna</1> astawan infopaq. <3>Chay cuadrota marcaspaykiqa reqsikunki hinaspa representanki 18 watayoq kasqaykita (utaq jurisdicciónniykipi mayoría legal) otaq aswan kurak kasqaykita.</3>",
+    "acceptandcontinue": "Chaskiy hinaspa hinalla ruway"
+  },
+  "chat": {
+    "connecting": "Servidorwan tinkuchispa",
+    "error": "Servidorwan tinkiypi pantasqa: Ama hina kaspa, hukmanta kallpachakuy",
+    "nocam": "Camarawan pantasqa: Mañasqa dispositivo mana tarisqachu",
+    "banned": "Prohibido",
+    "search": {
+      "random": "Maskaspa huk mana riqsisqa runata, paywan rimayta atiwaq...",
+      "common": "Mana riqsisqa runata maskaspa, intereses comunes nisqayuqta...",
+      "retry": "Kayqa unaytaraqmi hapichkan, chaypa rantinpi huk mana riqsisqa runata maskaspa..."
+    },
+    "searching": "Maskaspa huk mana riqsisqa runata, paywan rimayta atiwaq...",
+    "connected": "Huk mana riqsisqa runawanmi rimachkanki. ",
+    "stopped": "Mana riqsisqa runawan rimayta qallariy nisqapi ñitiy",
+    "language": "Iskaynikichikmi huk rimayllata rimankichik.  {{\"Any\"}} simikuna menú nisqapi mana llamk’achinapaq.",
+    "interest": "Iskayniykichismi gustasunkichis",
+    "simulated": "Stranger huk simulado webcam nisqawan yanapachikuchkanman",
+    "typing": "Mana riqsisqa runam qillqachkan",
+    "strangerdisconnected": "Mana riqsisqa runaqa t’aqasqañan",
+    "youdisconnected": "Qamqa t’inkisqañam kanki",
+    "interests": "Huklla interesniyuq mana riqsisqa runakunata maskay",
+    "great": "Hatun rimanakuy?",
+    "save": "Qillqata waqaychay",
+    "download": "Uraykachiy",
+    "selectall": "Llapallanta akllay",
+    "newchat": "Musuq rimanakuy",
+    "start": "Qallariy",
+    "stop": "Sayay",
+    "really": "Chaynam",
+    "reconnect": "Kikinmanta wakmanta tinkuchiy",
+    "send": "Apachiy",
+    "report": "Willakuy",
+    "you": "Qam",
+    "stranger": "Mana riqsisqa",
+    "mousemoving": "Siwiqa kuyuchkanmi. "
+  },
+  "common": {
+    "startchatting": "Rimayta qallariy",
+    "talkabout": "¿Imamantataq rimayta munanki?",
+    "addinterests": "Yapay munasqaykikunata (Opcional) .",
+    "video": "Video",
+    "text": "Qillqa",
+    "switchto": "Kayman tikray",
+    "unmoderated": "Mana moderasqa t’aqa",
+    "or": "utaq",
+    "allrightsreserved": "Tukuy hayñikuna waqaychasqa",
+    "terms": "Términos y condiciones nisqakuna",
+    "privacy": "Sapanchasqa willakuy",
+    "guidelines": "Ayllullaktapak kamachiykuna",
+    "alerts": {
+      "monitored": "Videota qhawanku",
+      "keepclean": "Ch’uyata waqaychay hinaspa yanapay NSFW ruwayninta willaspa",
+      "banned": "Computadorayki/llikayki hark'asqa kachkan",
+      "banreason": "Mana allin comportamientorayku. "
+    }
+  }
+}

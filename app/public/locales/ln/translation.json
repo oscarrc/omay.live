@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Ozali na mposa ya appli te mpo na kosalela {{ BRAND }} na telefone to na tablette na yo! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ezali lolenge malamu ya kokutana na baninga ya sika.  {{ BRAND }}, toponaka moto mosusu na mbalakaka mpe totikaka yo osolola moko na moko.   <6>Mibeko mpe makambo oyo etali yango</6>, mpe <8>Mabongisi ya lisanga</8> pona info sur de do's na don'ts na kosalela {{ BRAND }}. {{ BRAND }} video chat eza AI modéré mais moderation moko te eza parfaits.  {{ BRAND }}",
+    "disclaimer": "<0>Esengeli ozala na mibu 18 (to majorité juridique na jurisdiction na yo) to koleka mpo na kosalela {{BRAND}}</0>.  {{BRAND}}'s <4>Mibeko mpe makambo oyo etali yango</4> pona ba infos ebele.  <6>https://www.kokangisa na bokengi.org/ba contrôles</6> lokola mpe bisika mosusu.",
+    "pleaseleave": "Svp tika Lamdazle pe kota na site ya mikóló na esika na yango soki yango nde ozali koluka pe ozali na mbula 18 (to majorité juridique na jurisdiction na yo) to koleka.",
+    "termscheck": "Na kotiya elembo na esika oyo ondimi ete otali lisusu mokanda oyo ondimi ete okangami na yango {{BRAND}}'s <3>Mibeko mpe makambo oyo etali yango</3>, . <5>Politiki ya kobatela makambo ya moto ye moko</5> mpe <7>Mabongisi ya lisanga</7>.",
+    "agecheck": "Okoki kosalela service oyo te soki ozali na se ya mbula 18 to ozali na mbula ya majorité juridique na jurisdiction na yo.  <1>Mibeko mpe makambo oyo etali yango</1> pona ba infos ebele. <3>Na kotiya elembo na esika oyo ondimi mpe ozali komonisa ete ozali na mibu 18 (to bato mingi oyo mibeko epesi nzela na etuka na yo) to koleka.</3>",
+    "acceptandcontinue": "Ndima mpe kobá"
+  },
+  "chat": {
+    "connecting": "Kosala boyokani na serveur",
+    "error": "Libunga ya kozala na boyokani na mosaleli: Svp meka lisusu",
+    "nocam": "Libunga na kamera: Dispositif oyo esengami ezwami te",
+    "banned": "Epekisami",
+    "search": {
+      "random": "Koluka mopaya ya pamba pamba okoki kosolola na ye...",
+      "common": "Koluka mopaya na ba intérêts communs...",
+      "retry": "Oyo ezali kozua tango molayi, koluka mopaya ya pamba pamba au lieu..."
+    },
+    "searching": "Koluka mopaya ya pamba pamba okoki kosolola na ye...",
+    "connected": "Ozali kosolola na mopaya moko ya pamba pamba. ",
+    "stopped": "Cliquez Banda kosolola na mopaya",
+    "language": "Bino mibale bozali koloba monoko moko.  {{\"Any\"}} na menu ya langue mpo na ko désactiver.",
+    "interest": "Bino mibale bolingaka",
+    "simulated": "Stranger akoki kozala kosalela webcam simulé",
+    "typing": "Mopaya azali ko typer",
+    "strangerdisconnected": "Mopaya asili kokata boyokani",
+    "youdisconnected": "Osili kokata boyokani",
+    "interests": "Luká bapaya oyo bazali na makambo oyo bato nyonso balingaka",
+    "great": "Chat ya munene?",
+    "save": "Bomba mokanda ya bopanzi sango",
+    "download": "Kozwa",
+    "selectall": "Poná nyonso",
+    "newchat": "Chat ya sika",
+    "start": "Kobanda",
+    "stop": "Kosukisa",
+    "really": "Mpenza",
+    "reconnect": "Bosala lisusu boyokani na yango moko",
+    "send": "Kotinda",
+    "report": "Rapore",
+    "you": "Yo",
+    "stranger": "Mopaya",
+    "mousemoving": "Soso azali kotambola. "
+  },
+  "common": {
+    "startchatting": "Bandá kosolola",
+    "talkabout": "Olingi kolobela nini?",
+    "addinterests": "Bakisa ba intérêts na yo (Optional)",
+    "video": "Video",
+    "text": "Nkoma",
+    "switchto": "Bobongola na",
+    "unmoderated": "Eteni oyo ezali na bokambami te",
+    "or": "to",
+    "allrightsreserved": "Makoki nyonso mazali ya yo",
+    "terms": "Mibeko mpe makambo oyo etali yango",
+    "privacy": "Politiki ya kobatela makambo ya moto ye moko",
+    "guidelines": "Mabongisi ya lisanga",
+    "alerts": {
+      "monitored": "Video ezali surveillé",
+      "keepclean": "Bomba yango peto pe salisa na koyebisa bizaleli ya NSFW",
+      "banned": "Ordinatɛrɛ/réseau na yo epekisami",
+      "banreason": "Na ntina na bizaleli mabe. "
+    }
+  }
+}

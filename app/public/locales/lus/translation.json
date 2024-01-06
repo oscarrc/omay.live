@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "App hman tur i mamawh lo {{ BRAND }} i phone emaw tablet emaw ah! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) tih hi ṭhian thar nena inhmuhna tha tak a ni.  {{ BRAND }}, random takin midang kan thlang a, one-to-one in inbiakna kan phalsak che a ni.   <6>Thuthlung leh thupek te</6>, leh <8>Khawtlang inkaihhruaina</8> for info about de do's leh don'ts in hman dan tur {{ BRAND }}. {{ BRAND }} video chat hi AI moderated ni mahse moderation engmah perfects a ni lo.  {{ BRAND }}",
+    "disclaimer": "<0>I hman tur chuan kum 18 (or i jurisdiction-a legal majority) emaw a aia upa emaw i ni tur a ni {{BRAND}}</0>.  {{BRAND}}'s <4>Thuthlung leh thupek te</4> info tam zawk hriat duh tan.  <6>https://www.connectsafely.org/a thunun theih a ni</6> chutiang bawkin site dangte pawh an awm bawk.",
+    "pleaseleave": "Khawngaihin Lamdazle chhuahsan la, chu chu i zawn chu a nih a, kum 18 (or i jurisdiction-a legal majority) emaw a aia upa i nih chuan puitling site tlawh zawk rawh.",
+    "termscheck": "Box-a i check hian agree to be bound by i enfiah tih i pawm a ni {{BRAND}}'s <3>Thuthlung leh thupek te</3>, . <5>Thuruk humhalh dan tur</5> leh <7>Khawtlang inkaihhruaina</7>.",
+    "agecheck": "Kum 18 hnuai lam emaw, i ram chhunga legal majority i nih chuan he service hi i hmang thei lo vang.  <1>Thuthlung leh thupek te</1> info tam zawk hriat duh tan. <3>Box-a i check hian kum 18 (or i jurisdiction-a legal majority) emaw a aia upa i nih thu i pawm a, i entir bawk.</3>",
+    "acceptandcontinue": "Pawm la, chhunzawm rawh"
+  },
+  "chat": {
+    "connecting": "Server nena inzawmna siam",
+    "error": "Server-a connect-naah error: Khawngaihin han en leh teh",
+    "nocam": "Camera-a error: Device dil chu hmuh a ni lo",
+    "banned": "Khap a ni",
+    "search": {
+      "random": "Random stranger i chat theih tur zawngin...",
+      "common": "Mi hriat loh, duhthusam inang nei zawngin...",
+      "retry": "Hei hian hun rei tak a la a, random stranger zawng ai chuan..."
+    },
+    "searching": "Random stranger i chat theih tur zawngin...",
+    "connected": "Random stranger nen in inbia a. ",
+    "stopped": "Mi hriat loh nen inbiakna neihpui turin Start tih kha click rawh",
+    "language": "In pahnih hian tawng inang in hmang a.  {{\"Any\"}} language menu ah khan disable turin a awm.",
+    "interest": "Nangni pahnih hian in duh",
+    "simulated": "Stranger hian simulated webcam a hmang mai thei",
+    "typing": "Stranger chuan a type a",
+    "strangerdisconnected": "Stranger chuan a disconnect tawh",
+    "youdisconnected": "I disconnect tawh a ni",
+    "interests": "Mi hriat loh, ngaihven inang nei zawng rawh",
+    "great": "Chat ropui tak a ni em?",
+    "save": "Log chu save rawh",
+    "download": "Internet atanga thil lachhawng",
+    "selectall": "A zawng zawng thlang rawh",
+    "newchat": "Chat thar a ni",
+    "start": "Tan",
+    "stop": "Tawp",
+    "really": "Takzet",
+    "reconnect": "Auto-reconnect leh rawh",
+    "send": "Thawn",
+    "report": "Hek",
+    "you": "Nangmah",
+    "stranger": "Hmelhriatloh",
+    "mousemoving": "Mouse chu a che a. "
+  },
+  "common": {
+    "startchatting": "Chatting tan rawh",
+    "talkabout": "Eng thu nge sawi i duh?",
+    "addinterests": "I ngaihven zawngte chu add rawh (Optional)",
+    "video": "Video",
+    "text": "Thumal",
+    "switchto": "Switch rawh",
+    "unmoderated": "Moderated loh section",
+    "or": "emaw",
+    "allrightsreserved": "Thuneihna zawng zawng a awm",
+    "terms": "Thuthlung leh thupek te",
+    "privacy": "Thuruk humhalh dan tur",
+    "guidelines": "Khawtlang inkaihhruaina",
+    "alerts": {
+      "monitored": "Video a vil reng a ni",
+      "keepclean": "Fai takin vawng la, NSFW thiltih dan report hmangin tanpui rawh",
+      "banned": "I computer/network kha ban a ni tawh",
+      "banreason": "Thiltih \\ha lo vang a ni. "
+    }
+  }
+}

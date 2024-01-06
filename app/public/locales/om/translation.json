@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Fayyadamuuf app si hin barbaachisu {{ BRAND }} bilbila ykn taableetii keessan irratti! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) jechuun hiriyyoota haaraa wajjin wal baruuf karaa gaarii dha.  {{ BRAND }}, nama biraa akka tasaa fudhannee tokko tokkoon akka dubbattan isin goona.   <6>Haalawwanii fi dambiiwwan</6>, fi <8>Qajeelfama hawaasaa</8> for info waa'ee de do's fi don'ts fayyadamuu keessatti {{ BRAND }}. {{ BRAND }} video chat AI moderated ta'us moderation tokkollee perfects miti.  {{ BRAND }}",
+    "disclaimer": "<0>Fayyadamuuf umuriin kee 18 (ykn harka caalu seeraa naannoo kee keessatti) fi isaa ol ta’uu qabda {{BRAND}}</0>.  {{BRAND}}'s <4>Haalawwanii fi dambiiwwan</4> info dabalataaf.  <6>https://www.nageenya walitti hidhamiinsa.org/to’annoo</6> akkasumas marsariitiiwwan biroos ni jiru.",
+    "pleaseleave": "Maaloo Lamdazle dhiisaatii bakka isaa marsariitii ga’eessotaa daawwadhaa yoo sun waan barbaaddan ta’ee fi umuriin keessan 18 (ykn harki caalaan seeraa naannoo keessan jiru) fi isaa ol yoo ta’e.",
+    "termscheck": "Sanduuqa irratti mallattoo kaa’uudhaan waliigaltee itti hidhamuuf akka ilaalte beekta {{BRAND}}'s <3>Haalawwanii fi dambiiwwan</3>, . <5>Imaammata dhuunfaa</5> fi <7>Qajeelfama hawaasaa</7>.",
+    "agecheck": "Tajaajila kana fayyadamuu dhiisuu kan dandeessan yoo umuriin keessan waggaa 18 gadi ta’e ykn umriin keessan aangoo seeraan ala ta’e yoo ta’e.  <1>Haalawwanii fi dambiiwwan</1> info dabalataaf. <3>Sanduuqa irratti mallattoo kaa’uudhaan waggaa 18 (ykn harka caalu seeraa naannoo kee keessatti) fi isaa ol ta’uu kee beeksistee bakka bu’a.</3>",
+    "acceptandcontinue": "Fudhadhaa itti fufaa"
+  },
+  "chat": {
+    "connecting": "Sarvarii waliin wal qunnamsiisuu",
+    "error": "Dogoggora sarvarii waliin walqabsiisuu: Maaloo irra deebi'ii yaali",
+    "nocam": "Dogoggora kaameraa: Meeshaan gaafatame hin argamne",
+    "banned": "Uggurame",
+    "search": {
+      "random": "Nama tasaa hin beekne kan waliin chat gochuu dandeessan barbaadaa...",
+      "common": "Nama hin beekne fedhii waloo qabu barbaaduu...",
+      "retry": "Kun yeroo dheeraa fudhachaa jira, kanaa mannaa nama hin beekne tasaa barbaaduu..."
+    },
+    "searching": "Nama tasaa hin beekne kan waliin chat gochuu dandeessan barbaadaa...",
+    "connected": "Nama hin beekne akka tasaa waliin chatting gochaa jirta. ",
+    "stopped": "Nama hin beekne waliin haasa'uuf Jalqaba cuqaasaa",
+    "language": "Lamaan keessan iyyuu afaan tokko dubbattu.  {{\"Any\"}} menu afaanii irratti hojii irraa oolchuuf.",
+    "interest": "Lamaan keessan iyyuu ni jaallattu",
+    "simulated": "Stranger webcam fakkeessaa fayyadamaa jiraachuu danda'a",
+    "typing": "Ormi barreessaa jira",
+    "strangerdisconnected": "Ormi walitti hidhamiinsa addaan kuteera",
+    "youdisconnected": "Walitti hidhamiinsa addaan citteetta",
+    "interests": "Namoota hin beekne fedhii waloo qaban barbaadi",
+    "great": "Chaat guddaa?",
+    "save": "Galmee sana saagi",
+    "download": "Buusuu",
+    "selectall": "Hundaa filadhu",
+    "newchat": "Chaat haaraa",
+    "start": "Eegaluu",
+    "stop": "Dhaabuu",
+    "really": "Dhugaadhumatti",
+    "reconnect": "Ofiin irra deebi'ii wal qunnamsiisa",
+    "send": "Erguu",
+    "report": "Gabaasuu",
+    "you": "Ati",
+    "stranger": "Orma",
+    "mousemoving": "Hantuutni socho'aa jira. "
+  },
+  "common": {
+    "startchatting": "Chatting jalqabaa",
+    "talkabout": "Waa'ee maalii dubbachuu barbaadda?",
+    "addinterests": "Fedhii keessan itti dabalaa (Filannoo) .",
+    "video": "Viidiyoo",
+    "text": "Barreeffama",
+    "switchto": "Gara",
+    "unmoderated": "Kutaa hin madaalamne",
+    "or": "yookaan",
+    "allrightsreserved": "Mirgi Qopheessaa Seeraan Kan Eegame",
+    "terms": "Haalawwanii fi dambiiwwan",
+    "privacy": "Imaammata dhuunfaa",
+    "guidelines": "Qajeelfama hawaasaa",
+    "alerts": {
+      "monitored": "Viidiyoon hordofama",
+      "keepclean": "Qulqullina isaa eeguu fi amala NSFW gabaasuun gargaaraa",
+      "banned": "Kompiitarri/network keessan dhorkamee jira",
+      "banreason": "Amala badaa irraa kan ka'e. "
+    }
+  }
+}

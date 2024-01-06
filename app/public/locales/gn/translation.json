@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Natekotevẽi peteĩ app reiporu hag̃ua {{ BRAND }} nde teléfono térã tablet-pe! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ha’e peteĩ tape iporãitereíva jaikuaa haĝua angirũ pyahúpe.  {{ BRAND }}, roiporavo ambuépe al azar ha roheja reñe’ẽ peteĩ teĩ.   <6>Umi término ha condición rehegua</6>, ha <8>Komunida rembiaporã</8> for info de do's ha don'ts rehegua ojeporúvo {{ BRAND }}. {{ BRAND }} video chat ha’e AI moderado ha katu ndaipóri moderación ha’e perfecto.  {{ BRAND }}",
+    "disclaimer": "<0>Reguerekova’erã 18 ary (térã mayoría legal nde jurisdicción-pe) térã hetave reiporu haĝua {{BRAND}}</0>.  {{BRAND}}'s <4>Umi término ha condición rehegua</4> hetave marandu rehegua.  <6>https://www.connectsafely.org/control-kuéra rehegua</6> avei ambue tenda.",
+    "pleaseleave": "Por favor, eheja Lamdazle ha eike peteĩ sitio adulto-pe rangue upéva ha’éramo pe rehekáva ha reguereko 18 ary (térã mayoría legal nde jurisdicción-pe) térã hetave.",
+    "termscheck": "Remoĩvo peteĩ márka pe káha rehe rerrekonose rehesaʼỹijo hague peteĩ de akuérdo reñeñapytĩ hag̃ua {{BRAND}}'s <3>Umi término ha condición rehegua</3>, . <5>Política privacidad rehegua</5> ha <7>Komunida rembiaporã</7>.",
+    "agecheck": "Ndaikatúi reiporu ko servicio nde nereguerekóiramo 18 ary térã reguerekóramo mayoría legal nde jurisdicción-pe.  <1>Umi término ha condición rehegua</1> hetave marandu rehegua. <3>Remarkávo pe cuadro rerrekonose ha rerrepresenta reguerekoha 18 áño (térã pe mayoría legal nde jurisdicción-pe) térã hetave.</3>",
+    "acceptandcontinue": "Easepta ha esegi"
+  },
+  "chat": {
+    "connecting": "Oñembojoajúvo servidor rehe",
+    "error": "Ojejavy oñembojoajúvo servidor rehe: Eñeha’ã jey",
+    "nocam": "Ojejavy cámara ndive: Ndojejuhúi tembipuru ojejeruréva",
+    "banned": "Oñembotove",
+    "search": {
+      "random": "Ohekávo peteĩ extraño aleatorio ikatúva reñemongeta hendive...",
+      "common": "Ohekávo peteî extraño orekóva intereses común...",
+      "retry": "Kóva ogueraha are, ohekávo peteĩ extraño aleatorio rangue..."
+    },
+    "searching": "Ohekávo peteĩ extraño aleatorio ikatúva reñemongeta hendive...",
+    "connected": "Reñemongeta hína peteĩ desconocido aleatorio ndive. ",
+    "stopped": "Clic Eñepyrũ eñemongeta peteĩ tapicha reikuaa’ỹva ndive",
+    "language": "Mokõivéva peñe’ẽ peteĩ ñe’ẽme.  {{\"Any\"}} ñe’ẽ menúpe oñembogue hag̃ua.",
+    "interest": "Mokõivévape ndegusta",
+    "simulated": "Stranger ikatu oipuru peteĩ webcam simulado",
+    "typing": "Extraño ohai hína",
+    "strangerdisconnected": "Extraño ha desconectado",
+    "youdisconnected": "Peẽ peñedesconecta",
+    "interests": "Eheka umi extraño orekóva interés común",
+    "great": "Tuicha ñemongeta?",
+    "save": "Eñongatu pe registro",
+    "download": "Mboguejy",
+    "selectall": "Eiporavo opaite",
+    "newchat": "Ñemongeta pyahu",
+    "start": "Ñepyrũ",
+    "stop": "Pyta",
+    "really": "Añetehápe",
+    "reconnect": "Oñembojoaju jey ijehegui",
+    "send": "Rahauka",
+    "report": "Momarandu",
+    "you": "Nde",
+    "stranger": "Hekomarãva",
+    "mousemoving": "Ratón omýi hína. "
+  },
+  "common": {
+    "startchatting": "Eñepyrũ eñemongeta",
+    "talkabout": "Mbaʼérehepa reñeʼẽse?",
+    "addinterests": "Emoĩ umi mba'e ndegustáva (Opcional) .",
+    "video": "Techarã",
+    "text": "Maranduhai",
+    "switchto": "Oñemoambue haguã",
+    "unmoderated": "Sección no moderada",
+    "or": "térã",
+    "allrightsreserved": "Opaite derecho ojeguerekóva",
+    "terms": "Umi término ha condición rehegua",
+    "privacy": "Política privacidad rehegua",
+    "guidelines": "Komunida rembiaporã",
+    "alerts": {
+      "monitored": "Ojesareko video rehe",
+      "keepclean": "Eñongatu ipotĩ ha eipytyvõ emombe’úvo NSFW reko",
+      "banned": "Nde komputadóra/red oñembotove",
+      "banreason": "Teko vai rupi. "
+    }
+  }
+}

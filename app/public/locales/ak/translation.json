@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Wonhia app bi a wode bedi dwuma {{ BRAND }} wɔ wo fon anaa wo tablɛt so! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) yɛ ɔkwan pa a wobɛfa so ahyia nnamfo foforo.  {{ BRAND }}, yɛpaw obi foforo kwa na yɛma wokasa mmiako mmiako.   <6>Nsɛm ne nhyehyɛe ahorow</6>, ne <8>Mpɔtam hɔ akwankyerɛ</8> for info fa de do's ne don'ts wɔ dwumadie mu {{ BRAND }}. {{ BRAND }} video chat yɛ AI moderated nanso moderation biara nni hɔ a ɛyɛ pɛpɛɛpɛ.  {{ BRAND }}",
+    "disclaimer": "<0>Ɛsɛ sɛ wudi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo man mu) anaa nea ɛboro saa ansa na wode adi dwuma {{BRAND}}</0>.  {{BRAND}}'s <4>Nsɛm ne nhyehyɛe ahorow</4> sɛ wopɛ info pii a.  <6>https://www.nkitahodi ahobammɔ.org/ahyɛde ahorow</6> saa ara nso na mmeae afoforo nso te.",
+    "pleaseleave": "Yɛsrɛ wo fi Lamdazle na kɔ mpanyimfo beae bi mmom sɛ ɛno ne nea worehwehwɛ na woadi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo tumidi mu) anaa nea ɛboro saa a.",
+    "termscheck": "Sɛ wohyɛ adaka no mu a, wugye tom sɛ woasan ahwɛ agree to be bound by {{BRAND}}'s <3>Nsɛm ne nhyehyɛe ahorow</3>, . <5>Kokoam nsɛm ho nhyehyɛe</5> ne <7>Mpɔtam hɔ akwankyerɛ</7>.",
+    "agecheck": "Worentumi mfa saa dwumadie yi nni dwuma sɛ wo nni mfeɛ 18 anaa woadi mfeɛ a ɛfata wɔ mmara kwan so wɔ wo man mu a.  <1>Nsɛm ne nhyehyɛe ahorow</1> sɛ wopɛ info pii a. <3>Sɛ wohyɛ adaka no mu a, wugye tom na wugyina hɔ ma sɛ woadi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo tumidi mu) anaa nea ɛboro saa.</3>",
+    "acceptandcontinue": "Gye tom na toa so"
+  },
+  "chat": {
+    "connecting": "Nkitahodi a ɛkɔ server no so",
+    "error": "Mfomso a ɛba bere a worekɔ server no so: Yɛsrɛ wo san sɔ hwɛ bio",
+    "nocam": "Mfomso a ɛwɔ camera ho: Wɔanhu mfiri a wɔsrɛɛ no",
+    "banned": "Wɔabara",
+    "search": {
+      "random": "Worehwehwɛ random stranger a wobɛtumi ne no abɔ nkɔmmɔ...",
+      "common": "Worehwehwɛ ɔhɔho a n’ani gye nneɛma koro ho...",
+      "retry": "Eyi regye bere tenten, hwehwɛ random stranger mmom..."
+    },
+    "searching": "Worehwehwɛ random stranger a wobɛtumi ne no abɔ nkɔmmɔ...",
+    "connected": "Wo ne obi a wunnim no random rebɔ nkɔmmɔ. ",
+    "stopped": "Klik Fi ase ne obi a wunnim no bɔ nkɔmmɔ",
+    "language": "Mo baanu nyinaa ka kasa koro.  {{\"Any\"}} wɔ kasa menu no so na woayɛ adwuma.",
+    "interest": "Mo baanu nyinaa ani gye ho",
+    "simulated": "Ebia Stranger de wɛbsaet kamera a wɔayɛ no sɛnea ɛte redi dwuma",
+    "typing": "Stranger reyɛ type",
+    "strangerdisconnected": "Stranger atwa nkitahodi no mu",
+    "youdisconnected": "Woatwa nkitahodi no mu",
+    "interests": "Hwehwɛ ahɔho a wɔn ani gye nneɛma koro ho",
+    "great": "Nkɔmmɔbɔ kɛse?",
+    "save": "Fa log no sie",
+    "download": "Twe",
+    "selectall": "Paw ne nyinaa",
+    "newchat": "Nkɔmmɔbɔ foforo",
+    "start": "Hyɛ aseɛ",
+    "stop": "Gyae",
+    "really": "Pa ara",
+    "reconnect": "Auto-reconnect no bio",
+    "send": "Mane",
+    "report": "Amaneɛbɔ",
+    "you": "Wo",
+    "stranger": "Ɔhɔhoɔ",
+    "mousemoving": "Mouse retu mmirika. "
+  },
+  "common": {
+    "startchatting": "Fi ase bɔ nkɔmmɔ",
+    "talkabout": "Dɛn na wopɛ sɛ woka ho asɛm?",
+    "addinterests": "Fa w’anigyede ka ho (Optional) .",
+    "video": "Video",
+    "text": "Atwerɛ",
+    "switchto": "Dan kɔ",
+    "unmoderated": "Ɔfã a wɔanhwɛ so",
+    "or": "anaasɛ",
+    "allrightsreserved": "Wɔakora hokwan nyinaa so",
+    "terms": "Nsɛm ne nhyehyɛe ahorow",
+    "privacy": "Kokoam nsɛm ho nhyehyɛe",
+    "guidelines": "Mpɔtam hɔ akwankyerɛ",
+    "alerts": {
+      "monitored": "Wɔhwɛ video so",
+      "keepclean": "Ma ɛho tew na boa denam NSFW nneyɛe a wobɛbɔ ho amanneɛ so",
+      "banned": "Wɔabara wo kɔmputa/network",
+      "banreason": "Esiane suban bɔne nti. "
+    }
+  }
+}

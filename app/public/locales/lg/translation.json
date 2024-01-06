@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Teweetaaga app okukozesa {{ BRAND }} ku ssimu yo oba ku tabuleti yo! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) y’engeri ennungi ey’okusisinkana emikwano emipya.  {{ BRAND }}, tulonda omuntu omulala mu ngeri ey’ekifuulannenge ne tukuleka okwogera omu ku omu.   <6>Ebiragiro n’obukwakkulizo</6>, ne <8>Endagiriro z’abantu b’omukitundu</8> for info ku de do's ne don'ts mu kukozesa {{ BRAND }}. {{ BRAND }} video chat ya AI moderated naye tewali moderation etuukiridde.  {{ BRAND }}",
+    "disclaimer": "<0>Olina okuba ng’olina emyaka 18 (oba abasinga obungi mu mateeka mu buyinza bwo) oba okusingawo okusobola okukozesa {{BRAND}}</0>.  {{BRAND}}'s <4>Ebiragiro n’obukwakkulizo</4> okumanya ebisingawo.  <6>https://www.connectsafely.org/ebifuga</6> nga kwotadde n’emikutu emirala.",
+    "pleaseleave": "Nsaba ove mu Lamdazle ogende ku mukutu gw’abantu abakulu mu kifo ky’ekyo singa ekyo ky’onoonya era ng’olina emyaka 18 (oba abasinga obungi mu mateeka mu kitundu kyo) oba okusingawo.",
+    "termscheck": "Bw’ossaako akabonero ku kasanduuko oba okkirizza nti weetegereza ekiwandiiko ekikkiriza okusibwa {{BRAND}}'s <3>Ebiragiro n’obukwakkulizo</3>, . <5>Enkola y’eby’ekyama</5> ne <7>Endagiriro z’abantu b’omukitundu</7>.",
+    "agecheck": "Toyinza kukozesa mpeereza eno singa oba tolina myaka 18 oba ng’olina emyaka egy’obukulu mu mateeka mu kitundu kyo.  <1>Ebiragiro n’obukwakkulizo</1> okumanya ebisingawo. <3>Bw’ossaako akabonero ku kasanduuko okkiriza era okiikirira nti olina emyaka 18 (oba abasinga obungi mu mateeka mu buyinza bwo) oba okusingawo.</3>",
+    "acceptandcontinue": "Kkiriza era ogende mu maaso"
+  },
+  "chat": {
+    "connecting": "Okuyunga ku seva",
+    "error": "Ensobi mu kuyungibwa ku seva: Nsaba ogezeeko nate",
+    "nocam": "Ensobi ku kamera: Ekyuma ekisabiddwa tekizuuliddwa",
+    "banned": "Bawereddwa",
+    "search": {
+      "random": "Noonya random stranger gw'osobola okunyumya naye...",
+      "common": "Noonya omuntu gw’otomanyi ng’alina ebintu bye wamu...",
+      "retry": "Kino kitwala ekiseera ekiwanvu, okunoonya random stranger mu kifo ky'ekyo..."
+    },
+    "searching": "Noonya random stranger gw'osobola okunyumya naye...",
+    "connected": "Oli mu kunyumya n'omuntu gw'otomanyi mu ngeri ey'ekifuulannenge. ",
+    "stopped": "Nyiga Tandika okunyumya n'omuntu gw'otomanyi",
+    "language": "Mwembi mwogera olulimi lumu.  {{\"Any\"}} ku menu y'olulimi okulemesa.",
+    "interest": "Mwembi mwagala",
+    "simulated": "Stranger ayinza okuba ng’akozesa webcam ekoppa",
+    "typing": "Stranger ali mu kuwandiika",
+    "strangerdisconnected": "Stranger akutudde ku kakwate",
+    "youdisconnected": "Ovuddeko akakwate",
+    "interests": "Funa abantu b’otomanyi abalina ebintu bye bafaanaganya",
+    "great": "Emboozi enkulu?",
+    "save": "Teeka ekiwandiiko",
+    "download": "Okufuna",
+    "selectall": "Londa byonna",
+    "newchat": "Emboozi empya",
+    "start": "Okutandika",
+    "stop": "Okulekera",
+    "really": "Kituufu",
+    "reconnect": "Ddamu okuyungibwa mu ngeri ey’otoma",
+    "send": "Okutuma",
+    "report": "Okuloopa",
+    "you": "Ggwe",
+    "stranger": "Mugenyi",
+    "mousemoving": "Mouse etambula. "
+  },
+  "common": {
+    "startchatting": "Tandika okunyumya",
+    "talkabout": "Kiki ky’oyagala okwogerako?",
+    "addinterests": "Yongera ku by'oyagala (Optional)",
+    "video": "Vidiyo",
+    "text": "Okuwandiika obubaka",
+    "switchto": "Kyusa ku...",
+    "unmoderated": "Ekitundu ekitali kya kigero",
+    "or": "oba",
+    "allrightsreserved": "Eddembe lyonna liri mu buyinza bwaffe",
+    "terms": "Ebiragiro n’obukwakkulizo",
+    "privacy": "Enkola y’eby’ekyama",
+    "guidelines": "Endagiriro z’abantu b’omukitundu",
+    "alerts": {
+      "monitored": "Akatambi kalondoolebwa",
+      "keepclean": "Kikuume nga kiyonjo era kiyambe nga oloopa enneeyisa ya NSFW",
+      "banned": "Kompyuta/network yo ewereddwa",
+      "banreason": "Olw’enneeyisa embi. "
+    }
+  }
+}

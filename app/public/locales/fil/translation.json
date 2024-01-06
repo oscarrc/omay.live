@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "Hindi mo kailangan ng app para magamit {{ BRAND }} sa iyong telepono o tablet! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ay isang mahusay na paraan upang makilala ang mga bagong kaibigan.  {{ BRAND }}, pumili kami ng iba nang random at hinahayaan kang makipag-usap nang isa-sa-isa.   <6>Mga tuntunin at kundisyon</6>, at <8>Mga alituntunin ng komunidad</8> para sa impormasyon tungkol sa mga dapat gawin at hindi dapat gawin sa paggamit {{ BRAND }}. {{ BRAND }} Ang video chat ay AI moderated ngunit walang moderation ang perpekto.  {{ BRAND }}",
+    "disclaimer": "<0>Dapat ay 18 ka (o ang legal na mayorya sa iyong hurisdiksyon) o mas matanda para magamit {{BRAND}}</0>.  {{BRAND}}'s <4>Mga tuntunin at kundisyon</4> para sa karagdagang impormasyon.  <6>https://www.connectsafely.org/controls</6> pati na rin ang iba pang mga site.",
+    "pleaseleave": "Mangyaring umalis sa Lamdazle at bumisita sa isang pang-adultong site sa halip kung iyon ang iyong hinahanap at ikaw ay 18 (o ang legal na mayorya sa iyong hurisdiksyon) o mas matanda.",
+    "termscheck": "Sa pamamagitan ng paglalagay ng check sa kahon, kinikilala mo na nasuri mo ang isang sumang-ayon na itali {{BRAND}}'s <3>Mga tuntunin at kundisyon</3>, <5>Patakaran sa privacy</5> at <7>Mga alituntunin ng komunidad</7>.",
+    "agecheck": "Hindi mo maaaring gamitin ang serbisyong ito kung ikaw ay wala pang 18 taong gulang o ang edad ng legal na mayorya sa iyong hurisdiksyon.  <1>Mga tuntunin at kundisyon</1> para sa karagdagang impormasyon. <3>Sa pamamagitan ng paglalagay ng check sa kahon, kinikilala at kinakatawan mo na ikaw ay 18 taong gulang (o ang legal na mayorya sa iyong hurisdiksyon) o mas matanda.</3>",
+    "acceptandcontinue": "Tanggapin at magpatuloy"
+  },
+  "chat": {
+    "connecting": "Kumokonekta sa server",
+    "error": "Error sa pagkonekta sa server: Pakisubukang muli",
+    "nocam": "Error sa camera: Hindi nakita ang hiniling na device",
+    "banned": "Pinagbawalan",
+    "search": {
+      "random": "Naghahanap ng random na estranghero na makaka-chat mo...",
+      "common": "Naghahanap ng estranghero na may mga karaniwang interes...",
+      "retry": "Nagtatagal ito, naghahanap na lang ng random na estranghero..."
+    },
+    "searching": "Naghahanap ng random na estranghero na makaka-chat mo...",
+    "connected": "Nakikipag-chat ka sa isang random na estranghero. ",
+    "stopped": "I-click ang Magsimulang makipag-chat sa isang estranghero",
+    "language": "Pareho kayong nagsasalita ng parehong wika.  {{\"Any\"}} sa menu ng wika upang huwag paganahin.",
+    "interest": "Pareho kayong gusto",
+    "simulated": "Maaaring gumagamit ang estranghero ng kunwa na webcam",
+    "typing": "Nagta-type si Stranger",
+    "strangerdisconnected": "Nadiskonekta ang estranghero",
+    "youdisconnected": "Na-disconnect ka",
+    "interests": "Maghanap ng mga estranghero na may mga karaniwang interes",
+    "great": "Mahusay na chat?",
+    "save": "I-save ang log",
+    "download": "I-download",
+    "selectall": "Piliin lahat",
+    "newchat": "Bagong chat",
+    "start": "Magsimula",
+    "stop": "Tumigil ka",
+    "really": "Talaga",
+    "reconnect": "Awtomatikong kumonekta muli",
+    "send": "Ipadala",
+    "report": "Ulat",
+    "you": "Ikaw",
+    "stranger": "estranghero",
+    "mousemoving": "Gumagalaw ang mouse. "
+  },
+  "common": {
+    "startchatting": "Mag-umpisang mag-usap",
+    "talkabout": "Anong gusto mong pag usapan?",
+    "addinterests": "Idagdag ang iyong mga interes (Opsyonal)",
+    "video": "Video",
+    "text": "Text",
+    "switchto": "Lumipat sa",
+    "unmoderated": "Hindi na-moderate na seksyon",
+    "or": "o",
+    "allrightsreserved": "Lahat ay nakalaan",
+    "terms": "Mga tuntunin at kundisyon",
+    "privacy": "Patakaran sa privacy",
+    "guidelines": "Mga alituntunin ng komunidad",
+    "alerts": {
+      "monitored": "Sinusubaybayan ang video",
+      "keepclean": "Panatilihin itong malinis at tumulong sa pamamagitan ng pag-uulat ng gawi ng NSFW",
+      "banned": "Na-ban ang iyong computer/network",
+      "banreason": "Dahil sa masamang ugali. "
+    }
+  }
+}

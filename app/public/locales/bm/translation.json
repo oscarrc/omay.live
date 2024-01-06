@@ -1,0 +1,66 @@
+{
+  "landing": {
+    "noapp": "I mago tɛ appli la walisa ka baara kɛ n’a ye {{ BRAND }} i ka telefɔni walima i ka tablɛti kan! ",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ye teri kuraw kunbɛncogo ɲuman ye.  {{ BRAND }}, an bɛ mɔgɔ wɛrɛ ta k' a to i ka kuma kelen-kelen.   <6>Sariyaw ni sariyakolow</6>, ani <8>Sigidamɔgɔw ka laadilikanw</8> ka kunnafoni sɔrɔ de do's ani don'ts kan baarakɛcogo la {{ BRAND }}. {{ BRAND }} wideyow baro ye AI moderated ye nka moderation si tɛ perfects ye.  {{ BRAND }}",
+    "disclaimer": "<0>I ka kan ka kɛ san 18 ye (walima i ka mara kɔnɔ mɔgɔ fanba min bɛ sariya kɔnɔ) walima ka tɛmɛ o kan walasa ka baara kɛ ni o ye {{BRAND}}</0>.  {{BRAND}}'s <4>Sariyaw ni sariyakolow</4> walasa ka kunnafoni wɛrɛw sɔrɔ.  <6>https://www.connectsafely.org/kɔlɔsilikɛlaw</6> o cogo kelen na, yɔrɔ wɛrɛw fana bɛ yen.",
+    "pleaseleave": "Aw ye bɔ ​​Lamdazle ka taa balikuw ka yɔrɔ dɔ la o nɔ na ni o de ye aw ka ɲinini ye ani ni aw si bɛ san 18 la (walima aw ka mara kɔnɔ sariya siratigɛ la) walima ka tɛmɛ o kan.",
+    "termscheck": "Ni i ye o yɔrɔ taamasiyɛn kɛ i b’a jira ko i ye sɔn-ni-sɔn gafenin dɔ lajɛ min bɛ se ka siri {{BRAND}}'s <3>Sariyaw ni sariyakolow</3>, . <5>Kunnafoni dogolenw ka sariya</5> ani <7>Sigidamɔgɔw ka laadilikanw</7>.",
+    "agecheck": "I man kan ka baara kɛ ni nin baara ye ni i si tɛ san 18 bɔ walima ni i si ma se sariya sira fɛ i ka mara kɔnɔ.  <1>Sariyaw ni sariyakolow</1> walasa ka kunnafoni wɛrɛw sɔrɔ. <3>Ni i ye o yɔrɔ taamasiyɛn kɛ, i b’a jira ani k’a jira ko i si bɛ san 18 la (walima ko i ka mara kɔnɔ jamanaden fanba bɛ sariya sira fɛ) walima ka tɛmɛ o kan.</3>",
+    "acceptandcontinue": "Sɔn o ma ani ka taa a fɛ"
+  },
+  "chat": {
+    "connecting": "Jɛɲɔgɔnya kɛli ni sèrwɛri ye",
+    "error": "Misali min kɛra ka ɲɛsin sèrwɛri ma: Aw ye segin k’a lajɛ",
+    "nocam": "Misali min kɛra kamera la: Minɛn ɲininen ma sɔrɔ",
+    "banned": "A dagalen don",
+    "search": {
+      "random": "A bɛ dunan random dɔ ɲini i bɛ se ka baro kɛ ni min ye...",
+      "common": "Dunan ɲinini na min ka nafaw ye kelen ye...",
+      "retry": "Nin bɛ ka waati jan ta, ka dunan gansan dɔ ɲini o nɔ na..."
+    },
+    "searching": "A bɛ dunan random dɔ ɲini i bɛ se ka baro kɛ ni min ye...",
+    "connected": "I bɛ baro kɛ ni dunan dɔ ye k’a sɔrɔ i ma kɛ cogo si la. ",
+    "stopped": "Klik Daminɛ ka baro kɛ ni dunan ye",
+    "language": "Aw fila bɛɛ bɛ kan kelen fɔ.  {{\"Any\"}} kanw menu kan walasa ka baara kɛ.",
+    "interest": "A ka di aw fila bɛɛ ye",
+    "simulated": "Dunan bɛ se ka baara kɛ ni webcam simulated ye",
+    "typing": "Dunan bɛ ka sɛbɛnni kɛ",
+    "strangerdisconnected": "Dunan ye jɛɲɔgɔnya tigɛ",
+    "youdisconnected": "Aw ye jɛɲɔgɔnya tigɛ",
+    "interests": "Dunanw ɲini minnu ka nafaw ye kelen ye",
+    "great": "Chat belebeleba?",
+    "save": "Aw bɛ sɛbɛnfura mara",
+    "download": "Ka telesarize",
+    "selectall": "A bɛɛ sugandi",
+    "newchat": "Baro kura",
+    "start": "Ka daminɛ",
+    "stop": "Ka dabila",
+    "really": "Lakika",
+    "reconnect": "Aw ye a yɛrɛ ka ɲɔgɔn sɔrɔ kokura",
+    "send": "Ka ci",
+    "report": "Cisama",
+    "you": "I",
+    "stranger": "Dunan",
+    "mousemoving": "Sogo bɛ ka lamaga. "
+  },
+  "common": {
+    "startchatting": "Aw ye baro daminɛ",
+    "talkabout": "I b’a fɛ ka kuma mun kan?",
+    "addinterests": "Aw ye aw diyanyekow fara a kan (Optional) .",
+    "video": "Wideyo",
+    "text": "Masalabolo",
+    "switchto": "Aw bɛ wuli ka taa",
+    "unmoderated": "Dakun min ma ɲɛnabɔ",
+    "or": "walima",
+    "allrightsreserved": "Hakɛ bɛɛ bɛ a bolo",
+    "terms": "Sariyaw ni sariyakolow",
+    "privacy": "Kunnafoni dogolenw ka sariya",
+    "guidelines": "Sigidamɔgɔw ka laadilikanw",
+    "alerts": {
+      "monitored": "Wideyo bɛ kɔlɔsi",
+      "keepclean": "Aw bɛ a saniya ani ka dɛmɛ don ni NSFW ka kɛwalew fɔli ye",
+      "banned": "I ka ɔridinatɛri/rɛzo dagalen don",
+      "banreason": "K’a sababu kɛ kɛwale juguw ye. "
+    }
+  }
+}
