@@ -27,14 +27,14 @@ const ChatControls = ({ onClick, onChange, onSubmit, state, disabled }) => {
    
     return (
         <div className="join w-full h-16">                   
-            <button disabled={disabled} onClick={onClick} className={`join-item btn ${ state === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 w-24 rounded-none sm:rounded-lg`}>
+            <button disabled={disabled} onClick={onClick} className={`join-item btn ${ state === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 min-w-24 rounded-none sm:rounded-lg`}>
                 { state === 0 && t("chat.start") } 
                 { state === 1 && t("chat.stop") } 
                 { state === 2 && t("chat.really") } 
                 <span className={`${state === 0 ? "text-base-100" : "text-primary"} text-xs`}>Esc</span>
             </button>
             <textarea aria-label="message box" ref={textRef} onChange={onChange} className="join-item flex-1 h-full textarea textarea-bordered textaerea-fixed rounded-none shadow-inner"/>
-            <button onClick={send} className="join-item btn h-full flex flex-col gap-1 bg-base-100 w-24 rounded-none sm:rounded-lg">{t("chat.send")} <span className="text-primary text-xs">Enter</span></button>
+            <button onClick={send} className="join-item btn h-full flex flex-col gap-1 bg-base-100 min-w-24 rounded-none sm:rounded-lg">{t("chat.send")} <span className="text-primary text-xs">Enter</span></button>
         </div>
     )
 }
