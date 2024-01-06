@@ -19,6 +19,9 @@ export default defineConfig({
     server: {    
         open: true, 
         port: 3000, 
+        watch: {
+            usePolling: true
+        }
     },
     resolve: {
         alias: [

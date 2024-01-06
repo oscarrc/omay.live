@@ -119,49 +119,44 @@ const Chat = () => {
                     lang={peer.current.lang === lang && lang !== "any"}
                 >
                     { 
-                        (isDisconnected || status === STATUS.STOPPED) &&                          
-                        <div className="flex flex-col gap-2">
-                            <div className="flex flex-col sm:flex-row gap-4 items-start">
-                                <div className="flex flex-row flex-1 w-full sm:max-w-md">
-                                    <div className="flex flex-col gap-2 w-full">
-                                        <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
-                                            { t("chat.interests") }
+                        (isDisconnected || status === STATUS.STOPPED) &&
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_1fr] gap-4">
+                            <div className="order-1 flex">
+                                <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
+                                    { t("chat.interests") }
+                                </Toggle>
+                            </div>
+                            <div className="order-3 md:order-2 flex">
+                                {
+                                    !isMobile &&
+                                        <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                            {t("chat.reconnect")}
                                         </Toggle>
-                                        <InterestInput
-                                            values={interests} 
-                                            onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
-                                            onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
-                                            className="w-full "
-                                        />
-                                        { isDisconnected && auto && isMouseMoving && !isMobile &&
-                                            <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
-                                        }
-                                    </div>
-                                </div>
-                                <div className={`flex flex-col gap-2 items-start w-full sm:w-auto ${isMobile && "sm:mt-11"}`}>
-                                    {
-                                        !isMobile &&
-                                            <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                                {t("chat.reconnect")}
-                                            </Toggle>
-                                    }
-                                    <div className="flex flex-col gap-2 w-full">
-                                        <button 
-                                            onClick={() => {
-                                                onClick()
-                                            }} 
-                                            className="btn w-full btn-lg btn-primary "
-                                        >
-                                            {t("chat.newchat")}
-                                        </button>
-                                        <button 
-                                            onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                            className="btn text-sm w-full btn-xs text-xs self-end"
-                                        >
-                                            { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
-                                        </button>
-                                    </div>
-                                </div>
+                                }    
+                            </div>                        
+                            <div className="order-2 md:order-3">
+                                <InterestInput
+                                    values={interests} 
+                                    onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                    onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                    className="w-full"
+                                />  
+                            </div>  
+                            <div className="flex flex-col gap-2 order-4">
+                                <button 
+                                    onClick={() => {
+                                        onClick()
+                                    }} 
+                                    className="btn btn-lg w-full btn-primary "
+                                >
+                                    {t("chat.newchat")}
+                                </button>
+                                <button 
+                                    onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
+                                    className="btn text-sm btn-xs w-full text-xs self-end h-fit"
+                                >
+                                    { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
+                                </button>
                             </div>
                         </div>
                     }
