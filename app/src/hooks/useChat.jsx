@@ -32,8 +32,7 @@ const ChatReducer = (state, action) => {
         case "LANG":          
             let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
             return { ...state, lang }
-        case "RESET":
-            console.log(DEFAULTS)
+        case "RESET":            
             return { 
                 ...DEFAULTS, 
                 ...(state.status === STATUS.BANNED ? {status: STATUS.BANNED} : {}), 
