@@ -7,6 +7,7 @@ import { lazy } from "react";
 import useDetectAdblock from "./hooks/useDetectAdblock";
 
 const App = () => {  
+  const AdBlock = lazy(() => import('./routes/error/AdBlock'));
   const Chat = lazy(() => import('./routes/chat'));
   const Error = lazy(() => import('./routes/error'));
   const NotFound = lazy(() => import('./routes/error/404'));
@@ -32,7 +33,7 @@ const App = () => {
           id: "unmoderated",
           path: "/unmoderated",
           element: <Chat />,
-          loader: () => adBlockDetected && redirect("/error")
+          loader: () => adBlockDetected && redirect("/adblock")
         },
         {   
           id: "text",
@@ -43,7 +44,12 @@ const App = () => {
           id: "policies",
           path: "/policies/:id",
           element: <Policies />
-        },        
+        },   
+        {   
+          id: "adblock",
+          path: "/adblock",
+          element: <AdBlock />
+        },
         {   
           id: "404",
           path: "*",
