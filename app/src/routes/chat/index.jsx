@@ -107,6 +107,7 @@ const Chat = () => {
                         <div className="relative">                           
                             <VideoBox source={remoteStream} />
                             { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
+                            { isUnmoderated && <Ad zoneId={5167966} className="absolute h-full w-full top-0 left-0" /> }
                         </div>
                         <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 aspect-auto md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
                     </div>

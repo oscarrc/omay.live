@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Ad = ({zoneId, keywords}) => {
+const Ad = ({zoneId, keywords, className}) => {
     useEffect(() => {
         window.AdProvider = window.AdProvider || [];
     }, []);
@@ -8,6 +8,7 @@ const Ad = ({zoneId, keywords}) => {
     useEffect(() => {
         let script = document.querySelector(`script[src="${import.meta.env.VITE_ADS_URL}"]`);
         if(script) return;
+        
         script = document.createElement("script");
         script.src = import.meta.env.VITE_ADS_URL;
         script.async = true;    
@@ -23,12 +24,13 @@ const Ad = ({zoneId, keywords}) => {
     }, [])
 
     useEffect(() => {
+        console.log(zoneId)
         window.AdProvider.push({ serve: {} });
     }, [zoneId])
 
     return (
         <ins 
-            className="adsbyexoclick" 
+            className={`adsbyexoclick ${className}`} 
             data-zoneid={`${zoneId}`} 
             {...(keywords ? { "data-keywords": keywords.join(",") } : {} ) }           
         ></ins> 
