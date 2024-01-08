@@ -99,7 +99,7 @@ const Chat = () => {
 
     return (
         <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
-            <div className="flex flex-col md:flex-row gap-4 flex-1">
+            <div className="flex flex-col md:flex-row gap-4 flex-1 max-h-content md:max-h-full">
                 {
                     !isTextOnly && 
                     <div className="flex flex-col gap-4 md:max-h-content md:max-w-1/4 w-full relative">
