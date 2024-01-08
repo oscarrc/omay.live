@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 
-import { Banner } from "exoclick-react";
 import { useTranslation } from "react-i18next";
 
 const ChatBox = ({ messages, className, status, simulated, children, lang, common }) => {     
@@ -17,7 +16,6 @@ const ChatBox = ({ messages, className, status, simulated, children, lang, commo
     return (
         <div ref={box} className={`bg-base-100 sm:rounded-lg shadow-inner py-2 pb-4 px-4 ${className}`}>
             <div className="flex flex-col flex-1 gap-4">
-                <Banner zoneId={5171914} />
                 <p><strong>{ t(`chat.${status}`) }</strong></p>
                 <div>
                     {lang && <p>{ t(`chat.language`) }</p>}
