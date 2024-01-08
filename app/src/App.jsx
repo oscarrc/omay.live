@@ -48,7 +48,8 @@ const App = () => {
         {   
           id: "adblock",
           path: "/adblock",
-          element: <AdBlock />
+          element: <AdBlock />,          
+          loader: () => !adBlockDetected && redirect("/")
         },
         {   
           id: "404",
