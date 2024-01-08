@@ -2,6 +2,7 @@ import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 import { InterestInput, Loader, Toggle } from "../../components/partials";
 import { useCallback, useEffect, useMemo } from "react";
 
+import { Ad } from "../../components/partials";
 import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
 import { requestFullscreen } from "../../lib/fullscreen";
@@ -179,6 +180,9 @@ const Chat = () => {
                     disabled={isDisabled || status === STATUS.CONNECTING}
                 />
             </div>
+            <aside>
+                <Ad zoneId={5172300} />
+            </aside>
         </section>
     )
 }
