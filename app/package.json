@@ -19,7 +19,7 @@
     "socket.io-client": "^4.7.2"
   },
   "scripts": {
-    "start": "vite --host",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest"
