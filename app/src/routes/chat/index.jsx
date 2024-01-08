@@ -121,20 +121,20 @@ const Chat = () => {
                     { 
                         (isDisconnected || status === STATUS.STOPPED) &&
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_1fr] gap-4 lg:max-w-75%">
-                            <div className={`order-1 flex ${isMobile && "col-span-2"}`}>
+                            <div className={`order-2 md:order-1 flex ${isMobile && "col-span-2"}`}>
                                 <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
                                     { t("chat.interests") }
                                 </Toggle>
                             </div>                             
                             {
                                 !isMobile &&
-                                <div className="order-3 md:order-2 flex">
+                                <div className="order-1 md:order-2 flex">
                                             <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
                                                 {t("chat.reconnect")}
                                             </Toggle>  
                                 </div> 
                             }                        
-                            <div className="flex flex-col gap-2 order-2 md:order-3">
+                            <div className="flex flex-col gap-2 order-3">
                                 <InterestInput
                                     values={interests} 
                                     onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
