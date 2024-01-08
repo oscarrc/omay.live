@@ -1,10 +1,20 @@
+import { useEffect, useRef } from "react";
+
 import { useTranslation } from "react-i18next";
 
 const ChatBox = ({ messages, className, status, simulated, children, lang, common }) => {     
     const { t } = useTranslation();
+    const box = useRef(null);
+
+    useEffect(() => {
+        box.current.scroll({
+            top: box.current.scrollHeight - box.current.clientHeight,
+            behavior: "smooth"
+        })
+    }, [messages])
 
     return (
-        <div className={`bg-base-100 sm:rounded-lg shadow-inner py-2 pb-4 px-4 ${className}`}>
+        <div ref={box} className={`bg-base-100 sm:rounded-lg shadow-inner py-2 pb-4 px-4 ${className}`}>
             <div className="flex flex-col flex-1 gap-4">
                 <p><strong>{ t(`chat.${status}`) }</strong></p>
                 <div>

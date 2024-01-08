@@ -111,7 +111,7 @@ const Chat = () => {
                     </div>
                 }
                 <ChatBox 
-                    className="flex flex-col flex-1 gap-4" 
+                    className="scroll flex flex-col flex-1 gap-4 max-h-content overflow-y-auto" 
                     messages={messages} 
                     status={status} 
                     simulated={peer.current.simulated} 
