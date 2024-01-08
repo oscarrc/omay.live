@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Ad = ({zoneId}) => {
+const Ad = ({zoneId, keywords}) => {
     useEffect(() => {
         window.AdProvider = window.AdProvider || [];
     }, []);
@@ -27,7 +27,11 @@ const Ad = ({zoneId}) => {
     }, [zoneId])
 
     return (
-        <ins className="adsbyexoclick" data-zoneid={`${zoneId}`}></ins> 
+        <ins 
+            className="adsbyexoclick" 
+            data-zoneid={`${zoneId}`} 
+            {...(keywords ? { "data-keywords": keywords.join(",") } : {} ) }           
+        ></ins> 
     )
 }
 
