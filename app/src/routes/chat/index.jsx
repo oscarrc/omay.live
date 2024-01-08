@@ -181,7 +181,7 @@ const Chat = () => {
                     disabled={isDisabled || status === STATUS.CONNECTING}
                 />
             </div>
-            { isUnmoderated && <Ad zoneId={isMobile ? 5171916 : 5172300} /> }
+            { isUnmoderated && <Ad zoneId={5172336} /> }
         </section>
     )
 }
