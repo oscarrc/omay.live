@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const Ad = ({zoneId, keywords, className}) => {
     useEffect(() => {
@@ -7,7 +7,7 @@ const Ad = ({zoneId, keywords, className}) => {
 
     useEffect(() => {
         let script = document.querySelector(`script[src="${import.meta.env.VITE_ADS_URL}"]`);
-        if(script) return;
+        if(script) return
         
         script = document.createElement("script");
         script.src = import.meta.env.VITE_ADS_URL;
@@ -15,7 +15,8 @@ const Ad = ({zoneId, keywords, className}) => {
         script.onload = () => {            
             window.AdProvider = window.AdProvider || [];
             window.AdProvider.push({ serve: {} });
-        } 
+        }
+        
         document.body.appendChild(script);
 
         return () => {
@@ -24,7 +25,6 @@ const Ad = ({zoneId, keywords, className}) => {
     }, [])
 
     useEffect(() => {
-        console.log(zoneId)
         window.AdProvider.push({ serve: {} });
     }, [zoneId])
 
