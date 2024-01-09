@@ -131,9 +131,9 @@ const Chat = () => {
                             {
                                 !isMobile &&
                                 <div className="order-1 md:order-2 flex">
-                                            <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                                {t("chat.reconnect")}
-                                            </Toggle>  
+                                    <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                        {t("chat.reconnect")}
+                                    </Toggle>  
                                 </div> 
                             }                        
                             <div className="flex flex-col gap-2 order-3">
