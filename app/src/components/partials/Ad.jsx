@@ -29,11 +29,13 @@ const Ad = ({zoneId, keywords, className}) => {
     }, [zoneId])
 
     return (
-        <ins 
-            className={`adsbyexoclick ${className}`} 
-            data-zoneid={`${zoneId}`} 
-            {...(keywords ? { "data-keywords": keywords.join(",") } : {} ) }           
-        ></ins> 
+        <div className={`${className}`}>
+            <ins 
+                className="adsbyexoclick"
+                data-zoneid={`${zoneId}`} 
+                {...(keywords ? { "data-keywords": keywords.join(",") } : {} ) }           
+            ></ins> 
+        </div>
     )
 }
 
