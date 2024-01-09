@@ -3,7 +3,7 @@
     "noapp": "A wu lavi app leswaku u yi tirhisa {{ BRAND }} eka riqingho kumbe thebulete ya wena! ",
     "intro": "{{BRAND}} ({{TRANSLITERATION}}) i ndlela leyinene yo hlangana ni vanghana lavantshwa.  {{ BRAND }}, hi hlawula munhu un’wana hi ku landzelelana ivi hi ku pfumelela ku vulavula un’we-un’we.   <6>Mimpimanyeto na swipimelo</6>, na <8>Swiletelo swa vaaki</8> for info hi de do's na don'ts eka ku tirhisa {{ BRAND }}. {{ BRAND }} video chat yi AI moderated kambe ku hava moderation leyi hetisekeke.  {{ BRAND }}",
     "disclaimer": "<0>U fanele ku va na malembe ya 18 (kumbe vunyingi bya le nawini eka vulawuri bya wena) kumbe ku tlula ku tirhisa {{BRAND}}</0>.  {{BRAND}}'s <4>Mimpimanyeto na swipimelo</4> for more info.  <6>https://www.connectsafely.org/swilawuri</6> swin’we ni tindhawu tin’wana.",
-    "pleaseleave": "Hi kombela u suka eLamdazle u endzela sayiti ya vanhu lavakulu ematshan’wini ya sweswo loko ku ri sweswo leswi u swi lavaka naswona u ri na 18 (kumbe vunyingi bya le nawini eka vulawuri bya wena) kumbe ku tlula.",
+    "pleaseleave": "Hi kombela u suka eLamdazle u endzela sayiti ya vanhu lavakulu ematshan’wini ya sweswo loko ku ri swona leswi u swi lavaka naswona u ri na 18 (kumbe vunyingi bya le nawini eka vulawuri bya wena) kumbe ku tlula.",
     "termscheck": "Hi ku cheka bokisi u pfumela leswaku u kambisise agree to be bound by {{BRAND}}'s <3>Mimpimanyeto na swipimelo</3>, . <5>Pholisi ya vuhlayiseki bya vuxokoxoko</5> na <7>Swiletelo swa vaaki</7>.",
     "agecheck": "A wu nge tirhisi vukorhokeri lebyi loko u ri ehansi ka malembe ya 18 kumbe u ri na malembe ya vukulu bya le nawini eka vulawuri bya wena.  <1>Mimpimanyeto na swipimelo</1> for more info. <3>Hi ku cheka bokisi u pfumela no yimela leswaku u na malembe ya 18 (kumbe vunyingi bya le nawini eka vulawuri bya wena) kumbe ku tlula.</3>",
     "acceptandcontinue": "Amukela u ya emahlweni"
@@ -61,6 +61,14 @@
       "keepclean": "Yi hlayise yi basile naswona pfuna hi ku vika mahanyelo ya NSFW",
       "banned": "Khompyuta/network ya wena yi yirisiwile",
       "banreason": "Hikwalaho ka mahanyelo yo biha. "
-    }
+    },
+    "home": "Kaya"
+  },
+  "error": {
+    "notfound": "Tluka A Ri Kumiwanga",
+    "adblocker": "A hi nge ku pfumeleli ku endla sweswo hikuva u tirhisa Ad blocker",
+    "disableadblocker": "<0>Hi tshemba leswaku u tiphina hi webusayiti ya hina. </0><1>Ndza khensa nseketelo wa n'wina!</1>",
+    "unexpectederror": "XIHOXO LEXI NGA LANGUTEkiki",
+    "errormessage": "Leswi swa khomisa tingana... Ku vile na..."
   }
 }

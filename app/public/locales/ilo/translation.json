@@ -20,7 +20,7 @@
     },
     "searching": "Agsapsapul iti random stranger a mabalinmo a chat...",
     "connected": "Maki-chat-ka iti random a ganggannaet. ",
-    "stopped": "I-click-mo ti Start ti maki-chat iti ganggannaet",
+    "stopped": "I-click ti Start ti maki-chat iti ganggannaet",
     "language": "Agpadakayo nga agsasao iti maymaysa a pagsasao.  {{\"Any\"}} iti language menu tapno balbaliwan.",
     "interest": "Agpadakayo a magustuan",
     "simulated": "Mabalin nga agus-usar ni Stranger iti simulated webcam",
@@ -52,7 +52,7 @@
     "switchto": "Agbalbaliw iti",
     "unmoderated": "Di namoderan a benneg",
     "or": "wenno",
-    "allrightsreserved": "Amin a karbengan ket naisagana",
+    "allrightsreserved": "Naisagana amin a karbengan",
     "terms": "Dagiti kondision ken kondision",
     "privacy": "Pagannurotan ti kinapribado",
     "guidelines": "Dagiti pagannurotan ti komunidad",
@@ -61,6 +61,14 @@
       "keepclean": "Pagtalinaeden a nadalus ken tumulong babaen ti panangireport iti kababalin ti NSFW",
       "banned": "Naiparit ti kompiuter/network-mo",
       "banreason": "Gapu iti dakes a kababalin. "
-    }
+    },
+    "home": "Balay"
+  },
+  "error": {
+    "notfound": "Saan a Nasarakan ti Panid",
+    "adblocker": "Dimi mabalin nga ipalubos nga aramidem dayta gapu ta Ad blocker ti us-usarenmo",
+    "disableadblocker": "<0>Sapay koma ta magustuanyo ti website-mi. </0><1>Pagyamanan iti suportayo!</1>",
+    "unexpectederror": "DI NANAMNAMA A BIDDUTEN",
+    "errormessage": "Makababain daytoy... Adda..."
   }
 }

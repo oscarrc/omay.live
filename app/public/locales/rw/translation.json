@@ -2,10 +2,10 @@
   "landing": {
     "noapp": "Ntukeneye porogaramu yo gukoresha {{ BRAND }} kuri terefone yawe cyangwa tableti! ",
     "intro": "{{BRAND}} ({{TRANSLITERATION}}) ninzira nziza yo guhura ninshuti nshya.  {{ BRAND }}, duhitamo undi muntu uko bishakiye hanyuma tureke tuvugane umwe-umwe.   <6>Amategeko n'amabwiriza</6>, na <8>Amabwiriza y'abaturage</8> kumakuru yerekeye gukora no gukora mugukoresha {{ BRAND }}. {{ BRAND }} ikiganiro cya videwo ni AI igereranijwe ariko ntagipimo cyuzuye.  {{ BRAND }}",
-    "disclaimer": "<0>Ugomba kuba ufite imyaka 18 (cyangwa ubwinshi bwemewe nububasha bwawe) cyangwa mukuru kugirango ukoreshe {{BRAND}}</0>.  {{BRAND}}'s <4>Amategeko n'amabwiriza</4> kubindi bisobanuro.  <6>https://www.connectsafely.org/controls</6> kimwe nizindi mbuga.",
+    "disclaimer": "<0>Ugomba kuba ufite imyaka 18 (cyangwa ubwinshi bwemewe nububasha bwawe) cyangwa mukuru kugirango ukoreshe {{BRAND}}</0>.  {{BRAND}}'s <4>Amategeko n'amabwiriza</4> kubindi bisobanuro.  <6>https://www.connectsafely.org/control</6> kimwe nizindi mbuga.",
     "pleaseleave": "Nyamuneka va Lamdazle hanyuma usure urubuga rwabantu bakuru aho niba aribyo urimo gushaka kandi ufite imyaka 18 (cyangwa benshi mubyemewe mububasha bwawe) cyangwa urengeje imyaka.",
     "termscheck": "Mugenzura agasanduku wemera ko wasuzumye icyemezo cyo kubahiriza {{BRAND}}'s <3>Amategeko n'amabwiriza</3>, <5>Politiki y’ibanga</5> na <7>Amabwiriza y'abaturage</7>.",
-    "agecheck": "Ntushobora gukoresha iyi serivisi niba uri munsi yimyaka 18 cyangwa imyaka yubukure bwemewe nububasha bwawe.  <1>Amategeko n'amabwiriza</1> kubindi bisobanuro. <3>Mugenzura agasanduku wemera kandi uhagarariye ko ufite imyaka 18 (cyangwa ubwinshi bwemewe nububasha bwawe) cyangwa urengeje imyaka.</3>",
+    "agecheck": "Ntushobora gukoresha iyi serivisi niba uri munsi yimyaka 18 cyangwa imyaka yubukure bwemewe nububasha bwawe.  <1>Amategeko n'amabwiriza</1> kubindi bisobanuro. <3>Mugenzura agasanduku wemera kandi uhagarariye ko ufite imyaka 18 (cyangwa ubwinshi bwemewe mububasha bwawe) cyangwa urengeje imyaka.</3>",
     "acceptandcontinue": "Emera kandi ukomeze"
   },
   "chat": {
@@ -49,7 +49,7 @@
     "addinterests": "Ongeraho inyungu zawe (Bihitamo)",
     "video": "Video",
     "text": "Inyandiko",
-    "switchto": "Hindura kuri",
+    "switchto": "Hindukira kuri",
     "unmoderated": "Igice kidahinduwe",
     "or": "cyangwa",
     "allrightsreserved": "Uburenganzira bwose burabitswe",
@@ -61,6 +61,14 @@
       "keepclean": "Komeza kugira isuku kandi ufashe kumenyesha imyitwarire ya NSFW",
       "banned": "Mudasobwa yawe / umuyoboro wawe warahagaritswe",
       "banreason": "Kubera imyitwarire mibi. "
-    }
+    },
+    "home": "Murugo"
+  },
+  "error": {
+    "notfound": "Urupapuro Ntiruboneka",
+    "adblocker": "Ntidushobora kukwemerera kubikora kuko ukoresha Ad blocker",
+    "disableadblocker": "<0>Turizera ko wishimiye urubuga rwacu. </0><1>Urakoze ku nkunga yawe!</1>",
+    "unexpectederror": "IKOSA RIDASANZWE",
+    "errormessage": "Ibi birabuza ... Habayeho an"
   }
 }

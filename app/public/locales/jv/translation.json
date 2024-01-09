@@ -61,6 +61,14 @@
       "keepclean": "Tansah resik lan mbantu kanthi nglaporake prilaku NSFW",
       "banned": "Komputer/jaringan sampeyan wis dilarang",
       "banreason": "Amarga tumindak ala. "
-    }
+    },
+    "home": "Ngarep"
+  },
+  "error": {
+    "notfound": "Halaman ora ditemo'ke",
+    "adblocker": "Kita ora bisa ngidini sampeyan nindakake amarga sampeyan nggunakake pamblokir iklan",
+    "disableadblocker": "<0>Muga-muga sampeyan seneng karo situs web kita. </0><1>Matur nuwun kanggo dhukungan!</1>",
+    "unexpectederror": "ERROR sing ora dikarepke",
+    "errormessage": "Iki isin ... Ana wis ana"
   }
 }

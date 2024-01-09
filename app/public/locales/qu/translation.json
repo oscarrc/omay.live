@@ -61,6 +61,14 @@
       "keepclean": "Ch’uyata waqaychay hinaspa yanapay NSFW ruwayninta willaspa",
       "banned": "Computadorayki/llikayki hark'asqa kachkan",
       "banreason": "Mana allin comportamientorayku. "
-    }
+    },
+    "home": "Wasi"
+  },
+  "error": {
+    "notfound": "Pagina Mana Tarisqachu",
+    "adblocker": "Mana chayta ruwayta atiykumanchu imaraykuchus huk bloqueador de Anuncios llamk'achkanki",
+    "disableadblocker": "<0>Suyayku web nisqaykuwan kusisqa kasqaykita. </0><1>Gracias por su apoyo!</1>",
+    "unexpectederror": "MANAM SUYASQA PANTAY",
+    "errormessage": "Kayqa p’enqaymi... Huk..."
   }
 }

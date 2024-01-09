@@ -1,7 +1,7 @@
 {
   "landing": {
     "noapp": "Fayyadamuuf app si hin barbaachisu {{ BRAND }} bilbila ykn taableetii keessan irratti! ",
-    "intro": "{{BRAND}} ({{TRANSLITERATION}}) jechuun hiriyyoota haaraa wajjin wal baruuf karaa gaarii dha.  {{ BRAND }}, nama biraa akka tasaa fudhannee tokko tokkoon akka dubbattan isin goona.   <6>Haalawwanii fi dambiiwwan</6>, fi <8>Qajeelfama hawaasaa</8> for info waa'ee de do's fi don'ts fayyadamuu keessatti {{ BRAND }}. {{ BRAND }} video chat AI moderated ta'us moderation tokkollee perfects miti.  {{ BRAND }}",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) jechuun hiriyyoota haaraa wajjin wal baruuf karaa gaarii dha.  {{ BRAND }}, nama biraa akka tasaa fudhannee tokko tokkoon akka dubbattan isin goona.   <6>Haalawwanii fi dambiiwwan</6>, fi <8>Qajeelfama hawaasaa</8> for info waa'ee de do's fi don'ts fayyadamuu keessatti {{ BRAND }}. {{ BRAND }} video chat AI moderated dha garuu moderation tokkollee perfects miti.  {{ BRAND }}",
     "disclaimer": "<0>Fayyadamuuf umuriin kee 18 (ykn harka caalu seeraa naannoo kee keessatti) fi isaa ol ta’uu qabda {{BRAND}}</0>.  {{BRAND}}'s <4>Haalawwanii fi dambiiwwan</4> info dabalataaf.  <6>https://www.nageenya walitti hidhamiinsa.org/to’annoo</6> akkasumas marsariitiiwwan biroos ni jiru.",
     "pleaseleave": "Maaloo Lamdazle dhiisaatii bakka isaa marsariitii ga’eessotaa daawwadhaa yoo sun waan barbaaddan ta’ee fi umuriin keessan 18 (ykn harki caalaan seeraa naannoo keessan jiru) fi isaa ol yoo ta’e.",
     "termscheck": "Sanduuqa irratti mallattoo kaa’uudhaan waliigaltee itti hidhamuuf akka ilaalte beekta {{BRAND}}'s <3>Haalawwanii fi dambiiwwan</3>, . <5>Imaammata dhuunfaa</5> fi <7>Qajeelfama hawaasaa</7>.",
@@ -61,6 +61,14 @@
       "keepclean": "Qulqullina isaa eeguu fi amala NSFW gabaasuun gargaaraa",
       "banned": "Kompiitarri/network keessan dhorkamee jira",
       "banreason": "Amala badaa irraa kan ka'e. "
-    }
+    },
+    "home": "Mana"
+  },
+  "error": {
+    "notfound": "Fuulli Hin Argamne",
+    "adblocker": "Ad blocker waan fayyadamtaniif akkas akka gootan isin hayyamuu hin dandeenyu",
+    "disableadblocker": "<0>Marsariitii keenya akka itti gammaddan abdii qabna. </0><1>Deeggarsa nuuf gootaniif galatoomaa!</1>",
+    "unexpectederror": "DOGOGGORA HIN EEGGAMNE",
+    "errormessage": "Kun nama qaanessa... Uummanni..."
   }
 }

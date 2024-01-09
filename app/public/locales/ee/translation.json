@@ -36,7 +36,7 @@
     "start": "Dze egᴐme",
     "stop": "Tᴐ",
     "really": "Nyateƒea",
-    "reconnect": "Gbugbɔ do ka kplii le ɖokuiwò si",
+    "reconnect": "Gbugbɔ do ka le ɖokuiwò si",
     "send": "Dᴐ",
     "report": "Nutsotso",
     "you": "Wò",
@@ -61,6 +61,14 @@
       "keepclean": "Na wòanɔ dzadzɛ eye nàkpe ɖe ŋuwò to NSFW ƒe nuwɔna ŋuti nyatakakawo gbɔgblɔ me",
       "banned": "Woxe mɔ ɖe wò kɔmpiuta/network nu",
       "banreason": "Le nuwɔna gbegblẽwo ta. "
-    }
+    },
+    "home": "Aƒeme"
+  },
+  "error": {
+    "notfound": "Axa si Womekpɔ O",
+    "adblocker": "Míate ŋu aɖe mɔ na wò be nàwɔ ema o elabena èle Ad blocker zãm",
+    "disableadblocker": "<0>Míele mɔ kpɔm be míaƒe nyatakakadzraɖoƒea le vivi sem na wò. </0><1>Akpe na mi ɖe miaƒe kpekpeɖeŋu ta!</1>",
+    "unexpectederror": "VODADA SI WOMEKPƆ MƆ KPƆKPƆ O",
+    "errormessage": "Esia nye ŋukpe... Wowɔe be..."
   }
 }

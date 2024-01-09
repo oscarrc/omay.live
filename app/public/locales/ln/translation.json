@@ -61,6 +61,14 @@
       "keepclean": "Bomba yango peto pe salisa na koyebisa bizaleli ya NSFW",
       "banned": "Ordinatɛrɛ/réseau na yo epekisami",
       "banreason": "Na ntina na bizaleli mabe. "
-    }
+    },
+    "home": "Ndako"
+  },
+  "error": {
+    "notfound": "Lokasa Ezwami Te",
+    "adblocker": "Tokoki kotika yo osala bongo te mpo ozali kosalela blocker ya Ad",
+    "disableadblocker": "<0>Tozali kolikya ete bozali kosepela na site Internet na biso. </0><1>Matondo mingi mpo na lisungi na bino!</1>",
+    "unexpectederror": "ERREUR OYO EZALI KOSALA TE",
+    "errormessage": "Oyo ezali soni... Ezalaki na..."
   }
 }

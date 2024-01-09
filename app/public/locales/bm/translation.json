@@ -61,6 +61,14 @@
       "keepclean": "Aw bɛ a saniya ani ka dɛmɛ don ni NSFW ka kɛwalew fɔli ye",
       "banned": "I ka ɔridinatɛri/rɛzo dagalen don",
       "banreason": "K’a sababu kɛ kɛwale juguw ye. "
-    }
+    },
+    "home": "So"
+  },
+  "error": {
+    "notfound": "Page Ma Sɔrɔ",
+    "adblocker": "An tɛ se k’a to i k’o kɛ bawo i bɛ baara kɛ ni Ad blocker ye",
+    "disableadblocker": "<0>An jigi b’a kan ko an ka siti in bɛna diya aw ye. </0><1>Aw ni ce aw ka dɛmɛ na!</1>",
+    "unexpectederror": "FILA MIN TƐMIN NA",
+    "errormessage": "Nin ye maloyako ye... A kɛra..."
   }
 }

@@ -8,11 +8,12 @@ while IFS= read -r name; do
     if [ -f "$LOCALES_FOLDER/$name/translation.json" ]; then
         continue
     fi
-
+    
+    mkdir -p "$LOCALES_FOLDER/$name"
+    
     for mod in "${MODULES[@]}"; do
         node_modules/@parvineyvazov/json-translator/bin/jsontt "$LOCALES_FOLDER/en/translation.json" --module $mod --from en --to $name --name translation -cl 1 -fb yes
         if [ $? -eq 0 ]; then
-            mkdir -p "$LOCALES_FOLDER/$name"
             mv "$LOCALES_FOLDER/en/translation.$name.json" "$LOCALES_FOLDER/$name/translation.json"
             break;
         fi
@@ -23,3 +24,5 @@ while IFS= read -r name; do
         grep -qxF $name $MISSING_FILE || echo $name >> $MISSING_FILE
     fi
 done <"$LOCALES_FOLDER/locales.txt"
+
+# https://translate.i18next.com/ for missing

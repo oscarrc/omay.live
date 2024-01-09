@@ -4,7 +4,7 @@
     "intro": "{{BRAND}} ({{TRANSLITERATION}}) ukax machaq amigonakampi uñt’asiñatakix wali askiwa.  {{ BRAND }}, yaqha jaqiruw aleatoriamente ajllisipxta ukat maynit maynikam parltʼasipxañamatakiw jaytapxta.   <6>Condiciones ukat condiciones ukanaka</6>, ukat <8>Aylluna kamachinakapa</8> de do's ukat don'ts ukanak apnaqañan info ukanakat yatxatañataki {{ BRAND }}. {{ BRAND }} video chat ukax AI moderado ukampirus janiw kuna moderación ukax perfectos ukhamäkiti.  {{ BRAND }}",
     "disclaimer": "<0>Uka apnaqañatakix 18 maranïñamawa (jan ukax jurisdicción ukan mayoría legal ukanïñamawa) jan ukax jilïr jaqïñamawa {{BRAND}}</0>.  {{BRAND}}'s <4>Condiciones ukat condiciones ukanaka</4> juk’amp yatxatañataki.  <6>https://www.conectsafely.org/controles ukan uñt’ayata</6> ukhamaraki yaqha sitios ukanakas utjarakiwa.",
     "pleaseleave": "Lamdazle markat sarxañamawa ukat uka lantix mä sitio adulto ukar mantañamawa, ukax kuntix thaqhapkta ukat 18 marani (jan ukax mayoría legal jurisdicción ukan) jan ukax jilïr ukhamästa ukhaxa.",
-    "termscheck": "Uka cuadro chimpumpi chimpuntasaxa, mä acuerdo uñakipt’ataxa uñt’ayatawa, ukaxa obligado ukhamawa {{BRAND}}'s <3>Condiciones ukat condiciones ukanaka</3>, . <5>Privacidad tuqit kamachi</5> ukat <7>Aylluna kamachinakapa</7>.",
+    "termscheck": "Uka cuadro chimpumpi chimpuntasaxa, mä acuerdo uñakipt’ataxa uñt’ayatarakiwa {{BRAND}}'s <3>Condiciones ukat condiciones ukanaka</3>, . <5>Privacidad tuqit kamachi</5> ukat <7>Aylluna kamachinakapa</7>.",
     "agecheck": "Janiwa aka servicio ukaxa apnaqatäkaspati, jumatix 18 marat aynacharu jan ukax jurisdicción ukan mayoría legal ukanïsta ukhaxa.  <1>Condiciones ukat condiciones ukanaka</1> juk’amp yatxatañataki. <3>Uka cuadro chimpumpi chimpuntasaxa, 18 maranïtawa (jan ukaxa mayoría legal jurisdicción ukanxa) jan ukaxa juk’ampi maranïtawa sasawa uñacht’ayaraktaxa.</3>",
     "acceptandcontinue": "Iyaw sañamawa ukat sarantaskakiwa"
   },
@@ -19,7 +19,7 @@
       "retry": "Akax jaya pachaw apst’asi, uka lantix mä aleatorio jan uñt’at jaqiruw thaqhapxi..."
     },
     "searching": "Mä aleatorio jan uñt’at jaqi thaqhasa, jupampiw aruskipt’asma...",
-    "connected": "Mä aleatorio jan uñtʼat jaqimpiw parltʼasiskta. ",
+    "connected": "Mä aleatorio jan uñtʼat jaqimpiw parltʼasisma. ",
     "stopped": "Mä jan uñt’at jaqimp aruskipt’añ qalltañatakix ch’iqt’añamawa",
     "language": "Panpachaniw mä pachpa aru parlapxta.  {{\"Any\"}} ukat aru menú ukanx jan ch’amanchañataki.",
     "interest": "Panpachaniw munapxtaxa",
@@ -27,7 +27,7 @@
     "typing": "Jan uñt’at jaqix qillqt’aski",
     "strangerdisconnected": "Stranger ukax desconectatäxiwa",
     "youdisconnected": "Jumax desconectatätawa",
-    "interests": "Jan uñt’at jaqinakar jikxatañamawa, jupanakax mäkiw munapxi",
+    "interests": "Jan uñt’at jaqinakar jikxatañamawa, jupanakax mä pachpa interesanakanïpxiwa",
     "great": "Jach’a aruskipäwi?",
     "save": "Uka qillqataxa imañawa",
     "download": "Apaqaña",
@@ -61,6 +61,14 @@
       "keepclean": "Q’uma uñjañamawa ukat yanapt’añamawa NSFW ukan sarnaqawipat yatiyasa",
       "banned": "Computadora/red ukax jark’atawa",
       "banreason": "Jan wali sarnaqawi utjatapata. "
-    }
+    },
+    "home": "Uta"
+  },
+  "error": {
+    "notfound": "Panka Janiw jikxataskiti",
+    "adblocker": "Janiw ukham lurañax jaysapksnati kunatix mä bloqueador de Anuncios apnaqapxtaxa",
+    "disableadblocker": "<0>Jiwasan sitio web ukan kusist’apxañamatakiw suyt’apxta. </0><1>¡Yanapt'apxatamat yuspajarapxsma!</1>",
+    "unexpectederror": "JAN SUYT’ATA PANTAÑATAKI",
+    "errormessage": "Akax p’inqachañawa... Mä..."
   }
 }

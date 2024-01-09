@@ -1,7 +1,7 @@
 {
   "landing": {
     "noapp": "Teweetaaga app okukozesa {{ BRAND }} ku ssimu yo oba ku tabuleti yo! ",
-    "intro": "{{BRAND}} ({{TRANSLITERATION}}) y’engeri ennungi ey’okusisinkana emikwano emipya.  {{ BRAND }}, tulonda omuntu omulala mu ngeri ey’ekifuulannenge ne tukuleka okwogera omu ku omu.   <6>Ebiragiro n’obukwakkulizo</6>, ne <8>Endagiriro z’abantu b’omukitundu</8> for info ku de do's ne don'ts mu kukozesa {{ BRAND }}. {{ BRAND }} video chat ya AI moderated naye tewali moderation etuukiridde.  {{ BRAND }}",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ngeri nnungi nnyo ey’okusisinkana emikwano emipya.  {{ BRAND }}, tulonda omuntu omulala mu ngeri ey’ekifuulannenge ne tukuleka okwogera omu ku omu.   <6>Ebiragiro n’obukwakkulizo</6>, ne <8>Endagiriro z’abantu b’omukitundu</8> for info ku de do's ne don'ts mu kukozesa {{ BRAND }}. {{ BRAND }} video chat ya AI moderated naye tewali moderation etuukiridde.  {{ BRAND }}",
     "disclaimer": "<0>Olina okuba ng’olina emyaka 18 (oba abasinga obungi mu mateeka mu buyinza bwo) oba okusingawo okusobola okukozesa {{BRAND}}</0>.  {{BRAND}}'s <4>Ebiragiro n’obukwakkulizo</4> okumanya ebisingawo.  <6>https://www.connectsafely.org/ebifuga</6> nga kwotadde n’emikutu emirala.",
     "pleaseleave": "Nsaba ove mu Lamdazle ogende ku mukutu gw’abantu abakulu mu kifo ky’ekyo singa ekyo ky’onoonya era ng’olina emyaka 18 (oba abasinga obungi mu mateeka mu kitundu kyo) oba okusingawo.",
     "termscheck": "Bw’ossaako akabonero ku kasanduuko oba okkirizza nti weetegereza ekiwandiiko ekikkiriza okusibwa {{BRAND}}'s <3>Ebiragiro n’obukwakkulizo</3>, . <5>Enkola y’eby’ekyama</5> ne <7>Endagiriro z’abantu b’omukitundu</7>.",
@@ -61,6 +61,14 @@
       "keepclean": "Kikuume nga kiyonjo era kiyambe nga oloopa enneeyisa ya NSFW",
       "banned": "Kompyuta/network yo ewereddwa",
       "banreason": "Olw’enneeyisa embi. "
-    }
+    },
+    "home": "Ewaka"
+  },
+  "error": {
+    "notfound": "Omuko Teguzuuliddwa",
+    "adblocker": "Ekyo tetusobola kukuleka kubanga okozesa Ad blocker",
+    "disableadblocker": "<0>Tusuubira nti onyumirwa omukutu gwaffe. </0><1>Mwebale nnyo obuwagizi bwammwe!</1>",
+    "unexpectederror": "ENSOBI ETAsuubirwa",
+    "errormessage": "Kino kiswaza... Wabaddewo..."
   }
 }

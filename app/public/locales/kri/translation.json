@@ -1,7 +1,7 @@
 {
   "landing": {
     "noapp": "Yu nɔ nid ap fɔ yuz {{ BRAND }} na yu fon ɔ tablɛt! ",
-    "intro": "{{BRAND}} ({{TRANSLITERATION}}) na fayn we fɔ mit nyu padi dɛn.  {{ BRAND }}, wi kin pik ɔda pɔsin bay random ɛn mek yu tɔk wan-to-wan.   <6>Tɛm ɛn kɔndishɔn dɛn</6>, ɛn <8>Kɔmyuniti gaydlain dɛn</8> fo info boht de do's en don'ts in yus {{ BRAND }}. {{ BRAND }} vidio chat na AI modaret bɔt no mɔdareshɔn nɔ pafɛkt.  {{ BRAND }}",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) na fayn we fɔ mit nyu padi dɛn.  {{ BRAND }}, wi kin pik ɔda pɔsin bay random ɛn mek yu tɔk wan-to-wan.   <6>Tɛm ɛn kɔndishɔn dɛn</6>, ɛn <8>Kɔmyuniti gaydlain dɛn</8> fo info boht de do's en don'ts in yus {{ BRAND }}. {{ BRAND }} vidio chat na AI moderated bot no moderation na perfekt.  {{ BRAND }}",
     "disclaimer": "<0>Yu fɔ ol 18 ia (ɔ di ligal mɔtalman we de na yu kɔntri) ɔ pas dat fɔ yuz {{BRAND}}</0>.  {{BRAND}}’s <4>Tɛm ɛn kɔndishɔn dɛn</4> fɔ mɔ info.  <6>https://www.kɔnɛktsɛf.org/kɔntrol dɛn</6> ɛn ɔda sayt dɛn de bak.",
     "pleaseleave": "Duya lɛf Lamdazle ɛn go na big pipul dɛn sayt insted if na dat yu de luk fɔ ɛn yu ol 18 ia (ɔ di ligal majoriti na yu jɔrisdikshɔn) ɔ pas dat.",
     "termscheck": "We yu chɛk di bɔks yu no se yu dɔn rivyu wan gri fɔ bi bound by {{BRAND}}’s <3>Tɛm ɛn kɔndishɔn dɛn</3>, . <5>Prayvesi polisi</5> ɛn <7>Kɔmyuniti gaydlain dɛn</7>.",
@@ -61,6 +61,14 @@
       "keepclean": "Kip am klin ɛn ɛp bay we yu de ripɔt di we aw NSFW de biev",
       "banned": "Dɛn dɔn ban yu kɔmpyuta/nɛtwɔk",
       "banreason": "Bikɔs ɔf bad bad we aw pɔsin de biev. "
-    }
+    },
+    "home": "Os"
+  },
+  "error": {
+    "notfound": "Pej we Nɔ Fayn",
+    "adblocker": "Wi nɔ go ebul fɔ mek yu du dat bikɔs yu de yuz Ad blɔk",
+    "disableadblocker": "<0>Wi op se yu de ɛnjɔy wi wɛbsayt. </0><1>Wi tɛl una tɛnki fɔ di sɔpɔt we una gi wi!</1>",
+    "unexpectederror": "ERƆR WE YU NƆ ƐKPƐKT",
+    "errormessage": "Dis na shemful tin... Na wan..."
   }
 }
