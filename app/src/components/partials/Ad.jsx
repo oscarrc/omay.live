@@ -29,7 +29,7 @@ const Ad = forwardRef(({zoneId, keywords, className}, ref) => {
     }, [zoneId])
 
     return (
-        <div className={`${className}`} ref={ref}>
+        <div className={`flex items-center justify-center ${className}`} ref={ref}>
             <ins 
                 className="adsbyexoclick"
                 data-zoneid={`${zoneId}`} 
