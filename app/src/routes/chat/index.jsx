@@ -123,7 +123,7 @@ const Chat = () => {
                     { 
                         (isDisconnected || status === STATUS.STOPPED) &&
                         
-                        <div className="flex flex-col md:flex-row gap-4 w-full max-w-4xl">
+                        <div className={`flex flex-col md:flex-row gap-4 w-full max-w-4xl ${isMobile && "md:items-end"}`}>
                             <div className="flex flex-col gap-4 flex-1">
                                 <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
                                     { t("chat.interests") }
@@ -147,7 +147,7 @@ const Chat = () => {
                                             {t("chat.reconnect")}
                                         </Toggle>  
                                 } 
-                                <div className="flex flex-col gap-2 order-4">
+                                <div className="flex flex-col gap-2 justify-end">
                                     <button 
                                         onClick={() => {
                                             onClick()
