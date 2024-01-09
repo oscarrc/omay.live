@@ -8,7 +8,7 @@ i18n.use(Backend)
     .use(initReactI18next)
     .init({
         fallbackLng: (code) => {
-            const fallbacks = [];
+            const fallbacks = ['en'];
             const langPart = code.split('-')[0];
             if(code === "any") return ['en']
             if (langPart !== code) fallbacks.push(langPart);
