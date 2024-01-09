@@ -8,7 +8,7 @@ const AdBlock = () => {
                 <h1 className="text-4xl text-center font-extrabold text-primary relative">
                     YOU ARE USING AD BLOCKER
                 </h1>
-                <p className="text-xl text-center">Please, disable it in order to proceed</p>
+                <p className="text-xl text-center">Please, disable it and refresh the page</p>
                 <Link href="/" className="btn btn-block btn-primary btn-outline">
                     Home
                 </Link>        
