@@ -61,7 +61,14 @@
           "keepclean": "Keep it clean and help by reporting NSFW behaviour",
           "banned": "Your computer/network has been banned",
           "banreason": "Due to bad behiavior. Don't worry, ban won't last forever."
-        }
-
+        },
+        "home": "Home"
+    },
+    "error": {
+        "notfound": "Page Not Found",
+        "adblocker": "We can't let you do that because you are using an Ad blocker",
+        "disableadblocker": "<0>We hope you are enjoying our website. In order to continue using it, we would like to request you to kindly disable your adblocker. Our website is free to use, and the ads displayed on our website help us to cover the costs of running the service. By disabling your adblocker, you will be helping us to keep our website up and running.</0><1>Thank you for your support!</1>",
+        "unexpectederror": "UNEXPECTED ERROR",
+        "errormessage": "This is embarrasing... There has been an"
     }
 }
