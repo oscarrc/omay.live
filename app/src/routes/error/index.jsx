@@ -11,7 +11,7 @@ const Error = () => {
                     <h1 className="text-4xl font-extrabold text-primary relative">
                         UNEXPECTED ERROR
                     </h1>
-                    <Link href="/" className="btn btn-block btn-primary btn-outline">
+                    <Link to={{ pathname: "/" }} className="btn btn-block btn-primary btn-outline">
                         Home
                     </Link>        
                 </div>      

@@ -10,7 +10,7 @@ const NotFound = () => {
                         Page Not Found
                     </small>
                 </h1>
-                <Link href="/" className="btn btn-block btn-primary btn-outline">
+                <Link to={{ pathname: "/" }} className="btn btn-block btn-primary btn-outline">
                     Home
                 </Link>        
             </div>      
