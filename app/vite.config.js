@@ -12,7 +12,7 @@ export default defineConfig({
             registerType: 'autoUpdate',
             workbox: {
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
-                maximumFileSizeToCacheInBytes: 3000000
+                maximumFileSizeToCacheInBytes: 600000
             }
         })
     ],
@@ -31,5 +31,8 @@ export default defineConfig({
                 replacement: 'nsfwjs/dist/nsfwjs.min.js',
             },
         ],
+    },
+    build: {
+        chunkSizeWarningLimit: 600
     }
 })
