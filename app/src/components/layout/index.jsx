@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Header />
-            <main ref={main} className="flex flex-1 bg-base-200 sm:p-6 sm:pb-0">
+            <main ref={main} className="flex flex-col flex-1 bg-base-200 sm:p-6 sm:pb-0">
                 <Suspense fallback={<Loader />}>
                     { children ?? <Outlet /> }
                 </Suspense>
