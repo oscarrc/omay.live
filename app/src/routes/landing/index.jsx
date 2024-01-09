@@ -1,4 +1,4 @@
-import { Alert, InterestInput } from "../../components/partials";
+import { Ad, Alert, InterestInput } from "../../components/partials";
 import { BRAND, TRANSLITERATION } from "../../constants/brand";
 import { Trans, useTranslation } from 'react-i18next';
 
@@ -7,11 +7,13 @@ import { FaBan } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Terms } from "../../components/modals";
 import { useChat } from "../../hooks/useChat";
+import useDeviceDetection from "../../hooks/useDeviceDetection";
 import { useEffect } from "react";
 
 const Landing = () => {     
     const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
+    const { isMobile } = useDeviceDetection();
     
     useEffect(()=> {
         dispatch({type: "RESET"})
@@ -19,7 +21,8 @@ const Landing = () => {
 
     return (
         <>
-            <section className="flex gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded shadow-inner p-8">
+            <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded shadow-inner p-8">
+                <Ad zoneId={isMobile ? 5171914 : 5167958} />
                 <div className="flex flex-col gap-8">
                     <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">
                         <h2 className="text-center">
