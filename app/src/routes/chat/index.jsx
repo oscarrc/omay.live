@@ -1,6 +1,6 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 import { InterestInput, Loader, Toggle } from "../../components/partials";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { Ad } from "../../components/partials";
 import { MdReport } from "react-icons/md"
@@ -57,7 +57,7 @@ const Chat = () => {
         confirmation === 0 && await startSearch();
         confirmation === 2 && await stopSearch();
     }, [confirmation, dispatch, startSearch, stopSearch])
-
+   
     useEffect(()=>{
         if(isDisabled) return;
         if(!tac) navigate("/");
