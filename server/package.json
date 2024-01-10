@@ -11,6 +11,8 @@
   "author": "Oscar R.C.",
   "license": "ISC",
   "dependencies": {
+    "@socket.io/cluster-adapter": "^0.2.2",
+    "@socket.io/sticky": "^1.0.4",
     "body-parser": "^1.20.2",
     "chalk": "^5.3.0",
     "cors": "^2.8.5",
