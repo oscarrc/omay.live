@@ -5,7 +5,8 @@
   "scripts": {
     "start": "npm --prefix ./server start",
     "dev": "npm --prefix ./app start & npm --prefix ./server run dev",
-    "build": "npm --prefix ./server install && npm --prefix ./app install && npm --prefix ./app run build",
+    "install": "npm --prefix ./server install && npm --prefix ./app install",
+    "build": "npm --prefix ./app run build",
     "translate": "./translate.sh"
   },
   "repository": {
