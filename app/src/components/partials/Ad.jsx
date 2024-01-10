@@ -29,7 +29,7 @@ const Ad = forwardRef(({zoneId, keywords, className}, ref) => {
     }, [zoneId])
 
     return (
-        <div className={`${className}`} ref={ref}>
+        <div className={`ad ${className}`} ref={ref}>
             <ins 
                 className="adsbyexoclick"
                 data-zoneid={`${zoneId}`} 

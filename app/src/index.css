@@ -49,4 +49,8 @@
     .textarea.textaerea-fixed{
         resize: none;
     }
+
+    .ad, .ad > *{
+        max-width: 100%;
+    }
 }

@@ -49,7 +49,7 @@ const Terms = ({ show, mode, onSubmit, onClose }) => {
                         </label>
                     </div>
                     <div className="form-control items-end mt-4">                        
-                        <button type="submit" disabled={ !tac || !age } className="btn">{t("landing.acceptandcontinue")}</button>
+                        <button type="submit" disabled={ !tac || !age } className="btn interstitial">{t("landing.acceptandcontinue")}</button>
                     </div>
                 </form>
             </div>

@@ -87,6 +87,7 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
+            <Ad zoneId={isMobile ? 5173686 : 5173688} />
             <Terms show={ mode && !tac } mode={mode} onClose={()=>dispatch({type: "RESET"})} onSubmit={()=>dispatch({type: "TAC", payload: true})} />
         </>
     )
