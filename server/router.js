@@ -5,9 +5,9 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req,res) => {
-    process.env.NODE_ENV === production ? 
+    process.env.NODE_ENV === "production" ? 
         res.sendFile(path.join(__dirname, "../app", "index.html")) :
-        router.get("/", (req,res) => res.send("OK"));
+        res.send("OK");
 })
 
 router.post("/chat", ChatController.find.bind(ChatController))
