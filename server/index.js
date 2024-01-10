@@ -25,6 +25,8 @@ app.use(bodyparser.urlencoded({extended: true}))
     .use(cors())
     .use(router)
 
+process.env.NODE_ENV === "production" && app.use(express.static("../app/dist"))
+
 const server = app.listen(PORT, () => {
     console.log(`${chalk.green.bold("[HTTP]")} Ready on ${BASE_URL}:${PORT}`)
 })
