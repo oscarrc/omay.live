@@ -6,7 +6,7 @@ const AdBlock = () => {
     const { t } = useTranslation();
     
     return (
-        <div className="flex flex-col flex-1 w-full gap-4 items-center justify-center bg-base-100 sm:rounded-lg shadow-inner">
+        <div className="flex flex-col flex-1 w-full gap-4 items-center justify-center bg-base-100 sm:rounded-lg sm:shadow-inner">
             <div className="prose md:prose-lg prose-h2:text-xl p-4">
                 <h2 className="text-center">{ t("error.adblocker") }</h2>
                 <Trans i18nKey="error.disableadblocker">

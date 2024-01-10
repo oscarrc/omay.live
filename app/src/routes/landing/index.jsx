@@ -21,7 +21,7 @@ const Landing = () => {
 
     return (
         <>
-            <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded shadow-inner p-8">
+            <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
                 <Ad className="responsive" zoneId={isMobile ? 5171914 : 5167958} keywords={Array.from(interests)} />
                 <div className="flex flex-col gap-8">
                     <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">

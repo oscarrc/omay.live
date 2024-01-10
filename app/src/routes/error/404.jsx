@@ -5,7 +5,7 @@ const NotFound = () => {
     const { t } = useTranslation();
     
     return (
-        <div className="flex flex-1 w-full gap-4 items-center justify-center bg-base-100 sm:rounded-lg shadow-inner">
+        <div className="flex flex-1 w-full gap-4 items-center justify-center bg-base-100 sm:rounded-lg sm:shadow-inner">
             <div className="flex flex-col gap-4">
                 <h1 className="text-9xl flex items-center justify-center font-extrabold text-center text-primary tracking-widest relative">
                     404
