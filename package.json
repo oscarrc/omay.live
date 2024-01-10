@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "Random video chat",
   "scripts": {
-    "start": "npm --prefix ./app start & npm --prefix ./server run dev",
-    "build": "npm --prefix ./app run build",
+    "start": "npm --prefix ./server start",
+    "dev": "npm --prefix ./app start & npm --prefix ./server run dev",
+    "build": "npm --prefix ./server install && npm --prefix ./app install && npm --prefix ./app run build",
     "translate": "./translate.sh"
   },
   "repository": {

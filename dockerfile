@@ -1,9 +1,5 @@
 FROM alpine:latest
 WORKDIR /lamdazle
-COPY server server
-COPY /app/dist app
-WORKDIR /lamdazle/server
-RUN npm install
-ENV NODE_ENV production
-EXPOSE 8080
+COPY . .
+RUN npm run build && mv /lamdazle/app/dist /lamdazle/www && rm -r app
 CMD ["npm", "start"]
