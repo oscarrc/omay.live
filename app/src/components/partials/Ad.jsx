@@ -1,6 +1,6 @@
 import { forwardRef, useEffect } from "react";
 
-const Ad = forwardRef(({zoneId, keywords, className}, ref) => {
+const Ad = forwardRef(({zoneId, keywords, sub, className}, ref) => {
     useEffect(() => {
         window.AdProvider = window.AdProvider || [];
     }, []);
@@ -33,7 +33,8 @@ const Ad = forwardRef(({zoneId, keywords, className}, ref) => {
             <ins 
                 className="adsbyexoclick"
                 data-zoneid={`${zoneId}`} 
-                {...(keywords ? { "data-keywords": keywords.join(",") } : {} ) }           
+                {...(keywords ? { "data-keywords": keywords.join(",") } : {}) }       
+                {...(sub ? { "data-sub": sub } : {}) }  
             ></ins> 
         </div>
     )
