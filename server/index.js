@@ -12,10 +12,10 @@ import { setupPrimary } from "@socket.io/cluster-adapter";
 dotenv.config();
 
 const PORT = process.env.PORT || 8080;
-const BASE_URL = process.env.BASE_URL || "localhost";
 const MONGO_URL = process.env.MONGO_URL || null;
-const WORKERS = process.env.WORKERS || os.cpus().length;
-const PRODUCTION = process.env.NODE_ENV || false;
+const BASE_URL = process.env.BASE_URL || "localhost";
+const WORKERS = process.env.WORKERS || os.cpus().length || 1;
+const PRODUCTION = process.env.NODE_ENV === "production" || false;
 
 if (cluster.isPrimary) {	
 	console.log(`${chalk.green.bold("[CLUSTER]")} Master running with PID ${process.pid}`);
