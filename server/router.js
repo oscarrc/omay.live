@@ -8,7 +8,7 @@ import path from 'path'
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const __index = path.join(__dirname, "./www", "index.html");
+const __index = path.join(__dirname, "../www", "index.html");
 
 router.get("/", (req,res) => {
     process.env.NODE_ENV === "production" && fs.existsSync(__index) ? 
