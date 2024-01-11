@@ -1,3 +1,5 @@
+import * as path from 'path';
+
 import { BanController, ChatController } from "./controllers/index.js";
 
 import express from "express";
