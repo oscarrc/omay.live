@@ -5,13 +5,15 @@ import { fileURLToPath } from 'url';
 import path from 'path'
 
 const router = express.Router();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 router.get("/", (req,res) => {
-    process.env.NODE_ENV === "production" ? 
-        res.sendFile(path.join(__dirname, "../app", "index.html")) :
+    if(process.env.NODE_ENV === "production" ){        
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = path.dirname(__filename);
+        res.sendFile(path.join(__dirname, "../app", "index.html"));
+    }else{
         res.send("OK");
+    }       
 })
 
 router.post("/chat", ChatController.find.bind(ChatController))
