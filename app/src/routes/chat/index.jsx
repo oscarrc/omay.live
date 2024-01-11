@@ -103,13 +103,15 @@ const Chat = () => {
             <div className="flex flex-col md:flex-row gap-4 flex-1 max-h-content md:max-h-full">
                 {
                     !isTextOnly && 
-                    <div className="flex flex-col gap-4 md:max-h-content md:max-w-1/4 w-full relative">
-                        <div className="relative">                           
-                            <VideoBox source={remoteStream} />
+                    <div className="flex flex-col gap-0 md:gap-4 md:max-h-content md:max-w-1/4 relative w-full">
+                        <div className="relative min-h-0">                           
+                            <VideoBox source={remoteStream} className="h-full w-auto" />
                             { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
                             { isUnmoderated && <Ad zoneId={5167966} keywords={Array.from(interests)} className="absolute h-full w-full top-0 left-0 sm:rounded-lg overflow-hidden flex items-center justify-center" /> }
                         </div>
-                        <VideoBox source={localStream} muted={true} className="w-[25%] bg-accent bottom-2 right-2 aspect-auto md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-full absolute md:relative" />
+                        <div className="relative min-h-0">
+                            <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 aspect-auto md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto md:h-full absolute md:relative" />
+                        </div>
                     </div>
                 }
                 <ChatBox 
