@@ -47,14 +47,14 @@ if (cluster.isPrimary) {
 	const port = parseInt(PORT) + cluster.worker.id;
 
 	Db(MONGO_URL, purge).then(() => {
-		console.log(`${chalk.green.bold("[DB]")} Connection ready`);
+		console.log(`${chalk.green.bold("[DB]")} ${chalk.green(`[${cluster.worker.id}]`)} Connection ready`);
 	
 		const server = Server(router, PRODUCTION).listen(port, () => {
-			console.log(`${chalk.green.bold("[HTTP]")} Ready on ${BASE_URL}:${port}`);
+			console.log(`${chalk.green.bold("[HTTP]")} ${chalk.green(`[${cluster.worker.id}]`)} Ready on ${BASE_URL}:${port}`);
 			Socket(server);
-			console.log(`${chalk.green.bold("[SOCKET]")} Ready on ${BASE_URL}:${port}`);
+			console.log(`${chalk.green.bold("[SOCKET]")} ${chalk.green(`[${cluster.worker.id}]`)} Ready on ${BASE_URL}:${port}`);
 		})
 	}).catch((e) => {
-		console.log(`${chalk.red.bold("[ERROR]")} ${e}`);
+		console.log(`${chalk.red.bold("[ERROR]")} ${chalk.bgRed.bold(` ${cluster.worker.id} `)} ${e}`);
 	})
 }
