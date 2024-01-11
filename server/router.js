@@ -2,15 +2,17 @@ import { BanController, ChatController } from "./controllers/index.js";
 
 import express from "express";
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 import path from 'path'
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const __index = path.join(__dirname, "./www", "index.html");
 
 router.get("/", (req,res) => {
-    process.env.NODE_ENV === "production" ? 
-        res.sendFile(path.join(__dirname, "../app", "index.html")) :
+    process.env.NODE_ENV === "production" && fs.existsSync(__index) ? 
+        res.sendFile(__index) :
         res.send("OK");
 })
 
