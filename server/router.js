@@ -1,8 +1,7 @@
-import * as path from 'path';
-
 import { BanController, ChatController } from "./controllers/index.js";
 
 import express from "express";
+import path from 'path'
 
 const router = express.Router();
 
