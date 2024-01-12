@@ -99,92 +99,86 @@ const Chat = () => {
     }, [status])
 
     return (
-        <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
-            <div className="flex flex-col md:flex-row gap-4 flex-1 max-h-content md:max-h-full">
-                {
-                    !isTextOnly && 
-                    <div className="flex flex-col gap-0 md:gap-4 md:max-h-content md:max-w-1/4 relative w-full">
-                        <div className="relative min-h-0">                           
-                            <VideoBox source={remoteStream} className="h-full w-auto" />
+        <section className="flex flex-col md:flex-row flex-1 w-full gap-4 relative min-h-display">
+            {
+                !isTextOnly &&
+                <div className="flex flex-col w-full md:max-w-1/4 justify-between gap-4 max-h-content min-h-full">
+                    <div className="flex flex-col gap-4 relative min-h-full">
+                        <VideoBox source={remoteStream} className="relative aspect-4/3">
                             { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
                             { isUnmoderated && <Ad zoneId={5167966} keywords={Array.from(interests)} className="absolute h-full w-full top-0 left-0 sm:rounded-lg overflow-hidden flex items-center justify-center" /> }
-                        </div>
-                        <div className="relative min-h-0">
-                            <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 aspect-auto md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto md:h-full absolute md:relative" />
-                        </div>
+                        </VideoBox>
+                        <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative" />
                     </div>
-                }
-                <ChatBox 
-                    className="scroll flex flex-col flex-1 gap-4 max-h-content overflow-y-auto" 
-                    messages={messages} 
-                    status={status} 
-                    simulated={peer.current.simulated} 
-                    common={peer.current.interests?.filter( i => interests.has(i)) || []} 
-                    lang={peer.current.lang === lang && lang !== "any"}
-                >
-                    { 
-                        (isDisconnected || status === STATUS.STOPPED) &&
-                        
-                        <div className={`flex flex-col md:flex-row gap-4 w-full max-w-4xl ${isMobile && "md:items-end"}`}>
-                            <div className="flex flex-col gap-4 flex-1">
-                                <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
-                                    { t("chat.interests") }
-                                </Toggle>
-                                <div className="flex flex-col gap-2 order-3">
-                                    <InterestInput
-                                        values={interests} 
-                                        onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
-                                        onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
-                                        className="w-full"
-                                    />
-                                    { isDisconnected && auto && isMouseMoving && !isMobile &&
-                                        <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
-                                    }  
-                                </div> 
-                            </div>
-                            <div className="flex flex-col gap-4">
-                                {
-                                    !isMobile &&
-                                        <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                            {t("chat.reconnect")}
-                                        </Toggle>  
-                                } 
-                                <div className="flex flex-col gap-2 justify-end">
-                                    <button 
-                                        onClick={() => {
-                                            onClick()
-                                        }} 
-                                        className="btn btn-lg w-full btn-primary "
-                                    >
-                                        {t("chat.newchat")}
-                                    </button>
-                                    <button 
-                                        onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                        className="btn text-sm btn-xs w-full text-xs self-end h-fit"
-                                    >
-                                        { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
-                                    </button>
-                                </div> 
-                            </div>
-                        </div>
-                    }
-                </ChatBox>
-            </div>
-            <div className="flex gap-4">
-                {
-                    !isTextOnly &&                        
                     <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
-                        <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
+                        <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
                     </div>
-                }
+                </div>
+            }
+            <div className="flex flex-col flex-1 gap-4 max-h-content">
+                <ChatBox 
+                        className="scroll flex flex-col flex-1 gap-4 min-h-full overflow-y-auto" 
+                        messages={messages} 
+                        status={status} 
+                        simulated={peer.current.simulated} 
+                        common={peer.current.interests?.filter( i => interests.has(i)) || []} 
+                        lang={peer.current.lang === lang && lang !== "any"}
+                    >
+                        { 
+                            (isDisconnected || status === STATUS.STOPPED) &&
+                            
+                            <div className={`flex flex-col md:flex-row gap-4 w-full max-w-4xl ${isMobile && "md:items-end"}`}>
+                                <div className="flex flex-col gap-4 flex-1">
+                                    <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
+                                        { t("chat.interests") }
+                                    </Toggle>
+                                    <div className="flex flex-col gap-2 order-3">
+                                        <InterestInput
+                                            values={interests} 
+                                            onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                            onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                            className="w-full"
+                                        />
+                                        { isDisconnected && auto && isMouseMoving && !isMobile &&
+                                            <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
+                                        }  
+                                    </div> 
+                                </div>
+                                <div className="flex flex-col gap-4">
+                                    {
+                                        !isMobile &&
+                                            <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                                {t("chat.reconnect")}
+                                            </Toggle>  
+                                    } 
+                                    <div className="flex flex-col gap-2 justify-end">
+                                        <button 
+                                            onClick={() => {
+                                                onClick()
+                                            }} 
+                                            className="btn btn-lg w-full btn-primary "
+                                        >
+                                            {t("chat.newchat")}
+                                        </button>
+                                        <button 
+                                            onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
+                                            className="btn text-sm btn-xs w-full text-xs self-end h-fit"
+                                        >
+                                            { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
+                                        </button>
+                                    </div> 
+                                </div>
+                            </div>
+                        }
+                </ChatBox>
                 <ChatControls 
                     onClick={onClick} 
                     onSubmit={sendMessage} 
                     state={confirmation} 
                     disabled={isDisabled || status === STATUS.CONNECTING}
                 />
+                { isUnmoderated && <Ad zoneId={5172336} keywords={Array.from(interests)} /> }
             </div>
-            { isUnmoderated && <Ad zoneId={5172336} keywords={Array.from(interests)} /> }
         </section>
     )
 }
