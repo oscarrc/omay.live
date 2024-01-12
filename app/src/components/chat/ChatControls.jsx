@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 import { useTranslation } from "react-i18next";
 
-const ChatControls = ({ onClick, onChange, onSubmit, state, disabled }) => {
+const ChatControls = ({ onClick, onChange, onSubmit, state, disabled, className }) => {
     const { t } = useTranslation();
     const textRef = useRef(null);
 
@@ -26,7 +26,7 @@ const ChatControls = ({ onClick, onChange, onSubmit, state, disabled }) => {
     }, [send, onClick])
    
     return (
-        <div className="join w-full h-16">                   
+        <div className={`join w-full h-16 ${className}`}>                   
             <button disabled={disabled} onClick={onClick} className={`join-item btn ${ state === 0 ? "btn-primary" : "bg-base-100"} h-full flex flex-col gap-1 min-w-[6rem] rounded-none sm:rounded-lg`}>
                 { state === 0 && t("chat.start") } 
                 { state === 1 && t("chat.stop") } 

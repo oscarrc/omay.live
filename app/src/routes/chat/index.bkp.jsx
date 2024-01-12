@@ -99,19 +99,23 @@ const Chat = () => {
     }, [status])
 
     return (
-        <section className="grid grid-chat gap-4 w-full flex-1 max-h-display"> 
-            {
-                !isTextOnly &&
-                <>
-                    <VideoBox source={remoteStream} className="aspect-4/3 max-h-full" />
-                    <VideoBox source={localStream} className="aspect-4/3 max-h-full" />
-                    <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative md:h-16 opacity-60 md:opacity-100">
-                        <button onClick={reportPeer} className="btn btn-error btn-block btn-sm md:btn-md md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
+        <section className="flex flex-col flex-1 w-full gap-4 relative min-h-display"> 
+            <div className="flex flex-col md:flex-row gap-4 flex-1 max-h-content md:max-h-full">
+                {
+                    !isTextOnly && 
+                    <div className="flex flex-col gap-0 md:gap-4 md:max-h-content md:max-w-1/4 relative w-full">
+                        <div className="relative min-h-0 basis-fit">                           
+                            <VideoBox source={remoteStream} className="h-full w-auto" />
+                            { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
+                            { isUnmoderated && <Ad zoneId={5167966} keywords={Array.from(interests)} className="absolute h-full w-full top-0 left-0 sm:rounded-lg overflow-hidden flex items-center justify-center" /> }
+                        </div>
+                        <div className="relative min-h-0 basis-fit">
+                            <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 aspect-auto md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto md:h-full absolute md:relative" />
+                        </div>
                     </div>
-                </>
-            }
-            <ChatBox 
-                    className="scroll row-span-2 flex flex-col flex-1 gap-4 max-h-content overflow-y-auto" 
+                }
+                <ChatBox 
+                    className="scroll flex flex-col flex-1 gap-4 max-h-content overflow-y-auto" 
                     messages={messages} 
                     status={status} 
                     simulated={peer.current.simulated} 
@@ -165,12 +169,22 @@ const Chat = () => {
                         </div>
                     }
                 </ChatBox>
+            </div>
+            <div className="flex gap-4">
+                {
+                    !isTextOnly &&                        
+                    <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
+                        <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-full"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
+                    </div>
+                }
                 <ChatControls 
                     onClick={onClick} 
                     onSubmit={sendMessage} 
                     state={confirmation} 
                     disabled={isDisabled || status === STATUS.CONNECTING}
                 />
+            </div>
+            { isUnmoderated && <Ad zoneId={5172336} keywords={Array.from(interests)} /> }
         </section>
     )
 }
