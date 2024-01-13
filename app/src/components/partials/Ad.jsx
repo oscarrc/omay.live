@@ -6,8 +6,9 @@ const Ad = forwardRef(({zoneId, keywords, sub, className}, ref) => {
     }, []);
 
     useEffect(() => {
-        let script = document.querySelector(`script[src="${import.meta.env.VITE_ADS_URL}"]`);
-        if(script) return
+        let url = import.meta.env.VITE_ADS_URL;
+        let script = document.querySelector(`script[src="${url}"]`);
+        if(script || !url) return
         
         script = document.createElement("script");
         script.src = import.meta.env.VITE_ADS_URL;
