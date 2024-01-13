@@ -1,11 +1,13 @@
 import { BanService, ChatService } from "./services/index.js";
 
 import { Server as SocketIO } from "socket.io";
+import { __dirname } from "./lib/dirname.js";
 import bodyparser from "body-parser";
 import chalk from 'chalk';
 import cors from "cors";
 import { createAdapter } from "@socket.io/cluster-adapter";
 import express from "express";
+import { join } from 'path'
 import mongoose from "mongoose";
 import { setupWorker } from "@socket.io/sticky";
 
@@ -30,9 +32,10 @@ const Server = (router, production) => {
     app.use(bodyparser.urlencoded({extended: true}))
         .use(bodyparser.json())
         .use(cors())
-        .use(router)
+        .use(router)        
 
-    production && app.use(express.static("../app/dist"))
+    production && 
+        app.use(express.static(join(__dirname, "../www")))
 
     return app
 }
