@@ -1,16 +1,26 @@
 import { useEffect, useRef } from "react";
 
-const VideoBox = ({ source, muted, className, children }) => {
-    const player = useRef(null);
+import { Loader } from "../partials";
+import useVast from "../../hooks/useVast";
 
+const VideoBox = ({ source, muted, className, loading, ads }) => {
+    const player = useRef(null);
+    const container = useRef(null);
+    const { adsManager, loadAd } = useVast(player, container, "https://s.magsrv.com/splash.php?idzone=5167944")
+    
     useEffect(() => {
         player.current.srcObject = source;
     }, [source])
 
+    useEffect(() => {
+        ads && adsManager && loadAd();
+    }, [ads, adsManager])
+
     return (
         <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
             <video ref={player} autoPlay={true} playsInline={true} muted={muted} className="h-full w-auto" />
-            { children }
+            { loading && <Loader className="absolute h-full top-0 left-0" /> }
+            { ads && <div ref={container} className="absolute w-full h-full top-0 left-0"></div> }
         </div>
     )
 }

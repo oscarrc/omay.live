@@ -19,33 +19,17 @@ const useVast = (videoRef, containerRef, tagUrl) => {
         }
     }
 
-    useEffect(() => {
-        let url = import.meta.env.VITE_IMA_SDK;
-        let script = document.querySelector(`script[src="${url}"]`);
-        if(script || !url) return
-        
-        script = document.createElement("script");
-        script.src = url;
-        script.async = true;
-        
-        document.body.appendChild(script);
-
-        return () => {
-            document.body.removeChild(script)
-        }
-    }, [])
-
-    useEffect(() => {
+    const initIma = () => {        
         let adContainer = containerRef.current;
         let videoElement = videoRef.current;
         let adDisplayContainer = new google.ima.AdDisplayContainer(adContainer, videoElement);
         let adsLoader = new google.ima.AdsLoader(adDisplayContainer);
         let adsRequest = new google.ima.AdsRequest();
-
+        
         const videoComplete = () => adsLoader.contentComplete();
         
-        const adsLoaded = () => {  
-            let adsManager = adsManagerLoadedEvent.getAdsManager(videoElement);
+        const adsLoaded = (event) => {  
+            let adsManager = event.getAdsManager(videoElement);
             setAdsManager(adsManager);
             setAdsContainer(adDisplayContainer);
         }
@@ -65,7 +49,25 @@ const useVast = (videoRef, containerRef, tagUrl) => {
             videoElement.removeEventListener('ended', videoComplete);            
             adsLoader.removeEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, adsLoaded, false)
         }
-    }, [])
+    }
+
+    useEffect(() => {
+        let url = import.meta.env.VITE_IMA_SDK;
+        let script = document.querySelector(`script[src="${url}"]`);
+        
+        if(script || !url) return
+        
+        script = document.createElement("script");
+        script.src = url;
+        script.async = true;
+        script.onload = initIma;
+        
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script)
+        }
+    }, [])   
 
     useEffect(() => {
         if(!adsManager) return;

@@ -1,6 +1,6 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
-import { InterestInput, Loader, Toggle } from "../../components/partials";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { InterestInput, Toggle } from "../../components/partials";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { Ad } from "../../components/partials";
 import { MdReport } from "react-icons/md"
@@ -104,11 +104,8 @@ const Chat = () => {
                 !isTextOnly &&
                 <div className="flex flex-col w-full md:max-w-1/4 justify-between gap-4 max-h-content min-h-full">
                     <div className="flex flex-col gap-4 relative min-h-full">
-                        <VideoBox source={remoteStream} className="relative aspect-4/3">
-                            { !remoteStream && status.includes("search") && <Loader className="absolute h-full top-0 left-0" /> } 
-                            { isUnmoderated && <Ad zoneId={5167966} keywords={Array.from(interests)} className="absolute h-full w-full top-0 left-0 sm:rounded-lg overflow-hidden flex items-center justify-center" /> }
-                        </VideoBox>
-                        <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative" />
+                        <VideoBox source={remoteStream} className="relative aspect-4/3" loading={!remoteStream && status.includes("search")} ads={true} />
+                        <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative" loading={!localStream} />
                     </div>
                     <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
                         <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
