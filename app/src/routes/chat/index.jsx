@@ -40,7 +40,7 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
 
-    const [ ad, setAd ] = useState(false);
+    const [ playAd, setPlayAd ] = useState(true);
     
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
@@ -111,9 +111,9 @@ const Chat = () => {
                             className="relative aspect-4/3" 
                             loading={!remoteStream && status.includes("search")} 
                             withAds={true} 
-                            playAd={ad}
+                            playAd={playAd}
                             onAdStart=""
-                            onAdEnd={() => { console.log("end"); setAd(false)} }
+                            onAdEnd={() => { console.log("end"); setPlayAd(false)} }
                             onAdError=""
                         />
                         <VideoBox 
