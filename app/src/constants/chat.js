@@ -43,7 +43,8 @@ const STATUS = {
     YOUDISCONNECTED: "youdisconnected",
     BANNED: "banned",
     NOCAM: "nocam",
-    ERROR: "error"
+    ERROR: "error",
+    ADPLAYING: "adplaying"
 }
 
 const DEFAULTS = {
