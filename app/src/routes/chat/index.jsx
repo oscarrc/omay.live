@@ -104,8 +104,21 @@ const Chat = () => {
                 !isTextOnly &&
                 <div className="flex flex-col w-full md:max-w-1/4 justify-between gap-4 max-h-content min-h-full">
                     <div className="flex flex-col gap-4 relative min-h-full">
-                        <VideoBox source={remoteStream} className="relative aspect-4/3" loading={!remoteStream && status.includes("search")} ads={true} />
-                        <VideoBox source={localStream} muted={true} className="w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative" loading={!localStream} />
+                        <VideoBox 
+                            source={remoteStream} 
+                            className="relative aspect-4/3" 
+                            loading={!remoteStream && status.includes("search")} 
+                            ads={true} 
+                            onAdStart=""
+                            onAdEnd=""
+                            onAdError=""
+                        />
+                        <VideoBox 
+                            source={localStream}
+                            muted={true}
+                            className="w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative" 
+                            loading={!localStream} 
+                        />
                     </div>
                     <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
                         <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
