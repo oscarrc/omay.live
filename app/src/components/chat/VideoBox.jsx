@@ -6,7 +6,7 @@ import useVast from "../../hooks/useVast";
 const VideoBox = ({ source, muted, className, loading, ads }) => {
     const player = useRef(null);
     const container = useRef(null);
-    const { adsManager, loadAd } = useVast(player, container, "https://s.magsrv.com/splash.php?idzone=5167944")
+    const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG)
     
     useEffect(() => {
         player.current.srcObject = source;
