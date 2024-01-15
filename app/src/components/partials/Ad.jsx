@@ -11,7 +11,7 @@ const Ad = forwardRef(({zoneId, keywords, sub, className}, ref) => {
         if(script || !url) return
         
         script = document.createElement("script");
-        script.src = import.meta.env.VITE_ADS_URL;
+        script.src = url;
         script.async = true;    
         script.onload = () => {            
             window.AdProvider = window.AdProvider || [];
