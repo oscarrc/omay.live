@@ -41,7 +41,8 @@
         "report": "Report",
         "you": "You",
         "stranger": "Stranger",
-        "mousemoving": "Mouse is moving. Waiting..."
+        "mousemoving": "Mouse is moving. Waiting...",
+        "adplaying": "An ad is being playing, please wait..."
     },
     "common":{
         "startchatting": "Start chatting",
