@@ -112,9 +112,9 @@ const Chat = () => {
                             loading={!remoteStream && status.includes("search")} 
                             withAds={true} 
                             playAd={playAd}
-                            onAdStart=""
+                            // onAdStart=
                             onAdEnd={() => { console.log("end"); setPlayAd(false)} }
-                            onAdError=""
+                            // onAdError=
                         />
                         <VideoBox 
                             source={localStream}

@@ -55,8 +55,7 @@ const useVast = (videoRef, containerRef, tagUrl) => {
         let url = import.meta.env.VITE_IMA_SDK;
         let script = document.querySelector(`script[src="${url}"]`);
         
-        if(!url) return;
-        if(script) initIma();
+        if(!url || script) return;
         
         script = document.createElement("script");
         script.src = url;

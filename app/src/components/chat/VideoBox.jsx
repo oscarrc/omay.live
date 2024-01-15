@@ -17,17 +17,17 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStar
         if(!playAd) return;
 
         loadAd();
-        adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
-        adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
-        adsManager.addEventListener(google.ima.AdEvent.Type.USER_CLOSE, onAdEnd);
-        adsManager.addEventListener(google.ima.AdEvent.Type.ERROR, onAdError);
+        onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
+        onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
+        onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.USER_CLOSE, onAdEnd);
+        onAdError && adsManager.addEventListener(google.ima.AdEvent.Type.ERROR, onAdError);
 
         return () => {
             if(!withAds || !adsManager) return;
-            adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
-            adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
-            adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-            adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+            onAdStart && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
+            onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
+            onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
+            onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
             adsManager.destroy();
         }
     }, [playAd, withAds, adsManager])
