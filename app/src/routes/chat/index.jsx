@@ -41,7 +41,8 @@ const Chat = () => {
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
 
     const [ playAd, setPlayAd ] = useState(true);
-    
+    const [ lastPlayed, setLastPlayed ] = useState(null);
+
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
@@ -112,9 +113,9 @@ const Chat = () => {
                             loading={!remoteStream && status.includes("search")} 
                             withAds={true} 
                             playAd={playAd}
-                            // onAdStart=
+                            onAdStart={ () => setLastPlayed(Date.now()) }
                             onAdEnd={() => { console.log("end"); setPlayAd(false)} }
-                            // onAdError=
+                            onAdError={() => { console.log("error"); setPlayAd(false)} }
                         />
                         <VideoBox 
                             source={localStream}

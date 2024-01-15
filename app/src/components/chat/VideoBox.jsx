@@ -19,8 +19,8 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStar
         loadAd();
         onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
         onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
-        onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.USER_CLOSE, onAdEnd);
-        onAdError && adsManager.addEventListener(google.ima.AdEvent.Type.ERROR, onAdError);
+        onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
+        onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
 
         return () => {
             if(!withAds || !adsManager) return;
