@@ -1,6 +1,6 @@
 import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 import { InterestInput, Toggle } from "../../components/partials";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Ad } from "../../components/partials";
 import { MdReport } from "react-icons/md"
@@ -39,6 +39,8 @@ const Chat = () => {
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
+
+    const [ ad, setAd ] = useState(false);
     
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
@@ -108,9 +110,10 @@ const Chat = () => {
                             source={remoteStream} 
                             className="relative aspect-4/3" 
                             loading={!remoteStream && status.includes("search")} 
-                            ads={true} 
+                            withAds={true} 
+                            playAd={ad}
                             onAdStart=""
-                            onAdEnd=""
+                            onAdEnd={() => { console.log("end"); setAd(false)} }
                             onAdError=""
                         />
                         <VideoBox 

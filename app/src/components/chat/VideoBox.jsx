@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { Loader } from "../partials";
 import useVast from "../../hooks/useVast";
 
-const VideoBox = ({ source, muted, className, loading, ads }) => {
+const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStart, onAdEnd, onAdError }) => {
     const player = useRef(null);
     const container = useRef(null);
     const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG)
@@ -13,14 +13,30 @@ const VideoBox = ({ source, muted, className, loading, ads }) => {
     }, [source])
 
     useEffect(() => {
-        ads && adsManager && loadAd();
-    }, [ads, adsManager])
+        if(!withAds || !adsManager) return;
+        if(!playAd) return;
+
+        loadAd();
+        adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
+        adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
+        adsManager.addEventListener(google.ima.AdEvent.Type.USER_CLOSE, onAdEnd);
+        adsManager.addEventListener(google.ima.AdEvent.Type.ERROR, onAdError);
+
+        return () => {
+            if(!withAds || !adsManager) return;
+            adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
+            adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
+            adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
+            adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+            adsManager.destroy();
+        }
+    }, [playAd, withAds, adsManager])
 
     return (
         <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
             <video ref={player} autoPlay={true} playsInline={true} muted={muted} className="h-full w-auto" />
             { loading && <Loader className="absolute h-full top-0 left-0" /> }
-            { ads && <div ref={container} className="absolute w-full h-full top-0 left-0"></div> }
+            { withAds && <div ref={container} className="absolute w-full h-full top-0 left-0"></div> }
         </div>
     )
 }

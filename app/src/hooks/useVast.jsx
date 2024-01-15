@@ -15,11 +15,11 @@ const useVast = (videoRef, containerRef, tagUrl) => {
             adsManager.start();
         } catch (adError) {
             console.log("AdsManager could not be started");
-            cb();
+            cb && cb();
         }
     }
 
-    const initIma = () => {        
+    const initIma = () => {     
         let adContainer = containerRef.current;
         let videoElement = videoRef.current;
         let adDisplayContainer = new google.ima.AdDisplayContainer(adContainer, videoElement);
