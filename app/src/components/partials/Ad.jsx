@@ -35,7 +35,7 @@ const Ad = forwardRef(({zoneId, keywords, sub, className}, ref) => {
                 className="adsbyexoclick"
                 data-zoneid={`${zoneId}`} 
                 {...(keywords ? { "data-keywords": keywords.join(",") } : {}) }       
-                {...(sub ? { "data-sub": sub } : {}) }  
+                {...(sub ? {...sub.slice(0,3).reduce((a,v,i) => ({ ...a, [`data-sub${i ? i + 1 : ""}`]: v}), {}) } : {}) }  
             ></ins> 
         </div>
     )

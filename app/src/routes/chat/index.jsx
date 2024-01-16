@@ -137,6 +137,7 @@ const Chat = () => {
                         simulated={peer.current.simulated} 
                         common={peer.current.interests?.filter( i => interests.has(i)) || []} 
                         lang={peer.current.lang === lang && lang !== "any"}
+                        ad={isTextOnly}
                     >
                         { 
                             (isDisconnected || status === STATUS.STOPPED) &&

@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react";
 
+import { Ad } from "../partials";
+import useDeviceDetection from "../../hooks/useDeviceDetection";
 import { useTranslation } from "react-i18next";
 
-const ChatBox = ({ messages, className, status, simulated, children, lang, common }) => {     
-    const { t } = useTranslation();
+const ChatBox = ({ messages, className, status, simulated, children, lang, common, ad }) => {     
+    const { t } = useTranslation();    
+    const { isMobile } = useDeviceDetection();
     const box = useRef(null);
 
     useEffect(() => {
@@ -16,6 +19,7 @@ const ChatBox = ({ messages, className, status, simulated, children, lang, commo
     return (
         <div ref={box} className={`bg-base-100 sm:rounded-lg shadow-inner py-2 pb-4 px-4 ${className}`}>
             <div className="flex flex-col flex-1 gap-4">
+                { ad && <Ad className="responsive" sub={["textmode", isMobile ? "mobile" : "desktop"]} zoneId={isMobile ? 5171914 : 5167958} keywords={common} /> }
                 <p><strong>{ t(`chat.${status}`) }</strong></p>
                 <div>
                     {lang && <p>{ t(`chat.language`) }</p>}
