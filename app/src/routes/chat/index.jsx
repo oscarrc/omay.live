@@ -45,11 +45,11 @@ const Chat = () => {
     const serveAd = useMemo(() => {
         let now = new Date().getTime();
         let delay = import.meta.env.VITE_AD_DELAY || 300
-        return (now - lastPlayed >= delay)
-    }, [lastPlayed])
+        return (now - lastPlayed >= delay) && (isDisconnected || status === STATUS.ADPLAYING )
+    }, [lastPlayed, isDisconnected, status])
 
     const startSearch = useCallback(async () => {
-        if(isDisabled || status === STATUS.ADPLAYING || status === STATUS.CONNECTING) return;
+        if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
     }, [checkNSFW, createOffer, isDisabled, isUnmoderated, serveAd, status])
@@ -115,7 +115,7 @@ const Chat = () => {
                             className="relative aspect-4/3" 
                             loading={!remoteStream && status.includes("search")} 
                             withAds={true} 
-                            playAd={serveAd && (isDisconnected || status === STATUS.ADPLAYING )}
+                            playAd={serveAd}
                             onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
                             onAdEnd={ () =>  {
                                 setLastPlayed(Date.now()); 
