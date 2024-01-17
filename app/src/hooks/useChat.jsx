@@ -74,7 +74,7 @@ const ChatProvider = ({ children }) => {
     }, [localStream])
 
     const isBanned = useMemo(() => state.status === STATUS.BANNED, [state.status])
-    const isDisabled = useMemo(() => [STATUS.BANNED, STATUS.NOCAM, STATUS.ERROR].includes(state.status), [state.status])    
+    const isDisabled = useMemo(() => [STATUS.BANNED, STATUS.NOCAM, STATUS.ERROR, STATUS.ADPLAYING].includes(state.status), [state.status])    
     const isDisconnected = useMemo(() => [STATUS.STRANGERDISCONNECTED, STATUS.YOUDISCONNECTED].includes(state.status), [state.status])
 
     const connect = (mode) => {

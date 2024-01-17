@@ -40,14 +40,19 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
 
-    const [ playAd, setPlayAd ] = useState(true);
-    const [ lastPlayed, setLastPlayed ] = useState(null);
+    const [ lastPlayed, setLastPlayed ] = useState(0);
+
+    const serveAd = useMemo(() => {
+        let now = new Date().getTime();
+        let delay = import.meta.env.VITE_AD_DELAY || 300
+        return (now - lastPlayed >= delay)
+    }, [lastPlayed])
 
     const startSearch = useCallback(async () => {
-        if(isDisabled || status === STATUS.CONNECTING) return;
+        if(isDisabled || status === STATUS.ADPLAYING || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
-    }, [checkNSFW, createOffer, isDisabled, isUnmoderated, status])
+    }, [checkNSFW, createOffer, isDisabled, isUnmoderated, serveAd, status])
 
     const stopSearch = useCallback(async () => {
         await closeConnection();
@@ -83,22 +88,20 @@ const Chat = () => {
      }, [localStream, mode, startStream, status, stopStream, tac])
      
     useEffect(() => {
-        let timeout;
-        if(isDisconnected && auto && !isMobile && !isMouseMoving) timeout = setTimeout(onClick, 1000);
+        if(!isDisconnected || !auto || isMobile || isMouseMoving || isDisabled) return
+        let timeout = setTimeout(onClick, 1000);
 
-        return () => { clearTimeout(timeout) }
+        return () => { timeout && clearTimeout(timeout) }
     }, [auto, isDisconnected, isMobile, isMouseMoving, onClick])
     
     useEffect(() => {
-        let timeout;
-
         if (status !== STATUS.COMMON) return
 
-        timeout = setTimeout(async () => {
+        let timeout = setTimeout(async () => {
             status === STATUS.COMMON && await createOffer(true)
         }, 30000)
 
-        return () => { clearTimeout(timeout) }
+        return () => { timeout && clearTimeout(timeout) }
     }, [status])
 
     return (
@@ -112,10 +115,16 @@ const Chat = () => {
                             className="relative aspect-4/3" 
                             loading={!remoteStream && status.includes("search")} 
                             withAds={true} 
-                            playAd={playAd}
-                            onAdStart={ () => setLastPlayed(Date.now()) }
-                            onAdEnd={() => { console.log("end"); setPlayAd(false)} }
-                            onAdError={() => { console.log("error"); setPlayAd(false)} }
+                            playAd={serveAd && (isDisconnected || status === STATUS.ADPLAYING )}
+                            onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
+                            onAdEnd={ () => {
+                                setLastPlayed(Date.now());
+                                startSearch()
+                            }}
+                            onAdError={ () => {
+                                setLastPlayed(Date.now());
+                                startSearch()
+                            }}
                         />
                         <VideoBox 
                             source={localStream}
