@@ -92,7 +92,7 @@ const Chat = () => {
         let timeout = setTimeout(onClick, 1000);
 
         return () => { timeout && clearTimeout(timeout) }
-    }, [auto, isDisconnected, isMobile, isMouseMoving, onClick])
+    }, [auto, isDisconnected, isMobile, isMouseMoving, isDisabled, onClick])
     
     useEffect(() => {
         if (status !== STATUS.COMMON) return
@@ -117,14 +117,14 @@ const Chat = () => {
                             withAds={true} 
                             playAd={serveAd && (isDisconnected || status === STATUS.ADPLAYING )}
                             onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
-                            onAdEnd={ () => {
-                                setLastPlayed(Date.now());
-                                startSearch()
-                            }}
-                            onAdError={ () => {
-                                setLastPlayed(Date.now());
-                                startSearch()
-                            }}
+                            onAdEnd={ () =>  {
+                                setLastPlayed(Date.now()); 
+                                dispatch({ type: "STATUS", payload: STATUS.STOPPED })
+                            } }
+                            onAdError={ () =>  {
+                                setLastPlayed(Date.now()); 
+                                dispatch({ type: "STATUS", payload: STATUS.STOPPED })
+                            } }
                         />
                         <VideoBox 
                             source={localStream}
