@@ -25,7 +25,6 @@ const Landing = () => {
                 <Ad 
                     className="responsive" 
                     zoneId={isMobile ? 5171914 : 5167958} 
-                    sub={[isMobile ? "mobile" : "desktop"] }
                     keywords={Array.from(interests)} 
                 />
                 <div className="flex flex-col gap-8">
