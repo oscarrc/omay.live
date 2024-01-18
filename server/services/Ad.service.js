@@ -4,8 +4,9 @@ class AdService{
     }
 
     async getAds(zones, ip){
-        const query = zones.reduce( (a, v, i) => a + `zone[${i}][idzone]=${v}&`, "?v=1&") + `user_ip=${ip}`
-        const res = await fetch(url + query, {
+        const query = zones.reduce( (a, v, i) => a + `zones[${i}][idzone]=${v}&`, "?v=1&") + `user_ip=${ip}`
+        console.log(query)
+        const res = await fetch(this.url + query, {
             method: "GET"
         })
 
