@@ -55,7 +55,8 @@ const DEFAULTS = {
     lang: "any",
     status: STATUS.STOPPED,
     auto: true,
-    confirmation: 0
+    confirmation: 0,
+    chats: 0
 }
 
 export { MODES, DEFAULTS, RTC_SERVERS, CAMERA_OPTIONS, VIRTUAL_CAMS, STATUS }

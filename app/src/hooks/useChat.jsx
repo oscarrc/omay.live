@@ -32,7 +32,7 @@ const ChatReducer = (state, action) => {
         case "LANG":          
             let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
             return { ...state, lang }        
-        case "CHATS":          
+        case "CHAT":          
             return { ...state, chats: state.chats + 1 }
         case "RESET":            
             return { 
@@ -51,7 +51,7 @@ const ChatReducer = (state, action) => {
             if(state.status === 7) return state;
             return { ...state, confirmation: payload < 3 && payload > -1 ? payload : 0 }
         default:
-            break;
+            return state;
     }
 }
 
@@ -258,7 +258,7 @@ const ChatProvider = ({ children }) => {
     const onReceiveCandidate = async (data) => {
         console.log("icecandidatereceived")
         dispatch({ type: "STATUS", payload: STATUS.CONNECTED });        
-        dispatch({ type: "CHAT" });
+        dispatch({ type: "CHAT"});
         await connection.current.addIceCandidate(data.iceCandidate)
     }
 

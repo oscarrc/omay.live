@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 
 const Chat = () => { 
     const { 
-        state: { tac, mode, status, confirmation, interests, interest, auto, lang }, 
+        state: { tac, mode, status, confirmation, interests, interest, auto, lang, chats }, 
         dispatch,
         createOffer, 
         connect, 
@@ -39,14 +39,10 @@ const Chat = () => {
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
-
-    const [ lastPlayed, setLastPlayed ] = useState(0);
-
+    
     const serveAd = useMemo(() => {
-        let now = new Date().getTime();
-        let delay = import.meta.env.VITE_AD_DELAY || 300
-        return (now - lastPlayed >= delay) && (isDisconnected || status === STATUS.ADPLAYING )
-    }, [lastPlayed, isDisconnected, status])
+        return (chats % import.meta.env.VITE_AD_DELAY === 0) && (isDisconnected || status === STATUS.ADPLAYING )
+    }, [chats, isDisconnected, status])
 
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
@@ -117,14 +113,8 @@ const Chat = () => {
                             withAds={true} 
                             playAd={serveAd}
                             onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
-                            onAdEnd={ () =>  {
-                                setLastPlayed(Date.now()); 
-                                dispatch({ type: "STATUS", payload: STATUS.STOPPED })
-                            } }
-                            onAdError={ () =>  {
-                                setLastPlayed(Date.now()); 
-                                dispatch({ type: "STATUS", payload: STATUS.STOPPED })
-                            } }
+                            onAdEnd={ () => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }                            
+                            onAdError={ () => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }
                         />
                         <VideoBox 
                             source={localStream}
