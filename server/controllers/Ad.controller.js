@@ -7,7 +7,7 @@ class AdController {
 
     async get(req, res){
         const { zoneId } = req.query;
-        const ip = req.ip;
+        const ip = req.ip || req.headers["true-client-ip"] || req.headers["x-forwarded-for"]?.split(",")[0];
         const ad = await this.service.getAds([zoneId], ip);
         return res.status(200).send(ad);
     }

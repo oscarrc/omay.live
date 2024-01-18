@@ -12,7 +12,6 @@ const Ad = forwardRef(({zoneId, keywords, sub, className}, ref) => {
     }
 
     useEffect(() => {
-        console.log(getAd())
         window.AdProvider = window.AdProvider || [];
     }, []);
 
