@@ -1,4 +1,4 @@
-import { BanController, ChatController } from "./controllers/index.js";
+import { AdController, BanController, ChatController } from "./controllers/index.js";
 
 import { __dirname } from "./lib/dirname.js";
 import express from "express";
@@ -7,11 +7,13 @@ import { join } from 'path'
 
 const router = express.Router();
 
-router.post("/chat", ChatController.find.bind(ChatController))
-router.get("/chat", ChatController.count.bind(ChatController))
+router.post("/ads", AdController.get.bind(AdController))
 
 router.get("/ban", BanController.get.bind(BanController))
 router.post("/ban", BanController.ban.bind(BanController))
+
+router.post("/chat", ChatController.find.bind(ChatController))
+router.get("/chat", ChatController.count.bind(ChatController))
 
 router.get("/", (req,res) => {    
     console.log(req)
