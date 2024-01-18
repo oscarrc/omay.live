@@ -1,7 +1,18 @@
 import { forwardRef, useEffect } from "react";
 
 const Ad = forwardRef(({zoneId, keywords, sub, className}, ref) => {
+    const getAd = async () => {
+        let res = await fetch(`${import.meta.env.VITE_SERVER_URL}/ad?zoneId=${zoneId}`, {
+            method: "GET"
+        })
+
+        let ad = await res.json();
+        console.log(ad)
+        return ad;
+    }
+
     useEffect(() => {
+        console.log(getAd())
         window.AdProvider = window.AdProvider || [];
     }, []);
 

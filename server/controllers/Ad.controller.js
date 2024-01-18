@@ -6,10 +6,11 @@ class AdController {
     }
 
     async get(req, res){
-        const { zones, ip } = req.body;
-        const isBanned = await this.service.getAds(zones, ip);
-
-        return res.status(200).send({ isBanned });
+        const { zoneId } = req.params;
+        const ip = req.ip;
+        const ad = await this.service.getAds([zoneId], ip);
+        console.log(ip);
+        return res.status(200).send({ ad });
     }
 }
 

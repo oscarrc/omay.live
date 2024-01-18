@@ -7,7 +7,7 @@ import { join } from 'path'
 
 const router = express.Router();
 
-router.post("/ads", AdController.get.bind(AdController))
+router.get("/ad", AdController.get.bind(AdController))
 
 router.get("/ban", BanController.get.bind(BanController))
 router.post("/ban", BanController.ban.bind(BanController))
