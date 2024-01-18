@@ -7,6 +7,7 @@ import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
 import { requestFullscreen } from "../../lib/fullscreen";
 import { useChat } from "../../hooks/useChat";
+import useDetectAdblock from "../../hooks/useDetectAdblock";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
 import useMouseMoving from "../../hooks/useMouseMoving";
 import { useNavigate } from "react-router-dom";
@@ -35,13 +36,14 @@ const Chat = () => {
     const { t } = useTranslation();
     const { isMobile } = useDeviceDetection();
 
+    const adBlockDetected = useDetectAdblock();
     const isMouseMoving = useMouseMoving();
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
     
     const serveAd = useMemo(() => {
-        return (chats % import.meta.env.VITE_AD_DELAY === 0) && (isDisconnected || status === STATUS.ADPLAYING )
+        return (chats % import.meta.env.VITE_AD_DELAY === 0 || adBlockDetected ) && (isDisconnected || status === STATUS.ADPLAYING )
     }, [chats, isDisconnected, status])
 
     const startSearch = useCallback(async () => {
