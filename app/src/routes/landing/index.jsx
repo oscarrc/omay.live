@@ -4,9 +4,11 @@ import { Trans, useTranslation } from 'react-i18next';
 
 import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";
+import { IoHandRight } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Terms } from "../../components/modals";
 import { useChat } from "../../hooks/useChat";
+import useDetectAdblock from "../../hooks/useDetectAdblock";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
 import { useEffect } from "react";
 
@@ -14,6 +16,7 @@ const Landing = () => {
     const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDeviceDetection();
+    const adBlockDetected = useDetectAdblock();
     
     useEffect(()=> {
         dispatch({type: "RESET"})
@@ -28,6 +31,15 @@ const Landing = () => {
                     keywords={Array.from(interests)} 
                 />
                 <div className="flex flex-col gap-8">
+                    {
+                        adBlockDetected &&
+                            <Alert 
+                                title={t("common.alerts.adblockdetected")}
+                                text={t("common.alerts.disableadblock")}
+                                icon={<IoHandRight className="text-neutral" />  }
+                                color="warning"
+                            /> 
+                    }
                     <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">
                         <h2 className="text-center">
                             <Trans i18nKey="landing.noapp">

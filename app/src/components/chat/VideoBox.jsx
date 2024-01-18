@@ -63,8 +63,8 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStar
                 <div ref={container} className="absolute w-full h-full top-0 left-0">
                     {
                         playAd && adBlockDetected &&
-                            <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100">
-                                <h4 className="text-2xl">{t("common.alerts.adblockdetected")}</h4>
+                            <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100 p-4 text-center">
+                                <h4 className="text-2xl font-bold">{t("common.alerts.adblockdetected")}</h4>
                                 <p>{t("common.alerts.disableadblock")}</p>
                                 <span className="absolute bottom-0 left-0 h-2 bg-primary" style={{
                                     width: `${countdown / 10}%`
