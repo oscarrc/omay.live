@@ -119,7 +119,7 @@ const Chat = () => {
                         <VideoBox 
                             source={localStream}
                             muted={true}
-                            className="w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative" 
+                            className={`${serveAd ? "animate-fade-out" : "animate-fade-in"} md:animate-none w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative`} 
                             loading={!localStream} 
                         />
                     </div>
