@@ -31,13 +31,16 @@ const ChatReducer = (state, action) => {
             return { ...state, auto: !state.auto }
         case "LANG":          
             let lang = !LOCALES[payload] ? payload.split("-")[0] : payload;
-            return { ...state, lang }
+            return { ...state, lang }        
+        case "CHATS":          
+            return { ...state, chats: state.chats + 1 }
         case "RESET":            
             return { 
                 ...DEFAULTS, 
                 ...(state.status === STATUS.BANNED ? {status: STATUS.BANNED} : {}), 
                 lang: state.lang, 
                 auto: state.auto,
+                chats: state.chats,
                 interest: state.interest
             }
         case "STATUS":            
@@ -57,7 +60,6 @@ const ChatProvider = ({ children }) => {
     const [ localStream, setLocalStream ] = useState(null);
     const [ remoteStream, setRemoteStream ] = useState(null);
     const [ state, dispatch ] = useReducer(ChatReducer, DEFAULTS);
-    const [ count, setCount ] = useState(0);
 
     const { i18n } = useTranslation();
 
@@ -255,7 +257,8 @@ const ChatProvider = ({ children }) => {
 
     const onReceiveCandidate = async (data) => {
         console.log("icecandidatereceived")
-        dispatch({ type: "STATUS", payload: STATUS.CONNECTED });
+        dispatch({ type: "STATUS", payload: STATUS.CONNECTED });        
+        dispatch({ type: "CHAT" });
         await connection.current.addIceCandidate(data.iceCandidate)
     }
 
@@ -332,15 +335,6 @@ const ChatProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, {
-            method: "GET"
-        }).then( async (res) => {
-            let json = await res.json()
-            setCount(json.count)
-        }).catch(() => setCount(0) );
-    }, [])
-
     return (
         <ChatContext.Provider
             value={{
@@ -354,7 +348,6 @@ const ChatProvider = ({ children }) => {
                 startStream,
                 stopStream,
                 reportPeer,
-                count,
                 peer,
                 localStream, 
                 messages,

@@ -13,11 +13,19 @@ const App = () => {
   const NotFound = lazy(() => import('./routes/error/404'));
   const Policies = lazy(() => import('./routes/policies'));
   const adBlockDetected = useDetectAdblock();
+  const getCount = async () => {
+      let res = await fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, { method: "GET"})
+      let count = (await res.json()).count
+
+      return count
+  }
   
   const router = createBrowserRouter([
     {
       element: <Layout />,
       errorElement: <Error />,
+      loader: getCount,
+      shouldRevalidate: () => true,
       children: [
         {   
           id: "landing",
