@@ -61,9 +61,11 @@
           "monitored": "Video is monitored",
           "keepclean": "Keep it clean and help by reporting NSFW behaviour",
           "banned": "Your computer/network has been banned",
-          "banreason": "Due to bad behiavior. Don't worry, ban won't last forever."
+          "banreason": "Due to bad behiavior. Don't worry, ban won't last forever.",
+          "adblockdetected": "Ad block detected",
+          "disableadblock": "Ads allow us to run our service. Please disable ad block."
         },
-        "home": "Home"
+        "home": "Home"        
     },
     "error": {
         "notfound": "Page Not Found",
