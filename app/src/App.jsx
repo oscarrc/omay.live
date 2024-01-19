@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider, createBrowserRouter, redirect } from "react-router-dom";
 
 import { ChatProvider } from "./hooks/useChat";
@@ -12,20 +13,14 @@ const App = () => {
   const Error = lazy(() => import('./routes/error'));
   const NotFound = lazy(() => import('./routes/error/404'));
   const Policies = lazy(() => import('./routes/policies'));
-  const adBlockDetected = useDetectAdblock();
-  const getCount = async () => {
-      let res = await fetch(`${import.meta.env.VITE_SERVER_URL}/chat`, { method: "GET"})
-      let count = (await res.json()).count
+  const queryClient = new QueryClient();
 
-      return count
-  }
-  
+  const adBlockDetected = useDetectAdblock();
+    
   const router = createBrowserRouter([
     {
       element: <Layout />,
       errorElement: <Error />,
-      loader: getCount,
-      shouldRevalidate: () => true,
       children: [
         {   
           id: "landing",
@@ -69,9 +64,11 @@ const App = () => {
   ])
 
   return (
-    <ChatProvider>
-      <RouterProvider router={router} />
-    </ChatProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChatProvider>
+        <RouterProvider router={router} />
+      </ChatProvider>
+    </QueryClientProvider>
   );
 }
 

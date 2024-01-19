@@ -1,14 +1,11 @@
-import { Link, useLoaderData } from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import { BRAND } from "../../constants/brand";
 import { LanguageSelector } from "../partials";
-import { useChat } from "../../hooks/useChat";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-    const { state: { lang } } = useChat();
+const Header = ({ count, lang }) => {
     const [scrolled, setScrolled] = useState(false);
-    const count = useLoaderData();
     
     useEffect(() => {
         const scroll = () => setScrolled(window.scrollY > 0);
