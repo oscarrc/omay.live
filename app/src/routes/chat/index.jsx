@@ -41,16 +41,13 @@ const Chat = () => {
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
+    const isAdPlaying = useMemo(() => status === STATUS.ADPLAYING, [status])
     
-    const serveAd = useMemo(() => {
-        return (chats % parseInt(import.meta.env.VITE_AD_DELAY) === 0 || adBlockDetected ) && (isDisconnected || status === STATUS.ADPLAYING )
-    }, [chats, isDisconnected, status])
-
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
-    }, [checkNSFW, createOffer, isDisabled, isUnmoderated, serveAd, status])
+    }, [checkNSFW, createOffer, isDisabled, isUnmoderated, status])
 
     const stopSearch = useCallback(async () => {
         await closeConnection();
@@ -113,7 +110,8 @@ const Chat = () => {
                             className="relative aspect-4/3" 
                             loading={!remoteStream && status.includes("search")} 
                             withAds={true} 
-                            playAd={serveAd}
+                            playAd={ isDisconnected || isAdPlaying }
+                            isUnmoderated={isUnmoderated}
                             onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
                             onAdEnd={ () => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }                            
                             onAdError={ () => console.log("error") }
@@ -121,7 +119,7 @@ const Chat = () => {
                         <VideoBox 
                             source={localStream}
                             muted={true}
-                            className={`${serveAd ? "animate-fade-out" : "animate-fade-in"} md:animate-none w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative`} 
+                            className={`${isAdPlaying ? "animate-fade-out" : "animate-fade-in"} md:animate-none w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative`} 
                             loading={!localStream} 
                         />
                     </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useVast = (videoRef, containerRef, tagUrl) => {
+const useVast = (videoRef, containerRef, tagUrl, zoneId) => {
     const [ adsManager, setAdsManager ] = useState(null);
     const [ adsContainer, setAdsContainer ] = useState(null);
 
@@ -36,7 +36,7 @@ const useVast = (videoRef, containerRef, tagUrl) => {
 
         videoElement.addEventListener('ended', videoComplete);
         
-        adsRequest.adTagUrl = tagUrl;
+        adsRequest.adTagUrl = tagUrl + zoneId;
         adsRequest.linearAdSlotWidth = videoElement.clientWidth;
         adsRequest.linearAdSlotHeight = videoElement.clientHeight;
         adsRequest.nonLinearAdSlotWidth = videoElement.clientWidth;

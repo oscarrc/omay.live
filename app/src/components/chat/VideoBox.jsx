@@ -5,13 +5,13 @@ import useDetectAdblock from "../../hooks/useDetectAdblock";
 import { useTranslation } from "react-i18next";
 import useVast from "../../hooks/useVast";
 
-const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStart, onAdEnd, onAdError }) => {
+const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmoderated, onAdStart, onAdEnd, onAdError }) => {
     const player = useRef(null);
     const container = useRef(null);
     const adBlockDetected = useDetectAdblock();
     const [ countdown, setCountDown ] = useState(10);
     const { t } = useTranslation()
-    const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG)
+    const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, isUnmoderated ? 5167944 : 5173702)
     
     useEffect(() => {
         player.current.srcObject = source;
@@ -37,7 +37,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStar
 
     useEffect(() => {
         if(!withAds || !adsManager) return;
-        if(!playAd) return;
+        if(!playAd) container.current.replaceChildren();
 
         loadAd();
         onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
