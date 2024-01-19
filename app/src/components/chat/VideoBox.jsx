@@ -43,14 +43,14 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, onAdStar
         onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
         onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
         onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-        onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+        !adBlockDetected && onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
 
         return () => {
             if(!withAds || !adsManager) return;
             onAdStart && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
             onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
             onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-            onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+            !adBlockDetected && onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
             adsManager.destroy();
         }
     }, [playAd, withAds, adsManager])
