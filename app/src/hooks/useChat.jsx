@@ -187,7 +187,18 @@ const ChatProvider = ({ children }) => {
         }
 
         connection.current.onconnectionstatechange = (e) => {
-            connection.current.connectionState === "disconnected" && closeConnection(true)
+            const state = connection.current.connectionState;
+            switch(state){
+                case "connected":                    
+                    onPeerConnected()    
+                    break;
+                case "disconnected":
+                case "failed":
+                    onPeerDisconnected(true)
+                    break;
+                default:
+                    break;
+            }
         }
 
         data.current.send = connection.current.createDataChannel("data");
@@ -257,9 +268,13 @@ const ChatProvider = ({ children }) => {
 
     const onReceiveCandidate = async (data) => {
         console.log("icecandidatereceived")
+        await connection.current.addIceCandidate(data.iceCandidate)
+    }
+
+    const onPeerConnected = async () => {
+        console.log('peerconnected')
         dispatch({ type: "STATUS", payload: STATUS.CONNECTED });        
         dispatch({ type: "CHAT"});
-        await connection.current.addIceCandidate(data.iceCandidate)
     }
 
     const onPeerDisconnected = async () => {

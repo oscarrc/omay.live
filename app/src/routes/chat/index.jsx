@@ -43,7 +43,7 @@ const Chat = () => {
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
     
     const serveAd = useMemo(() => {
-        return (chats % import.meta.env.VITE_AD_DELAY === 0 || adBlockDetected ) && (isDisconnected || status === STATUS.ADPLAYING )
+        return (chats % parseInt(import.meta.env.VITE_AD_DELAY) === 0 || adBlockDetected ) && (isDisconnected || status === STATUS.ADPLAYING )
     }, [chats, isDisconnected, status])
 
     const startSearch = useCallback(async () => {
@@ -116,7 +116,7 @@ const Chat = () => {
                             playAd={serveAd}
                             onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
                             onAdEnd={ () => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }                            
-                            onAdError={ () => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }
+                            onAdError={ () => console.log("error") }
                         />
                         <VideoBox 
                             source={localStream}
