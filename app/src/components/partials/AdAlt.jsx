@@ -34,7 +34,7 @@ const AdAlt = ({ zoneId, className }) => {
     return (
         <div 
             className={`
-                ad relative flex items-center justify-center
+                ad relative flex
                 ${adData.data?.v_pos ? adPositon[adData.data.v_pos] : ""} 
                 ${adData.data?.h_pos ? adPositon[adData.data.h_pos] : ""} 
                 ${className}

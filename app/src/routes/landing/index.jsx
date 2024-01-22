@@ -1,8 +1,7 @@
-import { Ad, Alert, InterestInput } from "../../components/partials";
+import { Ad, AdAlt, Alert, InterestInput } from "../../components/partials";
 import { BRAND, TRANSLITERATION } from "../../constants/brand";
 import { Trans, useTranslation } from 'react-i18next';
 
-import AdAlt from "../../components/partials/AdAlt";
 import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";
 import { IoHandRight } from "react-icons/io5";
@@ -26,24 +25,24 @@ const Landing = () => {
     return (
         <>
             <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
-                {/* <Ad 
+                <Ad 
                     className="responsive" 
                     zoneId={isMobile ? 5171914 : 5167958} 
                     keywords={Array.from(interests)} 
-                /> */}
-                <AdAlt 
-                    className="responsive" 
-                    zoneId={isMobile ? 5171914 : 5167958} 
-                />
+                />           
                 <div className="flex flex-col gap-8">
                     {
                         adBlockDetected &&
+                            (<AdAlt 
+                                className="responsive justify-center" 
+                                zoneId={isMobile ? 5171914 : 5167958} 
+                            /> || 
                             <Alert 
                                 title={t("common.alerts.adblockdetected")}
                                 text={t("common.alerts.disableadblock")}
                                 icon={<IoHandRight className="text-neutral" />  }
                                 color="warning"
-                            /> 
+                            />) 
                     }
                     <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">
                         <h2 className="text-center">
