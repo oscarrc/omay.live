@@ -2,6 +2,7 @@ import { Ad, Alert, InterestInput } from "../../components/partials";
 import { BRAND, TRANSLITERATION } from "../../constants/brand";
 import { Trans, useTranslation } from 'react-i18next';
 
+import AdAlt from "../../components/partials/AdAlt";
 import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";
 import { IoHandRight } from "react-icons/io5";
