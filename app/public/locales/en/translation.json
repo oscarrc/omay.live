@@ -63,7 +63,7 @@
           "banned": "Your computer/network has been banned",
           "banreason": "Due to bad behiavior. Don't worry, ban won't last forever.",
           "adblockdetected": "Ad block detected",
-          "disableadblock": "Ads allow us to run our service. Please disable ad block."
+          "disableadblock": "Ads allow us to run our service. Please disable ad block to chat with less interruptions."
         },
         "home": "Home"        
     },
