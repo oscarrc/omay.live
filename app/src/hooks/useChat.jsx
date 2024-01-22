@@ -205,6 +205,8 @@ const ChatProvider = ({ children }) => {
     }
     
     const closeConnection = (remote) => {
+        dispatch({ type: "STATUS", payload: remote ? STATUS.STRANGERDISCONNECTED : STATUS.YOUDISCONNECTED });
+        
         if(!connection.current) return;
         
         !remote && socket.current.emit("connectionclosed", {
@@ -218,7 +220,6 @@ const ChatProvider = ({ children }) => {
         connection.current && connection.current.close();
 
         setRemoteStream(null);
-        dispatch({ type: "STATUS", payload: remote ? STATUS.STRANGERDISCONNECTED : STATUS.YOUDISCONNECTED });
         (state.confirmation > 1 || remote) && dispatch({ type: "CONFIRMATION", payload: 0 });
     }
 

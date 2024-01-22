@@ -35,8 +35,7 @@ const Chat = () => {
     } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDeviceDetection();
-
-    const adBlockDetected = useDetectAdblock();
+    
     const isMouseMoving = useMouseMoving();
     const navigate = useNavigate();
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
