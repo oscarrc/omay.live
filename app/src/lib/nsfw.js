@@ -1,9 +1,6 @@
 import * as nsfwjs from 'nsfwjs'
-import * as tf from '@tensorflow/tfjs'
 
 const loadNSFW = async () => {
-    tf.enableProdMode();
-    
     try{
         let nsfw = await nsfwjs.load('indexeddb://model')
         return nsfw;
