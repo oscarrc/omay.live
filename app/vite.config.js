@@ -12,7 +12,23 @@ export default defineConfig({
             registerType: 'autoUpdate',
             workbox: {
                 globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
-                maximumFileSizeToCacheInBytes: 3000000
+                maximumFileSizeToCacheInBytes: 3000000,
+                runtimeCaching: [
+                    {
+                        urlPattern: new RegExp(`^https:\/\/${import.meta.env.VITE_SERVER_URL}\/ad\/.*`, "i"),
+                        handler: 'NetworkFirst',
+                        options: {
+                            cacheName: 'ads-cache',
+                            expiration: {
+                                maxEntries: 10,
+                                maxAgeSeconds: 60 * 60 * 24 // <== 1 day
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200]
+                            }
+                        }
+                    }
+                ]
             }
         })
     ],
