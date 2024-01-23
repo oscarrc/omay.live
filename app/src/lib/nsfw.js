@@ -1,6 +1,9 @@
 import * as nsfwjs from 'nsfwjs'
+import * as tf from '@tensorflow/tfjs'
 
 const loadNSFW = async () => {
+    tf.enableProdMode();
+    
     try{
         let nsfw = await nsfwjs.load('indexeddb://model')
         return nsfw;
@@ -10,7 +13,6 @@ const loadNSFW = async () => {
         return load;
     }
 }
-
 
 const getImage = (stream) => new Promise( (resolve, reject) => {
     const { width, height } = stream.getVideoTracks()[0].getSettings();
