@@ -2,6 +2,7 @@ import { Ad, AdAlt, Alert } from "../partials";
 import { useEffect, useRef } from "react";
 
 import ADS from "../../constants/ads"
+import { IoHandRight } from "react-icons/io5";
 import useDetectAdblock from "../../hooks/useDetectAdblock";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
 import { useTranslation } from "react-i18next";
