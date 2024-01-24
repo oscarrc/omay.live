@@ -2,7 +2,7 @@ import { IoMdClose } from "react-icons/io";
 import { useQuery } from "react-query";
 import { useState } from "react";
 
-const AdAlt = ({ zoneId, className }) => {
+const AdAlt = ({ zoneId, className, children }) => {
     const [show, setShow] = useState(false);
 
     const {data: adData} = useQuery({
@@ -17,8 +17,8 @@ const AdAlt = ({ zoneId, className }) => {
             if(!adData.data?.frequency_period) return 0;
             return parseInt(adData.data.frequency_period) * 1000;
         },
-        onSuccess: () => setShow(true),
-        onError: () => setShow(false),
+        onSuccess: () => {setShow(true), console.log("success", adData)},
+        onError: () => {setShow(false), console.log("error", adData)},
         initialData: false
     })
     
@@ -29,7 +29,7 @@ const AdAlt = ({ zoneId, className }) => {
         left: "left-0"
     }
 
-    if(!adData) return <></>;
+    if(!adData) return <>{children}</>
 
     return (
         <div 

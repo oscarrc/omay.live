@@ -5,16 +5,18 @@ class AdService{
 
     async getAds(zones, ip){
         const query = zones.reduce( (a, v, i) => a + `zones[${i}][idzone]=${v}&`, "?v=1&") + `user_ip=${ip}`
-        console.log(query)
+
         const res = await fetch(this.url + query, {
             method: "GET"
         })
 
-        const ads = await res.json();
+        let ads = await res.json();
+
+        if(!ads?.zones) ads = { zones:[false] }
 
         await Promise.all(
             ads.zones.map( async (z) => {
-                if(!z.data?.image) return z;
+                if(z === false || !z.data?.image) return z;
                 
                 let res = await fetch(z.data.image, { mode : 'no-cors' });
                 let blob = await res.blob();
