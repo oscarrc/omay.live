@@ -14,8 +14,6 @@ const App = () => {
   const NotFound = lazy(() => import('./routes/error/404'));
   const Policies = lazy(() => import('./routes/policies'));
   const queryClient = new QueryClient();
-
-  const adBlockDetected = useDetectAdblock();
     
   const router = createBrowserRouter([
     {
@@ -35,8 +33,7 @@ const App = () => {
         {   
           id: "unmoderated",
           path: "/unmoderated",
-          element: <Chat />,
-          loader: () => adBlockDetected && redirect("/adblock")
+          element: <Chat />
         },
         {   
           id: "text",
@@ -47,13 +44,7 @@ const App = () => {
           id: "policies",
           path: "/policies/:id",
           element: <Policies />
-        },   
-        {   
-          id: "adblock",
-          path: "/adblock",
-          element: <AdBlock />,          
-          loader: () => !adBlockDetected && redirect("/")
-        },
+        },  
         {   
           id: "404",
           path: "*",
