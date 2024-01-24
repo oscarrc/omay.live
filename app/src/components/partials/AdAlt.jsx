@@ -44,7 +44,7 @@ const AdAlt = ({ zoneId, className, children }) => {
                     <>
                         {
                             adData.data?.frequency_period &&
-                            <button onClick={ () => setShow(false) } className="absolute btn btn-circle btn-xs btn-neutral">
+                            <button onClick={ () => setShow(false) } className="absolute top-1 right-1 btn btn-circle btn-xs btn-neutral">
                                 <IoMdClose className="h-2 w-2" />
                             </button>
                         }
