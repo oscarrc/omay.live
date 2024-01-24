@@ -29,7 +29,7 @@ const ChatBox = ({ messages, className, status, simulated, children, lang, commo
                     /> 
                 }
                 { ad && adBlockDetected &&
-                        <AdAlt  className="responsive justify-start" zoneId={ADS.banner[isUnmoderated ? "unmoderated" : "moderated"][isMobile ? "mobile" : "desktop"]} >
+                        <AdAlt  className="responsive justify-start" zoneId={ADS.banner[unmoderated ? "unmoderated" : "moderated"][isMobile ? "mobile" : "desktop"]} >
                             <Alert 
                                 title={t("common.alerts.adblockdetected")}
                                 text={t("common.alerts.disableadblock")}
