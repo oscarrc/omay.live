@@ -2,12 +2,12 @@ import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
 import { InterestInput, Toggle } from "../../components/partials";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
+import ADS from "../../constants/ads";
 import { Ad } from "../../components/partials";
 import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
 import { requestFullscreen } from "../../lib/fullscreen";
 import { useChat } from "../../hooks/useChat";
-import useDetectAdblock from "../../hooks/useDetectAdblock";
 import useDeviceDetection from "../../hooks/useDeviceDetection";
 import useMouseMoving from "../../hooks/useMouseMoving";
 import { useNavigate } from "react-router-dom";
@@ -133,9 +133,10 @@ const Chat = () => {
                         messages={messages} 
                         status={status} 
                         simulated={peer.current.simulated} 
+                        unmoderated={isUnmoderated}
                         common={peer.current.interests?.filter( i => interests.has(i)) || []} 
                         lang={peer.current.lang === lang && lang !== "any"}
-                        ad={isTextOnly}
+                        ad={isTextOnly || isUnmoderated }
                     >
                         { 
                             (isDisconnected || status === STATUS.STOPPED) &&
@@ -190,7 +191,7 @@ const Chat = () => {
                     state={confirmation} 
                     disabled={isDisabled || status === STATUS.CONNECTING}
                 />
-                { isUnmoderated && <Ad zoneId={5172336} keywords={Array.from(interests)} /> }
+                <Ad zoneId={ADS.pagePush[isUnmoderated ? "unmoderated" : "moderated"]} keywords={Array.from(interests)} />
             </div>
         </section>
     )

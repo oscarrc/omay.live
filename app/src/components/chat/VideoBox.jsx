@@ -1,6 +1,7 @@
 import { AdAlt, Loader } from "../partials";
 import { useEffect, useRef, useState } from "react";
 
+import ADS from "../../constants/ads";
 import useDetectAdblock from "../../hooks/useDetectAdblock";
 import { useTranslation } from "react-i18next";
 import useVast from "../../hooks/useVast";
@@ -11,7 +12,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     const adBlockDetected = useDetectAdblock();
     const [ countdown, setCountDown ] = useState(10);
     const { t } = useTranslation()
-    const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, isUnmoderated ? 5167944 : 5173702)
+    const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, ADS.video[isUnmoderated ? "unmoderated" : "moderated"] )
     
     useEffect(() => {
         player.current.srcObject = source;
@@ -64,7 +65,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
                     {
                         playAd && adBlockDetected &&
                             <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100 p-4 text-center">
-                                <AdAlt zoneId={isUnmoderated ? 5184560 : 5184562} className="responsive justify-center items-center">
+                                <AdAlt zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]} className="responsive justify-center items-center">
                                     <>
                                         <h4 className="text-2xl font-bold">{t("common.alerts.adblockdetected")}</h4>
                                         <p>{t("common.alerts.disableadblock")}</p>
