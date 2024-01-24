@@ -1,6 +1,6 @@
+import { AdAlt, Loader } from "../partials";
 import { useEffect, useRef, useState } from "react";
 
-import { Loader } from "../partials";
 import useDetectAdblock from "../../hooks/useDetectAdblock";
 import { useTranslation } from "react-i18next";
 import useVast from "../../hooks/useVast";
@@ -64,8 +64,13 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
                     {
                         playAd && adBlockDetected &&
                             <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100 p-4 text-center">
-                                <h4 className="text-2xl font-bold">{t("common.alerts.adblockdetected")}</h4>
-                                <p>{t("common.alerts.disableadblock")}</p>
+                                {
+                                    <AdAlt zoneId={isUnmoderated ? 5184560 : 5184562} className="responsive justify-center items-center" /> ||
+                                    <>
+                                        <h4 className="text-2xl font-bold">{t("common.alerts.adblockdetected")}</h4>
+                                        <p>{t("common.alerts.disableadblock")}</p>
+                                    </>
+                                }
                                 <span className="absolute bottom-0 left-0 h-2 bg-primary" style={{
                                     width: `${countdown / 10}%`
                                 }}> </span>
