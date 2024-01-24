@@ -17,8 +17,8 @@ const AdAlt = ({ zoneId, className, children }) => {
             if(!adData.data?.frequency_period) return 0;
             return parseInt(adData.data.frequency_period) * 1000;
         },
-        onSuccess: () => {setShow(true), console.log("success", adData)},
-        onError: () => {setShow(false), console.log("error", adData)},
+        onSuccess: () => setShow(true),
+        onError: () => setShow(false),
         initialData: false
     })
     
