@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider, createBrowserRouter, redirect } from "react-router-dom";
 
+import { AdblockDetectionProvider } from "./hooks/useAdBlockDetection";
 import { ChatProvider } from "./hooks/useChat";
 import { CookieConsentProvider } from "./hooks/useCookieConsent";
+import { DeviceProvider } from "./hooks/useDevice";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
 import { lazy } from "react";
@@ -56,9 +58,13 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <CookieConsentProvider>
-        <ChatProvider>
-          <RouterProvider router={router} />
-        </ChatProvider>
+        <AdblockDetectionProvider>
+          <DeviceProvider>
+            <ChatProvider>
+              <RouterProvider router={router} />
+            </ChatProvider>
+          </DeviceProvider>
+        </AdblockDetectionProvider>
       </CookieConsentProvider>
     </QueryClientProvider>
   );
