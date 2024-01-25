@@ -8,7 +8,7 @@ import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
 import { requestFullscreen } from "../../lib/fullscreen";
 import { useChat } from "../../hooks/useChat";
-import useDeviceDetection from "../../hooks/useDeviceDetection";
+import { useDevice } from "../../hooks/useDevice";
 import useMouseMoving from "../../hooks/useMouseMoving";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -34,7 +34,7 @@ const Chat = () => {
         peer
     } = useChat();
     const { t } = useTranslation();
-    const { isMobile } = useDeviceDetection();
+    const { isMobile } = useDevice();
     
     const isMouseMoving = useMouseMoving();
     const navigate = useNavigate();

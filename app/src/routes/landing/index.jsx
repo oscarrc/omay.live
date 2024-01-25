@@ -8,16 +8,16 @@ import { FaBan } from "react-icons/fa";
 import { IoHandRight } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Terms } from "../../components/modals";
+import { useAdblockDetection } from "../../hooks/useAdblockDetection";
 import { useChat } from "../../hooks/useChat";
-import useDetectAdblock from "../../hooks/useDetectAdblock";
-import useDeviceDetection from "../../hooks/useDeviceDetection";
+import { useDevice } from "../../hooks/useDevice";
 import { useEffect } from "react";
 
 const Landing = () => {     
     const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
-    const { isMobile } = useDeviceDetection();
-    const adBlockDetected = useDetectAdblock();
+    const { isMobile } = useDevice();
+    const hasAdblock = useAdblockDetection();
     
     useEffect(()=> {
         dispatch({type: "RESET"})
@@ -33,7 +33,7 @@ const Landing = () => {
                 />           
                 <div className="flex flex-col gap-8">
                     {
-                        adBlockDetected &&
+                        hasAdblock &&
                             (<AdAlt 
                                 className="responsive justify-center" 
                                 zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 

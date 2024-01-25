@@ -2,14 +2,14 @@ import { AdAlt, Loader } from "../partials";
 import { useEffect, useRef, useState } from "react";
 
 import ADS from "../../constants/ads";
-import useDetectAdblock from "../../hooks/useDetectAdblock";
+import { useAdblockDetection } from "../../hooks/useAdblockDetection";
 import { useTranslation } from "react-i18next";
 import useVast from "../../hooks/useVast";
 
 const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmoderated, onAdStart, onAdEnd, onAdError }) => {
     const player = useRef(null);
     const container = useRef(null);
-    const adBlockDetected = useDetectAdblock();
+    const hasAdblock = useAdblockDetection();
     const [ countdown, setCountDown ] = useState(10);
     const { t } = useTranslation()
     const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, ADS.video[isUnmoderated ? "unmoderated" : "moderated"] )
@@ -19,7 +19,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     }, [source])
 
     useEffect(() => {
-        if(!playAd || !adBlockDetected) return;
+        if(!playAd || !hasAdblock) return;
         
         let count = import.meta.env.VITE_ADBLOCK_TIMER * 100
         let timer = setInterval(() => {
@@ -34,7 +34,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
 
         onAdStart();
         return () => { clearTimeout(timer) }
-    }, [playAd, adBlockDetected])
+    }, [playAd, hasAdblock])
 
     useEffect(() => {
         if(!withAds || !adsManager) return;
@@ -44,14 +44,14 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
         onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
         onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
         onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-        !adBlockDetected && onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+        !hasAdblock && onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
 
         return () => {
             if(!withAds || !adsManager) return;
             onAdStart && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
             onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
             onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-            !adBlockDetected && onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+            !hasAdblock && onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
             adsManager.destroy();
         }
     }, [playAd, withAds, adsManager])
@@ -63,7 +63,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
             { withAds && 
                 <div ref={container} className="absolute w-full h-full top-0 left-0">
                     {
-                        playAd && adBlockDetected &&
+                        playAd && hasAdblock &&
                             <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100 p-4 text-center">
                                 <AdAlt zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]} className="responsive justify-center items-center">
                                     <>

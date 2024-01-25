@@ -3,14 +3,14 @@ import { useEffect, useRef } from "react";
 
 import ADS from "../../constants/ads"
 import { IoHandRight } from "react-icons/io5";
-import useDetectAdblock from "../../hooks/useDetectAdblock";
-import useDeviceDetection from "../../hooks/useDeviceDetection";
+import { useAdblockDetection } from "../../hooks/useAdblockDetection";
+import { useDevice } from "../../hooks/useDevice";
 import { useTranslation } from "react-i18next";
 
 const ChatBox = ({ messages, className, status, simulated, children, lang, common, ad, unmoderated }) => {     
     const { t } = useTranslation();    
-    const { isMobile } = useDeviceDetection();
-    const adBlockDetected = useDetectAdblock();
+    const { isMobile } = useDevice();
+    const hasAdblock = useAdblockDetection();
     const box = useRef(null);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const ChatBox = ({ messages, className, status, simulated, children, lang, commo
                         keywords={common} 
                     /> 
                 }
-                { ad && adBlockDetected &&
+                { ad && hasAdblock &&
                         <AdAlt  className="responsive justify-start" zoneId={ADS.banner[unmoderated ? "unmoderated" : "moderated"][isMobile ? "mobile" : "desktop"]} >
                             <Alert 
                                 title={t("common.alerts.adblockdetected")}
