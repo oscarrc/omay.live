@@ -1,5 +1,4 @@
 import { AdService } from "../services/index.js";
-import { readFileSync } from "fs";
 
 class AdController {
     constructor (service){
