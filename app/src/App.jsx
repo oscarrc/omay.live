@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { RouterProvider, createBrowserRouter, redirect } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import { AdblockDetectionProvider } from "./hooks/useAdBlockDetection";
+import { AdblockDetectionProvider } from "./hooks/useAdblockDetection";
 import { ChatProvider } from "./hooks/useChat";
 import { CookieConsentProvider } from "./hooks/useCookieConsent";
 import { DeviceProvider } from "./hooks/useDevice";
