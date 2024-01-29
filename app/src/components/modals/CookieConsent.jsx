@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-const CookieConsent = ({ show, onSubmit, value }) => {   
+const CookieConsent = ({ show, onSubmit }) => {   
     const { t }  = useTranslation();
     const [targeting, setTargeting] = useState(true);
     const dialog = useRef(null);
@@ -20,8 +20,8 @@ const CookieConsent = ({ show, onSubmit, value }) => {
     }, [show])
 
     return (
-        <dialog ref={dialog} id="terms" className="modal modal-bottom sm:modal-middle">
-            <div className="modal-box min-w-1/3">
+        <dialog ref={dialog} id="terms" className="modal modal-bottom">
+            <div className="modal-box">
                 <form method="dialog">
                     <button onClick={setCookieConsent} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>

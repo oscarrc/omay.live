@@ -40,7 +40,7 @@ const Landing = () => {
                 }        
                 <div className="flex flex-col gap-8">
                     {
-                        !targeting || hasAdblock &&
+                        (!targeting || hasAdblock) &&
                             <AdAlt 
                                 className="responsive justify-center" 
                                 zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
