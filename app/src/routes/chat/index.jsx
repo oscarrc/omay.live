@@ -8,6 +8,7 @@ import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";
 import { requestFullscreen } from "../../lib/fullscreen";
 import { useChat } from "../../hooks/useChat";
+import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useDevice } from "../../hooks/useDevice";
 import useMouseMoving from "../../hooks/useMouseMoving";
 import { useNavigate } from "react-router-dom";
@@ -35,6 +36,7 @@ const Chat = () => {
     } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDevice();
+    const { cookieConsent: targeting } = useCookieConsent();
     
     const isMouseMoving = useMouseMoving();
     const navigate = useNavigate();
@@ -191,7 +193,7 @@ const Chat = () => {
                     state={confirmation} 
                     disabled={isDisabled || status === STATUS.CONNECTING}
                 />
-                <Ad zoneId={ADS.pagePush[isUnmoderated ? "unmoderated" : "moderated"]} keywords={Array.from(interests)} />
+                { targeting && <Ad zoneId={ADS.pagePush[isUnmoderated ? "unmoderated" : "moderated"]} keywords={Array.from(interests)} />}
             </div>
         </section>
     )

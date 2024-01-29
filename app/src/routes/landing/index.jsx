@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { Terms } from "../../components/modals";
 import { useAdblockDetection } from "../../hooks/useAdblockDetection";
 import { useChat } from "../../hooks/useChat";
+import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useDevice } from "../../hooks/useDevice";
 import { useEffect } from "react";
 
@@ -17,6 +18,7 @@ const Landing = () => {
     const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDevice();
+    const { cookieConsent: targeting } = useCookieConsent();
     const hasAdblock = useAdblockDetection();
     
     useEffect(()=> {
@@ -26,14 +28,17 @@ const Landing = () => {
     return (
         <>
             <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
-                <Ad 
-                    className="responsive" 
-                    zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 
-                    keywords={Array.from(interests)} 
-                />           
+                {
+                    targeting && 
+                        <Ad 
+                            className="responsive" 
+                            zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 
+                            keywords={Array.from(interests)} 
+                        />   
+                }        
                 <div className="flex flex-col gap-8">
                     {
-                        hasAdblock &&
+                        !targeting || hasAdblock &&
                             (<AdAlt 
                                 className="responsive justify-center" 
                                 zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 

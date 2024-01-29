@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import ADS from "../../constants/ads";
 import { useAdblockDetection } from "../../hooks/useAdblockDetection";
+import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useTranslation } from "react-i18next";
 import useVast from "../../hooks/useVast";
 
@@ -10,6 +11,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     const player = useRef(null);
     const container = useRef(null);
     const hasAdblock = useAdblockDetection();
+    const { cookieConsent: targeting } = useCookieConsent();
     const [ countdown, setCountDown ] = useState(10);
     const { t } = useTranslation()
     const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, ADS.video[isUnmoderated ? "unmoderated" : "moderated"] )
@@ -37,7 +39,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     }, [playAd, hasAdblock])
 
     useEffect(() => {
-        if(!withAds || !adsManager) return;
+        if(!withAds || !adsManager || !targeting) return;
         if(!playAd) container.current.replaceChildren();
 
         loadAd();
@@ -54,7 +56,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
             !hasAdblock && onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
             adsManager.destroy();
         }
-    }, [playAd, withAds, adsManager])
+    }, [playAd, withAds, adsManager, targeting])
 
     return (
         <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
@@ -63,7 +65,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
             { withAds && 
                 <div ref={container} className="absolute w-full h-full top-0 left-0">
                     {
-                        playAd && hasAdblock &&
+                        playAd && (hasAdblock || !targeting) &&
                             <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100 p-4 text-center">
                                 <AdAlt zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]} className="responsive justify-center items-center">
                                     <>
