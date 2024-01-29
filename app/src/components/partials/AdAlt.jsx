@@ -48,9 +48,9 @@ const AdAlt = ({ zoneId, className, children }) => {
                                 <IoMdClose className="h-2 w-2" />
                             </button>
                         }
-                        <a href={adData.data.url} target="_blank" rel="noreferer noopener">
-                            <img src={adData.data.image} width={adData.data.width} height={adData.data.height} />
-                        </a>
+                        <div aria-role="button" aria-label="ad" className="cursor-pointer" onClick={()=>window.open(adData.data.url,'_blank', 'rel=noopener noreferrer')}>
+                            <img src={adData.data.image} width={adData.data.width} height={adData.data.height} alt="banner" />
+                        </div>
                     </>
             }
         </div>
