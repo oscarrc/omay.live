@@ -1,3 +1,4 @@
+import CookieConsent from "./CookieConsent";
 import Terms from "./Terms";
 
-export { Terms }
+export { CookieConsent, Terms }

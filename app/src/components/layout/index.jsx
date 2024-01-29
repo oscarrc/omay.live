@@ -1,17 +1,20 @@
 import { Suspense, useEffect, useRef } from "react";
 
+import CookieConsent from "../modals/CookieConsent";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "../partials/Loader";
 import { Outlet } from "react-router-dom";
 import { useChat } from "../../hooks/useChat";
+import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 
 const Layout = ({ children }) => {    
     const { i18n } = useTranslation();
-    const main = useRef(null);    
+    const main = useRef(null);
     const { state: { lang, mode } } = useChat();
+    const { manage, setManage, cookieConsent, setConsent } = useCookieConsent();
     
     const {data:count} = useQuery({
         queryKey: ["count", mode],
@@ -34,6 +37,7 @@ const Layout = ({ children }) => {
                     { children ?? <Outlet /> }
                 </Suspense>
             </main>
+            <CookieConsent show={manage} value={cookieConsent} onSubmit={(v) => {setConsent(v); setManage(false)} } />
             <Footer />
         </>
     )

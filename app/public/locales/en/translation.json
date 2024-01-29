@@ -49,6 +49,7 @@
         "talkabout": "What do you want to talk about?",
         "addinterests": "Add your interests (Optional)",
         "video": "Video",
+        "accept": "Accept",
         "text": "Text",
         "switchto": "Switch to",
         "unmoderated": "Unmoderated section",
@@ -57,6 +58,14 @@
         "terms": "Terms and conditions",
         "privacy": "Privacy policy",
         "guidelines": "Community guidelines",
+        "cookies": {
+            "manage": "This website uses cookies",
+            "message": "We use cookies to improve your expirence on the site, however you can opt-out. By doing so <1>you will see ads more frequently</1> since we won't be able to track whether or not you saw them already.",
+            "privacy": "You can learn more about how we use cookies on our <1>Privacy Policy</1>",
+            "strictlynecessary": "Strictly necessary",
+            "targeting": "Targeting"
+
+        },
         "alerts": {
           "monitored": "Video is monitored",
           "keepclean": "Keep it clean and help by reporting NSFW behaviour",

@@ -1,27 +1,32 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CookieConsentContext = createContext(null);
 
 const CookieConsentProvider = ({children}) => {
-    const [ cookieConsent, setCookieConsent ] = useState(false);
+    const [ cookieConsent, setCookieConsent ] = useState({ targeting: false });
+    const [ manage, setManage ] = useState(false);
 
     const getConsent = () => {
         return document.cookie.split("; ").find((row) => row.startsWith("cc="))?.split("=")[1] || false;
     }
 
     const setConsent = (value) => {
-        document.cookie = `name=cc; value=${value} SameSite=None; Path=/`;
+        let v = JSON.stringify(value)
+        document.cookie = `name=cc; value=${v} SameSite=None; Path=/`;
     }
 
     useEffect(() => {
         let cc = getConsent();
-        setCookieConsent(cc);
+        if(cc) setCookieConsent(JSON.parse(cc));
+        else setManage(true);
     }, [])
 
     return (
         <CookieConsentContext.Provider value={{
             cookieConsent,
-            setConsent
+            setConsent,
+            setManage,
+            manage
         }}>
             { children }
         </CookieConsentContext.Provider>
