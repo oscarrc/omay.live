@@ -114,11 +114,11 @@ const Chat = () => {
                             playAd={ isDisconnected || isAdPlaying }
                             isUnmoderated={isUnmoderated}
                             onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
-                            onAdEnd={ () => {
+                            onAdEnd={() => {
                                 let s = status
                                 dispatch({ type: "STATUS", payload: s })
-                            } }                            
-                            onAdError={ () => console.log("error") }
+                            }}                  
+                            onAdError={ () =>  dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }
                         />
                         <VideoBox 
                             source={localStream}
