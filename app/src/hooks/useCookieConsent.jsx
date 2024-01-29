@@ -37,12 +37,19 @@ const CookieConsentProvider = ({children}) => {
     }
       
     const setConsent = (value) => {
-        let v = JSON.stringify(value)
-        setCookie("cc", v)
+        let v = JSON.stringify(value);
+        let expires = new Date();
+        
+        expires.setFullYear(expires.getFullYear() + 1);
+
+        setCookie("cc", v, { expires })
     }
 
     useEffect(() => {
-        let cc = JSON.parse(getCookie("cc"));
+        let cc = getCookie("cc");
+        
+        cc = cc ? JSON.parse(cc) : undefined;
+
         if(cc?.targeting) setCookieConsent(cc);
         else setManage(true);
     }, [])
