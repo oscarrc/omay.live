@@ -21,7 +21,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     }, [source])
 
     useEffect(() => {
-        if(!playAd || !hasAdblock) return;
+        if(!playAd || !hasAdblock || targeting) return;
         
         let count = import.meta.env.VITE_ADBLOCK_TIMER * 100
         let timer = setInterval(() => {
