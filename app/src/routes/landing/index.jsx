@@ -39,16 +39,18 @@ const Landing = () => {
                 <div className="flex flex-col gap-8">
                     {
                         !targeting || hasAdblock &&
-                            (<AdAlt 
+                            <AdAlt 
                                 className="responsive justify-center" 
                                 zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 
-                            /> || 
-                            <Alert 
-                                title={t("common.alerts.adblockdetected")}
-                                text={t("common.alerts.disableadblock")}
-                                icon={<IoHandRight className="text-neutral" />  }
-                                color="warning"
-                            />) 
+                            >
+                                <Alert 
+                                    title={t("common.alerts.adblockdetected")}
+                                    text={t("common.alerts.disableadblock")}
+                                    icon={<IoHandRight className="text-neutral" />  }
+                                    color="warning"
+                                /> 
+                            </AdAlt>
+                            
                     }
                     <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">
                         <h2 className="text-center">
