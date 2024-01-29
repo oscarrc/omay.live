@@ -6,18 +6,44 @@ const CookieConsentProvider = ({children}) => {
     const [ cookieConsent, setCookieConsent ] = useState({ targeting: false });
     const [ manage, setManage ] = useState(false);
 
-    const getConsent = () => {
-        return document.cookie.split("; ").find((row) => row.startsWith("cc="))?.split("=")[1] || false;
+    const getCookie = (name) => {
+        let matches = document.cookie.match(new RegExp(
+          "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
     }
 
+    const setCookie = (name, value, options = {}) => {
+        options = {
+          path: '/',
+          ...options
+        };
+      
+        if (options.expires instanceof Date) {
+          options.expires = options.expires.toUTCString();
+        }
+      
+        let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+      
+        for (let optionKey in options) {
+          updatedCookie += "; " + optionKey;
+          let optionValue = options[optionKey];
+          if (optionValue !== true) {
+            updatedCookie += "=" + optionValue;
+          }
+        }
+      
+        document.cookie = updatedCookie;
+    }
+      
     const setConsent = (value) => {
         let v = JSON.stringify(value)
-        document.cookie = `name=cc; value=${v} SameSite=None; Path=/`;
+        setCookie("cc", v)
     }
 
     useEffect(() => {
-        let cc = getConsent();
-        if(cc) setCookieConsent(JSON.parse(cc));
+        let cc = JSON.parse(getCookie("cc"));
+        if(cc?.targeting) setCookieConsent(cc);
         else setManage(true);
     }, [])
 
