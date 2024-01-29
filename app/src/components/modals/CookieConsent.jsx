@@ -54,7 +54,7 @@ const CookieConsent = ({ show, onSubmit, value }) => {
                 </div>
                 <form onSubmit={setCookieConsent}>
                     <div className="form-control items-end mt-4">                        
-                        <button type="submit" className="btn interstitial">{t("common.accept")}</button>
+                        <button type="submit" className="btn btn-block btn-primary">{t("common.accept")}</button>
                     </div>
                 </form>
             </div>
