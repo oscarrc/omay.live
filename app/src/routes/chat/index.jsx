@@ -36,7 +36,7 @@ const Chat = () => {
     } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDevice();
-    const { cookieConsent: targeting } = useCookieConsent();
+    const { cookieConsent: { targeting } } = useCookieConsent();
     
     const isMouseMoving = useMouseMoving();
     const navigate = useNavigate();

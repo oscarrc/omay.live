@@ -11,7 +11,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     const player = useRef(null);
     const container = useRef(null);
     const hasAdblock = useAdblockDetection();
-    const { cookieConsent: targeting } = useCookieConsent();
+    const { cookieConsent: { targeting } } = useCookieConsent();
     const [ countdown, setCountDown ] = useState(10);
     const { t } = useTranslation()
     const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, ADS.video[isUnmoderated ? "unmoderated" : "moderated"] )
@@ -21,7 +21,8 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     }, [source])
 
     useEffect(() => {
-        if(!playAd || !hasAdblock || targeting) return;
+        console.log(targeting)
+        if(!playAd || (!hasAdblock && targeting)) return;
         
         let count = import.meta.env.VITE_ADBLOCK_TIMER * 100
         let timer = setInterval(() => {
@@ -36,7 +37,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
 
         onAdStart();
         return () => { clearTimeout(timer) }
-    }, [playAd, hasAdblock])
+    }, [playAd, hasAdblock, targeting])
 
     useEffect(() => {
         if(!withAds || !adsManager || !targeting) return;

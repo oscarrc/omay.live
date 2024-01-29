@@ -41,6 +41,7 @@ const CookieConsentProvider = ({children}) => {
         let expires = new Date();
         
         expires.setFullYear(expires.getFullYear() + 1);
+        setCookieConsent(value);
         setCookie("cc", v, { expires });
     }
 

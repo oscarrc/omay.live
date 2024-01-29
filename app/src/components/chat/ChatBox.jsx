@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 const ChatBox = ({ messages, className, status, simulated, children, lang, common, ad, unmoderated }) => {     
     const { t } = useTranslation();    
     const { isMobile } = useDevice();
-    const { cookieConsent: targeting } = useCookieConsent();
+    const { cookieConsent: { targeting } } = useCookieConsent();
     const hasAdblock = useAdblockDetection();
     const box = useRef(null);
 

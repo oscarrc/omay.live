@@ -18,7 +18,7 @@ const Landing = () => {
     const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDevice();
-    const { cookieConsent: targeting } = useCookieConsent();
+    const { cookieConsent: { targeting } } = useCookieConsent();
     const hasAdblock = useAdblockDetection();
     
     useEffect(()=> {
@@ -30,18 +30,20 @@ const Landing = () => {
             <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
                 {
                     targeting && 
+                        <>
                         <Ad 
                             className="responsive" 
-                            zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 
+                            zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
                             keywords={Array.from(interests)} 
-                        />   
+                        />
+                        </>
                 }        
                 <div className="flex flex-col gap-8">
                     {
                         !targeting || hasAdblock &&
                             <AdAlt 
                                 className="responsive justify-center" 
-                                zoneId={ADS.banner.unmoderated[isMobile ? "mobile" : "desktop"]} 
+                                zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
                             >
                                 <Alert 
                                     title={t("common.alerts.adblockdetected")}
