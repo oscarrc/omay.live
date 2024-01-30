@@ -7,7 +7,7 @@ import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";
 import { IoHandRight } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { Terms } from "../../components/modals";
+import { Terms } from "./components";
 import { useAdblockDetection } from "../../hooks/useAdblockDetection";
 import { useChat } from "../../hooks/useChat";
 import { useCookieConsent } from "../../hooks/useCookieConsent";

@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 
-const CookieConsent = ({ show, onSubmit }) => {   
+const Cookies = ({ show, onSubmit }) => {   
     const { t }  = useTranslation();
     const [targeting, setTargeting] = useState(true);
     const dialog = useRef(null);
@@ -62,4 +62,4 @@ const CookieConsent = ({ show, onSubmit }) => {
     )
 } 
 
-export default CookieConsent;
+export default Cookies;

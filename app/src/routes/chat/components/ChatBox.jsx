@@ -1,11 +1,11 @@
-import { Ad, AdAlt, Alert } from "../partials";
+import { Ad, AdAlt, Alert } from "../../../components/partials";
 import { useEffect, useRef } from "react";
 
-import ADS from "../../constants/ads"
+import ADS from "../../../constants/ads"
 import { IoHandRight } from "react-icons/io5";
-import { useAdblockDetection } from "../../hooks/useAdblockDetection";
-import { useCookieConsent } from "../../hooks/useCookieConsent";
-import { useDevice } from "../../hooks/useDevice";
+import { useAdblockDetection } from "../../../hooks/useAdblockDetection";
+import { useCookieConsent } from "../../../hooks/useCookieConsent";
+import { useDevice } from "../../../hooks/useDevice";
 import { useTranslation } from "react-i18next";
 
 const ChatBox = ({ messages, className, status, simulated, children, lang, common, ad, unmoderated }) => {     

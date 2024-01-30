@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Trans, useTranslation } from "react-i18next";
 import { useEffect, useRef, useState } from "react";
 
-import { BRAND } from "../../constants/brand";
+import { BRAND } from "../../../constants/brand";
 
 const Terms = ({ show, mode, onSubmit, onClose }) => {   
     const { t }  = useTranslation();

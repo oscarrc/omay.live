@@ -1,7 +1,7 @@
 import { LOCALES } from "../../constants/locales"
 import { useTranslation } from 'react-i18next';
 
-const LanguageSelector = ({ lang }) => {
+const Language = ({ lang }) => {
     const { i18n } = useTranslation();
 
     const handleLanguageChange = (e) => {
@@ -18,4 +18,4 @@ const LanguageSelector = ({ lang }) => {
     )
 }
 
-export default LanguageSelector
+export default Language

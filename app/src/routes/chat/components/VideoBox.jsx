@@ -1,11 +1,11 @@
-import { AdAlt, Loader } from "../partials";
+import { AdAlt, Loader } from "../../../components/partials";
 import { useEffect, useRef, useState } from "react";
 
-import ADS from "../../constants/ads";
-import { useAdblockDetection } from "../../hooks/useAdblockDetection";
-import { useCookieConsent } from "../../hooks/useCookieConsent";
+import ADS from "../../../constants/ads";
+import { useAdblockDetection } from "../../../hooks/useAdblockDetection";
+import { useCookieConsent } from "../../../hooks/useCookieConsent";
 import { useTranslation } from "react-i18next";
-import useVast from "../../hooks/useVast";
+import useVast from "../../../hooks/useVast";
 
 const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmoderated, onAdStart, onAdEnd, onAdError }) => {
     const player = useRef(null);

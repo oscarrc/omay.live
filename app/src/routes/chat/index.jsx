@@ -1,6 +1,6 @@
-import { ChatBox, ChatControls, VideoBox } from "../../components/chat";
+import { ChatBox, ChatControls, VideoBox } from "./components";
 import { InterestInput, Toggle } from "../../components/partials";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import ADS from "../../constants/ads";
 import { Ad } from "../../components/partials";
