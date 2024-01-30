@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { AdblockDetectionProvider } from "./hooks/useAdblockDetection";
+import Chat from "./routes/chat"
 import { ChatProvider } from "./hooks/useChat";
 import { CookieConsentProvider } from "./hooks/useCookieConsent";
 import { DeviceProvider } from "./hooks/useDevice";
@@ -10,7 +11,7 @@ import Layout from "./components/layout";
 import { lazy } from "react";
 
 const App = () => {  
-  const Chat = lazy(() => import('./routes/chat'));
+  // const Chat = lazy(() => import('./routes/chat'));
   const Error = lazy(() => import('./routes/error'));
   const NotFound = lazy(() => import('./routes/error/404'));
   const Policies = lazy(() => import('./routes/policies'));
