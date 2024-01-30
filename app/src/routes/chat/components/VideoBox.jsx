@@ -2,6 +2,7 @@ import { AdAlt, Loader } from "../../../components/partials";
 import { useEffect, useRef, useState } from "react";
 
 import ADS from "../../../constants/ads";
+import Ad from "../../../components/ad";
 import { useAdblockDetection } from "../../../hooks/useAdblockDetection";
 import { useCookieConsent } from "../../../hooks/useCookieConsent";
 import { useTranslation } from "react-i18next";
@@ -62,7 +63,16 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
         <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
             <video ref={player} autoPlay={true} playsInline={true} muted={muted} className="h-full w-auto" />
             { loading && <Loader className="absolute h-full top-0 left-0" /> }
-            { withAds && 
+            {/* {
+                withAds && playAd &&
+                    <Ad 
+                        videoId={ADS.video[isUnmoderated ? "unmoderated" : "moderated"]}
+                        zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]}
+                        video={player}
+                        className="absolute w-full h-full top-0 left-0"
+                    />
+            } */}
+            { withAds &&                 
                 <div ref={container} className="absolute w-full h-full top-0 left-0">
                     {
                         playAd && (hasAdblock || !targeting) &&

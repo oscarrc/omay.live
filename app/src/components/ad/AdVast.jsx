@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const adVast = (videoRef, tagUrl, zoneId, className, onAdStarted, onAdCompleted, onAdError, onAdSkipped) => {
+const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdError, onAdSkipped, children) => {
     const [ adsManager, setAdsManager ] = useState(null);
     const [ adsContainer, setAdsContainer ] = useState(null);
     const containerRef = useRef(null);
@@ -37,7 +37,7 @@ const adVast = (videoRef, tagUrl, zoneId, className, onAdStarted, onAdCompleted,
 
         videoElement.addEventListener('ended', videoComplete);
         
-        adsRequest.adTagUrl = tagUrl + zoneId;
+        adsRequest.adTagUrl = import.meta.env.VITE_VAST_TAG + zoneId;
         adsRequest.linearAdSlotWidth = videoElement.clientWidth;
         adsRequest.linearAdSlotHeight = videoElement.clientHeight;
         adsRequest.nonLinearAdSlotWidth = videoElement.clientWidth;
@@ -111,4 +111,4 @@ const adVast = (videoRef, tagUrl, zoneId, className, onAdStarted, onAdCompleted,
     )
 }
 
-export default adVast
+export default AdVast

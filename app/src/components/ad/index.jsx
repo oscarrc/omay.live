@@ -1,12 +1,15 @@
+import { useEffect, useState } from "react";
+
 import AdAlt from "./AdAlt";
-import AdMain from "./AdMain"
+import AdMain from "./AdMain";
+import AdVast from "./AdVast";
 import { useAdblockDetection } from "../../hooks/useAdblockDetection";
 import { useCookieConsent } from "../../hooks/useCookieConsent";
-import { useEffect } from "react";
 
-const Ad = ({zoneId, keywords, sub, className, video}) => {    
+const Ad = ({zoneId, keywords, sub, className, video, videoId, listeners}) => {    
     const { cookieConsent: { targeting } } = useCookieConsent();
     const hasAdblock = useAdblockDetection();
+    const [ countdown, setCountdown ] = useState(0)
 
     useEffect(() => {
         if(!video || (!hasAdblock && targeting)) return;
@@ -28,13 +31,13 @@ const Ad = ({zoneId, keywords, sub, className, video}) => {
     }, [hasAdblock, targeting])
 
     if(video) return (
-        <AdVast {...video} >
+        <AdVast videoRef={video} zoneId={videoId} className={className} {...listeners}>
             {
                 (hasAdblock || !targeting) &&
                     <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full text-base-100 p-4 text-center">
-                        <AdAlt zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]} className="responsive justify-center items-center">
+                        <AdAlt zoneId={zoneId} className="responsive justify-center items-center">
                             {
-                                hasAdBlock && 
+                                hasAdblock && 
                                     <div className="text-base-100 text-center">
                                         <h4 className="text-2xl font-bold">{t("common.alerts.adblockdetected")}</h4>
                                         <p>{t("common.alerts.disableadblock")}</p>
