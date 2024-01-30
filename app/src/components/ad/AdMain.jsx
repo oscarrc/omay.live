@@ -30,7 +30,7 @@ const AdMain = ({zoneId, keywords, sub, className}) => {
     }, [zoneId])
 
     return (
-        <div className={`ad ${className}`}>
+        <div className={`ad flex ${className}`}>
             <ins 
                 className="adsbyexoclick"
                 data-zoneid={`${zoneId}`} 
