@@ -2,7 +2,6 @@ import { AdAlt, Loader } from "../../../components/partials";
 import { useEffect, useRef, useState } from "react";
 
 import ADS from "../../../constants/ads";
-import Ad from "../../../components/ad";
 import { useAdblockDetection } from "../../../hooks/useAdblockDetection";
 import { useCookieConsent } from "../../../hooks/useCookieConsent";
 import { useTranslation } from "react-i18next";
