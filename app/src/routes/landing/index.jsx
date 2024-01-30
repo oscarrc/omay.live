@@ -1,16 +1,14 @@
-import { Ad, AdAlt, Alert, InterestInput } from "../../components/partials";
+import { Alert, InterestInput } from "../../components/partials";
 import { BRAND, TRANSLITERATION } from "../../constants/brand";
 import { Trans, useTranslation } from 'react-i18next';
 
 import ADS from "../../constants/ads";
+import Ad from "../../components/ad";
 import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";
-import { IoHandRight } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Terms } from "./components";
-import { useAdblockDetection } from "../../hooks/useAdblockDetection";
 import { useChat } from "../../hooks/useChat";
-import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useDevice } from "../../hooks/useDevice";
 import { useEffect } from "react";
 
@@ -18,8 +16,6 @@ const Landing = () => {
     const { state: { tac, mode, interests }, dispatch, isBanned } = useChat();
     const { t } = useTranslation();
     const { isMobile } = useDevice();
-    const { cookieConsent: { targeting } } = useCookieConsent();
-    const hasAdblock = useAdblockDetection();
     
     useEffect(()=> {
         dispatch({type: "RESET"})
@@ -28,32 +24,12 @@ const Landing = () => {
     return (
         <>
             <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
-                {
-                    targeting && 
-                        <>
-                        <Ad 
-                            className="responsive" 
-                            zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
-                            keywords={Array.from(interests)} 
-                        />
-                        </>
-                }        
                 <div className="flex flex-col gap-8">
-                    {
-                        (!targeting || hasAdblock) &&
-                            <AdAlt 
-                                className="responsive justify-center" 
-                                zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
-                            >
-                                <Alert 
-                                    title={t("common.alerts.adblockdetected")}
-                                    text={t("common.alerts.disableadblock")}
-                                    icon={<IoHandRight className="text-neutral" />  }
-                                    color="warning"
-                                /> 
-                            </AdAlt>
-                            
-                    }
+                    <Ad 
+                        className="responsive justify-center" 
+                        zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
+                        keywords={Array.from(interests)} 
+                    />
                     <div className="prose md:prose-lg min-w-fit prose-h2:text-xl">
                         <h2 className="text-center">
                             <Trans i18nKey="landing.noapp">

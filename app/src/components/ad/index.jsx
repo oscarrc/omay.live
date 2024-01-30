@@ -1,5 +1,7 @@
 import AdAlt from "./AdAlt";
 import AdMain from "./AdMain"
+import { useAdblockDetection } from "../../hooks/useAdblockDetection";
+import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useEffect } from "react";
 
 const Ad = ({zoneId, keywords, sub, className, video}) => {    
@@ -23,7 +25,7 @@ const Ad = ({zoneId, keywords, sub, className, video}) => {
         video.onAdStarted && video.onAdStarted();
         
         return () => { clearTimeout(timer) }
-    }, [playAd, hasAdblock, targeting])
+    }, [hasAdblock, targeting])
 
     if(video) return (
         <AdVast {...video} >

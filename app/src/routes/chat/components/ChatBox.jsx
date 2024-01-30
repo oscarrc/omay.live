@@ -1,18 +1,13 @@
-import { Ad, AdAlt, Alert } from "../../../components/partials";
 import { useEffect, useRef } from "react";
 
 import ADS from "../../../constants/ads"
-import { IoHandRight } from "react-icons/io5";
-import { useAdblockDetection } from "../../../hooks/useAdblockDetection";
-import { useCookieConsent } from "../../../hooks/useCookieConsent";
+import Ad from "../../../components/ad";
 import { useDevice } from "../../../hooks/useDevice";
 import { useTranslation } from "react-i18next";
 
 const ChatBox = ({ messages, className, status, simulated, children, lang, common, ad, unmoderated }) => {     
     const { t } = useTranslation();    
     const { isMobile } = useDevice();
-    const { cookieConsent: { targeting } } = useCookieConsent();
-    const hasAdblock = useAdblockDetection();
     const box = useRef(null);
 
     useEffect(() => {
@@ -25,21 +20,11 @@ const ChatBox = ({ messages, className, status, simulated, children, lang, commo
     return (
         <div ref={box} className={`bg-base-100 sm:rounded-lg shadow-inner py-2 pb-4 px-4 ${className}`}>
             <div className="flex flex-col flex-1 gap-4">
-                { ad && targeting && 
-                    <Ad className="responsive" 
+                { ad && 
+                    <Ad className="responsive justify-start" 
                         zoneId={ADS.banner[unmoderated ? "unmoderated" : "moderated"][isMobile ? "mobile" : "desktop"]} 
                         keywords={common} 
                     /> 
-                }
-                { ad && (hasAdblock || !targeting) &&
-                        <AdAlt  className="responsive justify-start" zoneId={ADS.banner[unmoderated ? "unmoderated" : "moderated"][isMobile ? "mobile" : "desktop"]} >
-                            <Alert 
-                                title={t("common.alerts.adblockdetected")}
-                                text={t("common.alerts.disableadblock")}
-                                icon={<IoHandRight className="text-neutral" />  }
-                                color="warning"
-                            />
-                        </AdAlt>
                 }
                 <p><strong>{ t(`chat.${status}`) }</strong></p>
                 <div>
