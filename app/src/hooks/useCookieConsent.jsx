@@ -40,7 +40,9 @@ const CookieConsentProvider = ({children}) => {
         let v = JSON.stringify(value);
         let expires = new Date();
         
-        expires.setFullYear(expires.getFullYear() + 1);
+        if(value.targeting) expires.setFullYear(expires.getFullYear() + 1);
+        else expires.setDate(expires.getDate() + 7);
+
         setCookieConsent(value);
         setCookie("cc", v, { expires });
     }
@@ -50,8 +52,8 @@ const CookieConsentProvider = ({children}) => {
         
         cc = cc ? JSON.parse(cc) : undefined;
 
-        if(cc?.targeting) setCookieConsent(cc);
-        else setManage(true);
+        if(cc) setCookieConsent(cc);    
+        else setManage(true); 
     }, [])
 
     return (
