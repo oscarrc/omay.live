@@ -34,7 +34,7 @@ const Ad = ({zoneId, keywords, sub, className, video, videoId, listeners}) => {
     }, [hasAdblock, targeting])
     
     if(video) return (
-        <AdVast videoRef={video} zoneId={videoId} className={className} >
+        <AdVast videoRef={video} zoneId={videoId} className={className} {...listeners}>
             {
                 (hasAdblock || !targeting) &&
                     <div className="flex flex-col gap-4 justify-center items-center relative h-full w-full p-4 text-center">
@@ -55,8 +55,8 @@ const Ad = ({zoneId, keywords, sub, className, video, videoId, listeners}) => {
                     </div>
             }
         </AdVast>
-    )   
-
+    )
+    
     if(targeting && !hasAdblock) return <AdMain zoneId={zoneId} keywords={keywords} sub={sub} className={className} />
 
     return (
