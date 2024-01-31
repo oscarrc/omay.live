@@ -5,7 +5,7 @@ const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdErr
     const [ adsContainer, setAdsContainer ] = useState(null);
     const containerRef = useRef(null);
 
-    const loadAd = (cb) => {
+    const loadAd = () => {
         let width = videoRef.current.clientWidth;
         let height = videoRef.current.clientHeight;
 
@@ -16,7 +16,6 @@ const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdErr
             adsManager.start();
         } catch (adError) {
             console.log("AdsManager could not be started");
-            cb && cb();
         }
     }
 
@@ -87,7 +86,8 @@ const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdErr
         }
     }, [adsManager])
 
-    useEffect(() => {
+    useEffect(() => {        
+        if(!adsManager) return;
         loadAd();
         onAdStarted && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStarted);
         onAdCompleted && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdCompleted);
@@ -95,7 +95,7 @@ const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdErr
         onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
 
         return () => {
-            if(!withAds || !adsManager) return;
+            if(!adsManager) return;
             onAdStarted && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStarted);
             onAdEnded && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnded);
             onAdSkipped && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdSkipped);

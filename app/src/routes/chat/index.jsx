@@ -113,9 +113,9 @@ const Chat = () => {
                             withAds={true} 
                             playAd={ isDisconnected || isAdPlaying }
                             isUnmoderated={isUnmoderated}
-                            onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
-                            onAdEnd={() => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }                  
-                            onAdError={ () =>  dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }
+                            // onAdStart={ () => dispatch({ type: "STATUS", payload: STATUS.ADPLAYING })}
+                            // onAdEnd={() => dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }                  
+                            // onAdError={ () =>  dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }
                         />
                         <VideoBox 
                             source={localStream}

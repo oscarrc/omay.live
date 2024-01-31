@@ -3,64 +3,67 @@ import { useEffect, useRef, useState } from "react";
 
 import ADS from "../../../constants/ads";
 import Ad from "../../../components/ad"
+import { STATUS } from "../../../constants/chat";
 import { useAdblockDetection } from "../../../hooks/useAdblockDetection";
+import { useChat } from "../../../hooks/useChat";
 import { useCookieConsent } from "../../../hooks/useCookieConsent";
 import { useTranslation } from "react-i18next";
 import useVast from "../../../hooks/useVast";
 
 const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmoderated, onAdStart, onAdEnd, onAdError }) => {
     const player = useRef(null);
-    const container = useRef(null);
-    const hasAdblock = useAdblockDetection();
-    const { cookieConsent: { targeting } } = useCookieConsent();
-    const [ countdown, setCountDown ] = useState(10);
-    const { t } = useTranslation()
-    const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, ADS.video[isUnmoderated ? "unmoderated" : "moderated"] )
+    const { dispatch } = useChat();
+    // const container = useRef(null);
+    // const hasAdblock = useAdblockDetection();
+    // const { cookieConsent: { targeting } } = useCookieConsent();
+    // const [ countdown, setCountDown ] = useState(10);
+    // const { t } = useTranslation()
+    // const { adsManager, loadAd } = useVast(player, container, import.meta.env.VITE_VAST_TAG, ADS.video[isUnmoderated ? "unmoderated" : "moderated"] )
     
     useEffect(() => {
         player.current.srcObject = source;
     }, [source])
 
-    useEffect(() => {
-        if(!playAd || (!hasAdblock && targeting)) return;
+    // useEffect(() => {
+    //     if(!playAd || (!hasAdblock && targeting)) return;
         
-        let count = import.meta.env.VITE_ADBLOCK_TIMER * 100
-        let timer = setInterval(() => {
-            count -= 1
-            if (count > 0) setCountDown(count - 1);
-            else {
-                clearInterval(timer);
-                setCountDown(10);
-                onAdEnd();
-            }
-        }, 10);
+    //     let count = import.meta.env.VITE_ADBLOCK_TIMER * 100
+    //     let timer = setInterval(() => {
+    //         count -= 1
+    //         if (count > 0) setCountDown(count - 1);
+    //         else {
+    //             clearInterval(timer);
+    //             setCountDown(10);
+    //             onAdEnd();
+    //         }
+    //     }, 10);
 
-        onAdStart();
-        return () => { clearTimeout(timer) }
-    }, [playAd, hasAdblock, targeting])
+    //     onAdStart();
+    //     return () => { clearTimeout(timer) }
+    // }, [playAd, hasAdblock, targeting])
 
-    useEffect(() => {
-        if(!withAds || !adsManager || !targeting) return;
-        if(!playAd) container.current.replaceChildren();
+    // useEffect(() => {
+    //     if(!withAds || !adsManager || !targeting) return;
+    //     if(!playAd) container.current.replaceChildren();
 
-        loadAd();
-        onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
-        onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
-        onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-        !hasAdblock && onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+    //     loadAd();
+    //     onAdStart && adsManager.addEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
+    //     onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
+    //     onAdEnd && adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
+    //     !hasAdblock && onAdError && adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
 
-        return () => {
-            if(!withAds || !adsManager) return;
-            onAdStart && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
-            onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
-            onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
-            !hasAdblock && onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
-            adsManager.destroy();
-        }
-    }, [playAd, withAds, adsManager, targeting])
+    //     return () => {
+    //         if(!withAds || !adsManager) return;
+    //         onAdStart && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStart);
+    //         onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnd);
+    //         onAdEnd && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdEnd);
+    //         !hasAdblock && onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
+    //         adsManager.destroy();
+    //     }
+    // }, [playAd, withAds, adsManager, targeting])
 
     return (
-        <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
+        <div className={`flex relative items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
             <video ref={player} autoPlay={true} playsInline={true} muted={muted} className="h-full w-auto" />
             { loading && <Loader className="absolute h-full top-0 left-0" /> }
             {
@@ -69,7 +72,13 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
                         videoId={ADS.video[isUnmoderated ? "unmoderated" : "moderated"]}
                         zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]}
                         video={player}
-                        className="absolute w-full h-full top-0 left-0"
+                        listeners={{
+                            onAdStarted: () => { dispatch({ type: "STATUS", payload: STATUS.ADPLAYING }) },
+                            onAdCompleted: () => { dispatch({ type: "STATUS", payload: STATUS.STOPPED }) },
+                            onAdSkipped: () => { dispatch({ type: "STATUS", payload: STATUS.STOPPED }) },
+                            onAdError: () => { dispatch({ type: "STATUS", payload: STATUS.STOPPED }) }
+                        }}
+                        className="absolute w-full h-full top-0 left-0 text-base-100"
                     />
             }
             {/* { withAds &&                 

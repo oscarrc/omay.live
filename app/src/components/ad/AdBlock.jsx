@@ -1,4 +1,5 @@
 import { Alert } from "../partials";
+import { IoHandRight } from "react-icons/io5"
 import { useTranslation } from "react-i18next"
 
 const AdBlock = () => {
