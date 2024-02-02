@@ -15,7 +15,7 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
     }, [source])
 
     return (
-        <div className={`flex relative items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
+        <div className={`flex items-center justify-center bg-neutral sm:rounded-lg shadow-inner overflow-hidden ${className}`}>            
             <video ref={player} autoPlay={true} playsInline={true} muted={muted} className="h-full w-auto" />
             { loading && <Loader className="absolute h-full top-0 left-0" /> }
             {
