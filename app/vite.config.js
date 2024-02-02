@@ -53,7 +53,8 @@ export default ({ mode }) => {
             ],
         },
         build: {
-            chunkSizeWarningLimit: 600
+            chunkSizeWarningLimit: 600,
+            outDir: "../www"
         }
     })
 }
