@@ -24,7 +24,7 @@ const Landing = () => {
     return (
         <>
             <section className="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
-                <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-8 max-w-full">
                     <Ad 
                         className="responsive justify-center" 
                         zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
