@@ -21,8 +21,8 @@ const VideoBox = ({ source, muted, className, loading, withAds, playAd, isUnmode
             {
                 withAds && playAd &&
                     <Ad
-                        videoId={ADS.video[isUnmoderated ? "unmoderated" : "moderated"]}
-                        zoneId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]}
+                        zoneId={ADS.video[isUnmoderated ? "unmoderated" : "moderated"]}
+                        fallbackId={ADS.videoBanner[isUnmoderated ? "unmoderated" : "moderated"]}
                         video={player}
                         listeners={{
                             onAdStarted: () => { dispatch({ type: "STATUS", payload: STATUS.ADPLAYING }) },

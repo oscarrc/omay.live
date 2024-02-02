@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdError, onAdSkipped, children) => {
+const AdVast = ({videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdError, onAdSkipped, children}) => {
     const [ adsManager, setAdsManager ] = useState(null);
     const [ adsContainer, setAdsContainer ] = useState(null);
     const containerRef = useRef(null);
@@ -97,7 +97,7 @@ const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdErr
         return () => {
             if(!adsManager) return;
             onAdStarted && adsManager.removeEventListener(google.ima.AdEvent.Type.STARTED, onAdStarted);
-            onAdEnded && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdEnded);
+            onAdCompleted && adsManager.removeEventListener(google.ima.AdEvent.Type.COMPLETE, onAdCompleted);
             onAdSkipped && adsManager.removeEventListener(google.ima.AdEvent.Type.SKIPPED, onAdSkipped);
             onAdError && adsManager.removeEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError);
             adsManager.destroy();
@@ -105,8 +105,7 @@ const AdVast = (videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdErr
     }, [adsManager])
 
     return (
-        <div ref={containerRef} className={className}>  
-            { children }
+        <div ref={containerRef} className={className}>
         </div>
     )
 }
