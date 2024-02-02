@@ -16,8 +16,8 @@ router.post("/chat", ChatController.find.bind(ChatController))
 router.get("/chat", ChatController.count.bind(ChatController))
 
 router.get("/", (req,res) => {   
-    const file = join(__dirname, "../www", "index.html");
-
+    const file = join(__dirname, "../../www", "index.html");
+    console.log(file)
     process.env.NODE_ENV === "production" && fs.existsSync(file) ? 
         res.sendFile(file) :
         res.send("OK");
