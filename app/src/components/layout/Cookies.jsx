@@ -26,7 +26,7 @@ const Cookies = ({ show, onSubmit }) => {
                     <button onClick={setCookieConsent} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
                 <div className="flex flex-col gap-4">
-                    <h3 className="font-bold text-lg">{t("common.cookies.manage")}</h3>                             
+                    <h3 className="font-bold text-lg">{t("common.cookies.notice")}</h3>                             
                     <p>           
                         <Trans i18nKey={"common.cookies.message"}>
                             We use cookies to improve your expirence on the site, however you can opt-out. By doing so <strong>you will see ads more frequently</strong> since we won't be able to track whether or not you saw them already.

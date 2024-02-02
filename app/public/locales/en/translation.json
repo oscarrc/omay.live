@@ -58,8 +58,9 @@
         "terms": "Terms and conditions",
         "privacy": "Privacy policy",
         "guidelines": "Community guidelines",
+        "managecookies": "Manage cookies",
         "cookies": {
-            "manage": "This website uses cookies",
+            "notice": "This website uses cookies",
             "message": "We use cookies to improve your expirence on the site, however you can opt-out. By doing so <1>you will see ads more frequently</1> since we won't be able to track whether or not you saw them already.",
             "privacy": "You can learn more about how we use cookies on our <1>Privacy Policy</1>",
             "strictlynecessary": "Strictly necessary",

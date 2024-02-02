@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
                 <Link to={"policies/terms-and-conditions"}>{ t("common.terms")}</Link>
                 <Link to={"policies/privacy-policy"}>{ t("common.privacy")}</Link>
                 <Link to={"policies/community-guidelines"}>{ t("common.guidelines")}</Link>
-                <button onClick={() => setManage(true) } className="btn btn-xs btn-ghost btn-circle"><PiCookie className="h-4 w-4" /></button>
+                <button onClick={() => setManage(true) } className="">{ t("common.managecookies")}s</button>
             </Footer>
         </>
     )
