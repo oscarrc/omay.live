@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useRef } from "react";
 
 import{ AiOutlineClose } from "react-icons/ai";
-import { useTranslation } from "react-i18next";
 
-const InterestInput = ({ values, onAdd, onDelete, className }) => {
-    const { t } = useTranslation();
+const TagInput = ({ values, onAdd, onDelete, className, placeholder }) => {
     const inputRef = useRef(null);
 
     const handleTag = useCallback((e) => {        
@@ -29,10 +27,10 @@ const InterestInput = ({ values, onAdd, onDelete, className }) => {
                 {
                     Array.from(values).map((v,i) => <span key={i} className="badge badge-primary badge-lg">{v} <button onClick={()=>onDelete(v)}><AiOutlineClose className="ml-1 h-3 w-3" /></button></span> )
                 }
-                <input ref={inputRef} type="text" placeholder={t("common.addinterests")} className={`input focus:outline-none p-0 h-full flex-1 ${className}`} />
+                <input ref={inputRef} type="text" placeholder={placeholder} className={`input focus:outline-none p-0 h-full flex-1 ${className}`} />
             </div>
         </div>
     )
 }
 
-export default InterestInput;
+export default TagInput;

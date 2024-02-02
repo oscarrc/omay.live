@@ -1,15 +1,11 @@
-import Ad from "./Ad";
-import AdAlt from "./AdAlt";
 import Alert from "./Alert";
-import InterestInput from "./InterestInput";
+import TagInput from "./TagInput";
 import Loader from "./Loader";
 import Toggle from "./Toggle";
 
 export {
-    Ad,
-    AdAlt,
     Alert,
-    InterestInput,
+    TagInput,
     Toggle,
     Loader
 }

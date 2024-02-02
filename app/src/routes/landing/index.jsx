@@ -1,4 +1,4 @@
-import { Alert, InterestInput } from "../../components/partials";
+import { Alert, TagInput } from "../../components/partials";
 import { BRAND, TRANSLITERATION } from "../../constants/brand";
 import { Trans, useTranslation } from 'react-i18next';
 
@@ -72,11 +72,12 @@ const Landing = () => {
                     <div className="flex flex-col md:flex-row gap-8 justify-between">
                         <div className="flex flex-col gap-3 items-center">
                             <span>{ t("common.talkabout") }</span>
-                            <InterestInput
+                            <TagInput
                                 values={interests} 
                                 onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
                                 onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
                                 className="md:max-w-1/4 min-w-1/4"
+                                placeholder={t("common.addinterests")}
                             />
                         </div>
                         <div className="flex flex-col gap-2 items-center">

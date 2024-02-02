@@ -1,5 +1,5 @@
 import { ChatBox, ChatControls, VideoBox } from "./components";
-import { InterestInput, Toggle } from "../../components/partials";
+import { TagInput, Toggle } from "../../components/partials";
 import { useCallback, useEffect, useMemo } from "react";
 
 import ADS from "../../constants/ads";
@@ -146,11 +146,12 @@ const Chat = () => {
                                         { t("chat.interests") }
                                     </Toggle>
                                     <div className="flex flex-col gap-2 order-3">
-                                        <InterestInput
+                                        <TagInput
                                             values={interests} 
                                             onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
                                             onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
                                             className="w-full"
+                                            placeholder={t("common.addinterests")}
                                         />
                                         { isDisconnected && auto && isMouseMoving && !isMobile &&
                                             <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
