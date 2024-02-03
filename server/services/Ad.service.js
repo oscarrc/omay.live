@@ -27,12 +27,6 @@ class AdService{
             })
         )
 
-        // await Promise.all(
-        //     Object.keys(ads.renderers).forEach( async (k) => {
-        //         let res = await fetch(z.data.image, { mode : 'no-cors' });
-        //     })
-        // )
-
         return ads;
     }
 }

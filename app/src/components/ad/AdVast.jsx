@@ -36,7 +36,7 @@ const AdVast = ({videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdEr
 
         videoElement.addEventListener('ended', videoComplete);
         
-        adsRequest.adTagUrl = import.meta.env.VITE_VAST_TAG + zoneId;
+        adsRequest.adTagUrl = `${import.meta.env.VITE_VAST_TAG}?idzone=${zoneId}`;
         adsRequest.linearAdSlotWidth = videoElement.clientWidth;
         adsRequest.linearAdSlotHeight = videoElement.clientHeight;
         adsRequest.nonLinearAdSlotWidth = videoElement.clientWidth;

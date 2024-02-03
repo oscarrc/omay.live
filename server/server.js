@@ -34,7 +34,8 @@ const Server = (router, production) => {
         .use(cors())
         .use(router)        
 
-    production && app.use(express.static(join(__dirname, "../../www")))
+    production && app.use('/', express.static(join(__dirname, "../../www")))
+                     .use('/model', express.static(join(__dirname, "../../model")))
 
     return app
 }
