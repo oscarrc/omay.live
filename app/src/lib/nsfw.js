@@ -5,7 +5,7 @@ const loadNSFW = async () => {
         let nsfw = await nsfwjs.load('indexeddb://model')
         return nsfw;
     }catch{            
-        const load = import.meta.env.PROD ? await nsfwjs.load(`${import.meta.env.VITE_SERVER_URL}/model/`) : await nsfwjs.load();
+        const load = import.meta.env.PROD ? await nsfwjs.load(`${import.meta.env.VITE_SERVER_URL}/model/`, {size: 299}) : await nsfwjs.load();
         load.model.save('indexeddb://model');
         return load;
     }
