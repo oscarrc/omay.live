@@ -106,6 +106,7 @@ const AdVast = ({videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdEr
 
     return (
         <div ref={containerRef} className={className}>
+            { children }
         </div>
     )
 }
