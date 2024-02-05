@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
 
 import { VitePWA } from 'vite-plugin-pwa'
+import { compression } from 'vite-plugin-compression2'
 import mdx from '@mdx-js/rollup'
 import react from '@vitejs/plugin-react'
 import { visualizer } from "rollup-plugin-visualizer";
@@ -36,7 +37,8 @@ export default ({ mode }) => {
                         }
                     ]
                 }
-            })
+            }),
+            compression()
         ],
         server: {    
             open: true, 
