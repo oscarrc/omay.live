@@ -2,7 +2,7 @@
   "landing": {
     "noapp": "Wonhia app bi a wode bedi dwuma {{ BRAND }} wɔ wo fon anaa wo tablɛt so! ",
     "intro": "{{BRAND}} ({{TRANSLITERATION}}) yɛ ɔkwan pa a wobɛfa so ahyia nnamfo foforo.  {{ BRAND }}, yɛpaw obi foforo kwa na yɛma wokasa mmiako mmiako.   <6>Nsɛm ne nhyehyɛe ahorow</6>, ne <8>Mpɔtam hɔ akwankyerɛ</8> for info fa de do's ne don'ts wɔ dwumadie mu {{ BRAND }}. {{ BRAND }} video chat yɛ AI moderated nanso moderation biara nni hɔ a ɛyɛ pɛpɛɛpɛ.  {{ BRAND }}",
-    "disclaimer": "<0>Ɛsɛ sɛ wudi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo man mu) anaa nea ɛboro saa ansa na wode adi dwuma {{BRAND}}</0>.  {{BRAND}}'s <4>Nsɛm ne nhyehyɛe ahorow</4> sɛ wopɛ info pii a.  <6>https://www.connectsafely.org/controls</6> saa ara nso na mmeae afoforo nso te.",
+    "disclaimer": "<0>Ɛsɛ sɛ wudi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo man mu) anaa nea ɛboro saa ansa na wode adi dwuma {{BRAND}}</0>.  {{BRAND}}'s <4>Nsɛm ne nhyehyɛe ahorow</4> sɛ wopɛ info pii a.  <6>https://www.nkitahodi ahobammɔ.org/ahyɛde ahorow</6> saa ara nso na mmeae afoforo nso te.",
     "pleaseleave": "Yɛsrɛ sɛ fi Lamdazle na kɔ mpanyimfo beae bi mmom sɛ ɛno ne nea worehwehwɛ na woadi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo tumidi mu) anaa nea ɛboro saa a.",
     "termscheck": "Sɛ wohyɛ adaka no mu a, wugye tom sɛ woasan ahwɛ agree to be bound by {{BRAND}}'s <3>Nsɛm ne nhyehyɛe ahorow</3>, . <5>Kokoam nsɛm ho nhyehyɛe</5> ne <7>Mpɔtam hɔ akwankyerɛ</7>.",
     "agecheck": "Worentumi mfa saa dwumadie yi nni dwuma sɛ wo nni mfeɛ 18 anaa woadi mfeɛ a ɛfata wɔ mmara kwan so wɔ wo man mu a.  <1>Nsɛm ne nhyehyɛe ahorow</1> sɛ wopɛ info pii a. <3>Sɛ wohyɛ adaka no mu a, wugye tom na wugyina hɔ ma sɛ woadi mfe 18 (anaasɛ mmara kwan so dodow no ara wɔ wo tumidi mu) anaa nea ɛboro saa.</3>",
@@ -41,13 +41,15 @@
     "report": "Amaneɛbɔ",
     "you": "Wo",
     "stranger": "Ɔhɔhoɔ",
-    "mousemoving": "Mouse retu mmirika. "
+    "mousemoving": "Mouse retu mmirika. ",
+    "adplaying": "Ad bi rebɔ, yɛsrɛ wo twɛn..."
   },
   "common": {
     "startchatting": "Fi ase bɔ nkɔmmɔ",
     "talkabout": "Dɛn na wopɛ sɛ woka ho asɛm?",
     "addinterests": "Fa w’anigyede ka ho (Optional) .",
     "video": "Video",
+    "accept": "Gye to mu",
     "text": "Atwerɛ",
     "switchto": "Dan kɔ",
     "unmoderated": "Ɔfã a wɔanhwɛ so",
@@ -56,11 +58,21 @@
     "terms": "Nsɛm ne nhyehyɛe ahorow",
     "privacy": "Kokoam nsɛm ho nhyehyɛe",
     "guidelines": "Mpɔtam hɔ akwankyerɛ",
+    "managecookies": "Hwɛ kukisi ahorow so",
+    "cookies": {
+      "notice": "Wɛbsaet yi de cookies di dwuma",
+      "message": "Yɛde cookies di dwuma de ma wo bere tenten tu mpɔn wɔ wɛbsaet no so, nanso wubetumi agyae.  <1>wobɛtaa ahu aguade ho dawurubɔ ahorow</1> efisɛ yɛrentumi nhwɛ sɛ ebia wuhuu wɔn dedaw anaasɛ wunhuu wɔn dedaw.",
+      "privacy": "Wubetumi asua pii afa sɛnea yɛde cookies di dwuma wɔ yɛn... <1>Nsɛm a Wɔde Sie</1>",
+      "strictlynecessary": "Ɛho hia katee",
+      "targeting": "Nneɛma a wɔde si wɔn ani so"
+    },
     "alerts": {
       "monitored": "Wɔhwɛ video so",
       "keepclean": "Ma ɛho tew na boa denam NSFW nneyɛe a wobɛbɔ ho amanneɛ so",
       "banned": "Wɔabara wo kɔmputa/network",
-      "banreason": "Esiane suban bɔne nti. "
+      "banreason": "Esiane suban bɔne nti. ",
+      "adblockdetected": "Ad block a wɔahu",
+      "disableadblock": "Dawurubɔ ahorow ma yetumi yɛ yɛn som adwuma no. "
     },
     "home": "Fie"
   },

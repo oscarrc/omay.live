@@ -41,13 +41,15 @@
     "report": "Momarandu",
     "you": "Nde",
     "stranger": "Hekomarãva",
-    "mousemoving": "Ratón omýi hína. "
+    "mousemoving": "Ratón omýi hína. ",
+    "adplaying": "Oñembosarái hína peteĩ anuncio, eha'arõmi..."
   },
   "common": {
     "startchatting": "Eñepyrũ eñemongeta",
     "talkabout": "Mbaʼérehepa reñeʼẽse?",
     "addinterests": "Emoĩ umi mba'e ndegustáva (Opcional) .",
     "video": "Techarã",
+    "accept": "Moneĩ",
     "text": "Maranduhai",
     "switchto": "Oñemoambue haguã",
     "unmoderated": "Sección no moderada",
@@ -56,11 +58,21 @@
     "terms": "Umi término ha condición rehegua",
     "privacy": "Política privacidad rehegua",
     "guidelines": "Komunida rembiaporã",
+    "managecookies": "Emohenda umi cookie",
+    "cookies": {
+      "notice": "Ko página web oipuru cookies",
+      "message": "Roipuru cookies romoporãve hag̃ua ne expirencia pe sitio-pe, jepémo upéicha ikatu resẽ.  <1>rehecháta py’ỹive umi anuncio</1> ndaikatumo’ãigui rojapo seguimiento rehechámapa térã nahániri.",
+      "privacy": "Ikatu reikuaave mba’éichapa roipuru umi cookie ore... <1>Polítika Privasida rehegua</1>",
+      "strictlynecessary": "Tekotevêterei",
+      "targeting": "Ojepytasóva"
+    },
     "alerts": {
       "monitored": "Ojesareko video rehe",
       "keepclean": "Eñongatu ipotĩ ha eipytyvõ emombe’úvo NSFW reko",
       "banned": "Nde komputadóra/red oñembotove",
-      "banreason": "Teko vai rupi. "
+      "banreason": "Teko vai rupi. ",
+      "adblockdetected": "Ojehechakuaa bloque de anuncios",
+      "disableadblock": "Umi anuncio oheja oréve romongu’e ore servicio. "
     },
     "home": "Óga"
   },

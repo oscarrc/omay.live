@@ -4,7 +4,7 @@
     "intro": "{{BRAND}} ({{TRANSLITERATION}}) iku cara sing apik kanggo ketemu kanca anyar.  {{ BRAND }}, kita milih wong liya kanthi acak lan ngidini sampeyan ngomong siji-siji.   <6>Syarat-syarat lan kahanan</6>, lan <8>Pedoman masyarakat</8> kanggo informasi babagan apa sing kudu ditindakake lan ora bisa digunakake {{ BRAND }}. {{ BRAND }} video chatting AI moderat nanging ora moderat sampurna.  {{ BRAND }}",
     "disclaimer": "<0>Sampeyan kudu 18 (utawa mayoritas legal ing yurisdiksi) utawa lawas kanggo nggunakake {{BRAND}}</0>.  {{BRAND}}'s <4>Syarat-syarat lan kahanan</4> kanggo informasi luwih lengkap.  <6>https://www.connectsafely.org/controls</6> uga situs liyane.",
     "pleaseleave": "Mangga ninggalake Lamdazle lan ngunjungi situs diwasa tinimbang yen iku apa sing looking for lan sampeyan 18 (utawa mayoritas legal ing yurisdiksi) utawa lawas.",
-    "termscheck": "Kanthi mriksa kothak, sampeyan ngakoni yen sampeyan wis mriksa lan setuju kanggo diikat {{BRAND}}'s <3>Syarat-syarat lan kahanan</3>, <5>Kebijakan privasi</5> lan <7>Pedoman masyarakat</7>.",
+    "termscheck": "Kanthi mriksa kothak, sampeyan ngakoni yen sampeyan wis mriksa lan setuju kanggo diikat {{BRAND}}'s <3>Syarat-syarat lan kahanan</3>, <5>Kabijakan privasi</5> lan <7>Pedoman masyarakat</7>.",
     "agecheck": "Sampeyan bisa uga ora nggunakake layanan iki yen sampeyan ana ing sangisore 18 taun utawa umur mayoritas legal ing yurisdiksi.  <1>Syarat-syarat lan kahanan</1> kanggo informasi luwih lengkap. <3>Kanthi mriksa kothak kasebut, sampeyan ngakoni lan makili manawa sampeyan umur 18 taun (utawa mayoritas sah ing yurisdiksi sampeyan) utawa luwih lawas.</3>",
     "acceptandcontinue": "Nampa lan terus"
   },
@@ -41,26 +41,38 @@
     "report": "Laporan",
     "you": "Sampeyan",
     "stranger": "wong liyo",
-    "mousemoving": "Mouse obah. "
+    "mousemoving": "Mouse obah. ",
+    "adplaying": "Ana iklan lagi diputer, tulung ngenteni..."
   },
   "common": {
     "startchatting": "Miwiti ngobrol",
     "talkabout": "Apa sing arep diomongake?",
     "addinterests": "Tambah kapentingan sampeyan (Opsional)",
     "video": "Video",
+    "accept": "Nampa",
     "text": "Teks",
     "switchto": "Ngalih menyang",
     "unmoderated": "Bagean sing ora dimoderasi",
     "or": "utawa",
     "allrightsreserved": "Kabeh hak dilindhungi undhang-undhang",
     "terms": "Syarat-syarat lan kahanan",
-    "privacy": "Kebijakan privasi",
+    "privacy": "Kabijakan privasi",
     "guidelines": "Pedoman masyarakat",
+    "managecookies": "Ngatur cookie",
+    "cookies": {
+      "notice": "Situs web iki nggunakake cookie",
+      "message": "Kita nggunakake cookie kanggo nambah kadaluwarsa ing situs, nanging sampeyan bisa milih metu.  <1>sampeyan bakal weruh iklan luwih kerep</1> amarga kita ora bakal bisa nglacak apa sampeyan wis weruh utawa ora.",
+      "privacy": "Sampeyan bisa mangerteni sing luwih lengkap babagan carane kita nggunakake cookie ing kita <1>Kebijakan Privasi</1>",
+      "strictlynecessary": "Perlu banget",
+      "targeting": "nargetake"
+    },
     "alerts": {
       "monitored": "Video dipantau",
       "keepclean": "Tansah resik lan mbantu kanthi nglaporake prilaku NSFW",
       "banned": "Komputer/jaringan sampeyan wis dilarang",
-      "banreason": "Amarga tumindak ala. "
+      "banreason": "Amarga tumindak ala. ",
+      "adblockdetected": "Blok iklan dideteksi",
+      "disableadblock": "Iklan ngidini kita mbukak layanan kita. "
     },
     "home": "Ngarep"
   },

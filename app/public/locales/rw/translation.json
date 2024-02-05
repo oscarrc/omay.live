@@ -5,7 +5,7 @@
     "disclaimer": "<0>Ugomba kuba ufite imyaka 18 (cyangwa ubwinshi bwemewe nububasha bwawe) cyangwa mukuru kugirango ukoreshe {{BRAND}}</0>.  {{BRAND}}'s <4>Amategeko n'amabwiriza</4> kubindi bisobanuro.  <6>https://www.connectsafely.org/controls</6> kimwe nizindi mbuga.",
     "pleaseleave": "Nyamuneka va Lamdazle hanyuma usure urubuga rwabantu bakuru aho niba aribyo urimo gushaka kandi ufite imyaka 18 (cyangwa benshi mubyemewe mububasha bwawe) cyangwa urengeje imyaka.",
     "termscheck": "Mugenzura agasanduku wemera ko wasuzumye icyemezo cyo kubahiriza {{BRAND}}'s <3>Amategeko n'amabwiriza</3>, <5>Politiki y’ibanga</5> na <7>Amabwiriza y'abaturage</7>.",
-    "agecheck": "Ntushobora gukoresha iyi serivisi niba uri munsi yimyaka 18 cyangwa imyaka yubukure bwemewe nububasha bwawe.  <1>Amategeko n'amabwiriza</1> kubindi bisobanuro. <3>Mugenzura agasanduku wemera kandi uhagarariye ko ufite imyaka 18 (cyangwa ubwinshi bwemewe mububasha bwawe) cyangwa urengeje imyaka.</3>",
+    "agecheck": "Ntushobora gukoresha iyi serivisi niba uri munsi yimyaka 18 cyangwa imyaka yubukure bwemewe nububasha bwawe.  <1>Amategeko n'amabwiriza</1> kubindi bisobanuro. <3>Mugenzura agasanduku wemera kandi uhagarariye ko ufite imyaka 18 (cyangwa ubwinshi bwemewe nububasha bwawe) cyangwa urengeje imyaka.</3>",
     "acceptandcontinue": "Emera kandi ukomeze"
   },
   "chat": {
@@ -41,26 +41,38 @@
     "report": "Raporo",
     "you": "Wowe",
     "stranger": "Umunyamahanga",
-    "mousemoving": "Imbeba iragenda. "
+    "mousemoving": "Imbeba iragenda. ",
+    "adplaying": "Amatangazo arimo gukina, nyamuneka utegereze ..."
   },
   "common": {
     "startchatting": "Tangira kuganira",
     "talkabout": "Urashaka kuvuga iki?",
     "addinterests": "Ongeraho inyungu zawe (Bihitamo)",
     "video": "Video",
+    "accept": "Emera",
     "text": "Inyandiko",
-    "switchto": "Hindukira kuri",
+    "switchto": "Hindura",
     "unmoderated": "Igice kidahinduwe",
     "or": "cyangwa",
     "allrightsreserved": "Uburenganzira bwose burabitswe",
     "terms": "Amategeko n'amabwiriza",
     "privacy": "Politiki y’ibanga",
     "guidelines": "Amabwiriza y'abaturage",
+    "managecookies": "Gucunga kuki",
+    "cookies": {
+      "notice": "Uru rubuga rukoresha kuki",
+      "message": "Dukoresha kuki kugirango tunoze igihe cyawe kurubuga, icyakora urashobora guhitamo.  <1>uzabona amatangazo kenshi</1> kubera ko tutazashobora gukurikirana niba utarababonye.",
+      "privacy": "Urashobora kwiga byinshi kubyerekeranye nuburyo dukoresha kuki kuri twe <1>Politiki Yibanga</1>",
+      "strictlynecessary": "Birakenewe rwose",
+      "targeting": "Intego"
+    },
     "alerts": {
       "monitored": "Video irakurikiranwa",
       "keepclean": "Komeza kugira isuku kandi ufashe kumenyesha imyitwarire ya NSFW",
       "banned": "Mudasobwa yawe / umuyoboro wawe warahagaritswe",
-      "banreason": "Kubera imyitwarire mibi. "
+      "banreason": "Kubera imyitwarire mibi. ",
+      "adblockdetected": "Guhagarika amatangazo byagaragaye",
+      "disableadblock": "Amatangazo atwemerera kuyobora serivisi zacu. "
     },
     "home": "Murugo"
   },

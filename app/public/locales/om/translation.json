@@ -1,8 +1,8 @@
 {
   "landing": {
     "noapp": "Fayyadamuuf app si hin barbaachisu {{ BRAND }} bilbila ykn taableetii keessan irratti! ",
-    "intro": "{{BRAND}} ({{TRANSLITERATION}}) jechuun hiriyyoota haaraa wajjin wal baruuf karaa gaarii dha.  {{ BRAND }}, nama biraa akka tasaa fudhannee tokko tokkoon akka dubbattan isin goona.   <6>Haalawwanii fi dambiiwwan</6>, fi <8>Qajeelfama hawaasaa</8> for info waa'ee de do's fi don'ts fayyadamuu keessatti {{ BRAND }}. {{ BRAND }} video chat AI moderated dha garuu moderation tokkollee perfects miti.  {{ BRAND }}",
-    "disclaimer": "<0>Fayyadamuuf umuriin kee 18 (ykn harka caalu seeraa naannoo kee keessatti) fi isaa ol ta’uu qabda {{BRAND}}</0>.  {{BRAND}}'s <4>Haalawwanii fi dambiiwwan</4> info dabalataaf.  <6>https://www.connectsafely.org/controls</6> akkasumas marsariitiiwwan biroos ni jiru.",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) jechuun hiriyyoota haaraa wajjin wal baruuf karaa gaarii dha.  {{ BRAND }}, nama biraa akka tasaa fudhannee tokko tokkoon akka dubbattan isin goona.   <6>Haalawwanii fi dambiiwwan</6>, fi <8>Qajeelfama hawaasaa</8> for info waa'ee de do's fi don'ts fayyadamuu keessatti {{ BRAND }}. {{ BRAND }} video chat AI moderated ta'us moderation tokkollee perfects miti.  {{ BRAND }}",
+    "disclaimer": "<0>Fayyadamuuf umuriin kee 18 (ykn harka caalu seeraa naannoo kee keessatti) fi isaa ol ta’uu qabda {{BRAND}}</0>.  {{BRAND}}'s <4>Haalawwanii fi dambiiwwan</4> info dabalataaf.  <6>https://www.nageenya walitti hidhamiinsa.org/to’annoo</6> akkasumas marsariitiiwwan biroos ni jiru.",
     "pleaseleave": "Maaloo Lamdazle dhiisaatii bakka isaa marsariitii ga’eessotaa daawwadhaa yoo sun waan barbaaddan ta’ee fi umuriin keessan 18 (ykn harki caalaan seeraa naannoo keessan jiru) fi isaa ol yoo ta’e.",
     "termscheck": "Sanduuqa irratti mallattoo kaa’uudhaan waliigaltee itti hidhamuuf akka ilaalte beekta {{BRAND}}'s <3>Haalawwanii fi dambiiwwan</3>, . <5>Imaammata dhuunfaa</5> fi <7>Qajeelfama hawaasaa</7>.",
     "agecheck": "Tajaajila kana fayyadamuu dhiisuu kan dandeessan yoo umuriin keessan waggaa 18 gadi ta’e ykn umriin keessan aangoo seeraan ala ta’e yoo ta’e.  <1>Haalawwanii fi dambiiwwan</1> info dabalataaf. <3>Sanduuqa irratti mallattoo kaa’uudhaan waggaa 18 (ykn harka caalu seeraa naannoo kee keessatti) fi isaa ol ta’uu kee beeksistee bakka bu’a.</3>",
@@ -27,7 +27,7 @@
     "typing": "Ormi barreessaa jira",
     "strangerdisconnected": "Ormi walitti hidhamiinsa addaan kuteera",
     "youdisconnected": "Walitti hidhamiinsa addaan citteetta",
-    "interests": "Namoota hin beekne fedhii waloo qaban barbaadi",
+    "interests": "Namoota hin beekne kanneen fedhii waloo qaban barbaadi",
     "great": "Chaat guddaa?",
     "save": "Galmee sana saagi",
     "download": "Buusuu",
@@ -41,13 +41,15 @@
     "report": "Gabaasuu",
     "you": "Ati",
     "stranger": "Orma",
-    "mousemoving": "Hantuutni socho'aa jira. "
+    "mousemoving": "Hantuutni socho'aa jira. ",
+    "adplaying": "Beeksisni tokko taphachaa jira, mee eegaa..."
   },
   "common": {
     "startchatting": "Chatting jalqabaa",
     "talkabout": "Waa'ee maalii dubbachuu barbaadda?",
     "addinterests": "Fedhii keessan itti dabalaa (Filannoo) .",
     "video": "Viidiyoo",
+    "accept": "Simachuu",
     "text": "Barreeffama",
     "switchto": "Gara",
     "unmoderated": "Kutaa hin madaalamne",
@@ -56,11 +58,21 @@
     "terms": "Haalawwanii fi dambiiwwan",
     "privacy": "Imaammata dhuunfaa",
     "guidelines": "Qajeelfama hawaasaa",
+    "managecookies": "Kukiiwwan bulchuu",
+    "cookies": {
+      "notice": "Weebsaayitiin kun kukii fayyadama",
+      "message": "Yeroo xumuraa kee marsariiticha irratti fooyyessuuf kukii fayyadamna, haa ta'u malee ati bahuu dandeessa.  <1>beeksisa yeroo baayyee ni argitu</1> erga isaan duraan argitee fi dhiisuu kee hordofuu hin dandeenyu.",
+      "privacy": "Akkaataa nuti kukii keenya irratti itti fayyadamnu caalaatti baruu dandeessu <1>Imaammata Dhuunfaa</1>",
+      "strictlynecessary": "Cimsee barbaachisaadha",
+      "targeting": "Target gochuu"
+    },
     "alerts": {
       "monitored": "Viidiyoon hordofama",
       "keepclean": "Qulqullina isaa eeguu fi amala NSFW gabaasuun gargaaraa",
       "banned": "Kompiitarri/network keessan dhorkamee jira",
-      "banreason": "Amala badaa irraa kan ka'e. "
+      "banreason": "Amala badaa irraa kan ka'e. ",
+      "adblockdetected": "Ad block adda baafameera",
+      "disableadblock": "Beeksisni tajaajila keenya akka hojjennu nu dandeessisa. "
     },
     "home": "Mana"
   },

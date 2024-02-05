@@ -1,12 +1,12 @@
 {
   "landing": {
     "noapp": "Saan a kasapulan ti app nga usarem {{ BRAND }} iti telepono wenno tablet-mo! ",
-    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ket nagsayaat a pamay-an tapno makaam-ammo kadagiti baro a gagayyem.  {{ BRAND }}, naiparna a mangpilikami iti sabali ket bay-anmi a makisaritaka a saggaysa.   <6>Dagiti kondision ken kondision</6>, ken <8>Dagiti pagannurotan ti komunidad</8> para iti info maipapan iti de do's ken don'ts iti panagusar {{ BRAND }}. {{ BRAND }} video chat ket AI moderated ngem awan ti moderation a perpekto.  {{ BRAND }}",
-    "disclaimer": "<0>Masapul nga agtawenka iti 18 (wenno ti legal a kaaduan iti hurisdiksionmo) wenno natataengan tapno mausarmo {{BRAND}}</0>.  {{BRAND}}'s <4>Dagiti kondision ken kondision</4> para iti ad-adu pay nga info.  <6>https://www.connectsafely.org/controls</6> kasta met ti dadduma pay a site.",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) ket nagsayaat a pamay-an tapno makaam-ammo kadagiti baro a gagayyem.  {{ BRAND }}, naiparna a pilienmi ti sabali ket bay-anmi a makisaritaka a saggaysa.   <6>Dagiti kondision ken kondision</6>, ken <8>Dagiti pagannurotan ti komunidad</8> para iti info maipapan iti de do's ken don'ts iti panagusar {{ BRAND }}. {{ BRAND }} video chat ket AI moderated ngem awan ti moderation a perpekto.  {{ BRAND }}",
+    "disclaimer": "<0>Masapul nga agtawenka iti 18 (wenno ti legal a kaaduan iti hurisdiksionmo) wenno natataengan tapno mausarmo {{BRAND}}</0>.  {{BRAND}}'s <4>Dagiti kondision ken kondision</4> para iti ad-adu pay nga info.  <6>https://www.natalged ti koneksion.org/dagiti kontrol</6> kasta met ti dadduma pay a site.",
     "pleaseleave": "Pangngaasiyo ta panawanyo ti Lamdazle ket bisitaenyo ketdi ti site dagiti nataengan no dayta ti sapsapulenyo ken agtawenkayo ​​iti 18 (wenno ti legal a kaaduan iti hurisdiksionyo) wenno natataengan pay.",
     "termscheck": "Babaen ti panangmarkam iti kahon bigbigem a narepasomon ti maysa nga agree to be bound by {{BRAND}}'s <3>Dagiti kondision ken kondision</3>, . <5>Pagannurotan ti kinapribado</5> ken <7>Dagiti pagannurotan ti komunidad</7>.",
     "agecheck": "Saanmo nga usaren daytoy a serbisio no awan pay 18 ti tawenmo wenno edad ti legal a kaaduan iti hurisdiksionmo.  <1>Dagiti kondision ken kondision</1> para iti ad-adu pay nga info. <3>Babaen ti panangmarkam iti kahon bigbigem ken irepresentarmo nga agtawenka iti 18 (wenno ti legal a kaaduan iti hurisdiksionmo) wenno natataengan pay.</3>",
-    "acceptandcontinue": "Awatem ken ituloymo"
+    "acceptandcontinue": "Awaten ken ituloy"
   },
   "chat": {
     "connecting": "Panagkonekta iti server",
@@ -20,7 +20,7 @@
     },
     "searching": "Agsapsapul iti random stranger a mabalinmo a chat...",
     "connected": "Maki-chat-ka iti random a ganggannaet. ",
-    "stopped": "I-click ti Start ti maki-chat iti ganggannaet",
+    "stopped": "I-click-mo ti Start ti maki-chat iti ganggannaet",
     "language": "Agpadakayo nga agsasao iti maymaysa a pagsasao.  {{\"Any\"}} iti language menu tapno balbaliwan.",
     "interest": "Agpadakayo a magustuan",
     "simulated": "Mabalin nga agus-usar ni Stranger iti simulated webcam",
@@ -41,26 +41,38 @@
     "report": "Ipadamag",
     "you": "Sika",
     "stranger": "Gannaet",
-    "mousemoving": "Aggargaraw ni mouse. "
+    "mousemoving": "Aggargaraw ni mouse. ",
+    "adplaying": "Maysa nga ad ti agtokar, pangngaasiyo ta aguraykayo..."
   },
   "common": {
     "startchatting": "Rugian ti ag-chat",
     "talkabout": "Ania ti kayatmo a pagsaritaan?",
     "addinterests": "Inayon dagiti interesmo (Opsional) .",
     "video": "Bideo",
+    "accept": "Awaten",
     "text": "Teksto",
     "switchto": "Agbalbaliw iti",
-    "unmoderated": "Di namoderan a benneg",
+    "unmoderated": "Di natengngel a benneg",
     "or": "wenno",
-    "allrightsreserved": "Naisagana amin a karbengan",
+    "allrightsreserved": "Amin a karbengan ket naisagana",
     "terms": "Dagiti kondision ken kondision",
     "privacy": "Pagannurotan ti kinapribado",
     "guidelines": "Dagiti pagannurotan ti komunidad",
+    "managecookies": "Imanehar dagiti cookies",
+    "cookies": {
+      "notice": "Agus-usar daytoy a website kadagiti cookies",
+      "message": "Usarenmi dagiti cookies tapno mapasayaat ti panagleppasmo iti site, nupay kasta mabalinmo ti ag-opt-out.  <1>masansan a makitam dagiti anunsio</1> yantangay saanmi a masurot no nakitam ida wenno saan.",
+      "privacy": "Mabalinmo nga ammuen ti ad-adu pay maipapan iti no kasano nga agusarkami kadagiti cookies iti... <1>Pagannurotan iti Kinapribado</1>",
+      "strictlynecessary": "Nainget a kasapulan",
+      "targeting": "Panangpuntiria"
+    },
     "alerts": {
       "monitored": "Mamonitor ti video",
       "keepclean": "Pagtalinaeden a nadalus ken tumulong babaen ti panangireport iti kababalin ti NSFW",
       "banned": "Naiparit ti kompiuter/network-mo",
-      "banreason": "Gapu iti dakes a kababalin. "
+      "banreason": "Gapu iti dakes a kababalin. ",
+      "adblockdetected": "Naduktalan ti ad block",
+      "disableadblock": "Dagiti anunsio ti mangipalubos kadakami a mangpataray iti serbisiomi. "
     },
     "home": "Balay"
   },

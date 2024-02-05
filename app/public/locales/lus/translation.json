@@ -1,11 +1,11 @@
 {
   "landing": {
     "noapp": "App hman tur i mamawh lo {{ BRAND }} i phone emaw tablet emaw ah! ",
-    "intro": "{{BRAND}} ({{TRANSLITERATION}}) tih hi ṭhian thar nena inhmuhna tha tak a ni.  {{ BRAND }}, random takin midang kan thlang a, one-to-one in inbiakna kan phalsak che a ni.   <6>Thuthlung leh thupek</6>, leh <8>Khawtlang inkaihhruaina</8> for info about de do's leh don'ts in hman dan tur {{ BRAND }}. {{ BRAND }} video chat hi AI moderated ni mahse moderation engmah perfects a ni lo.  {{ BRAND }}",
-    "disclaimer": "<0>I hman tur chuan kum 18 (or i jurisdiction-a legal majority) emaw a aia upa emaw i ni tur a ni {{BRAND}}</0>.  {{BRAND}}'s <4>Thuthlung leh thupek</4> info tam zawk hriat duh tan.  <6>https://www.connectsafely.org/controls</6> chutiang bawkin site dangte pawh an awm bawk.",
+    "intro": "{{BRAND}} ({{TRANSLITERATION}}) tih hi ṭhian thar nena inhmuhna tha tak a ni.  {{ BRAND }}, random takin midang kan thlang a, one-to-one in inbiakna kan phalsak che a ni.   <6>Thuthlung leh thupek te</6>, leh <8>Khawtlang inkaihhruaina</8> for info about de do's leh don'ts in hman dan tur {{ BRAND }}. {{ BRAND }} video chat hi AI moderated ni mahse moderation engmah perfects a ni lo.  {{ BRAND }}",
+    "disclaimer": "<0>I hman tur chuan kum 18 (or i jurisdiction-a legal majority) emaw a aia upa emaw i ni tur a ni {{BRAND}}</0>.  {{BRAND}}'s <4>Thuthlung leh thupek te</4> info tam zawk hriat duh tan.  <6>https://www.connectsafely.org/controls</6> chutiang bawkin site dangte pawh an awm bawk.",
     "pleaseleave": "Khawngaihin Lamdazle chhuahsan la, chu chu i zawn chu a nih a, kum 18 (or i jurisdiction-a legal majority) emaw a aia upa i nih chuan puitling site tlawh zawk rawh.",
-    "termscheck": "Box-a i check hian agree to be bound by i enfiah tih i pawm a ni {{BRAND}}'s <3>Thuthlung leh thupek</3>, . <5>Thuruk humhalh dan tur</5> leh <7>Khawtlang inkaihhruaina</7>.",
-    "agecheck": "Kum 18 hnuai lam emaw, i ram chhunga legal majority i nih chuan he service hi i hmang thei lo vang.  <1>Thuthlung leh thupek</1> info tam zawk hriat duh tan. <3>Box-a i check hian kum 18 (or i jurisdiction-a legal majority) emaw a aia upa i nih thu i pawm a, i entir bawk.</3>",
+    "termscheck": "Box-a i check hian agree to be bound by i enfiah tih i pawm a ni {{BRAND}}'s <3>Thuthlung leh thupek te</3>, . <5>Thuruk humhalh dan tur</5> leh <7>Khawtlang inkaihhruaina</7>.",
+    "agecheck": "Kum 18 hnuai lam emaw, i ram chhunga legal majority i nih chuan he service hi i hmang thei lo vang.  <1>Thuthlung leh thupek te</1> info tam zawk hriat duh tan. <3>Box-a i check hian kum 18 (or i jurisdiction-a legal majority) emaw a aia upa i nih thu i pawm a, i entir bawk.</3>",
     "acceptandcontinue": "Pawm la, chhunzawm rawh"
   },
   "chat": {
@@ -41,26 +41,38 @@
     "report": "Hek",
     "you": "Nangmah",
     "stranger": "Hmelhriatloh",
-    "mousemoving": "Mouse chu a che a. "
+    "mousemoving": "Mouse chu a che a. ",
+    "adplaying": "Ad a play mek a, lo nghak teh..."
   },
   "common": {
     "startchatting": "Chatting tan rawh",
     "talkabout": "Eng thu nge sawi i duh?",
     "addinterests": "I ngaihven zawngte chu add rawh (Optional)",
     "video": "Video",
+    "accept": "Pawm",
     "text": "Thumal",
     "switchto": "Switch rawh",
     "unmoderated": "Moderated loh section",
     "or": "emaw",
     "allrightsreserved": "Thuneihna zawng zawng a awm",
-    "terms": "Thuthlung leh thupek",
+    "terms": "Thuthlung leh thupek te",
     "privacy": "Thuruk humhalh dan tur",
     "guidelines": "Khawtlang inkaihhruaina",
+    "managecookies": "Cookies enkawl dan",
+    "cookies": {
+      "notice": "He website hian cookies a hmang a",
+      "message": "Site-a i expirence tihchangtlun nan cookies kan hmang a, chutih rualin i opt-out thei.  <1>ads i hmu tam zawk ang</1> i hmuh tawh leh hmuh loh kan track thei dawn loh avangin.",
+      "privacy": "Cookies kan hman dan chungchang hi i zir belh thei ang <1>Thuruk humhalh dan tur</1>",
+      "strictlynecessary": "Strict takin a tul a ni",
+      "targeting": "Targeting tih a ni"
+    },
     "alerts": {
-      "monitored": "Video a vil reng a ni",
+      "monitored": "Video hi enkawl a ni",
       "keepclean": "Fai takin vawng la, NSFW thiltih dan report hmangin tanpui rawh",
       "banned": "I computer/network kha ban a ni tawh",
-      "banreason": "Thiltih \\ha lo vang a ni. "
+      "banreason": "Thiltih \\ha lo vang a ni. ",
+      "adblockdetected": "Ad block a awm tih hmuhchhuah a ni",
+      "disableadblock": "Ads hian kan service hi kan kalpui thei a ni. "
     },
     "home": "In"
   },
