@@ -92,6 +92,11 @@ const Landing = () => {
                             </div> 
                         </div>
                     </div>
+                    <Ad 
+                        className="responsive justify-center" 
+                        zoneId={ADS.banner.moderated[isMobile ? "mobile" : "desktop"]} 
+                        keywords={Array.from(interests)} 
+                    />
                 </div>
             </section>
             <Terms show={ mode && !tac } mode={mode} onClose={()=>dispatch({type: "RESET"})} onSubmit={()=>dispatch({type: "TAC", payload: true})} />
