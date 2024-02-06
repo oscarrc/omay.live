@@ -1,1 +1,0 @@
-[![Release](https://github.com/oscarrc/videochat/actions/workflows/docker-build.yml/badge.svg)](https://github.com/oscarrc/videochat/actions/workflows/docker-build.yml)
