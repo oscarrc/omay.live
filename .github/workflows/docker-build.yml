@@ -34,5 +34,5 @@ jobs:
           gh release create "$GITHUB_REF_NAME" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${GITHUB_REF_NAME#v}" \
-              --notes "`docker pull ghcr.io/$GITHUB_REPOSITORY:$GITHUB_REF_NAME`" \
+              --notes "**Image:** `docker pull ghcr.io/$GITHUB_REPOSITORY:$GITHUB_REF_NAME`" \
               --generate-notes
