@@ -30,11 +30,9 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          tag: ${{ github.ref_name }}
         run: |
-          gh release create "$tag" \
+          gh release create "$GITHUB_REF_NAME" \
               --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --title="${GITHUB_REPOSITORY#*/} ${GITHUB_REF_NAME#v}" \
               --generate-notes
          
