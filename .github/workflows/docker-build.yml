@@ -27,12 +27,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ghcr.io${{ github.repository }}:latest, ghcr.io${{ github.repository }}:${{ github.ref_name }}
-  release:
-    runs-on: "ubuntu-latest"
-     steps:
-      - name: "Determine tag"
-        run: "echo \"RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV"
-      - name: "Create release"
+      - name: Create release        
         uses: "actions/github-script@v6"
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
@@ -41,11 +36,11 @@ jobs:
               const response = await github.rest.repos.createRelease({
                 draft: false,
                 generate_release_notes: true,
-                name: process.env.RELEASE_TAG,
+                name: ${{ github.ref_name }},
                 owner: context.repo.owner,
                 prerelease: false,
                 repo: context.repo.repo,
-                tag_name: process.env.RELEASE_TAG,
+                tag_name: ${{ github.ref_name }},
               });
 
               core.exportVariable('RELEASE_ID', response.data.id);
@@ -53,3 +48,4 @@ jobs:
             } catch (error) {
               core.setFailed(error.message);
             }
+         
