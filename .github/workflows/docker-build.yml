@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Environment
+        run: |
+          echo "${{ secrets.VITE_ENV }}" > ./app/.env \
+          echo "${{ secrets.NODE_ENV }}" > ./server/.env
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
