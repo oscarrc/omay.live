@@ -1,4 +1,4 @@
-name: Docker build
+name: Release
 on:
   push:
     tags:        
@@ -26,7 +26,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: ghcr.io${{ github.repository }}:latest, ghcr.io${{ github.repository }}:${{ github.ref_name }}
+          tags: ghcr.io${{ github.repository }}:latest, ghcr.io/${{ github.repository }}:${{ github.ref_name }}
       - name: Create release        
         uses: "actions/github-script@v6"
         with:
