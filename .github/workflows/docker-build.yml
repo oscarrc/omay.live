@@ -12,8 +12,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up environment
         run: |
-          echo "${{ secrets.VITE_ENV }}" > app/.env \
-          echo "${{ secrets.NODE_ENV }}" > server/.env
+          echo "${{ secrets.VITE_ENV }}" > app/.env
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
