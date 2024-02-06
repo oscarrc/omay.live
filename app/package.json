@@ -1,7 +1,8 @@
 {
   "name": "videochat-app",
   "version": "0.1.0",
-  "description": "Random videochat app",
+  "description": "Random videochat app",  
+  "license": "UNLICENSED",
   "private": true,
   "type": "module",
   "dependencies": {

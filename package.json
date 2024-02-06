@@ -2,6 +2,8 @@
   "name": "videochat",
   "version": "0.1.0",
   "description": "Random video chat",
+  "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "start": "npm --prefix ./server start",
     "dev": "npm --prefix ./app start & npm --prefix ./server run dev",
@@ -14,7 +16,6 @@
     "url": "git+https://github.com/oscarrc/videochat.git"
   },
   "author": "Oscar R.C.",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/oscarrc/videochat/issues"
   },

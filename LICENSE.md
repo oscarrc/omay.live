@@ -1,0 +1,1 @@
+All rights reserved. No use of this code is allowed without explicit consent of the owner.
