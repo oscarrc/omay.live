@@ -1,3 +1,4 @@
+import { URLS } from "../../constants/ads";
 import { useEffect } from "react";
 
 const AdMain = ({zoneId, keywords, sub, className}) => {
@@ -6,7 +7,7 @@ const AdMain = ({zoneId, keywords, sub, className}) => {
     }, []);
 
     useEffect(() => {
-        let url = import.meta.env.VITE_ADS_URL;
+        let url = URLS.adProvider;
         let script = document.querySelector(`script[src="${url}"]`);
         if(script || !url) return
         

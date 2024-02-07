@@ -2,7 +2,7 @@ import { ChatBox, ChatControls, VideoBox } from "./components";
 import { TagInput, Toggle } from "../../components/partials";
 import { useCallback, useEffect, useMemo } from "react";
 
-import ADS from "../../constants/ads";
+import { ADS } from "../../constants/ads";
 import Ad from "../../components/ad";
 import { MdReport } from "react-icons/md"
 import { STATUS } from "../../constants/chat";

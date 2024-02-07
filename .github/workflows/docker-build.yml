@@ -27,6 +27,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          build-args: |
+            "VITE_SERVER_URL=${{ vars.SERVER_URL }}",
           platforms: linux/amd64
           push: true
           tags: ghcr.io/${{ github.repository }}:latest, ghcr.io/${{ github.repository }}:${{ github.ref_name }}

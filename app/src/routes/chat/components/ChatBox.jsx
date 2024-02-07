@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import ADS from "../../../constants/ads"
+import { ADS } from "../../../constants/ads"
 import Ad from "../../../components/ad";
 import { useDevice } from "../../../hooks/useDevice";
 import { useTranslation } from "react-i18next";

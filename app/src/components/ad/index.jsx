@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { ADBLOCK_TIMER } from "../../constants/ads";
 import AdAlt from "./AdAlt";
 import AdBlock from "./AdBlock";
 import AdMain from "./AdMain";
@@ -17,7 +18,7 @@ const Ad = ({zoneId, fallbackId, keywords, sub, className, video, listeners}) =>
     useEffect(() => {
         if(!video || (!hasAdblock && targeting)) return;
         
-        let count = import.meta.env.VITE_ADBLOCK_TIMER * 100
+        let count = ADBLOCK_TIMER * 100
         let timer = setInterval(() => {
             count -= 1
             if (count > 0) setCountdown(count - 1);

@@ -2,7 +2,7 @@ import { Alert, TagInput } from "../../components/partials";
 import { BRAND, TRANSLITERATION } from "../../constants/brand";
 import { Trans, useTranslation } from 'react-i18next';
 
-import ADS from "../../constants/ads";
+import { ADS } from "../../constants/ads";
 import Ad from "../../components/ad";
 import { AiFillWarning } from "react-icons/ai";
 import { FaBan } from "react-icons/fa";

@@ -23,4 +23,13 @@ const ADS = {
     }
 }
 
-export default ADS
+const URLS = {
+    adProvider: "https://a.magsrv.com/ad-provider.js",
+    vastProvider: "https://s.magsrv.com/splash.php",
+    imaSDK: "https://imasdk.googleapis.com/js/sdkloader/ima3.js"
+}
+
+const AD_DELAY = 5
+const ADBLOCK_TIMER = 10
+
+export {ADS, URLS, AD_DELAY, ADBLOCK_TIMER }

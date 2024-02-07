@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import { URLS } from "../../constants/ads";
+
 const AdVast = ({videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdError, onAdSkipped, children}) => {
     const [ adsManager, setAdsManager ] = useState(null);
     const [ adsContainer, setAdsContainer ] = useState(null);
@@ -36,7 +38,7 @@ const AdVast = ({videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdEr
 
         videoElement.addEventListener('ended', videoComplete);
         
-        adsRequest.adTagUrl = `${import.meta.env.VITE_VAST_TAG}?idzone=${zoneId}`;
+        adsRequest.adTagUrl = `${URLS.vastProvider}?idzone=${zoneId}`;
         adsRequest.linearAdSlotWidth = videoElement.clientWidth;
         adsRequest.linearAdSlotHeight = videoElement.clientHeight;
         adsRequest.nonLinearAdSlotWidth = videoElement.clientWidth;
@@ -52,7 +54,7 @@ const AdVast = ({videoRef, zoneId, className, onAdStarted, onAdCompleted, onAdEr
     }
 
     useEffect(() => {
-        let url = import.meta.env.VITE_IMA_SDK;
+        let url = URLS.imaSDK;
         let script = document.querySelector(`script[src="${url}"]`);
         
         if(!url || script) return;
