@@ -1,12 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+import { URLS } from "../constants/ads";
+
 const AdblockDetectionContext = createContext(null)
 
 const AdblockDetectionProvider = ({ children }) => {
     const [hasAdblock, setHasAdblock] = useState(false);
 
     useEffect(() => {
-        const url = import.meta.env.VITE_ADS_URL;
+        const url = URLS.adProvider;
         fetch(url, {
             method: "HEAD",
             mode: "no-cors",
