@@ -22,7 +22,7 @@ const Terms = ({ show, mode, onSubmit, onClose }) => {
     }, [show])
 
     return (
-        <dialog ref={dialog} id="terms" className="modal modal-bottom sm:modal-middle">
+        <dialog ref={dialog} onClose={onClose} id="terms" className="modal modal-bottom sm:modal-middle">
             <div className="modal-box min-w-3/4">
                 <form method="dialog">
                     <button onClick={onClose} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
