@@ -27,3 +27,4 @@ yarn-error.log*
 backup
 www
 stats.html
+fly.toml
