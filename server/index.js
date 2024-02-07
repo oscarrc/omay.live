@@ -1,11 +1,11 @@
 import { Db, Server, Socket } from "./server.js";
 
+import Router from "./router.js";
 import chalk from 'chalk';
 import cluster from "cluster"
 import dotenv from "dotenv";
 import http from "http";
 import os from "os";
-import router from "./router.js";
 import { setupMaster } from "@socket.io/sticky";
 import { setupPrimary } from "@socket.io/cluster-adapter";
 
@@ -48,8 +48,10 @@ if (cluster.isPrimary) {
 
 	Db(MONGO_URL, purge).then(() => {
 		console.log(`${chalk.green.bold("[DB]")} ${chalk.green(`[${cluster.worker.id}]`)} Connection ready`);
-	
-		const server = Server(router, PRODUCTION).listen(port, () => {
+
+		const router = Router(PRODUCTION);
+
+		const server = Server(router).listen(port, () => {
 			console.log(`${chalk.green.bold("[HTTP]")} ${chalk.green(`[${cluster.worker.id}]`)} Ready on ${BASE_URL}:${port}`);
 			Socket(server);
 			console.log(`${chalk.green.bold("[SOCKET]")} ${chalk.green(`[${cluster.worker.id}]`)} Ready on ${BASE_URL}:${port}`);

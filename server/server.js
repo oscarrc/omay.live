@@ -7,7 +7,6 @@ import chalk from 'chalk';
 import cors from "cors";
 import { createAdapter } from "@socket.io/cluster-adapter";
 import express from "express";
-import { join } from 'path'
 import mongoose from "mongoose";
 import { setupWorker } from "@socket.io/sticky";
 
@@ -28,14 +27,11 @@ const Db = (url, purge) => {
     })
 }
 
-const Server = (router, production) => {
+const Server = (router) => {
     app.use(bodyparser.urlencoded({extended: true}))
         .use(bodyparser.json())
         .use(cors())
         .use(router)        
-
-    production && app.use('/', express.static(join(__dirname, "../../www")))
-                     .use('/model', express.static(join(__dirname, "../../model")))
 
     return app
 }
