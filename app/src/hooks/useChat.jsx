@@ -204,10 +204,10 @@ const ChatProvider = ({ children }) => {
         data.current.send = connection.current.createDataChannel("data");
     }
     
-    const closeConnection = (remote) => {
-        dispatch({ type: "STATUS", payload: remote ? STATUS.STRANGERDISCONNECTED : STATUS.YOUDISCONNECTED });
-        
+    const closeConnection = (remote) => {        
         if(!connection.current) return;
+        
+        dispatch({ type: "STATUS", payload: remote ? STATUS.STRANGERDISCONNECTED : STATUS.YOUDISCONNECTED });
         
         !remote && socket.current.emit("connectionclosed", {
             id: socket.current.id,

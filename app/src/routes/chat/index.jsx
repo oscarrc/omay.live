@@ -66,7 +66,7 @@ const Chat = () => {
         if(isDisabled) return;
         if(!tac) navigate("/");
         else connect(mode);
-        return () => { 
+        return () => {
             stopStream();
             closeConnection();
             disconnect();

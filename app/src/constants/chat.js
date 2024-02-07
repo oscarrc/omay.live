@@ -53,7 +53,7 @@ const DEFAULTS = {
     interest: (JSON.parse(localStorage.getItem("interests")) || []).length > 0,
     interests: new Set(JSON.parse(localStorage.getItem("interests")) || []),
     lang: "any",
-    status: STATUS.STOPPED,
+    status: STATUS.CONNECTING,
     auto: true,
     confirmation: 0,
     chats: 0
