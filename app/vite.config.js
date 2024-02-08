@@ -11,7 +11,7 @@ export default ({ mode }) => {
     return defineConfig({
         base: '/',
         plugins: [
-            {enforce: 'pre', ...mdx(/* jsxImportSource: …, otherOptions… */)},
+            {enforce: 'pre', ...mdx()},
             react(),
             splitVendorChunkPlugin(),
             VitePWA({ 
@@ -28,6 +28,20 @@ export default ({ mode }) => {
                                 expiration: {
                                     maxEntries: 10,
                                     maxAgeSeconds: 60 * 60 * 24 // <== 1 day
+                                },
+                                cacheableResponse: {
+                                    statuses: [0, 200]
+                                }
+                            }
+                        },
+                        {
+                            urlPattern: new RegExp(`^${env.VITE_SERVER_URL}\/model\/.*`, "i"),
+                            handler: 'CacheFirst',
+                            options: {
+                                cacheName: 'model-cache',
+                                expiration: {
+                                    maxEntries: 10,
+                                    maxAgeSeconds: 60 * 60 * 24 * 365 // <== 1 year
                                 },
                                 cacheableResponse: {
                                     statuses: [0, 200]
