@@ -131,7 +131,7 @@ const ChatProvider = ({ children }) => {
 
     const findPeer = async (retry) => {
         const query = {
-            common: retry ? false : state.interest,
+            common: retry ? false : state.interest && state.interests.size > 0,
             lang: retry ? "any" : state.lang,
             interests: Array.from(state.interests)
         }
