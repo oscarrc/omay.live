@@ -23,10 +23,7 @@ const Router = (production) => {
 
     router.get("*", (req,res) => {   
         const file = join(__dirname, "../../www", "index.html");
-        console.log(file)
-        process.env.NODE_ENV === "production" && fs.existsSync(file) ? 
-            res.sendFile(file) :
-            res.send("OK");
+        production && fs.existsSync(file) ? res.sendFile(file) : res.send("OK");
     })
 
     return router;
