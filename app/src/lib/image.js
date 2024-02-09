@@ -1,16 +1,3 @@
-import * as nsfwjs from 'nsfwjs'
-
-const loadNSFW = async () => {
-    try{
-        let nsfw = await nsfwjs.load('indexeddb://model')
-        return nsfw;
-    }catch{            
-        const load = import.meta.env.PROD ? await nsfwjs.load(`${import.meta.env.VITE_SERVER_URL}/model/`, {type: "graph"}) : await nsfwjs.load();
-        load.model.save('indexeddb://model');
-        return load;
-    }
-}
-
 const getImage = (stream) => new Promise( (resolve, reject) => {
     const { width, height } = stream.getVideoTracks()[0].getSettings();
     const canvas = document.createElement("canvas"); 
@@ -33,4 +20,4 @@ const getImage = (stream) => new Promise( (resolve, reject) => {
     }
 })
 
-export { loadNSFW, getImage }
+export { getImage }

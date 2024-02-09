@@ -1,9 +1,10 @@
 import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, STATUS, VIRTUAL_CAMS } from "../constants/chat";
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
-import { getImage, loadNSFW } from "../lib/nsfw";
 
 import { LOCALES } from "../constants/locales";
+import { getImage } from "../lib/image";
 import { io } from 'socket.io-client';
+import nsfwWorker from "../workers/nsfw.worker?worker";
 import { useTranslation } from "react-i18next";
 
 const ChatContext =  createContext(null);
@@ -310,8 +311,12 @@ const ChatProvider = ({ children }) => {
     }
 
     useEffect(() => {
-       if(!socket.current) socket.current = io(import.meta.env.VITE_SERVER_URL, { query:{}, autoConnect: false });
-       if(!nsfw.current) loadNSFW().then(l => nsfw.current = l);
+        if(!socket.current) socket.current = io(import.meta.env.VITE_SERVER_URL, { query:{}, autoConnect: false });
+        if(!nsfw.current){ 
+            nsfw.current = new nsfwWorker();
+            nsfw.current.postMessage("init");
+            nsfw.current.addEventListener("message", () => console.log("received"))
+        }
     }, []) 
 
     useEffect(() => dispatch({type:"LANG", payload: i18n.language }), [i18n.language])

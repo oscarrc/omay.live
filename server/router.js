@@ -16,10 +16,9 @@ const Router = (production) => {
     router.get("/chat", ChatController.count.bind(ChatController))
           .post("/chat", ChatController.find.bind(ChatController))
 
-    if(production){
-        router.use('/', express.static(join(__dirname, "../../www")))
-              .use('/model', express.static(join(__dirname, "../../model")))
-    }
+    if(production) router.use('/', express.static(join(__dirname, "../../www")))
+    
+    router.use('/tf', express.static(join(__dirname, "../../tf")))
 
     router.get("*", (req,res) => {   
         const file = join(__dirname, "../../www", "index.html");
