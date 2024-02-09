@@ -1,4 +1,4 @@
-const getImage = (stream) => new Promise( (resolve, reject) => {
+const getImageData = (stream) => new Promise( (resolve, reject) => {
     const { width, height } = stream.getVideoTracks()[0].getSettings();
     const canvas = document.createElement("canvas"); 
     canvas.width = width;
@@ -9,15 +9,16 @@ const getImage = (stream) => new Promise( (resolve, reject) => {
     video.autoplay = true;
 
     try{
-        video.onloadeddata = () => {
+        video.onloadeddata = async () => {
             const context = canvas.getContext("2d");
             context.drawImage(video, 0, 0, width, height); 
             video.muted = true;
-            resolve(canvas)
+            
+            resolve(context.getImageData(0, 0, width, height).data)
         }
     }catch(e){
         reject(e)
     }
 })
 
-export { getImage }
+export { getImageData }

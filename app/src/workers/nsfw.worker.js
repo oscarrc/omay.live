@@ -40,14 +40,8 @@ const nsfwProcess = (values) => {
     return result;
 }
 
-const detectNSFW = async (bitmap) => {
-    const {width: w, height: h} = bitmap;
-    const offScreen = new OffscreenCanvas(w,h);
-    const ctx = offScreen.getContext('2d');
-    ctx.drawImage(bitmap, 0, 0, w, h);
-
-    const canvasData = ctx.getImageData(0, 0, w,h).data;
-    const img = new ImageData(canvasData, w, h);
+const detectNSFW = async (imageData) => {
+    const img = new ImageData(imageData, w, h);
     const pixels = tf.browser.fromPixels(img);
     const normalized = pixels.toFloat().div(tf.scalar(255));
 
@@ -81,8 +75,7 @@ const init = async ({data}) => {
         return
     }
     
-    const bitmap = await createImageBitmap(data);
-    detectNSFW(bitmap);
+    detectNSFW(data);
 }
 
 addEventListener('message', init)

@@ -2,7 +2,7 @@ import { CAMERA_OPTIONS, DEFAULTS, MODES, RTC_SERVERS, STATUS, VIRTUAL_CAMS } fr
 import { createContext, useContext, useEffect, useMemo, useReducer, useRef, useState } from "react";
 
 import { LOCALES } from "../constants/locales";
-import { getImage } from "../lib/image";
+import { getImageData } from "../lib/image";
 import { io } from 'socket.io-client';
 import nsfwWorker from "../workers/nsfw.worker?worker";
 import { useTranslation } from "react-i18next";
@@ -119,16 +119,16 @@ const ChatProvider = ({ children }) => {
 
     const checkNSFW = async () => {
         if(!nsfw || !localStream) return;
-        const img = await getImage(localStream);
+        const img = await getImageData(localStream);
         nsfw.current.postMessage(img);
     }
 
-    const handleNSFW = async (predictions) => {
-        const check = predictions
+    const handleNSFW = async (data) => {        
+        const check = data
                 .filter( p => p.className === "Porn" || p.className === "Sexy") 
                 .reduce((acc, pred) => acc + pred.probability, 0)
         
-        if(check >= predictions[0].probability){
+        if(check >= data[0].probability){
             socket.current.emit("report", { id: socket.current.id })
         }
     }
@@ -317,8 +317,8 @@ const ChatProvider = ({ children }) => {
         if(!socket.current) socket.current = io(import.meta.env.VITE_SERVER_URL, { query:{}, autoConnect: false });
         if(!nsfw.current){ 
             nsfw.current = new nsfwWorker();
+            nsfw.current.onmessage = handleNSFW;
             nsfw.current.postMessage("init");
-            nsfw.current.addEventListener("message", handleNSFW)
         }
 
         return () => { nsfw.current.terminate() }
