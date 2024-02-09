@@ -120,7 +120,10 @@ const ChatProvider = ({ children }) => {
     const checkNSFW = async () => {
         if(!nsfw || !localStream) return;
         const img = await getImage(localStream);
-        const predictions = await nsfw.current.classify(img);
+        nsfw.current.postMessage(img);
+    }
+
+    const handleNSFW = async (predictions) => {
         const check = predictions
                 .filter( p => p.className === "Porn" || p.className === "Sexy") 
                 .reduce((acc, pred) => acc + pred.probability, 0)
@@ -315,8 +318,10 @@ const ChatProvider = ({ children }) => {
         if(!nsfw.current){ 
             nsfw.current = new nsfwWorker();
             nsfw.current.postMessage("init");
-            nsfw.current.addEventListener("message", () => console.log("received"))
+            nsfw.current.addEventListener("message", handleNSFW)
         }
+
+        return () => { nsfw.current.terminate() }
     }, []) 
 
     useEffect(() => dispatch({type:"LANG", payload: i18n.language }), [i18n.language])
