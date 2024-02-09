@@ -123,7 +123,8 @@ const ChatProvider = ({ children }) => {
         nsfw.current.postMessage(img);
     }
 
-    const handleNSFW = async ({ data }) => {        
+    const handleNSFW = async ({ data }) => {     
+        console.log(data);
         const check = data
                 .filter( p => p.className === "Porn" || p.className === "Sexy") 
                 .reduce((acc, pred) => acc + pred.probability, 0)
@@ -317,11 +318,9 @@ const ChatProvider = ({ children }) => {
         if(!socket.current) socket.current = io(import.meta.env.VITE_SERVER_URL, { query:{}, autoConnect: false });
         if(!nsfw.current){ 
             nsfw.current = new nsfwWorker();
-            nsfw.current.onmessage = handleNSFW;
             nsfw.current.postMessage("init");
+            nsfw.current.addEventListener("message", handleNSFW)
         }
-
-        return () => { nsfw.current.terminate() }
     }, []) 
 
     useEffect(() => dispatch({type:"LANG", payload: i18n.language }), [i18n.language])

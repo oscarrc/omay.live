@@ -41,8 +41,7 @@ const nsfwProcess = (values) => {
 }
 
 const detectNSFW = async (imageData) => {
-    const img = new ImageData(imageData, w, h);
-    const pixels = tf.browser.fromPixels(img);
+    const pixels = tf.browser.fromPixels(imageData);
     const normalized = pixels.toFloat().div(tf.scalar(255));
 
     let resized = normalized;
