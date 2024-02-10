@@ -15,7 +15,8 @@ const RTC_SERVERS = {
 
 const  CAMERA_OPTIONS = {
     video: {
-        facingMode: 'user'
+        facingMode: 'user',
+        height: { ideal: 720 }
     },
     audio: true
 }
