@@ -1,0 +1,34 @@
+import '@tensorflow/tfjs-backend-wasm';
+
+import * as nsfwjs from 'nsfwjs'
+import * as tf from '@tensorflow/tfjs';
+
+import {setWasmPaths} from '@tensorflow/tfjs-backend-wasm';
+
+setWasmPaths(`${import.meta.env.VITE_SERVER_URL}/tf/backend/`);
+tf.enableProdMode()
+let ready = false;
+let nsfw;
+
+const init = async ({data}) => {
+    if (typeof data === 'string' && data === 'init') {
+        await tf.setBackend('wasm');
+
+        try{
+            nsfw = await nsfwjs.load('indexeddb://model')
+        }catch{            
+            nsfw = import.meta.env.PROD ? await nsfwjs.load(`${import.meta.env.VITE_SERVER_URL}/tf/model/`, {type: "graph"}) : await nsfwjs.load();
+            nsfw.model.save('indexeddb://model');
+        }
+
+        ready = true;
+        return
+    }
+    
+    const predictions = await nsfw.classify(data);
+    self.postMessage(predictions);
+
+    return
+}
+
+addEventListener('message', init)
