@@ -8,6 +8,7 @@ setWasmPaths(`${import.meta.env.VITE_SERVER_URL}/tf/backend/`);
 tf.enableProdMode()
 
 let model;
+let ready = false;
 const SIZE = 224;
 const NSFW_CLASSES = {
     0: 'Drawing',
@@ -70,10 +71,11 @@ const init = async ({data}) => {
             await result.data();
             result.dispose();
         }
+        ready = true;
         return
     }
     
-    detectNSFW(data);
+    ready && detectNSFW(data);
 }
 
 addEventListener('message', init)

@@ -13,7 +13,7 @@ const getImageData = (stream) => new Promise( (resolve, reject) => {
             const context = canvas.getContext("2d", { willReadFrequently: true });
             context.drawImage(video, 0, 0, width, height); 
             video.muted = true;
-            console.log(context.getImageData(0, 0, width, height))
+            console.log(canvas.toDataURL())
             resolve(context.getImageData(0, 0, width, height))
         }
     }catch(e){

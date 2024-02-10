@@ -48,7 +48,7 @@ const Chat = () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
         if(!isUnmoderated) await checkNSFW();
         await createOffer();
-    }, [checkNSFW, createOffer, isDisabled, isUnmoderated, status])
+    }, [createOffer, isDisabled, isUnmoderated, status])
 
     const stopSearch = useCallback(async () => {
         await closeConnection();
