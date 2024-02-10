@@ -19,7 +19,7 @@ const NSFW_CLASSES = {
 
 const nsfwProcess = (values) => {
     const topK = 5;
-    const result = {}
+    const result = []
     const valuesAndIndices = [];
     const topkValues = new Float32Array(topK);
     const topkIndices = new Int32Array(topK);
@@ -35,7 +35,7 @@ const nsfwProcess = (values) => {
     }
 
     for (let i=0;i<5;i++) {
-        result[NSFW_CLASSES[[topkIndices[i]]]] = Number.parseFloat((topkValues[i] * 100).toFixed(2))
+        result.push({ className: NSFW_CLASSES[topkIndices[i]], probability: Number.parseFloat((topkValues[i] * 100).toFixed(2)) })
     }
     return result;
 }
@@ -54,7 +54,6 @@ const detectNSFW = async (imageData) => {
     const values = await predictions.data();
     const result = nsfwProcess(values);
     predictions.dispose();
-    console.log(result);
     self.postMessage(result);
 }
 

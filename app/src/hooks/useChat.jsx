@@ -123,8 +123,7 @@ const ChatProvider = ({ children }) => {
         nsfw.current.postMessage(img);
     }
 
-    const handleNSFW = async ({ data }) => {     
-        console.log(data);
+    const handleNSFW = async ({ data }) => {         
         const check = data
                 .filter( p => p.className === "Porn" || p.className === "Sexy") 
                 .reduce((acc, pred) => acc + pred.probability, 0)
