@@ -46,7 +46,6 @@
     "daisyui": "^3.9.4",
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^29.7.0",
-    "nsfwjs": "^3.0.0",
     "postcss": "^8.4.32",
     "react-icons": "^4.11.0",
     "rollup-plugin-visualizer": "^5.12.0",
