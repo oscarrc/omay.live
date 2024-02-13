@@ -69,7 +69,7 @@ export default ({ mode }) => {
             ],
         },
         build: {
-            outDir: env.DOCKER ?  "../www" : "dist",
+            outDir: env.VITE_DOCKER ?  "../www" : "dist",
             emptyOutDir: true,
             rollupOptions: {
                 output: {
