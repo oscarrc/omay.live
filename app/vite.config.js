@@ -72,17 +72,6 @@ export default ({ mode }) => {
             outDir: env.VITE_DOCKER ?  "../www" : "dist",
             emptyOutDir: true,
             rollupOptions: {
-                output: {
-                    manualChunks(id) {
-                        if(id.includes('nsfw')) return 'nsfw'
-                        if(id.includes('i18next')) return 'react-i18next'
-                        if(id.includes('react-query')) return 'react-query'
-                        if(id.includes('react-dom')) return 'react-dom'
-                        if(id.includes('react-router-dom') || id.includes('@remix-run') || id.includes('react-router')) {
-                            return 'react-router';
-                        }
-                    }
-                },
                 plugins: [
                     visualizer()
                 ]
