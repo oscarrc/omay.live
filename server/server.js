@@ -57,7 +57,6 @@ const Socket = async (server, workerId) => {
     }
 
     io.adapter(createAdapter(mongoose.connection.collection("sockets")));
-
     /* Mongo adapter end */
 
     // io.adapter(createAdapter());
