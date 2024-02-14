@@ -7,7 +7,8 @@ import dotenv from "dotenv";
 import http from "http";
 import os from "os";
 import { setupMaster } from "@socket.io/sticky";
-import { setupPrimary } from "@socket.io/cluster-adapter";
+
+// import { setupPrimary } from "@socket.io/cluster-adapter";
 
 dotenv.config();
 
@@ -24,7 +25,7 @@ if (cluster.isPrimary) {
 	const server = http.createServer();
 
 	setupMaster(server, { loadBalancingMethod: "least-connection" });
-	setupPrimary();
+	// setupPrimary();
 	
 	server.listen(PORT, () => {
 		console.log(`${chalk.green.bold("[SERVER]")} Ready on ${BASE_URL}:${PORT}`);
@@ -43,20 +44,21 @@ if (cluster.isPrimary) {
 		cluster.fork();
 	})	
 }else{
-	const purge = cluster.worker.id === 1;
+	const workerId = cluster.worker.id;
+	const purge = workerId === 1;
 	const port = parseInt(PORT) + cluster.worker.id;
 
 	Db(MONGO_URL, purge).then(() => {
-		console.log(`${chalk.green.bold("[DB]")} ${chalk.green(`[${cluster.worker.id}]`)} Connection ready`);
+		console.log(`${chalk.green.bold("[DB]")} ${chalk.green(`[${workerId}]`)} Connection ready`);
 
 		const router = Router(PRODUCTION);
 
 		const server = Server(router).listen(port, () => {
-			console.log(`${chalk.green.bold("[HTTP]")} ${chalk.green(`[${cluster.worker.id}]`)} Ready on ${BASE_URL}:${port}`);
-			Socket(server);
-			console.log(`${chalk.green.bold("[SOCKET]")} ${chalk.green(`[${cluster.worker.id}]`)} Ready on ${BASE_URL}:${port}`);
+			console.log(`${chalk.green.bold("[HTTP]")} ${chalk.green(`[${workerId}]`)} Ready on ${BASE_URL}:${port}`);
+			Socket(server, workerId);
+			console.log(`${chalk.green.bold("[SOCKET]")} ${chalk.green(`[${workerId}]`)} Ready on ${BASE_URL}:${port}`);
 		})
 	}).catch((e) => {
-		console.log(`${chalk.red.bold("[ERROR]")} ${chalk.bgRed.bold(` ${cluster.worker.id} `)} ${e}`);
+		console.log(`${chalk.red.bold("[ERROR]")} ${chalk.bgRed.bold(` ${workerId} `)} ${e}`);
 	})
 }

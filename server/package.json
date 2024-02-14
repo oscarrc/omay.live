@@ -13,6 +13,7 @@
   "author": "Oscar R.C.",
   "dependencies": {
     "@socket.io/cluster-adapter": "^0.2.2",
+    "@socket.io/mongo-adapter": "^0.3.2",
     "@socket.io/sticky": "^1.0.4",
     "body-parser": "^1.20.2",
     "chalk": "^5.3.0",

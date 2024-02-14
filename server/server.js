@@ -5,10 +5,12 @@ import { __dirname } from "./lib/dirname.js";
 import bodyparser from "body-parser";
 import chalk from 'chalk';
 import cors from "cors";
-import { createAdapter } from "@socket.io/cluster-adapter";
+import { createAdapter } from "@socket.io/mongo-adapter";
 import express from "express";
 import mongoose from "mongoose";
 import { setupWorker } from "@socket.io/sticky";
+
+// import { createAdapter } from "@socket.io/cluster-adapter";
 
 const app = express(); 
 
@@ -36,7 +38,7 @@ const Server = (router) => {
     return app
 }
 
-const Socket = (server) => {
+const Socket = async (server, workerId) => { 
     const io = new SocketIO(server, {
         cors: {
           origin: "*",
@@ -44,7 +46,21 @@ const Socket = (server) => {
         },
     });
 
-    io.adapter(createAdapter());
+    /* Mongo adapter start */
+    try {
+        await mongoose.connection.createCollection("sockets", {
+            capped: true,
+            size: 1e6
+        })    
+    } catch (e) {
+        // collection already exists
+    }
+
+    io.adapter(createAdapter(mongoose.connection.collection("sockets")));
+
+    /* Mongo adapter end */
+
+    // io.adapter(createAdapter());
 
     setupWorker(io);
 
@@ -69,7 +85,7 @@ const Socket = (server) => {
             simulated: socket.handshake.query.simulated || false
         })
     
-        console.log(`${chalk.green.bold("> [connected]")} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${ip})`)}`)
+        console.log(`${chalk.green.bold(`${workerId}> [connected]`)} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${ip})`)}`)
     
         socket.on('report', async (data) => {
             if(!data.id) return;
