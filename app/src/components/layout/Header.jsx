@@ -17,7 +17,7 @@ const Header = ({ children }) => {
         <header className="sticky top-0 bg-base-100 z-40">
             <nav className={`navbar transition-all duration-100	${scrolled ? "shadow-lg" : "shadow-none"}`}>
                 <div className="flex gap-8 min-w-fit flex-1">
-                    <Link to="/" className="btn btn-ghost text-warning text-2xl uppercase py-2">
+                    <Link to="/" className="btn btn-ghost text-warning text-xl md:text-2xl uppercase py-2">
                         <img src="/logo.svg" alt={`${BRAND} logo`} className="h-full"/>
                         { BRAND }
                     </Link>
