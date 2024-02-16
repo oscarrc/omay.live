@@ -42,7 +42,7 @@ const Ad = ({zoneId, fallbackId, keywords, sub, className, video, listeners}) =>
                     <AdAlt zoneId={fallbackId || zoneId} className="responsive justify-center items-center">
                         {
                             hasAdblock &&
-                                <div className="text-center">
+                                <div className="text-center text-base-content">
                                     <h4 className="text-2xl font-bold">{t("common.alerts.adblockdetected")}</h4>
                                     <p>{t("common.alerts.disableadblock")}</p>
                                 </div>
