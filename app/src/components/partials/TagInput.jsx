@@ -23,7 +23,7 @@ const TagInput = ({ values, onAdd, onDelete, className, placeholder }) => {
 
     return (
         <div className="group w-full">
-            <div className={`flex flex-wrap items-center gap-2 border rounded input-lg group-focus:outline outline-2 outline-base-content/20 outline-offset-2 scroll overflow-y-auto overflow-x-hidden py-2 ${className}`}>
+            <div className={`flex flex-wrap items-center gap-2 border rounded input-lg group-focus:outline outline-2 outline-base-content/20 outline-offset-2 border-base-content/20 scroll overflow-y-auto overflow-x-hidden py-2 ${className}`}>
                 {
                     Array.from(values).map((v,i) => <span key={i} className="badge badge-primary badge-lg">{v} <button onClick={()=>onDelete(v)}><AiOutlineClose className="ml-1 h-3 w-3" /></button></span> )
                 }
