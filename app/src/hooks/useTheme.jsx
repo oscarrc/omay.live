@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 const useTheme = () => {
-    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");;
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const isDark = useMemo(() => theme === "dark", [theme]);
     
     const toggleTheme = () => {
