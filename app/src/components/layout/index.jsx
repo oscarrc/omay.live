@@ -1,3 +1,4 @@
+import { IoMoonSharp, IoSunnyOutline } from "react-icons/io5";
 import { Suspense, useEffect, useRef } from "react";
 
 import Cookies from "./Cookies";
@@ -8,14 +9,17 @@ import Language from "./Language";
 import { Link } from "react-router-dom";
 import Loader from "../partials/Loader";
 import { Outlet } from "react-router-dom";
-import { PiCookie } from "react-icons/pi";
+import Theme from "./Theme";
 import { useChat } from "../../hooks/useChat";
 import { useCookieConsent } from "../../hooks/useCookieConsent";
 import { useQuery } from "react-query";
+import useTheme from "../../hooks/useTheme";
 import { useTranslation } from "react-i18next";
 
 const Layout = ({ children }) => {    
     const { i18n, t } = useTranslation();
+    const { isDark, toggleTheme } = useTheme();
+
     const main = useRef(null);
     const { state: { lang, mode } } = useChat();
     const { manage, setManage, cookieConsent, setConsent } = useCookieConsent();
@@ -37,7 +41,10 @@ const Layout = ({ children }) => {
         <>
             <Header>
                 <Counter count={count} />
-                <Language lang={lang} />          
+                <div className="flex gap-2">
+                    <Language lang={lang} />
+                    <Theme dark={isDark} onClick={toggleTheme} />
+                </div>
             </Header>
             <main ref={main} className="flex flex-col flex-1 bg-base-200 sm:p-6 sm:pb-0">
                 <Suspense fallback={<Loader />}>
@@ -49,7 +56,7 @@ const Layout = ({ children }) => {
                 <Link to={"policies/terms-and-conditions"}>{ t("common.terms")}</Link>
                 <Link to={"policies/privacy-policy"}>{ t("common.privacy")}</Link>
                 <Link to={"policies/community-guidelines"}>{ t("common.guidelines")}</Link>
-                <button onClick={() => setManage(true) } className="">{ t("common.managecookies")}s</button>
+                <button onClick={() => setManage(true) } className="">{ t("common.managecookies")}</button>
             </Footer>
         </>
     )
