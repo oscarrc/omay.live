@@ -1,4 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+
+const light = require("daisyui/src/theming/themes")["[data-theme=cmyk]"];
+const dark = require("daisyui/src/theming/themes")["[data-theme=dark]"];
+
 module.exports = {
   content: [
     "index.html",
@@ -46,7 +50,22 @@ module.exports = {
     }
   },
   daisyui:{
-    themes:["cmyk"]
+    themes:[
+      {
+        light,
+        dark: {
+          ...dark,
+          "primary": light["primary"],
+          "secondary": light["secondary"],
+          "accent": light["accent"],
+          "info": light["info"],
+          "success": light["success"],
+          "warning": light["warning"],
+          "error": light["error"],
+          "neutral": light["neutral"],
+        }
+      }
+    ]
   },
   plugins: [
     require('@tailwindcss/typography'),

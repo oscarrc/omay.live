@@ -2,13 +2,13 @@ import { cloneElement } from "react";
 
 const Alert = ({color, title, icon, text}) => {
     const colorClasses = {
-        primary: "alert-primary bg-primary/75",
-        secondary: "alert-secondary bg-secondary/75",
-        accent: "alert-accent bg-accent/75",
-        succes: "alert-success bg-success/75",
-        info: "alert-info bg-info/75",
-        warning: "alert-warning bg-warning/75",
-        error:  "alert-error bg-error/75",
+        primary: "alert-primary bg-primary/75 text-primary-content",
+        secondary: "alert-secondary bg-secondary/75 text-secondary-content",
+        accent: "alert-accent bg-accent/75 text-accent-content",
+        succes: "alert-success bg-success/75 text-success-content",
+        info: "alert-info bg-info/75 text-info-content",
+        warning: "alert-warning bg-warning/75 text-warning-content",
+        error:  "alert-error bg-error/75 text-error-content",
     }
 
     return (
