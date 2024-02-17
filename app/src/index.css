@@ -65,7 +65,7 @@
 
     @media (min-width: 768px) {
         .grid-chat.text-only{
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
         }
 
         .grid-chat{        
@@ -75,17 +75,18 @@
 
         .grid-chat .resizable .handle{
             position: absolute;
-            width: 1rem;
-            height: 100%;        
+            width: 1rem;    
             left: 100%;
             cursor: col-resize;
+            top: calc(30vh - 0.5rem);
         }
 
-        .grid-chat .resizable .handle:after{
-            position: absolute;
+        .grid-chat .resizable .handle:after, .grid-chat .resizable .handle:before{
+            position: relative;
+            display: block;
             content: "";
             width: 2px;
-            height: 100%;        
+            height: 10vh;        
             left: calc(50% - 1px);
             background-color: hsl(var(--bc) / 0.2);
             border-radius: 1px;

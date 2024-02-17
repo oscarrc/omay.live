@@ -109,6 +109,12 @@ const Chat = () => {
 
         return () => { timeout && clearTimeout(timeout) }
     }, [status])
+
+    useEffect(() => { 
+        const handleGrid = (e) => { if(window.innerWidth < 768) grid.current.style = "" }
+        window.addEventListener("resize", handleGrid)
+        return () => window.removeEventListener("resize", handleGrid)
+    }, [])
    
     return (
         <section ref={grid} className={`grid grid-chat gap-4 w-full relative min-h-display ${isTextOnly && "text-only"}`}>
