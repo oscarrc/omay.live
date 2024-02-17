@@ -101,7 +101,7 @@ const Chat = () => {
     }, [status])
 
     return (
-        <section className={`grid grid-chat gap-4 w-full relative min-h-display`}>
+        <section className={`grid grid-chat gap-4 w-full relative min-h-display ${isTextOnly && "text-only"}`}>
             {
                 !isTextOnly &&
                 <div className="flex flex-col w-full justify-between gap-4 max-h-content min-h-full">
@@ -181,9 +181,12 @@ const Chat = () => {
                     </div>
                 }
             </ChatBox>                
-            <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
-                <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
-            </div>
+            {
+                !isTextOnly && 
+                    <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
+                        <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
+                    </div>
+            }
             <ChatControls 
                 onClick={onClick} 
                 onSubmit={sendMessage} 
