@@ -1,7 +1,7 @@
 import { ChatBox, ChatControls, VideoBox } from "./components";
 import { RETRY_DELAY, STATUS } from "../../constants/chat";
-import { TagInput, Toggle } from "../../components/partials";
-import { useCallback, useEffect, useMemo } from "react";
+import { Resizable, TagInput, Toggle } from "../../components/partials";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { ADS } from "../../constants/ads";
 import Ad from "../../components/ad";
@@ -43,6 +43,16 @@ const Chat = () => {
     const isTextOnly = useMemo(()=> mode === "text", [mode]);
     const isUnmoderated = useMemo(()=> mode === "unmoderated", [mode]);
     const isAdPlaying = useMemo(() => status === STATUS.ADPLAYING, [status])
+
+    const grid = useRef(null);
+
+    const resizeGrid = (e) => {
+        const width = window.innerWidth;
+        const pos = e.screenX;
+        const calc = 4*pos / width
+        
+        grid.current.style.gridTemplateColumns = `${calc}fr ${4 - calc}fr`
+    }
     
     const startSearch = useCallback(async () => {
         if(isDisabled || status === STATUS.CONNECTING) return;
@@ -99,12 +109,12 @@ const Chat = () => {
 
         return () => { timeout && clearTimeout(timeout) }
     }, [status])
-
+   
     return (
-        <section className={`grid grid-chat gap-4 w-full relative min-h-display ${isTextOnly && "text-only"}`}>
+        <section ref={grid} className={`grid grid-chat gap-4 w-full relative min-h-display ${isTextOnly && "text-only"}`}>
             {
                 !isTextOnly &&
-                <div className="flex flex-col w-full justify-between gap-4 max-h-content min-h-full">
+                <Resizable className="flex flex-col w-full justify-between gap-4 max-h-content min-h-full" resizeFunction={resizeGrid}>
                     <div className="flex flex-col gap-4 relative min-h-full">
                         <VideoBox 
                             source={remoteStream} 
@@ -121,7 +131,7 @@ const Chat = () => {
                             loading={!localStream} 
                         />
                     </div>
-                </div>
+                </Resizable>
             }
             <ChatBox 
                 className="scroll flex flex-col flex-1 gap-4 min-h-full overflow-y-auto" 
