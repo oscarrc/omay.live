@@ -101,10 +101,10 @@ const Chat = () => {
     }, [status])
 
     return (
-        <section className="flex flex-col md:flex-row flex-1 w-full gap-4 relative min-h-display">
+        <section className={`grid grid-chat gap-4 w-full relative min-h-display`}>
             {
                 !isTextOnly &&
-                <div className="flex flex-col w-full md:max-w-1/4 justify-between gap-4 max-h-content min-h-full">
+                <div className="flex flex-col w-full justify-between gap-4 max-h-content min-h-full">
                     <div className="flex flex-col gap-4 relative min-h-full">
                         <VideoBox 
                             source={remoteStream} 
@@ -121,78 +121,76 @@ const Chat = () => {
                             loading={!localStream} 
                         />
                     </div>
-                    <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
-                        <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
-                    </div>
                 </div>
             }
-            <div className="flex flex-col flex-1 gap-4 max-h-content">
-                <ChatBox 
-                        className="scroll flex flex-col flex-1 gap-4 min-h-full overflow-y-auto" 
-                        messages={messages} 
-                        status={status} 
-                        simulated={peer.current.simulated} 
-                        unmoderated={isUnmoderated}
-                        common={peer.current.interests?.filter( i => interests.has(i)) || []} 
-                        lang={peer.current.lang === lang && lang !== "any"}
-                        ad={isTextOnly || isUnmoderated }
-                    >
-                        { 
-                            (isDisconnected || status === STATUS.STOPPED) &&
-                            
-                            <div className={`flex flex-col md:flex-row gap-4 w-full max-w-4xl ${isMobile && "md:items-end"}`}>
-                                <div className="flex flex-col gap-4 flex-1">
-                                    <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
-                                        { t("chat.interests") }
-                                    </Toggle>
-                                    <div className="flex flex-col gap-2 order-3">
-                                        <TagInput
-                                            values={interests} 
-                                            onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
-                                            onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
-                                            className="w-full"
-                                            placeholder={t("common.addinterests")}
-                                        />
-                                        { isDisconnected && auto && isMouseMoving && !isMobile &&
-                                            <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
-                                        }  
-                                    </div> 
-                                </div>
-                                <div className="flex flex-col gap-4">
-                                    {
-                                        !isMobile &&
-                                            <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
-                                                {t("chat.reconnect")}
-                                            </Toggle>  
-                                    } 
-                                    <div className="flex flex-col gap-2 justify-end">
-                                        <button 
-                                            onClick={() => {
-                                                onClick()
-                                            }} 
-                                            className="btn btn-lg w-full btn-primary "
-                                        >
-                                            {t("chat.newchat")}
-                                        </button>
-                                        <button 
-                                            onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
-                                            className="btn text-sm btn-xs w-full text-xs self-end h-fit"
-                                        >
-                                            { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
-                                        </button>
-                                    </div> 
-                                </div>
-                            </div>
-                        }
-                </ChatBox>
-                <ChatControls 
-                    onClick={onClick} 
-                    onSubmit={sendMessage} 
-                    state={confirmation} 
-                    disabled={isDisabled || status === STATUS.CONNECTING}
-                />
-                { targeting && <Ad zoneId={ADS.pagePush[isUnmoderated ? "unmoderated" : "moderated"]} keywords={Array.from(interests)} />}
+            <ChatBox 
+                className="scroll flex flex-col flex-1 gap-4 min-h-full overflow-y-auto" 
+                messages={messages} 
+                status={status} 
+                simulated={peer.current.simulated} 
+                unmoderated={isUnmoderated}
+                common={peer.current.interests?.filter( i => interests.has(i)) || []} 
+                lang={peer.current.lang === lang && lang !== "any"}
+                ad={isTextOnly || isUnmoderated }
+            >
+                { 
+                    (isDisconnected || status === STATUS.STOPPED) &&
+                    
+                    <div className={`flex flex-col md:flex-row gap-4 w-full max-w-4xl ${isMobile && "md:items-end"}`}>
+                        <div className="flex flex-col gap-4 flex-1">
+                            <Toggle onChange={() => dispatch({type: "INTEREST", payload: !interest})} checked={interest}>
+                                { t("chat.interests") }
+                            </Toggle>
+                            <div className="flex flex-col gap-2 order-3">
+                                <TagInput
+                                    values={interests} 
+                                    onAdd={(i) => dispatch({type: "ADD_INTEREST", payload: i})}
+                                    onDelete={(i) => dispatch({type: "DEL_INTEREST", payload: i})}
+                                    className="w-full"
+                                    placeholder={t("common.addinterests")}
+                                />
+                                { isDisconnected && auto && isMouseMoving && !isMobile &&
+                                    <span className="badge badge-primary w-full badge-lg rounded-md">{t("chat.mousemoving")}</span>
+                                }  
+                            </div> 
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            {
+                                !isMobile &&
+                                    <Toggle onChange={() => dispatch({type: "TOGGLE_AUTO"})} checked={auto}>
+                                        {t("chat.reconnect")}
+                                    </Toggle>  
+                            } 
+                            <div className="flex flex-col gap-2 justify-end">
+                                <button 
+                                    onClick={() => {
+                                        onClick()
+                                    }} 
+                                    className="btn btn-lg w-full btn-primary "
+                                >
+                                    {t("chat.newchat")}
+                                </button>
+                                <button 
+                                    onClick={()=>dispatch({type: "MODE", payload: mode === "text" ? "video" : "text" })} 
+                                    className="btn text-sm btn-xs w-full text-xs self-end h-fit"
+                                >
+                                    { t("common.switchto") } { t(`common.${mode === "text" ? "video" : "text"}`)}
+                                </button>
+                            </div> 
+                        </div>
+                    </div>
+                }
+            </ChatBox>                
+            <div className="absolute top-2 left-2 md:top-[auto] md:left-[auto] md:relative min-w-0 md:min-w-1/4 opacity-60 md:opacity-100">
+                <button onClick={reportPeer} className="btn btn-error btn-sm md:btn-md md:btn-block md:h-16"><MdReport className="h-6 w-6"/> <span className="hidden md:inline">{t("chat.report")}</span></button>
             </div>
+            <ChatControls 
+                onClick={onClick} 
+                onSubmit={sendMessage} 
+                state={confirmation} 
+                disabled={isDisabled || status === STATUS.CONNECTING}
+            />
+            { targeting && <Ad zoneId={ADS.pagePush[isUnmoderated ? "unmoderated" : "moderated"]} keywords={Array.from(interests)} />}
         </section>
     )
 }

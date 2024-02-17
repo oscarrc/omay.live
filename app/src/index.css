@@ -54,4 +54,15 @@
         max-width: 100%;
         height: auto !important;
     }
+
+    .grid-chat{
+        grid-template-rows: auto 1fr;
+    }
+
+    @media (min-width: 768px) {
+        .grid-chat{        
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: 3fr auto;
+        }
+    }
 }
