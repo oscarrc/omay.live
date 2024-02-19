@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: hobo;
+    src: url('/fonts/hobo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @layer base {    
     :root {
         --scrollbarTrack: transparent;
@@ -91,5 +98,12 @@
             background-color: hsl(var(--bc) / 0.2);
             border-radius: 1px;
         }
+    }
+
+    .logo{
+        text-transform: none !important;
+        font-weight: normal;
+        line-height: 1rem !important;
+        font-family: hobo;
     }
 }
