@@ -23,6 +23,10 @@ module.exports = {
         '1/4': "25vw",        
         '3/4': "75vw"
       },
+      height: {
+        'display': "calc(100dvh - 6.5rem)",
+        'content': "calc(100dvh - 11rem)"
+      },
       minHeight: {
         'display': "calc(100dvh - 6.5rem)",
         'content': "calc(100dvh - 11rem)"

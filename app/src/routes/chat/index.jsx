@@ -117,7 +117,7 @@ const Chat = () => {
     }, [])
    
     return (
-        <section ref={grid} className={`grid grid-chat gap-4 w-full relative min-h-display ${isTextOnly && "text-only"}`}>
+        <section ref={grid} className={`grid grid-chat gap-4 w-full relative h-display ${isTextOnly && "text-only"}`}>
             {
                 !isTextOnly &&
                 <Resizable className="flex flex-col w-full justify-between gap-4 max-h-content min-h-full" resizeFunction={resizeGrid}>
