@@ -120,8 +120,7 @@ const Chat = () => {
         <section ref={grid} className={`grid grid-chat gap-4 w-full relative h-display ${isTextOnly && "text-only"}`}>
             {
                 !isTextOnly &&
-                <Resizable className="flex flex-col w-full justify-between gap-4 max-h-content min-h-full" resizeFunction={resizeGrid}>
-                    <div className="flex flex-col gap-4 relative min-h-full">
+                <Resizable className="flex flex-col w-full gap-4 max-h-content min-h-full" resizeFunction={resizeGrid}>
                         <VideoBox 
                             source={remoteStream} 
                             className="relative aspect-4/3" 
@@ -136,7 +135,6 @@ const Chat = () => {
                             className={`${isAdPlaying ? "animate-fade-out" : "animate-fade-in"} md:animate-none w-[25%] bottom-2 right-2 md:aspect-4/3 md:bottom-[auto] md:right-[auto] md:w-auto absolute md:relative`} 
                             loading={!localStream} 
                         />
-                    </div>
                 </Resizable>
             }
             <ChatBox 
