@@ -1,4 +1,4 @@
-const BRAND = "Lamdazle";
-const TRANSLITERATION = "læm·də·zəl";
+const BRAND = "Omy.live";
+const TRANSLITERATION = "oʊ·maɪ·laɪv";
 
 export { BRAND, TRANSLITERATION }
