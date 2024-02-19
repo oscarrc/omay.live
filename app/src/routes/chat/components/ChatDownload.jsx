@@ -16,7 +16,7 @@ const ChatDownload = ({ messages, lang }) => {
             return `${a} ${m.me ? t("chat.you") : t("chat.stranger")} [${time}]: ${m.msg}\n`;            
         }, `${BRAND} log [${date}]\n`)
 
-        var file = new Blob([content], {type: 'text/plain'});
+        var file = new Blob([content], {type: 'text/plain;charset=UTF-8'});
         let url = window.URL.createObjectURL(file);
 
         link.current.href = url;
