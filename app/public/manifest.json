@@ -1,7 +1,7 @@
 {
   "short_name": "Omy.live",
-  "name": "Omy.live | Connect with strangers",
-  "description": "Omy.live is a free online video chat app. Talk to strangers from all over the world anonymously and have fun with them.",
+  "name": "Omy.live | Live with strangers",
+  "description": "Omy.live is a free online video chat app. Connect live with strangers from all over the world anonymously and have fun with them.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -27,14 +27,14 @@
       "sizes": "1280x720",
       "type": "image/webp",
       "form_factor": "wide",
-      "label": "Omy.live! Connect with strangers"
+      "label": "Omy.live! Connect live with strangers"
     },
     {
       "src": "screenshots/screenshot_narrow.webp",
       "sizes": "1080x2264",
       "type": "image/webp",
       "form_factor": "narrow",
-      "label": "Omy.live! Connect with strangers"
+      "label": "Omy.live! Connect live with strangers"
     }
   ],
   "start_url": ".",
