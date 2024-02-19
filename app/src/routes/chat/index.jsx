@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { ADS } from "../../constants/ads";
 import Ad from "../../components/ad";
+import ChatDownload from "./components/ChatDownload";
 import { MdReport } from "react-icons/md"
 import { requestFullscreen } from "../../lib/fullscreen";
 import { useChat } from "../../hooks/useChat";
@@ -147,6 +148,7 @@ const Chat = () => {
                 lang={peer.current.lang === lang && lang !== "any"}
                 ad={isTextOnly || isUnmoderated }
             >
+                { (isDisconnected && messages.length > 0) && <ChatDownload messages={messages} lang={lang} /> }
                 { 
                     (isDisconnected || status === STATUS.STOPPED) &&
                     

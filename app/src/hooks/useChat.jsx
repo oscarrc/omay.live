@@ -187,7 +187,7 @@ const ChatProvider = ({ children }) => {
 
         connection.current.ondatachannel = (e) => {
             data.current.receive = e.channel;
-            data.current.receive.onmessage = (e) => setMessages(m => [...m, { me: false, msg: e.data}]) 
+            data.current.receive.onmessage = (e) => setMessages(m => [...m, { me: false, msg: e.data, t: Date.now() }]) 
         }
 
         connection.current.onconnectionstatechange = (e) => {
@@ -309,7 +309,7 @@ const ChatProvider = ({ children }) => {
 
     const sendMessage = (msg) => {
         if(state.status !== STATUS.CONNECTED) return;
-        setMessages(m => [...m, { me: true, msg: msg}])
+        setMessages(m => [...m, { me: true, msg: msg, t: Date.now()}])
         data.current.send.send(msg);
     }
 
