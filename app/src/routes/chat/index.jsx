@@ -62,6 +62,7 @@ const Chat = () => {
     }, [createOffer, isDisabled, isUnmoderated, status])
 
     const stopSearch = useCallback(async () => {
+        if(!isUnmoderated) await checkNSFW();
         await closeConnection();
     }, [closeConnection])
 
