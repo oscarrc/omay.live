@@ -129,6 +129,7 @@ const Chat = () => {
                                 className="relative aspect-4/3" 
                                 loading={!remoteStream && status.includes("search")} 
                                 withAds={true} 
+                                withBrand={true}
                                 playAd={ isDisconnected || isAdPlaying }
                                 isUnmoderated={isUnmoderated}
                             />
