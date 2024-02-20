@@ -37,8 +37,10 @@
       "label": "Omy.live! Connect live with strangers"
     }
   ],
+  "id": "/",
   "start_url": ".",
   "display": "standalone",
+  "orientation": "portrait",
   "theme_color": "#249eeb",
   "background_color": "#249eeb"
 }
