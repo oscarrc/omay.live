@@ -4,8 +4,7 @@ const Counter = ({ count }) => {
     const counter = useMemo(() => {
         let elements = [];
         let counter = count.toString().split("");
-        console.log(counter)
-
+        
         counter.forEach( (g,i) =>{
             elements.push(           
                 <span className="countdown countdown-single text-xl md:text-2xl" key={i}>
