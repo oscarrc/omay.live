@@ -62,10 +62,10 @@ const init = async ({data}) => {
     if (typeof data === 'string' && data === 'init') {
         await tf.setBackend('wasm');
         try {
-            model = await tf.loadGraphModel('indexeddb://model');
+            model = await tf.loadGraphModel('indexeddb://nsfw');
         } catch(e) {
-            model = await tf.loadGraphModel(`${import.meta.env.VITE_SERVER_URL}/tf/model/model.json`);
-            model.save('indexeddb://model');
+            model = await tf.loadGraphModel(`${import.meta.env.VITE_SERVER_URL}/tf/nsfw/model.json`);
+            model.save('indexeddb://nsfw');
         } finally {
             const result = tf.tidy(() => model.predict(tf.zeros([1, SIZE, SIZE, 3])));
             await result.data();
