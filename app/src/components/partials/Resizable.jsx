@@ -19,7 +19,7 @@ const Resizable = forwardRef(({ children, className, resizeFunction }, ref) => {
         <div ref={ref} className={`resizable relative ${className}`}>
             { children }
             <span onMouseDown={handleResize} className="handle hidden relative md:block group">
-                <HiDotsVertical className="h-4 w-4 my-4 top-1/2 text-base-content/30" />
+                <HiDotsVertical className="h-5 w-5 my-4 text-base-content/30" />
             </span>
         </div>
     )
