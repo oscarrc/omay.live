@@ -21,22 +21,6 @@
       "sizes": "512x512"
     }
   ],
-  "screenshots" : [
-    {
-      "src": "screenshots/screenshot_wide.webp",
-      "sizes": "1280x720",
-      "type": "image/webp",
-      "form_factor": "wide",
-      "label": "Omy.live! Connect live with strangers"
-    },
-    {
-      "src": "screenshots/screenshot_narrow.webp",
-      "sizes": "1080x2264",
-      "type": "image/webp",
-      "form_factor": "narrow",
-      "label": "Omy.live! Connect live with strangers"
-    }
-  ],
   "id": "/",
   "start_url": ".",
   "display": "standalone",
