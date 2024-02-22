@@ -62,7 +62,7 @@ const Socket = async (server, workerId) => {
     // io.adapter(createAdapter());
 
     setupWorker(io);
-
+    
     io.on('connection', async (socket) => {
         let ip =  socket.handshake.headers["true-client-ip"] || 
                 socket.handshake.headers["x-forwarded-for"]?.split(",")[0] || 
@@ -74,7 +74,7 @@ const Socket = async (server, workerId) => {
             console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${ip})`)}`)
             socket.emit("banned");
         }
-    
+        
         await ChatService.peerConnected({
             peer: socket.id,
             ip: ip,
