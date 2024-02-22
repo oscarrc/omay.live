@@ -13,8 +13,8 @@ const ChatDownload = ({ messages, lang }) => {
 
         let content = messages.reduce((a, m) => {
             let time = (new Date(m.t)).toLocaleTimeString([lang, "en"]);
-            return `${a} ${m.me ? t("chat.you") : t("chat.stranger")} [${time}]: ${m.msg}\n`;            
-        }, `${BRAND} log [${date}]\n`)
+            return `${a}\t${m.me ? t("chat.you") : t("chat.stranger")} [${time}]: ${m.msg}\n`;            
+        }, `${BRAND} log [${date}]\n\n`)
 
         var file = new Blob([content], {type: 'text/plain;charset=UTF-8'});
         let url = window.URL.createObjectURL(file);
