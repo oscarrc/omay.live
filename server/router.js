@@ -20,7 +20,7 @@ const Router = (production) => {
     
     router.use('/tf', express.static(join(__dirname, "../../tf")))
 
-    router.get("*", (req,res) => {   
+    router.get("*", (_,res) => {   
         const file = join(__dirname, "../../www", "index.html");
         production && fs.existsSync(file) ? res.sendFile(file) : res.send("OK");
     })
