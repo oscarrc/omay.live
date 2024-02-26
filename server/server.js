@@ -71,7 +71,7 @@ const Socket = async (server, workerId) => {
         let banned = await BanService.isBanned(ip);
         
         if(banned) {      
-            console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${ip})`)}`)
+            console.log(`\t${chalk.red.bold(`> [banned] [${workerId}]`)} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${socket.id} (${ip})`)}`)
             socket.emit("banned");
         }
         
@@ -84,7 +84,7 @@ const Socket = async (server, workerId) => {
             simulated: socket.handshake.query.simulated || false
         })
     
-        console.log(`${chalk.green.bold(`${workerId}> [connected]`)} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${ip})`)}`)
+        console.log(`\t${chalk.green.bold(`> [connected] [${workerId}]`)} ${chalk.bgGreen.black.bold(` ${socket.handshake.query.mode} `)} ${chalk.green(`${socket.id} (${ip})`)}`)
     
         socket.on('report', async (data) => {
             if(!data.id) return;
@@ -92,11 +92,11 @@ const Socket = async (server, workerId) => {
             let peer = await ChatService.getPeer(data.id);
             let banned = await BanService.warn(peer.ip);
         
-            console.log(`${chalk.yellow.bold("> [reported]")} ${chalk.bgYellow.black.bold(' nsfw ')} ${chalk.yellow(data.id)}`)
+            console.log(`\t${chalk.yellow.bold(`> [reported] [${workerId}]`)} ${chalk.bgYellow.black.bold(' nsfw ')} ${chalk.yellow(data.id)}`)
             
             if(!banned) return;
         
-            console.log(`${chalk.red.bold("> [banned]")} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${data.id} (${peer.ip})`)}`)
+            console.log(`\t${chalk.red.bold(`> [banned] [${workerId}]`)} ${chalk.bgRed.black.bold(' nsfw ')} ${chalk.red(`${data.id} (${peer.ip})`)}`)
             socket.emit("banned");
         
             await ChatService.peerDisconnected(socket.id)
@@ -130,7 +130,7 @@ const Socket = async (server, workerId) => {
                         socket.client.conn.remoteAddress;
                         
             await ChatService.peerDisconnected(socket.id)
-            console.log(`${chalk.blue.bold("> [disconnected]")} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${ip})`)}`)
+            console.log(`\t${chalk.blue.bold(`> [disconnected] [${workerId}]`)} ${chalk.bgBlue.black.bold(" exit ")} ${chalk.blue(`${socket.id} (${ip})`)}`)
         });
     
         socket.on('peerupdated', async (data) => {
