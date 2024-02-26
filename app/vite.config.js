@@ -35,7 +35,7 @@ export default ({ mode }) => {
                             }
                         },
                         {
-                            urlPattern: new RegExp(`^${env.VITE_SERVER_URL}\/model\/.*`, "i"),
+                            urlPattern: new RegExp(`^${env.VITE_SERVER_URL}\/tf\/.*`, "i"),
                             handler: 'CacheFirst',
                             options: {
                                 cacheName: 'model-cache',
