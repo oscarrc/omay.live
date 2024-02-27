@@ -112,8 +112,14 @@ const Socket = async (server, workerId) => {
         })
     
         socket.on('answercreated', async (data) => {    
-            await socket.to(data.remoteId).emit("receiveanswer", data)
-            ChatService.peerUnavailable(data.id);
+            const peer = await ChatService.getPeer(data.id);
+
+            if(peer.available) {
+                await socket.to(data.remoteId).emit("receiveanswer", data)
+                await ChatService.peerUnavailable(data.id);
+            }else{
+                await socket.to(data.remoteId).emit("peerunavailable");
+            }
         })
     
         socket.on('answerreceived', async (data) => {

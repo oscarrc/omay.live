@@ -36,7 +36,7 @@ class ChatService{
 
         let found = await this.peer.aggregate([
             { $match: q },
-            { $sample: { size: 1} }
+            { $sample: { size: 1 } }
         ])
         
         let f = found.length ? 

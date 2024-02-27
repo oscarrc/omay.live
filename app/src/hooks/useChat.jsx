@@ -287,6 +287,11 @@ const ChatProvider = ({ children }) => {
         closeConnection(true);
     }
 
+    const onPeerUnavailable = async() => {
+        console.log("peerunavailable");
+        await createOffer();
+    }
+
     const onBanned = () => {
         console.log("banned")
         dispatch({ type: "STATUS", payload: STATUS.BANNED });
@@ -342,7 +347,8 @@ const ChatProvider = ({ children }) => {
         socket.current.on('connect_error', onError);
         socket.current.on('disconnect', onDisconnect);
         socket.current.on('receiveoffer', onReciveOffer);        
-        socket.current.on('receiveanswer', onReceiveAnswer);        
+        socket.current.on('receiveanswer', onReceiveAnswer);   
+        socket.current.on('peerunavailable', onPeerUnavailable);     
         socket.current.on('receivecandidate', onReceiveCandidate);
         socket.current.on('peerdisconnected', onPeerDisconnected);
 
@@ -351,8 +357,9 @@ const ChatProvider = ({ children }) => {
             socket.current.off('connect', onConnect);
             socket.current.off('connect_error', onError);
             socket.current.off('disconnect', onDisconnect);
-            socket.current.off('receiveoffer', onReciveOffer);        
-            socket.current.off('receiveanswer', onReceiveAnswer);        
+            socket.current.off('receiveoffer', onReciveOffer);      
+            socket.current.off('receiveanswer', onReceiveAnswer); 
+            socket.current.off('peerunavailable', onPeerUnavailable);         
             socket.current.off('receivecandidate', onReceiveCandidate);
             socket.current.off('peerdisconnected', onPeerDisconnected);
         }
