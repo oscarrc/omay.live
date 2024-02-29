@@ -49,8 +49,8 @@ const Chat = () => {
 
     const resizeGrid = (e) => {
         const width = window.innerWidth;
-        const pos = e.screenX || e.targetTouches?.[0].screenX;
-        const calc = 4*pos / width
+        const pos = e.screenX || e.targetTouches?.[0].screenX || 0;
+        const calc = pos > 0 ? 4*pos / width : 1;
         
         grid.current.style.gridTemplateColumns = `${calc}fr ${4 - calc}fr`
     }
