@@ -1,20 +1,17 @@
-import { forwardRef, useEffect } from "react";
-
 import { HiDotsVertical } from "react-icons/hi";
+import { forwardRef } from "react";
 
 const Resizable = forwardRef(({ children, className, resizeFunction }, ref) => {
     const handleResize = () => {
         resizeFunction && document.addEventListener('mousemove', resizeFunction);
+        document.addEventListener("mouseup", stopResize);
     }
 
     const stopResize = () => {
         resizeFunction && document.removeEventListener('mousemove', resizeFunction);
+        document.removeEventListener("mouseup", stopResize);
     }
 
-    useEffect(() => {
-        document.addEventListener("mouseup", stopResize)
-    })
-    
     return (
         <div ref={ref} className={`resizable relative ${className}`}>
             { children }
