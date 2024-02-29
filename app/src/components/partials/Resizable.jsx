@@ -3,15 +3,16 @@ import { forwardRef } from "react";
 
 const Resizable = forwardRef(({ children, className, resizeFunction }, ref) => {
     const handleResize = () => {
-        resizeFunction && document.addEventListener('mousemove', resizeFunction);
-        resizeFunction && document.addEventListener('touchmove', resizeFunction);
+        if(!resizeFunction) return;
+        document.addEventListener('mousemove', resizeFunction);
+        document.addEventListener('touchmove', resizeFunction);
         document.addEventListener("mouseup", stopResize);
         document.addEventListener("touchend", stopResize);
     }
 
     const stopResize = () => {
-        resizeFunction && document.removeEventListener('mousemove', resizeFunction);
-        resizeFunction && document.removeEventListener('touchmove', resizeFunction);
+        document.removeEventListener('mousemove', resizeFunction);
+        document.removeEventListener('touchmove', resizeFunction);
         document.removeEventListener("mouseup", stopResize);
         document.removeEventListener("touchend", stopResize);
     }
