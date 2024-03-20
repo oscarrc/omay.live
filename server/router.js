@@ -15,7 +15,7 @@ const Router = () => {
     router.get("/chat", ChatController.count.bind(ChatController))
           .post("/chat", ChatController.find.bind(ChatController))
     
-    router.use('/tf', express.static(join(__dirname, "../../tf")))
+    router.use('/tf', express.static(join(__dirname, "./tf")))
 
     return router;
 }
