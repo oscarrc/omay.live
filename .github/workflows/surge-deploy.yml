@@ -6,16 +6,26 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        name: Deploying to surge        
+        name: Deploying to surge    
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v4
               with:
                 sparse-checkout: |
                   app
-            - uses: actions/setup-node@v4
+            - name: Create .env file
+              run: |
+                touch ./app/.env
+                echo VITE_SERVER_URL=${{ vars.SERVER_URL }} >> ./app/.env  
+            - name: Setup Node
+              uses: actions/setup-node@v4
               with:
                 node-version: 18
-            - run: npm --prefix ./app install
-            - run: npm --prefix ./app build            
-            - run: npm install -g surge
-            - run: surge ./app/dist ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+            - name: Build app
+              run: |
+                npm --prefix ./app install
+                npm --prefix ./app build     
+            - name: Deploy to surge      
+              run: |
+                npm install -g surge
+                surge ./app/dist ${{ vars.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
