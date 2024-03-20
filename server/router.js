@@ -5,7 +5,7 @@ import express from "express";
 import fs from 'fs';
 import { join } from 'path'
 
-const Router = (production) => {
+const Router = () => {
     const router = express.Router();
 
     router.get("/ad", AdController.get.bind(AdController))
@@ -15,15 +15,8 @@ const Router = (production) => {
     
     router.get("/chat", ChatController.count.bind(ChatController))
           .post("/chat", ChatController.find.bind(ChatController))
-
-    if(production) router.use('/', express.static(join(__dirname, "../../www")))
     
     router.use('/tf', express.static(join(__dirname, "../../tf")))
-
-    router.get("*", (_,res) => {   
-        const file = join(__dirname, "../../www", "index.html");
-        production && fs.existsSync(file) ? res.sendFile(file) : res.send("OK");
-    })
 
     return router;
 }

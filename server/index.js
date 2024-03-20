@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 8080;
 const MONGO_URL = process.env.MONGO_URL || null;
 const BASE_URL = process.env.BASE_URL || "localhost";
 const WORKERS = process.env.WORKERS <= CPUS && process.env.WORKERS || CPUS || 1;
-const PRODUCTION = process.env.NODE_ENV === "production" || false;
 
 if (cluster.isPrimary) {	
 	console.log(`${chalk.green.bold("[CLUSTER]")} Master running with PID ${process.pid}`);
@@ -51,7 +50,7 @@ if (cluster.isPrimary) {
 	Db(MONGO_URL, purge).then(() => {
 		console.log(`${chalk.green.bold("[DB]")} ${chalk.green(`[${workerId}]`)} Connection ready`);
 
-		const router = Router(PRODUCTION);
+		const router = Router();
 
 		const server = Server(router).listen(port, () => {
 			console.log(`${chalk.green.bold("[HTTP]")} ${chalk.green(`[${workerId}]`)} Ready on ${BASE_URL}:${port}`);
