@@ -24,7 +24,7 @@ jobs:
             - name: Build app
               run: |
                 npm --prefix ./app install
-                npm --prefix ./app build     
+                npm --prefix ./app run build     
             - name: Deploy to surge      
               run: |
                 npm install -g surge
