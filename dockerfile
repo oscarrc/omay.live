@@ -3,6 +3,7 @@ WORKDIR /home/node
 USER node
 COPY --chown=node:node server server
 COPY --chown=node:node tf tf
-RUN npm --prefix ./server install
+WORKDIR /home/node/server
+RUN npm install
 EXPOSE 8080
 CMD ["npm", "start"]
