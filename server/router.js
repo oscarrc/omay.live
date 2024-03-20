@@ -2,7 +2,6 @@ import { AdController, BanController, ChatController } from "./controllers/index
 
 import { __dirname } from "./lib/dirname.js";
 import express from "express";
-import fs from 'fs';
 import { join } from 'path'
 
 const Router = () => {
