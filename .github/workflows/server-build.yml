@@ -30,9 +30,10 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SURGE_DOMAIN: ${{ vars.SURGE_DOMAIN }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${GITHUB_REPOSITORY#*/} ${GITHUB_REF_NAME#v}" \
-              --notes "**Image:** \`docker pull ghcr.io/$GITHUB_REPOSITORY:$GITHUB_REF_NAME\`" \
+              --notes "**Image:** \`docker pull ghcr.io/$GITHUB_REPOSITORY:$GITHUB_REF_NAME\`\n**Web:**${https://$SURGE_DOMAIN}" \
               --generate-notes
