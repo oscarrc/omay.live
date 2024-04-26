@@ -12,28 +12,34 @@ class ChatService{
     async findPeer(options){
         const { peer, mode, query } = options;
         
-        const interests = query.common && query.interests?.length ? 
-                            { interests: { "$in": query.interests } } : 
-                            {
-                                $or: [
-                                    { common: true, interests: { $in: query.interests } },
-                                    { common: false }
-                                ]
-                            }
+        // const interests = query.common && query.interests?.length ? 
+        //                     { interests: { "$in": query.interests } } : 
+        //                     {
+        //                         $or: [
+        //                             { common: true, interests: { $in: query.interests } },
+        //                             { common: false }
+        //                         ]
+        //                     }
 
         // const lang = query.lang && query?.lang !== "any" ? { $or: [
         //   { lang: query.lang },
         //   { lang: "any" },
-        // ] } : {}
+        // ] } : {}        
 
-        const lang = query.lang && query?.lang !== "any" ?  { lang: query.lang } : {}
+        // let q = {
+        //     peer: { $ne: peer },
+        //     available: true,
+        //     mode: mode,
+        //     ...interests,
+        //     ...lang
+        // }
 
         let q = {
             peer: { $ne: peer },
             available: true,
             mode: mode,
-            ...interests,
-            ...lang
+            ...(query.lang && query?.lang !== "any" ?  { lang: query.lang } : {}),
+            ...(query.common && query.interests?.length ? { interests: { $in: query.interests } } : {})
         }
 
         let found = await this.peer.aggregate([
