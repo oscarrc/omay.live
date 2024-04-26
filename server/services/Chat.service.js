@@ -21,12 +21,14 @@ class ChatService{
                                 ]
                             }
 
-       const lang = query.lang && query?.lang !== "any" ? { $or: [
-        { lang: query.lang },
-        { lang: "any" },
-       ] } : {}
+        // const lang = query.lang && query?.lang !== "any" ? { $or: [
+        //   { lang: query.lang },
+        //   { lang: "any" },
+        // ] } : {}
 
-        const q = {
+        const lang = query.lang && query?.lang !== "any" ?  { lang: query.lang } : {}
+
+        let q = {
             peer: { $ne: peer },
             available: true,
             mode: mode,
@@ -38,6 +40,15 @@ class ChatService{
             { $match: q },
             { $sample: { size: 1 } }
         ])
+
+        if(!found.length){
+            delete q.lang;
+
+            found = await this.peer.aggregate([
+                { $match: q },
+                { $sample: { size: 1 } }
+            ])    
+        }
         
         let f = found.length ? 
                     {
