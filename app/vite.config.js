@@ -18,6 +18,9 @@ export default ({ mode }) => {
             VitePluginRadar({
                 analytics: {
                   id: 'G-Y8XGQY29V9',
+                  persistentValues: {
+                    currency: 'EUR',
+                  }
                 },
             }),
             VitePWA({ 
