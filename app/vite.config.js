@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
 
 import { VitePWA } from 'vite-plugin-pwa'
+import { VitePluginRadar } from 'vite-plugin-radar';
 import mdx from '@mdx-js/rollup'
 import react from '@vitejs/plugin-react'
 import { visualizer } from "rollup-plugin-visualizer";
@@ -14,6 +15,11 @@ export default ({ mode }) => {
             {enforce: 'pre', ...mdx()},
             react(),
             splitVendorChunkPlugin(),
+            VitePluginRadar({
+                analytics: {
+                  id: 'G-Y8XGQY29V9',
+                },
+            }),
             VitePWA({ 
                 registerType: 'autoUpdate',
                 workbox: {
