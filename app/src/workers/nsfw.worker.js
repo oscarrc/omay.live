@@ -67,6 +67,8 @@ const init = async ({data}) => {
             model = await tf.loadGraphModel(`${import.meta.env.VITE_SERVER_URL}/tf/nsfw/model.json`);
             model.save('indexeddb://nsfw');
         } finally {
+            if(!model) return;
+            
             const result = tf.tidy(() => model.predict(tf.zeros([1, SIZE, SIZE, 3])));
             await result.data();
             result.dispose();
