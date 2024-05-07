@@ -16,12 +16,14 @@ export default ({ mode }) => {
             react(),
             splitVendorChunkPlugin(),
             VitePluginRadar({
-                analytics: {
-                  id: 'G-Y8XGQY29V9',
-                  persistentValues: {
-                    currency: 'EUR',
-                  }
-                },
+                analytics: [
+                    {
+                        id: 'G-Y8XGQY29V9',
+                        persistentValues: {
+                          currency: 'EUR',
+                        }
+                    },
+                ]
             }),
             VitePWA({ 
                 registerType: 'autoUpdate',
