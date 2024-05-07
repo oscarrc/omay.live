@@ -1,6 +1,6 @@
 import  io from "socket.io-client";
 
-const URL = "https://omy-live-server.onrender.com";
+const URL = "https://omay-live-server.onrender.com";
 const MAX_CLIENTS = 100000;
 const CLIENT_CREATION_INTERVAL_IN_MS = 1000;
 const EMIT_INTERVAL_IN_MS = 60000;
