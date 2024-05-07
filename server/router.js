@@ -7,6 +7,8 @@ import { join } from 'path'
 const Router = () => {
     const router = express.Router();
 
+    router.get("/", (req, res) => res.send("OK"))
+
     router.get("/ad", AdController.get.bind(AdController))
 
     router.get("/ban", BanController.get.bind(BanController))

@@ -40,3 +40,4 @@ jobs:
               --title="${GITHUB_REPOSITORY#*/} ${GITHUB_REF_NAME#v}" \
               --notes "**Image:** \`docker pull ghcr.io/$GITHUB_REPOSITORY:$GITHUB_REF_NAME\`<br/>**Web:**https://${$SURGE_DOMAIN}" \
               --generate-notes
+
