@@ -1,8 +1,6 @@
 import { AdController, BanController, ChatController } from "./controllers/index.js";
 
-import { __dirname } from "./lib/dirname.js";
 import express from "express";
-import { join } from 'path'
 
 const Router = () => {
     const router = express.Router();
@@ -16,8 +14,6 @@ const Router = () => {
     
     router.get("/chat", ChatController.count.bind(ChatController))
           .post("/chat", ChatController.find.bind(ChatController))
-    
-    router.use('/tf', express.static(join(__dirname, "./tf")))
 
     return router;
 }

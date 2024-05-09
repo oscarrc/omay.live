@@ -1,7 +1,6 @@
 import { BanService, ChatService } from "./services/index.js";
 
 import { Server as SocketIO } from "socket.io";
-import { __dirname } from "./lib/dirname.js";
 import bodyparser from "body-parser";
 import chalk from 'chalk';
 import cors from "cors";
@@ -34,6 +33,7 @@ const Server = (router) => {
         .use(bodyparser.json())
         .use(cors())
         .use(router)        
+        .use('/tf', express.static('tf'))
 
     return app
 }
