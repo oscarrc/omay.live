@@ -5,7 +5,7 @@ const dark = require("daisyui/src/theming/themes")["[data-theme=dark]"];
 
 module.exports = {
   content: [
-    "index.html",
+    "./index.html",
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {

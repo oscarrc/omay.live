@@ -16,7 +16,7 @@
         --scrollbarThumbHover: hsla(var(--p));
    }
 
-    #root{
+    body:not(.noscript) #root, noscript{
         display: flex;
         flex-direction: column;
         min-height: 100dvh;

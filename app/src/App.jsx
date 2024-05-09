@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { lazy, useEffect } from "react";
 
 import { AdblockDetectionProvider } from "./hooks/useAdblockDetection";
 import { ChatProvider } from "./hooks/useChat";
@@ -7,7 +8,6 @@ import { CookieConsentProvider } from "./hooks/useCookieConsent";
 import { DeviceProvider } from "./hooks/useDevice";
 import Landing from "./routes/landing";
 import Layout from "./components/layout";
-import { lazy } from "react";
 
 const App = () => {  
   const Chat = lazy(() => import('./routes/chat'));
@@ -54,6 +54,10 @@ const App = () => {
       ]
     }
   ])
+
+  useEffect(() => {
+    document.body.classList.remove('noscript');
+  }, [])
 
   return (
     <QueryClientProvider client={queryClient}>

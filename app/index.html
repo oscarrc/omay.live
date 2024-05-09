@@ -12,8 +12,64 @@
     <title>Omay.live | Live with strangers </title>
     <meta name="description" content="" />
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body class="noscript">
+    <noscript>
+      <header class="sticky top-0 bg-base-100 z-40">
+        <nav class="navbar transition-all duration-100	shadow-none">
+          <div class="flex gap-8 min-w-fit flex-1">
+            <a class="indicator logo btn btn-ghost text-warning text-2xl md:text-4xl py-2 relative" href="/">
+              <img src="/logo.svg" alt="Omay.live logo" class="h-full rounded-md">
+                Omay.live
+                <span class="indicator-item badge badge-primary badge-xs text-white">beta</span>
+              </a>
+              <span class="hidden md:inline -rotate-6 text-primary text-sm lg:text-xl font-bold">Live with strangers!</span>
+          </div>
+        </nav>
+      </header>
+      <main class="flex flex-col flex-1 bg-base-200 sm:p-6 sm:pb-0">
+        <section class="flex flex-col gap-4 justify-center items-center flex-col flex-1 w-full bg-base-100 rounded sm:shadow-inner p-8">
+          <div class="flex flex-col gap-8 max-w-full">
+            <div class="prose md:prose-lg min-w-fit prose-h2:text-xl">
+              <h2 class="text-center">You don't need an app to use Omay.live on your phone or tablet! The web site works great on mobile.</h2>
+              <p>Omay.live (oʊ·maɪ·laɪv) is a great way to meet new friends. When you use Omay.live, we pick someone else at random and let you talk one-to-one. To help you stay safe, chats are anonymous unless you tell someone who you are (not recommended!), and you can stop a chat any time. See our  <strong class="btn-link">Terms and conditions</strong>, and <strong class="btn-link">Community guidelines</strong> for info about de do's and don'ts in using Omay.live. Omay.live video chat is AI moderated but no moderation is perfects. Users are solely responsible for their behaviour while using Omay.live</p>
+              <p><strong>You must be 18 (or the legal majority in your jurisdiction) or older to use Omay.live</strong>. See Omay.live's <strong>Terms and conditions</strong> for more info. Parental control protections that may assists parents are commercially available and you can find more info at <a class="btn-link" href="https://www.connectsafely.org/controls" target="_blank" rel="noopener noreferrer">https://www.connectsafely.org/controls</a> as well are other sites.</p>
+              <p>Please leave Omay.live and visit an adult site instead if that's what you are looking for and you are 18 (or the legal majority in your jurisdiction) or older.</p>
+            </div>
+            <div class="alert items-center alert-warning bg-warning/75 text-warning-content">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="text-warning-content h-8 w-8 hidden sm:block" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M955.7 856l-416-720c-6.2-10.7-16.9-16-27.7-16s-21.6 5.3-27.7 16l-416 720C56 877.4 71.4 904 96 904h832c24.6 0 40-26.6 27.7-48zM480 416c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v184c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V416zm32 352a48.01 48.01 0 0 1 0-96 48.01 48.01 0 0 1 0 96z"></path></svg>
+              <div class="rtl:sm:text-right">
+                <h3 class="font-bold">This site needs Javascript to work</h3>
+                <div class="text-xs">Please, enable Javascript execution and reload the page</div>
+              </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 justify-between">
+              <div class="flex flex-col gap-3 items-center">
+                <span>What do you want to talk about?</span>
+                <div class="group w-full">
+                    <div class="flex flex-wrap items-center gap-2 border bg-base-200 rounded input-lg group-focus:outline outline-2 outline-base-content/20 outline-offset-2 border-base-content/20 scroll overflow-y-auto overflow-x-hidden py-2 md:max-w-1/4 min-w-1/4">
+                      <input disabled type="text" placeholder="Add your interests (Optional)" class="input focus:outline-none p-0 h-full flex-1 md:max-w-1/4 min-w-1/4">
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-2 items-center">
+                  <h4 class="text-lg font-bold">Start chatting</h4>
+                  <div class="flex flex-col sm:flex-row w-full sm:w-auto">
+                    <button disabled class="btn btn-lg btn-primary w-full sm:w-40">Text</button>
+                    <div class="divider sm:divider-horizontal uppercase">or</div>
+                    <div class="flex flex-col gap-2">
+                      <button disabled class="btn btn-lg btn-primary w-full sm:w-40">Video</button>
+                      <button disabled class="btn btn-xs text-xs w-full sm:w-40 sm:self-end h-fit">Unmoderated section</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer flex flex-col justify-center xl:flex-row flex-wrap items-center gap-2 bg-base-200 px-8 py-2">
+        <p class="text-center lg:text-left flex-1">Copyright © 2024 Omay.live - All right reserved.</p>
+      </footer>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/index.jsx"></script>
   </body>
