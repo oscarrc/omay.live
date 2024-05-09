@@ -21,9 +21,25 @@
       "sizes": "512x512"
     }
   ],
+  "screenshots" : [
+    {
+      "src": "screenshots/screenshot_wide.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Omay.live! Live with strangers"
+    },
+    {
+      "src": "screenshots/screenshot_narrow.webp",
+      "sizes": "1080x2264",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Omay.live! Live with strangers"
+    }
+  ],
   "id": "/",
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
   "theme_color": "#44ADEE",
   "background_color": "#44ADEE"
