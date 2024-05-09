@@ -25,7 +25,7 @@
     "preview": "vite preview",
     "test": "jest",
     "predeploy": "npm run build",
-    "deploy": "surge dist omay.live"
+    "deploy": "cp dist/index.html dist/200.html && surge dist omay.live"
   },
   "browserslist": {
     "production": [
