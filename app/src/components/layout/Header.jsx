@@ -20,7 +20,7 @@ const Header = ({ children }) => {
                     <Link to="/" className="indicator logo btn btn-ghost text-warning text-2xl md:text-4xl py-2 relative">
                         <img src="/logo.svg" alt={`${BRAND} logo`} className="h-full rounded-md"/>
                         { BRAND }
-                        { import.meta.env.VITE_IS_BETA ? <span class="indicator-item badge badge-primary badge-xs text-white">beta</span>  : "" }
+                        { import.meta.env.VITE_IS_BETA ? <span className="indicator-item badge badge-primary badge-xs text-white">beta</span>  : "" }
                     </Link>
                     <span className="hidden md:inline -rotate-6 text-primary text-sm lg:text-xl font-bold">Live with strangers!</span>
                 </div>
